@@ -1,0 +1,48 @@
+//reset browser defaults using Normalize.css
+@import "imports/normalize";
+
+//imports colors
+@import "imports/config";
+
+//import basic 12-column grid and defualt tag settings
+@import "imports/grid";
+@import "imports/type";
+
+//use Font Awesome for icons
+@import "imports/icons";
+
+
+
+// $brown: #372213;
+// $orange: #DC7238;
+// $yellow: #F4B73C;
+// $green: #68A445;
+
+$buttonColor: $green;
+$buttonDark: darken($green, 10%);
+$buttonDarker: darken($buttonDark, 10%);
+
+button {
+  background: $green;
+  border-radius: 3px;
+  box-shadow: 0px 5px 0px $buttonDark;
+  border: 0;
+  color: white;
+  font-size: 17px;
+  padding: 10px 30px;
+  display: inline-block;
+  outline: 0;
+  &:hover {
+    background: $buttonDark;
+    box-shadow: 0px 5px 0px $buttonDarker;
+  }
+  &:active {
+    box-shadow: none;
+    margin-top: 5px;
+  }
+}
+
+body {
+  text-align: center;
+  padding-top: 100px;
+}
