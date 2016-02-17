@@ -32,7 +32,17 @@ module.exports = function(grunt) {
                 ],
                 "dest": "server/public/vendors/"
             }
+        },
+        sass: {
+        options: {
+            sourceMap: true
+        },
+        dist: {
+            files: {
+                'assets/styles/main.css': 'assets/styles/sass/main.scss'
+            }
         }
+    }
     });
 
     grunt.loadNpmTasks('grunt-contrib-copy');
