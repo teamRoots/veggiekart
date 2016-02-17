@@ -1,4 +1,12 @@
 node_modules
+<<<<<<< HEAD
 .idea
 npm-debug.log
 .DS_Store
+=======
+config.json
+config.js
+.idea*
+.DS_Store
+*.log
+>>>>>>> schema_mongoDB

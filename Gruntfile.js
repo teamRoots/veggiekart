@@ -13,8 +13,13 @@ module.exports = function(grunt) {
         },
         watch: {
             scripts: {
+<<<<<<< HEAD
                 files: ['client/client.js', 'server/public/assets/styles/sass/*.scss', 'server/public/assets/styles/sass/**/*.scss'],
                 tasks: ['uglify', 'sass'],
+=======
+                files: ['client/*.js'],
+                tasks: ['uglify'],
+>>>>>>> schema_mongoDB
                 options: {
                     spawn: false
                 }
@@ -32,6 +37,7 @@ module.exports = function(grunt) {
                 ],
                 "dest": "server/public/vendors/"
             }
+<<<<<<< HEAD
         },
         sass: {
             dist: {
@@ -42,15 +48,25 @@ module.exports = function(grunt) {
                     'server/public/assets/styles/main.css': 'server/public/assets/styles/sass/main.scss'
                 }
             }
+=======
+>>>>>>> schema_mongoDB
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
+<<<<<<< HEAD
     grunt.loadNpmTasks('grunt-contrib-sass');
 
     // Default task(s).
     grunt.registerTask('default', ['copy', 'sass', 'uglify']);
 
 };
+=======
+
+    // Default task(s).
+    grunt.registerTask('default', ['copy', 'uglify']);
+
+};
+>>>>>>> schema_mongoDB
