@@ -36,7 +36,7 @@ module.exports = {
         };
 
         // login strategy named local-login
-        passport.use('local-login', new LocalStrategy(options, function (req, username, password, done) {
+        passport.use('local', new LocalStrategy(options, function (req, username, password, done) {
             // look in User model for
             User.findOne({username: username}, function (err, user) {
                 // if an error, return an error

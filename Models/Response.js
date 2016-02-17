@@ -10,7 +10,9 @@ var ResponseSchema = new Schema({
             name: String,
             quantity: Number,
             unit: String,
-            confirmed_quantity: Number
+            confirmed_quantity: Number,
+            response_text: String,
+            confirmation_text: String
         }]
     }]
 
