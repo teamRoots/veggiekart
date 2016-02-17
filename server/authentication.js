@@ -1,9 +1,14 @@
+//================================================
+//List of all the required modules and routes
+
 var passport = require('passport');
 var bcrypt = require('bcrypt');
 var LocalStrategy = require('passport-local').Strategy;
 
 var User = require('../models/user');
 
+//================================================
+//Exported Passport function for authentication
 
 module.exports = {
     init: function (app) {
