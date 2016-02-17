@@ -7,14 +7,14 @@ var RequestSchema = new Schema({
         name: String,
         date: Date,
         all_salads: [{
-            total_salads: Number,
+            amount: Number,
             salad: SaladSchema
         }]
     }],
     status: boolean,
     recipients: [{
         name: String,
-        email: String   // need to get email for this
+        email: String   // is username possibly
     }]
 });
 

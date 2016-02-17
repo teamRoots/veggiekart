@@ -2,15 +2,7 @@
 //All requirements
 
 var express = require('express');
-var path = require('path');
 var router = express.Router();
-
-//===================================
-//All get routes that send to html view
-
-router.get('/', function(request, response){
-    response.sendFile(path.join(__dirname, '../public/views/index.html'));
-});
 
 //===================================
 //Post routes for controller responses
@@ -20,8 +12,17 @@ router.get('/', function(request, response){
 
 
 //===================================
+//All post routes for sending and confirming data
+
+router.post('/sendRequest', function(request, response){
+
+});
+
+router.post('/confirmRequest', function(request, response){
+
+});
+
+//===================================
 //exporting the router
 
 module.exports = router;
-
-

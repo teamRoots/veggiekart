@@ -13,7 +13,7 @@ module.exports = function(grunt) {
         },
         watch: {
             scripts: {
-                files: ['client/client.js'],
+                files: ['client/*.js'],
                 tasks: ['uglify'],
                 options: {
                     spawn: false
