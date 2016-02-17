@@ -2,6 +2,8 @@
 // Typography
 //**
 
+// @import "config";
+
 body {
   font-family: "Raleway", sans-serif;
   font-size: 100%;
@@ -64,9 +66,9 @@ h5 {
   margin: 0 0 25px;
 }
 
-p {
-  margin: 0 0 $padding/2;
-}
+// p {
+//   margin: 0 0 $padding/2;
+// }
 
 // pre {
 //   background: #222;
