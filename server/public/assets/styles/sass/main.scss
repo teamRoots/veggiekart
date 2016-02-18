@@ -4,6 +4,10 @@
 //imports colors
 @import "imports/config";
 
+//import mixins
+@import "imports/mixins";
+@import "imports/responsive";
+
 //import basic 12-column grid and defualt tag settings
 @import "imports/grid";
 @import "imports/type";
@@ -17,6 +21,8 @@
 // $orange: #DC7238;
 // $yellow: #F4B73C;
 // $green: #68A445;
+
+//defualt button styling to be seperated out later
 
 $buttonColor: $green;
 $buttonDark: darken($green, 10%);
@@ -45,4 +51,15 @@ button {
 body {
   text-align: center;
   padding-top: 100px;
+}
+
+//login styling to be seperated out later
+
+.login, .login-title {
+  border: 1px solid $brown;
+  margin: 20px auto;
+  button {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
 }
