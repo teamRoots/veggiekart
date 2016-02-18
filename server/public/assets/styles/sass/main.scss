@@ -50,7 +50,16 @@ button {
 
 body {
   text-align: center;
-  padding-top: 100px;
+}
+
+//index styling
+.logo {
+  display: block;
+  float: left;
+}
+.nav button {
+  width: 33.33%;
+  margin: 0 -5px;
 }
 
 //login styling to be seperated out later

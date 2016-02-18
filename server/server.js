@@ -2,9 +2,9 @@
 //================================================
 //List of all the required modules and routes
 var express = require('express');
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var session = require('express-session');
+// var bodyParser = require('body-parser');
+// var mongoose = require('mongoose');
+// var session = require('express-session');
 
 //=================================================
 // Routes
@@ -17,22 +17,22 @@ var app = express();
 //=================================================
 // body parser middleware
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json());
 
 //=================================================
 //Starting connection to Mongo Database either best choice or local host
 
-var mongoURI = process.env.DATABASE_URL || 'mongodb://localhost:27017/veggiekart';
-var mongoDB = mongoose.connect(mongoURI).connection;
-
-mongoDB.on('error', function(err){
-    console.log('MongoDB error: ', err);
-});
-
-mongoDB.on('open', function(){
-    console.log('MongoDB connected!');
-});
+// var mongoURI = process.env.DATABASE_URL || 'mongodb://localhost:27017/veggiekart';
+// var mongoDB = mongoose.connect(mongoURI).connection;
+//
+// mongoDB.on('error', function(err){
+//     console.log('MongoDB error: ', err);
+// });
+//
+// mongoDB.on('open', function(){
+//     console.log('MongoDB connected!');
+// });
 
 //=================================================
 // use and configure server sessions
@@ -51,7 +51,7 @@ mongoDB.on('open', function(){
 
 //=================================================
 // initialize passport
-passport.init(app);
+// passport.init(app);
 
 //=================================================
 // Middleware and routes
