@@ -18,21 +18,29 @@
   <div  class="banner">
     <!-- Will add ng-show="userLoggedIn" to display the banner and nav only when logged in -->
     <div class="header">
-      <div class="span3 logo">
+      <div class="span4 logo">
         <img src="views/images/RootsLogo.jpg" />
       </div>
-      <div class="span9 title">
+      <div class="span8 title">
         <h1>Veggie Kart</h1>
       </div>
+      <div class="logout">
+        <p>Welcome, {{user.name}}!</p>
+        <a ng-click="logout()">logout</a>
+      </div>
+      <div class="clearfix"></div>
     </div>
     <div class="nav">
-      <a href="/admin"><button class="span4 nav-button">Dashboard</button></a>
-      <a href="/admin/salad"><button class="span4 nav-button">Salads</button></a>
-      <a href="/admin/reports"><button class="span4 nav-button">Reports</button></a>
+      <a href="/admin"><button class=" nav-button">Dashboard</button></a>
+      <a href="/admin/salad"><button class=" nav-button">Salads</button></a>
+      <a href="/admin/reports"><button class=" nav-button">Reports</button></a>
     </div>
   </div>
+  <div class="bg-image">
+    <img src="views/images/gardening.jpg" class="bg" />
+    <div ng-view></div>
 
-  <div ng-view></div>
+  </div>
 
 
 </body>
