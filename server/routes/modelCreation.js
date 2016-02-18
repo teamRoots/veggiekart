@@ -19,29 +19,45 @@ var Response = require('../../Models/Response');
 //Model in database creation
 
 router.post('/createRequest', function(request, response) {
-    Request.create({
-        for(var i = 0; i < request.event.array.length; i++){
-        event: [{
-            name: request.event.array[i].venues.venueName,
-            date: request.event.array[i].venues.events.eventDate,
-            for var j = 0; j < request.array[i].saladObject.length; j++){
-            all_salads: [{
-                amount: request.event.array[i].saladObject[j].amount,
-                salad: request.event.array[i].saladObject[j].salad
-            }]
-            }
-        }]
-
+        var events = [];
+        var recipient = [];
+        for(var i = 0; i < request.events.length; i++){
+            var event = ({
+                name: request.events[i].venues.venueName,
+                date: request.events[i].venues.events.eventDate,
+                all_salads: []
+            })
         }
-        for(var i = 0; i < request.recipients.array.length; i++){
-            recipients: [{
-            name: request.recipients.array[i].users.orgName,
-            email: request.recipients.array[i].users.username
-        }]
-        status: false
+        for (var j = 0; j < request.events[i].saladObject.length; j++){
+            var all_salads = ({
+                amount: request.events[i].saladObject[j].amount,
+                salad: request.events[i].saladObject[j].salad
+            })
+            event.all_salads.push(all_salads);
+        }
+        events.push(event);
 
 
-});
+        for(i = 0; i < request.recipient.array.length; i++){
+        var recipient = ({
+            name: request.recipient.array[i].users.orgName,
+            email: request.recipient.array[i].users.username
+        })
+        recipients.push(recipient);
+    }
+
+    var requestPage = new Request ({
+        event: events,
+        status: false,
+        recipients: recipients
+    })
+
+    requestPage.save(function(err){
+        if(err){
+            console.log(err);
+        }
+        response.sendStatus(200);
+    })
 });
 
 router.post('/createSalad', function(request, response) {
