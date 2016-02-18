@@ -31,7 +31,7 @@ $buttonDarker: darken($buttonDark, 10%);
 button {
   background: $green;
   border-radius: 3px;
-  box-shadow: 0px 5px 0px $buttonDark;
+  // box-shadow: 0px 5px 0px $buttonDark;
   border: 0;
   color: white;
   font-size: 17px;
@@ -40,11 +40,15 @@ button {
   outline: 0;
   &:hover {
     background: $buttonDark;
-    box-shadow: 0px 5px 0px $buttonDarker;
+    // box-shadow: 0px 5px 0px $buttonDarker;
   }
   &:active {
-    box-shadow: none;
-    margin-top: 5px;
+    // box-shadow: none;
+    background: $buttonDarker;
+    position: relative;
+    left: 2px;
+    top: 2px;
+    // margin-top: 5px;
   }
 }
 
