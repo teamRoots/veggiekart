@@ -1,4 +1,36 @@
-<div>
-  {{dash.hello}}
-  <button>click</button>
+<div class="span10 container">
+  <h3 class="push-right">Requests</h3>
+  <div class="clearfix"></div>
+  <div class="span12 header">
+    <h4 class="span4">Events</h4>
+    <h4 class="span2">Status</h4>
+  </div>
+  <div class="clearfix"></div>
+  <div class="span12 events" ng-repeat="request in requests">
+    <ul class="span4 event-names">
+      <li ng-repeat="name in request">
+      </li>
+    </ul>
+    <ul class="span2 request-status">
+      <li>{{request.status}}</li>
+    </ul>
+  </div>
+</div>
+<a href="/request">+ add new request</a>
+<div class="span10 container">
+  <h3 class="push-right">Events</h3>
+  <div class="clearfix"></div>
+  <div class="span12 header">
+    <h4 class="span4">Location</h4>
+    <h4 class="span4">Date</h4>
+    <h4 class="span4">Hosts</h4>
+  </div>
+  <div class="clearfix"></div>
+  <div class="span12 event-content">
+    <ul ng-repeat="event in events">
+      <li class="span4">{{event.location}}</li>
+      <li class="span4">{{event.date}}</li>
+      <li class="span4">{{event.host}}</li>
+    </ul>
+  </div>
 </div>
