@@ -6,7 +6,7 @@ config.js
 *.log
 npm-debug.log
 .DS_Store
-server/public/assets/styles/sass/main.css
-server/public/assets/styles/sass/main.css.map
+server/public/assets/styles/main.css
+server/public/assets/styles/main.css.map
 server/public/assets/scripts/client.min.js
 *.sass-cache
