@@ -1,3 +1,5 @@
+//I think we can delete this file? --Eric
+
 app.controller('mainController', ['$scope', '$http', function($scope, $http){
 
 }]);

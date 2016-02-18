@@ -26,6 +26,11 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
       templateUrl: 'views/reports.html',
       controller: 'reportsController',
       controllerAs: 'reports'
+    })
+    .when('/admin/request', {
+      templateUrl: 'views/request.html',
+      controller: 'requestController',
+      controllerAs: 'request'
     });
 
   $locationProvider.html5Mode(true);
