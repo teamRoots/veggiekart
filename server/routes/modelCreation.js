@@ -19,24 +19,23 @@ var Response = require('../../Models/Response');
 //Model in database creation
 
 router.post('/createRequest', function(request, response) {
+        var event = {};
         var events = [];
-        var recipient = [];
+        var recipients = [];
         for(var i = 0; i < request.events.length; i++){
             var event = ({
                 name: request.events[i].venues.venueName,
                 date: request.events[i].venues.events.eventDate,
                 all_salads: []
             })
+            for (var j = 0; j < request.events[i].saladObject.length; j++){
+                var all_salads = ({
+                    amount: request.events[i].saladObject[j].amount,
+                    salad: request.events[i].saladObject[j].salad
+                })
+                event.all_salads.push(all_salads);
+                events.push(event);
         }
-        for (var j = 0; j < request.events[i].saladObject.length; j++){
-            var all_salads = ({
-                amount: request.events[i].saladObject[j].amount,
-                salad: request.events[i].saladObject[j].salad
-            })
-            event.all_salads.push(all_salads);
-        }
-        events.push(event);
-
 
         for(i = 0; i < request.recipient.array.length; i++){
         var recipient = ({
