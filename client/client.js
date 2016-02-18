@@ -6,14 +6,30 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
       templateUrl: 'views/login.html',
       controller: 'loginController',
       controllerAs: 'login'
+    })
+    .when('/admin', {
+      templateUrl: 'views/dashboard.html',
+      controller: 'dashboardController',
+      controllerAs: 'dash'
+    })
+    .when('/response', {
+      templateUrl: 'views/response.html',
+      controller: 'responseController',
+      controllerAs: 'response'
+    })
+    .when('/admin/salad', {
+      templateUrl: 'views/salad.html',
+      controller: 'saladController',
+      controllerAs: 'salad'
+    })
+    .when('/admin/reports', {
+      templateUrl: 'views/reports.html',
+      controller: 'reportsController',
+      controllerAs: 'reports'
     });
 
   $locationProvider.html5Mode(true);
 }]);
-
-app.controller('dashboard', function(){
-  this.hello = 'hello world';
-});
 
 // var app = angular.module('myApp', ['ngRoute']);
 //
