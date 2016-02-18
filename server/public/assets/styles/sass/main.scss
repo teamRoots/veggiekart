@@ -50,7 +50,32 @@ button {
 
 body {
   text-align: center;
-  padding-top: 100px;
+}
+
+//index styling
+
+.banner {
+  margin-left: 0;
+  background-color: $orange;
+  border-bottom: 1px solid $brown;
+}
+.title {
+  display: inline-block;
+  padding-top: 30px;
+}
+.logo {
+  display: block;
+  float: left;
+  padding-top: 10px;
+}
+.nav {
+  margin-bottom: 20px;
+  button {
+    width: 33.33%;
+    margin: 0 4px;
+    border: 1px solid $brown;
+    box-shadow: none;
+  }
 }
 
 //login styling to be seperated out later
