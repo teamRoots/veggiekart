@@ -13,14 +13,11 @@ var index = require('./routes/index');
 
 var app = express();
 
+//=================================================
+// body parser middleware
 
-
-
-
-
-
-
-
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 //=================================================
 //Starting connection to Mongo Database either best choice or local host
