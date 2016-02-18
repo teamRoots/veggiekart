@@ -4,8 +4,8 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
   $routeProvider
     .when('/', {
       templateUrl: 'views/login.html',
-      controller: 'dashboard',
-      controllerAs: 'dash'
+      controller: 'loginController',
+      controllerAs: 'login'
     });
 
   $locationProvider.html5Mode(true);

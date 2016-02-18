@@ -63,3 +63,22 @@ body {
     margin-bottom: 20px;
   }
 }
+
+//dashboard styling
+.container {
+  border: 1px solid $brown;
+  text-align: left;
+}
+.push-right {
+  display: block;
+  float: right;
+}
+.header {
+  h4 {
+    display: inline;
+    // float: left;
+  }
+}
+.event-content li {
+  display: inline-block;
+}
