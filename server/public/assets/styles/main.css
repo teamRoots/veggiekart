@@ -1426,6 +1426,23 @@ a .icon-flip-vertical:before {
 .icon-renren:before {
   content: "\f18b"; }
 
+.clearfix,
+.group {
+  zoom: 1; }
+  .clearfix:before, .clearfix:after,
+  .group:before,
+  .group:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    overflow: hidden; }
+  .clearfix:after,
+  .group:after {
+    clear: both; }
+
+@media screen and (max-width: 480px) {
+  body {
+    overflow-x: hidden; } }
 .container {
   margin: 0 auto;
   max-width: 1200px;
@@ -1448,6 +1465,126 @@ a .icon-flip-vertical:before {
 .group {
   flex-direction: column; }
 
+@media screen and (min-width: 480px) {
+  .container {
+    padding: 0 40px; }
+
+  .group {
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: -2.1277%; }
+
+  .span1,
+  .span2,
+  .span3,
+  .span4,
+  .span5,
+  .span6,
+  .span7,
+  .span8,
+  .span9,
+  .span10,
+  .span11,
+  .span12 {
+    flex: 0 0 auto; }
+
+  .span1 {
+    flex-basis: 6.20563%;
+    margin-left: 2.1277%;
+    max-width: 6.20563%; }
+
+  .offset1 {
+    margin-left: 10.46103%; }
+
+  .span2 {
+    flex-basis: 14.53897%;
+    margin-left: 2.1277%;
+    max-width: 14.53897%; }
+
+  .offset2 {
+    margin-left: 18.79437%; }
+
+  .span3 {
+    flex-basis: 22.8723%;
+    margin-left: 2.1277%;
+    max-width: 22.8723%; }
+
+  .offset3 {
+    margin-left: 27.1277%; }
+
+  .span4 {
+    flex-basis: 31.20563%;
+    margin-left: 2.1277%;
+    max-width: 31.20563%; }
+
+  .offset4 {
+    margin-left: 35.46103%; }
+
+  .span5 {
+    flex-basis: 39.53897%;
+    margin-left: 2.1277%;
+    max-width: 39.53897%; }
+
+  .offset5 {
+    margin-left: 43.79437%; }
+
+  .span6 {
+    flex-basis: 47.8723%;
+    margin-left: 2.1277%;
+    max-width: 47.8723%; }
+
+  .offset6 {
+    margin-left: 52.1277%; }
+
+  .span7 {
+    flex-basis: 56.20563%;
+    margin-left: 2.1277%;
+    max-width: 56.20563%; }
+
+  .offset7 {
+    margin-left: 60.46103%; }
+
+  .span8 {
+    flex-basis: 64.53897%;
+    margin-left: 2.1277%;
+    max-width: 64.53897%; }
+
+  .offset8 {
+    margin-left: 68.79437%; }
+
+  .span9 {
+    flex-basis: 72.8723%;
+    margin-left: 2.1277%;
+    max-width: 72.8723%; }
+
+  .offset9 {
+    margin-left: 77.1277%; }
+
+  .span10 {
+    flex-basis: 81.20563%;
+    margin-left: 2.1277%;
+    max-width: 81.20563%; }
+
+  .offset10 {
+    margin-left: 85.46103%; }
+
+  .span11 {
+    flex-basis: 89.53897%;
+    margin-left: 2.1277%;
+    max-width: 89.53897%; }
+
+  .offset11 {
+    margin-left: 93.79437%; }
+
+  .span12 {
+    flex-basis: 97.8723%;
+    margin-left: 2.1277%;
+    max-width: 97.8723%; }
+
+  .offset12 {
+    margin-left: 102.1277%; } }
 body {
   font-family: "Raleway", sans-serif;
   font-size: 100%;
@@ -2946,5 +3083,12 @@ button {
 body {
   text-align: center;
   padding-top: 100px; }
+
+.login, .login-title {
+  border: 1px solid #372213;
+  margin: 20px auto; }
+  .login button, .login-title button {
+    margin-top: 10px;
+    margin-bottom: 20px; }
 
 /*# sourceMappingURL=main.css.map */
