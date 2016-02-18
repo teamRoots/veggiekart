@@ -5,7 +5,7 @@
 
 <div class="span6 login">
   <h2>Login</h2>
-  Username: <input type="text" placeholder="username" ng-bind="login.username" /><br/>
-  Password: <input type="password" placeholder="password" ng-bind="login.password" /><br/>
-  <button ng-click="login()">Submit</button>
+  Username: <input type="text" placeholder="username" ng-model="login.user.username" /><br/>
+  Password: <input type="password" placeholder="password" ng-model="login.user.password" /><br/>
+  <button ng-click="login.login()">Submit</button>
 </div>

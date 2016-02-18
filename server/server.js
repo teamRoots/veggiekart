@@ -36,16 +36,18 @@ mongoDB.on('open', function(){
 
 //=================================================
 // use and configure server sessions
-app.use(session({
-    secret: process.env.SECRET,
-    key: 'user',
-    resave: true,
-    saveUninitialized: false,
-    cookie: {
-        maxAge: 600000,
-        secure: false
-    }
-}));
+// Eric: commented out until process.env.SECRET is set
+
+// app.use(session({
+//     secret: process.env.SECRET,
+//     key: 'user',
+//     resave: true,
+//     saveUninitialized: false,
+//     cookie: {
+//         maxAge: 600000,
+//         secure: false
+//     }
+// }));
 
 //=================================================
 // initialize passport
