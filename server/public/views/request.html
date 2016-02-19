@@ -3,14 +3,14 @@
 
 <div class="span10 container">
   <div>
-    <select name="event" placeholder="Event" ng-model="request.event">
-      <option ng-repeat="event in events" value="event.id">{{event.name}}</option>
+    <select name="event" placeholder="Event" ng-model="request.data.event">
+      <option ng-repeat="event in request.eventsData.events" value="event.id">{{event.name}}</option>
     </select>
-    <select name="salad" placeholder="Salad" ng-model="request.salad">
-      <option ng-repeat="salad in salads" value="salad.id">
+    <select name="salad" placeholder="Salad" ng-model="request.data.salad">
+      <option ng-repeat="salad in request.salads" value="salad.id">
         {{salad.name}}</option>
     </select>
-    <select name="quantity" placeholder="Qty." ng-model="salad.quantity">
+    <select name="quantity" placeholder="Qty." ng-model="request.data.saladQuantity">
       <option value="1">96</option>
       <option value="2">184</option>
       <option value="3">288</option>
@@ -19,11 +19,11 @@
       <option value="6">576</option>
     </select>
   </div>
-  <a class="add-salad">+ Add Salad</a>
+  <a class="add-salad" ng-click="request.addSalad()">+ Add Salad</a>
 </div>
 
 <div class="span10 btn-holder">
-  <button class="push-left">+ Add Event</button>
+  <button class="push-left" ng-click="request.addEvent()">+ Add Event</button>
   <div class="clearfix"></div>
 </div>
 
