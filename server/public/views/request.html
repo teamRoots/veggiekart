@@ -1,22 +1,35 @@
 <h2 class="push-right">New Request</h2>
 <div class="clearfix"></div>
 
+<div class="span10 container new-event">
+  <ul>
+    <li>Event</li>
+    <li>Salads</li>
+    <li>Quantity</li>
+  </ul>
+  <ul ng-repeat="item in request.data.events">
+    <li>{{item.event}}</li>
+    <li>{{item.salad}}</li>
+    <li>{{item.saladQuantity}}</li>
+  </ul>
+</div>
+
 <div class="span10 container">
   <div>
-    <select name="event" placeholder="Event" ng-model="request.data.event">
-      <option ng-repeat="event in request.eventsData.events" value="event.id">{{event.name}}</option>
+    <select name="event" placeholder="Event" ng-model="request.newEvent.event">
+      <option ng-repeat="event in request.eventsData.events" ng-value="event.name">{{event.name}}</option>
     </select>
-    <select name="salad" placeholder="Salad" ng-model="request.data.salad">
-      <option ng-repeat="salad in request.salads" value="salad.id">
+    <select name="salad" placeholder="Salad" ng-model="request.newEvent.salad">
+      <option ng-repeat="salad in request.saladsData.salads" ng-value="salad.name">
         {{salad.name}}</option>
     </select>
-    <select name="quantity" placeholder="Qty." ng-model="request.data.saladQuantity">
-      <option value="1">96</option>
-      <option value="2">184</option>
-      <option value="3">288</option>
-      <option value="4">384</option>
-      <option value="5">480</option>
-      <option value="6">576</option>
+    <select name="quantity" placeholder="Qty." ng-model="request.newEvent.saladQuantity">
+      <option value="96">96</option>
+      <option value="184">184</option>
+      <option value="288">288</option>
+      <option value="384">384</option>
+      <option value="480">480</option>
+      <option value="576">576</option>
     </select>
   </div>
   <a class="add-salad" ng-click="request.addSalad()">+ Add Salad</a>
