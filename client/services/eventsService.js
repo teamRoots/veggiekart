@@ -17,12 +17,12 @@ app.factory('eventsService', ['$http', function($http){
     $http.get('/events').then(function(response){
       console.log('event response.data is ', response.data);
       data.events = response.data;
-    })
-  }
+    });
+  };
 
   return {
     getEvent: getEvent,
     data: data
-  }
+  };
 
 }]);
