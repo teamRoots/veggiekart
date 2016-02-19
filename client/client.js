@@ -13,7 +13,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
       controllerAs: 'dash'
     })
     .when('/response', {
-      templateUrl: 'views/response.html',
+      templateUrl: 'views/farmResponse.html',
       controller: 'responseController',
       controllerAs: 'response'
     })
@@ -28,7 +28,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
       controllerAs: 'reports'
     })
     .when('/admin/request', {
-      templateUrl: 'views/request.html',
+      templateUrl: 'views/requestConfirmation.html',
       controller: 'newRequestController',
       controllerAs: 'request'
     });
