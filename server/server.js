@@ -2,8 +2,8 @@
 //================================================
 //List of all the required modules and routes
 var express = require('express');
-// var bodyParser = require('body-parser');
-// var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 // var session = require('express-session');
 
 //=================================================
@@ -11,28 +11,28 @@ var express = require('express');
 
 var passport = require('./authentication');
 var index = require('./routes/index');
-// var salad = require('./routes/saladDocument');
+var salad = require('./routes/saladDocument');
 var app = express();
 
 //=================================================
 // body parser middleware
 
-// app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 //=================================================
 //Starting connection to Mongo Database either best choice or local host
 
-// var mongoURI = process.env.DATABASE_URL || 'mongodb://localhost:27017/veggiekart';
-// var mongoDB = mongoose.connect(mongoURI).connection;
-//
-// mongoDB.on('error', function(err){
-//     console.log('MongoDB error: ', err);
-// });
-//
-// mongoDB.on('open', function(){
-//     console.log('MongoDB connected!');
-// });
+var mongoURI = process.env.DATABASE_URL || 'mongodb://localhost:27017/veggiekart';
+var mongoDB = mongoose.connect(mongoURI).connection;
+
+mongoDB.on('error', function(err){
+    console.log('MongoDB error: ', err);
+});
+
+mongoDB.on('open', function(){
+    console.log('MongoDB connected!');
+});
 
 //=================================================
 // use and configure server sessions
@@ -56,7 +56,8 @@ var app = express();
 //=================================================
 // Middleware and routes
 app.use(express.static('server/public'));
-// app.use('/admin', salad);
+app.use('/', salad); // try to figure out why routing is having problems
+
 app.use('/', index);
 
 //=================================================

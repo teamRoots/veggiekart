@@ -6,7 +6,9 @@ app.controller('saladController', ['loginService', '$scope', '$http', function(l
 
 $scope.showSalads = function(){
   $http.post('/fillSalad').then(function(response){
-    console.log('Fill Salad', response);
+    $scope.salads = response.data;
+
+
   });
 };
 
@@ -16,17 +18,24 @@ $scope.editSalad = function(){
   });
 };
 
-$scope.createSalad = function(){
-  $http.post('/createSalad', createData).then(function(response){
-    console.log('createSalad', response);
+$scope.createNewSalad = function(data){
+  var dataObject = {
+    saladName: data,
+    ingredientArray: $scope.listNewIngredients
+  }
+  $http.post('/createSalad', dataObject).then(function(response){
+    $scope.newSalad = {};
+    $scope.listNewIngredients = [];
+    console.log('createSalad response', response.data);
+    $scope.showSalads();
+
+
+
   });
 };
 
 $scope.createIngredient = function(data){
-  console.log('This is the data', data);
-  // ingredientHolder.push(data);
   $scope.listNewIngredients.push(data);
-  console.log('try this', $scope.listNewIngredients);
   $scope.newIngredient = {};
 };
 

@@ -21,16 +21,17 @@
       <li ng-repeat="listNewIngredient in listNewIngredients track by $index">{{listNewIngredient.quantity}}. {{listNewIngredient.unit}} of  {{listNewIngredient.name}}</li>
     </ul>
   </div>
-  <button ng-click="createNewSalad(); saladCreator = false">Confirm</button>
+  <div class="clearfix"></div>
+  <button ng-click="createNewSalad(newSalad.name); saladCreator = false">Confirm</button>
   <button ng-click="saladCreator = false">Cancel</button>
 </div>
 <!-- This is all salad pieces displayed at the bottom -->
-<div class="span10 container" ng-repeat="salad in database.salads">
+<div class="span10 container" ng-repeat="salad in salads track by $index">
   <h3 class="push-right">{{salad.name}}</h3>
   <div class="clearfix"></div>
   <div class="salad-ingredients">
     <ul>
-      <li ng-repeat="ingredient in newSalad.ingredients">{{ingredient.quantity}}{{ingredient.unit}} {{ingredient.name}} </li>
+      <li ng-repeat="currentIngredient in salad.ingredients">{{currentIngredient.amount}}.  {{currentIngredient.unit}} of  {{currentIngredient.ingredient_name}} </li>
     </ul>
   </div>
 </div>
