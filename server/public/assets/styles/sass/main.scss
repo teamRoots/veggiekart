@@ -171,3 +171,31 @@ select {
 .add-salad {
   margin: 0 37%;
 }
+.btn-holder {
+  margin: 20px auto;
+}
+ul {
+  list-style-type: none;
+}
+li {
+  display: block;
+  float: left;
+  width: 24%;
+  margin: 0 4%;
+}
+.message {
+  height: 100px;
+  overflow: scroll;
+  width: 52%;
+  margin: 10px 4%;
+  border: 1px solid $brown;
+  border-radius: 0 8px 8px 8px;
+  -webkit-box-shadow: 4px 4px 20px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 4px 4px 20px 0px rgba(0,0,0,0.75);
+  box-shadow: 4px 4px 20px 0px rgba(0,0,0,0.75);
+}
+.send-request {
+  height: 80px;
+  width: 24%;
+  margin: 10px 4%;
+}

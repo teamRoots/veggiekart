@@ -1,5 +1,6 @@
 <h2 class="push-right">New Request</h2>
 <div class="clearfix"></div>
+
 <div class="span10 container">
   <div>
     <select name="event" placeholder="Event" ng-model="request.event">
@@ -19,4 +20,37 @@
     </select>
   </div>
   <a class="add-salad">+ Add Salad</a>
+</div>
+
+<div class="span10 btn-holder">
+  <button class="push-left">+ Add Event</button>
+  <div class="clearfix"></div>
+</div>
+
+
+<div class="span10 container">
+  <h3 class="push-right">Recipients</h3>
+  <div class="clearfix"></div>
+  <div class="recipients-list">
+    <ul>
+      <li ng-repeat="recipient in recipients">
+        <label>{{recipient.name}}<input type="checkbox" ng-model="recipient.checked" /></label>
+      </li>
+    </ul>
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+<div class="span10 container">
+  <h3 class="push-right">Summary</h3>
+  <div class="clearfix"></div>
+  <ul>
+    <li ng-repeat="ingredient in ingredients">{{ingredient.name}}: {{ingredient.totalQuantity}}</li>
+  </ul>
+  <div class="clearfix"></div>
+</div>
+
+<div class="span10">
+  <input class="message" type="text" ng-model="request.message" placeholder="Message to the farms..."/>
+  <button class="send-request">Send Request</button>
 </div>
