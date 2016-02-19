@@ -1,0 +1,42 @@
+<button ng-hide="saladCreator" ng-click="saladCreator = true">Create New Salad</button>
+
+<div ng-show="saladCreator" class="span10 container">
+  <h3 class="push-right">New Salad</h3>
+  <div class="clearfix"></div>
+  New Salad: <input type="text" ng-model="newSalad.name" placeholder="Salad Name"/>
+  <div class="clearfix"></div>
+  <h4 class="push-left">Add Ingredients</h4>
+  <div class="clearfix"></div>
+  <select name="ingredient-addition">
+    <option ng-repeat="ingredient in database.ingredients" value="salad.ingredient"></option>
+  </select>
+  <button ng-click="addIngredient()">Add</button>
+  <p ng-show="ingredientConfirmation">You have just added {{newIngredient.name}}!</p>
+  <button ng-click="ingredientCreator = true">New Ingredient</button>
+  <div ng-show="ingredientCreator" class="ingredient-creator">
+    Ingredient Name: <input type="text" ng-model="newIngredient.name" placeholder="Ingredient Name" />
+    Quantity: <input type="number" ng-model="newIngredient.quantity" placeholder="Qty."  />
+    Unit: <select name="ingredient-unit" ng-model="newIngredient.unit">
+      <option value="pounds">lbs.</option>
+      <option value="ounces">oz.</option>
+    </select>
+    <button ng-click="createIngredient(); ingredientCreator = false ingredientConfirmation = true">Add</button>
+  </div>
+  <div class="salad-ingredients">
+    <ul>
+      <li ng-repeat="ingredient in newSalad.ingredients">{{ingredient.quantity}}{{ingredient.unit}} {{ingredient.name}}</li>
+    </ul>
+  </div>
+  <button ng-click="createNewSalad(); saladCreator = false">Confirm</button>
+  <button ng-click="saladCreator = false">Cancel</button>
+</div>
+
+<div class="span10 container" ng-repeat="salad in database.salads">
+  <h3 class="push-right">{{salad.name}}</h3>
+  <div class="clearfix"></div>
+  <div class="salad-ingredients">
+    <ul>
+      <li ng-repeat="ingredient in newSalad.ingredients">{{ingredient.quantity}}{{ingredient.unit}} {{ingredient.name}} </li>
+    </ul>
+  </div>
+</div>

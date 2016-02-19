@@ -36,6 +36,29 @@ newsalad.save(function(err){
 })
 });
 
+//===================================
+//Post routes for controller responses
+
+router.post('/fillSalad', function(request, response){
+    Salad.find({}, function(err, salads){
+        if (err){
+            console.log(err);
+        } else{
+            response.send(salads);
+        }
+    });
+});
+
+router.post('/editSalad', function(request, response){
+    Salad.find({_id: request.body._id}, function(err, salad){
+        if (err){
+            console.log(err);
+        }
+    //This will be a update into the database with the new values.
+    });
+});
+
+
 
 //===================================
 //exporting the router
