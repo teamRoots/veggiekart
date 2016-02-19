@@ -29,7 +29,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     })
     .when('/admin/request', {
       templateUrl: 'views/request.html',
-      controller: 'requestController',
+      controller: 'newRequestController',
       controllerAs: 'request'
     });
 
