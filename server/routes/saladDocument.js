@@ -15,11 +15,11 @@ var Salad = require('../../Models/Salad');
 router.post('/createSalad', function(request, response) {
     var ingredients = [];
     for(i = 0; i < request.body.ingredients.length; i++){
-    var ingredient = ({
+    var ingredient = [{
         ingredient_name: request.body.ingredients[i].ingredient_name,
         amount: request.body.ingredients[i].amount,
         unit: request.body.ingredients[i].unit
-    })
+    }]
     ingredients.push(ingredient);
 }
 
@@ -40,12 +40,12 @@ newsalad.save(function(err){
 //Post routes for controller responses
 
 router.post('/fillSalad', function(request, response){
-    Salad.find({}, function(err, salads){
-        if (err){
-            console.log(err);
-        } else{
-            response.send(salads);
-        }
+    // Salad.find({}, function(err, salads){
+    //     if (err){
+    //         console.log(err);
+    //     } else{
+            response.send('++++salads woo hoo');
+        // }
     });
 });
 

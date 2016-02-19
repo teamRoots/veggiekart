@@ -1,10 +1,17 @@
 //Service for admin to create new requests
 app.factory('createRequestService', ['$http', function($http){
-  var data = {};
+  var data = {
+    events: []
+  };
+  var newEvent = {};
+  var counter = 0;
 
   //adds event to the current request
   var addEvent = function(){
-    console.log('request.data is ', data);
+    data.events.push({event: newEvent.event, salad: newEvent.salad, saladQuantity: newEvent.saladQuantity, id: counter});
+    console.log('newEvent is ', newEvent);
+    console.log('data.events is ', data.events);
+    counter++;
   }
 
   //adds salad to the current event
@@ -45,6 +52,7 @@ app.factory('createRequestService', ['$http', function($http){
     requestComments: requestComments,
     saveRequest: saveRequest,
     sendRequest: sendRequest,
+    newEvent: newEvent,
     data: data
   }
 

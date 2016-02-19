@@ -1,9 +1,11 @@
 app.controller('newRequestController', ['createRequestService', 'eventsService', 'saladService', function(createRequestService, eventsService, saladService){
   this.data = createRequestService.data;
+  this.newEvent = createRequestService.newEvent;
   this.eventsData = eventsService.data;
-  this.salads = saladService.salads;
+  this.saladsData = saladService.data;
   console.log('hi Im a request controller');
   eventsService.getEvent();
+  saladService.getSalads();
 
   //makes the service functions available on scope
   this.addEvent = createRequestService.addEvent;

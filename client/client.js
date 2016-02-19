@@ -28,7 +28,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
       controllerAs: 'reports'
     })
     .when('/admin/request', {
-      templateUrl: 'views/requestConfirmation.html',
+      templateUrl: 'views/request.html',
       controller: 'newRequestController',
       controllerAs: 'request'
     });
