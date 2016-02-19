@@ -11,7 +11,7 @@ var mongoose = require('mongoose');
 
 var passport = require('./authentication');
 var index = require('./routes/index');
-
+// var salad = require('./routes/saladDocument');
 var app = express();
 
 //=================================================
@@ -56,11 +56,11 @@ mongoDB.on('open', function(){
 //=================================================
 // Middleware and routes
 app.use(express.static('server/public'));
+// app.use('/admin', salad);
 app.use('/', index);
 
 //=================================================
 // Initiate server
-var server = app.listen(process.env.PORT || 3000, function(){
+var server = app.listen(process.env.PORT || 3000);
   var port = server.address().port;
   console.log('listening on port', port);
-});

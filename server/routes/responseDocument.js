@@ -46,6 +46,25 @@ router.post('/createResponse', function(request, response) {
 });
 
 //===================================
+//Needed object for basic document creation
+
+var data = {
+    recipients: [{
+        orgName: orgName,
+        username: username,
+        response_text: response_text,
+        confirmation_text: confirmation_text,
+        ingredients: [{
+            name: name,
+            quantity: quantity,
+            unit: unit,
+            confirmed_quantity: confirmed_quantity
+        }]
+    }],
+    events: requestId
+}
+
+//===================================
 //exporting the router
 
 module.exports = router;
