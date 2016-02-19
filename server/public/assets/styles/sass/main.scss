@@ -155,11 +155,16 @@ img.bg {
 .header {
   h4 {
     display: inline;
-    // float: left;
   }
 }
 .event-content li {
   display: inline-block;
+}
+.thirds {
+  display: block;
+  float: left;
+  width: 24%;
+  margin: 0 4%;
 }
 
 //request styling
