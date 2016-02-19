@@ -4,12 +4,21 @@
 <div class="span10 container new-event">
   <ul>
     <li>Event</li>
-    <li>Salads</li>
-    <li>Quantity</li>
+    <li>
+      <div>
+        <span>Salads</span>
+        <span>Quantity</span>
+      </div>
+    </li>
   </ul>
   <ul ng-repeat="item in request.data.events">
     <li>{{item.event}}</li>
-    <li ng-repeat="salad in item.salads">{{salad.salad}}, {{salad.quantity}}</li>
+    <li>
+      <div ng-repeat="salad in item.salads">
+        <span>{{salad.salad}}</span>
+        <span>{{salad.quantity}}</span>
+      </div>
+    </li>
   </ul>
 </div>
 

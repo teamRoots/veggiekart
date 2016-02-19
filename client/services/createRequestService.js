@@ -5,16 +5,18 @@ app.factory('createRequestService', ['$http', function($http){
     salads: [],
     saladCounterArray: [{id: 0}]
   };
-  var newEvent = {};
+  var newEvent = {
+    salads: []
+  };
   var eventCounter = 0;
   var saladCounter = 0;
 
   //adds event to the current request
   var addEvent = function(){
-    console.log('newEvent is ', newEvent);
+    console.log(newEvent.salads);
     data.events.push({
       event: newEvent.event,
-      salads: newEvent.salads,
+      salads: newEvent.salads.splice(0),
       id: eventCounter
     });
     console.log('newEvent is ', newEvent);
