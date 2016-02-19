@@ -4,7 +4,7 @@ app.factory('createRequestService', ['$http', function($http){
 
   //adds event to the current request
   var addEvent = function(){
-
+    console.log('request.data is ', data);
   }
 
   //adds salad to the current event

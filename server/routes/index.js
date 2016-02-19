@@ -12,9 +12,6 @@ router.get('/', function(request, response){
     response.sendFile(path.join(__dirname, '../public/views/index.html'));
 });
 
-//===================================
-//Post routes for controller responses
-
 
 
 

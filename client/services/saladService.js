@@ -12,8 +12,13 @@ app.factory('saladService', ['$http', function($http){
 
   }
 
+  //returns all salads
+  var getSalads = function(){
+    //response set to allSalads = {}
+  }
+
   return {
-    addEvent: addEvent,
+    addSalad: addSalad,
     salad: salad
   }
 
