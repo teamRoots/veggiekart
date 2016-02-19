@@ -1,22 +1,35 @@
 //Service for admin to create new requests
 app.factory('createRequestService', ['$http', function($http){
   var data = {
-    events: []
+    events: [],
+    salads: [],
+    saladCounterArray: [{id: 0}]
   };
   var newEvent = {};
-  var counter = 0;
+  var eventCounter = 0;
+  var saladCounter = 0;
 
   //adds event to the current request
   var addEvent = function(){
-    data.events.push({event: newEvent.event, salad: newEvent.salad, saladQuantity: newEvent.saladQuantity, id: counter});
+    console.log('newEvent is ', newEvent);
+    data.events.push({
+      event: newEvent.event,
+      salads: newEvent.salads,
+      id: eventCounter
+    });
     console.log('newEvent is ', newEvent);
     console.log('data.events is ', data.events);
-    counter++;
+    eventCounter++;
+    saladCounter = 1;
   }
 
   //adds salad to the current event
-  var addSalad = function(event){
-
+  var addSalad = function(){
+    saladCounter++;
+    data.saladCounterArray.push({id: saladCounter});
+    console.log('saladCounter is ', saladCounter);
+    console.log('data.saladCounterArray is ', data.saladCounterArray);
+    // data.salads.push({name: newEvent.salad, quantity: newEvent.saladQuantity});
   }
 
   //gets the recipients from the server
