@@ -11,7 +11,7 @@
     <option ng-repeat="ingredient in database.ingredients" value="salad.ingredient"></option>
   </select>
   <button ng-click="addIngredient()">Add</button>
-  <p ng-show="ingredientConfirmation">You have just added {{newingredient.name}}!</p>
+  <p ng-show="ingredientConfirmation">You have just added {{newIngredient.name}}!</p>
   <button ng-click="ingredientCreator = true">New Ingredient</button>
   <div ng-show="ingredientCreator" class="ingredient-creator">
     Ingredient Name: <input type="text" ng-model="newIngredient.name" placeholder="Ingredient Name" />
