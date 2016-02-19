@@ -4,19 +4,38 @@ $btn-br: 5px; // Button border-radius
 $padding: 40px; // Padding and margins
 $line-height: 44px; // Consistent height for buttons, inputs etc.
 
-
-
-
-
 // Responsive breakpoints
 $small-break: 480px;
 $big-break: 780px;
-
 
 //colors for app
 $brown: #372213;
 $orange: #DC7238;
 $yellow: #F4B73C;
 $green: #68A445;
+$blue: #6B99FF;
 $whitebackground: rgba(255, 248, 233, 0.95);
 $orangebackground: rgba(220, 114, 56, 0.95);
+
+//universal left and right alignment
+.push-left {
+  margin-top: 20px;
+  display: block;
+  float: left;
+}
+.push-right {
+  display: block;
+  float: right;
+}
+
+//universal container styling
+.container {
+  background-color: $whitebackground;
+  padding: 0 10px;
+  border: 1px solid $brown;
+  text-align: left;
+  border-radius: 0 8px 8px 8px;
+  -webkit-box-shadow: 4px 4px 20px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 4px 4px 20px 0px rgba(0,0,0,0.75);
+  box-shadow: 4px 4px 20px 0px rgba(0,0,0,0.75);
+}

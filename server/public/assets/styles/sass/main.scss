@@ -15,13 +15,6 @@
 //use Font Awesome for icons
 @import "imports/icons";
 
-
-
-// $brown: #372213;
-// $orange: #DC7238;
-// $yellow: #F4B73C;
-// $green: #68A445;
-
 //defualt button styling to be seperated out later
 
 $buttonColor: $green;
@@ -139,7 +132,7 @@ img.bg {
 
 //login styling to be seperated out later
 
-.login, .login-title {
+.container {
   border: 1px solid $brown;
   margin: 20px auto;
   background-color: $whitebackground;
@@ -153,25 +146,12 @@ img.bg {
   }
 }
 
+.login {
+  text-align: center;
+}
+
 //dashboard styling
-.container {
-  background-color: $whitebackground;
-  border: 1px solid $brown;
-  text-align: left;
-  border-radius: 0 8px 8px 8px;
-  -webkit-box-shadow: 4px 4px 20px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 4px 4px 20px 0px rgba(0,0,0,0.75);
-  box-shadow: 4px 4px 20px 0px rgba(0,0,0,0.75);
-}
-.push-left {
-  margin-top: 20px;
-  display: block;
-  float: left;
-}
-.push-right {
-  display: block;
-  float: right;
-}
+
 .header {
   h4 {
     display: inline;
@@ -180,4 +160,14 @@ img.bg {
 }
 .event-content li {
   display: inline-block;
+}
+
+//request styling
+select {
+  font-size: 18px;
+  width: 24%;
+  margin: 10px 4%;
+}
+.add-salad {
+  margin: 0 37%;
 }

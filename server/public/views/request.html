@@ -1,1 +1,22 @@
-<p>hello I'm a request!</p>
+<h2 class="push-right">New Request</h2>
+<div class="clearfix"></div>
+<div class="span10 container">
+  <div>
+    <select name="event" placeholder="Event" ng-model="request.event">
+      <option ng-repeat="event in events" value="event.id">{{event.name}}</option>
+    </select>
+    <select name="salad" placeholder="Salad" ng-model="request.salad">
+      <option ng-repeat="salad in salads" value="salad.id">
+        {{salad.name}}</option>
+    </select>
+    <select name="quantity" placeholder="Qty." ng-model="salad.quantity">
+      <option value="1">96</option>
+      <option value="2">184</option>
+      <option value="3">288</option>
+      <option value="4">384</option>
+      <option value="5">480</option>
+      <option value="6">576</option>
+    </select>
+  </div>
+  <a class="add-salad">+ Add Salad</a>
+</div>
