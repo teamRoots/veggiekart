@@ -9,7 +9,7 @@ app.controller('newRequestController', ['createRequestService', 'eventsService',
 
   //makes the service functions available on scope
   this.addEvent = createRequestService.addEvent;
-  // this.addSalad = createRequestService.addSalad;
+  this.addSalad = createRequestService.addSalad;
   // this.getRecipients = createRequestService.getRecipients;
   // this.postRecipients = createRequestService.postRecipients;
   // this.requestComments = createRequestService.requestComments;

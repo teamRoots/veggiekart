@@ -9,8 +9,7 @@
   </ul>
   <ul ng-repeat="item in request.data.events">
     <li>{{item.event}}</li>
-    <li>{{item.salad}}</li>
-    <li>{{item.saladQuantity}}</li>
+    <li ng-repeat="salad in item.salads">{{salad.salad}}, {{salad.quantity}}</li>
   </ul>
 </div>
 
@@ -19,11 +18,13 @@
     <select name="event" placeholder="Event" ng-model="request.newEvent.event">
       <option ng-repeat="event in request.eventsData.events" ng-value="event.name">{{event.name}}</option>
     </select>
-    <select name="salad" placeholder="Salad" ng-model="request.newEvent.salad">
+  </div>
+  <div ng-repeat="item in request.data.saladCounterArray">
+    <select name="salad" placeholder="Salad" ng-model="request.newEvent.salads[item.id].salad">
       <option ng-repeat="salad in request.saladsData.salads" ng-value="salad.name">
         {{salad.name}}</option>
     </select>
-    <select name="quantity" placeholder="Qty." ng-model="request.newEvent.saladQuantity">
+    <select name="quantity" placeholder="Qty." ng-model="request.newEvent.salads[item.id].quantity">
       <option value="96">96</option>
       <option value="184">184</option>
       <option value="288">288</option>
@@ -31,6 +32,9 @@
       <option value="480">480</option>
       <option value="576">576</option>
     </select>
+  </div>
+  <div>
+    <p ng-repeat="salad in request.data.salads">{{salad}}</p>
   </div>
   <a class="add-salad" ng-click="request.addSalad()">+ Add Salad</a>
 </div>
