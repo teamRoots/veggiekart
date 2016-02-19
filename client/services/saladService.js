@@ -1,6 +1,6 @@
 //Service for admin to create and delete salads
 app.factory('saladService', ['$http', function($http){
-  var salad = {};
+  var data = {};
 
   //adds salad recipe to the database
   var addSalad = function(){
@@ -14,12 +14,18 @@ app.factory('saladService', ['$http', function($http){
 
   //returns all salads
   var getSalads = function(){
-    //response set to allSalads = {}
+    data.salads = [
+      {name: 'Crunch Bean Bowl salad'},
+      {name: 'Grand Salami Salad'},
+      {name: 'La Jefa Salad'}
+    ];
+    console.log(data.salads);
   }
 
   return {
     addSalad: addSalad,
-    salad: salad
+    getSalads: getSalads,
+    data: data
   }
 
 }]);

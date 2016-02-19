@@ -199,3 +199,17 @@ li {
   width: 24%;
   margin: 10px 4%;
 }
+
+//new request styling
+
+.new-event {
+  ul {
+    list-style-type: none;
+  }
+  li {
+    display: inline-block;
+    float: none;
+    width: 24%;
+    margin: 0 4%;
+  }
+}
