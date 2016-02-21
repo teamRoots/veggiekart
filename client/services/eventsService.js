@@ -3,27 +3,29 @@ app.factory('eventsService', ['$http', function($http){
   console.log('events service hit from dashboard');
   var data = {};
 
-  var getEvent = function(){
+  var getEvents = function(){
     console.log('get yo events ya\'ll!');
 
     //placeholder event object for testing
-    // data.events = [
-    //   {name: 'Tuesday game'},
-    //   {name: 'Wednesday game'},
-    //   {name: 'Thursday game'}
-    // ];
-    console.log(data.events);
+    data.events = [
+      {name: 'Tuesday game', date: '2/5/16', host: 'Youth Farms'},
+      {name: 'Wednesday game' , date: '2/6/16', host: 'Youth Farms'},
+      {name: 'Thursday game', date: '2/7/16', host: 'Youth Farms'}
+    ];
+    // console.log(data.events);
 
     //get the events from the database
-    $http.get('/events').then(function(response){
-      console.log('event response.data is ', response.data);
-      data.events = response.data;
-      console.log(data.events);
-    })
+    // $http.get('/events').then(function(response){
+    //   console.log('event response.data is ', response.data);
+      // data.events = response.data;
+      // return data.events;
+
+      // console.log(data.events);
+    // })
   }
 
   return {
-    getEvent: getEvent,
+    getEvents: getEvents,
     data: data
   }
 
