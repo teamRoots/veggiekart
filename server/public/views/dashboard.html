@@ -15,7 +15,7 @@
   <div class="clearfix"></div>
   <div class="events">
     <ul class="thirds event-names" ng-repeat="request in dash.requests">
-      <li>{{request}}</li>
+      <li ng-repeat="event in request.event">{{event.name}}</li>
     </ul>
     <ul class="thirds request-status">
       <li>{{request.status}}</li>
@@ -25,6 +25,7 @@
       </li>
     </ul>
   </div>
+  <div class="clearfix"></div>
   <a href="/admin/request"><button class="push-left">+ Add New Request</button></a>
 </div>
 
