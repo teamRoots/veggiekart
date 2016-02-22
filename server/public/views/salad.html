@@ -19,7 +19,7 @@
     <button ng-click="createIngredient(newIngredient); ingredientCreator = false">Add</button>
   </div>
   <div class="salad-ingredients">
-    <ul>
+    <ul class="salad-list">
       <li ng-repeat="listNewIngredient in listNewIngredients track by $index">{{listNewIngredient.quantity}}. {{listNewIngredient.unit}} of  {{listNewIngredient.name}}</li>
     </ul>
   </div>
@@ -31,10 +31,10 @@
 <div class="span10 container" ng-repeat="salad in salads.data.salads track by $index">
   <h3 class="push-right">{{salad.name}}</h3>
   <div class="clearfix"></div>
-  <div class="salad-ingredients">
+  <div>
     <div class="clearfix">
-    <ul>
-      <li ng-repeat="currentIngredient in salad.ingredients">{{currentIngredient.amount}}.  {{currentIngredient.unit}} of  {{currentIngredient.ingredient_name}} </li>
+    <ul class="salad-ingredients">
+      <li ng-repeat="currentIngredient in salad.ingredients">{{currentIngredient.amount}}  {{currentIngredient.unit}} of  {{currentIngredient.ingredient_name}} </li>
     </ul>
   </div>
   </div>

@@ -3,7 +3,7 @@
   <div class="clearfix"></div>
   <div>
     <div class="event-split push-left">
-      <ul ng-repeat="event in request.events">
+      <ul class="farm-response" ng-repeat="event in request.events">
         <li>{{event.name}} {{event.date}}</li>
         <li ng-repeat="salad in event.salads">{{salad.name}}</li>
       </ul>
