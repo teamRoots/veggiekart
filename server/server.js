@@ -56,7 +56,7 @@ mongoDB.on('open', function(){
 //=================================================
 // Middleware and routes
 app.use(express.static('server/public'));
-app.use('/salad/', salad); // try to figure out why routing is having problems
+app.use('/salad', salad); // try to figure out why routing is having problems
 
 app.use('/', index);
 
