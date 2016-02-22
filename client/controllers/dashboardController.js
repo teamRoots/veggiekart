@@ -2,7 +2,7 @@ app.controller('dashboardController', ['loginService', 'eventsService', 'createR
   this.user = loginService.user;
   this.data = eventsService.data;
   eventsService.getEvents();
-  // createRequestService.loadRequests()
+  createRequestService.loadRequests();
 
   // $scope.events = eventsService.data.events;
   // console.log('events in controller', $scope.events)
