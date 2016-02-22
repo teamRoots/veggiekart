@@ -4,7 +4,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-// var session = require('express-session');
+var session = require('express-session');
 
 //=================================================
 // Routes
@@ -13,6 +13,7 @@ var passport = require('./authentication');
 var index = require('./routes/index');
 var salad = require('./routes/saladDocument');
 var createRequest = require('./routes/requestDocument');
+var recipients = require('./routes/recipients');
 var app = express();
 
 //=================================================
@@ -40,7 +41,7 @@ mongoDB.on('open', function(){
 // Eric: commented out until process.env.SECRET is set
 
 // app.use(session({
-//     secret: process.env.SECRET,
+//     secret: 'secret',
 //     key: 'user',
 //     resave: true,
 //     saveUninitialized: false,
@@ -58,7 +59,9 @@ mongoDB.on('open', function(){
 // Middleware and routes
 app.use(express.static('server/public'));
 app.use('/salad', salad); // try to figure out why routing is having problems
+
 app.use('/createRequest', createRequest);
+app.use('/requestRecipients', recipients);
 app.use('/', index);
 
 //=================================================

@@ -38,7 +38,11 @@ app.factory('createRequestService', ['$http', function($http){
 
   //gets the recipients from the server
   var getRecipients = function(){
-
+    console.log('getRecipients hit');
+    $http.get('/requestRecipients/recipients').then(function(response) {
+      console.log('recipients response', response);
+      data.recipients = response.data;
+    })
   }
 
   //saves the request to database on initial button click

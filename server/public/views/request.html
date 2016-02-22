@@ -53,8 +53,8 @@
   <div class="clearfix"></div>
   <div class="recipients-list">
     <ul>
-      <li ng-repeat="recipient in recipients">
-        <label>{{recipient.name}}<input type="checkbox" ng-model="recipient.checked" /></label>
+      <li ng-repeat="recipient in request.data.recipients">
+        <label><input type="checkbox" ng-model="recipient.checked" />{{recipient.name}}</label>
       </li>
     </ul>
     <div class="clearfix"></div>
@@ -71,6 +71,6 @@
 </div>
 
 <div class="span10">
-  <input class="message" type="text" ng-model="request.message" placeholder="Message to the farms..."/>
+  <textarea rows="6" cols="30" class="message" ng-model="request.message" placeholder="Message to the farms..."></textarea>
   <button class="send-request" ng-click="request.saveRequest()">Send Request</button>
 </div>
