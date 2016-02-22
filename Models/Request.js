@@ -1,17 +1,17 @@
 var mongoose = require('mongoose');
-var SaladSchema = require('./salads').schema;
+var SaladSchema = require('./Salad').schema;
 var Schema = mongoose.Schema;
 
 var RequestSchema = new Schema({
     event: [{
         name: String,
         date: Date,
-        all_salads: [{
-            amount: Number,
+        salads: [{
+            quantity: Number,
             salad: SaladSchema
         }]
     }],
-    status: boolean,
+    status: Boolean,
     recipients: [{
         name: String,
         email: String   // is username possibly

@@ -10,12 +10,14 @@ app.factory('createRequestService', ['$http', function($http){
   };
   var eventCounter = 0;
   var saladCounter = 0;
+  var request = {};
 
   //adds event to the current request
   var addEvent = function(){
     console.log(newEvent.salads);
     data.events.push({
-      event: newEvent.event,
+      name: newEvent.name,
+      date: 2016-02-22T18:57:00.436Z;
       salads: newEvent.salads.splice(0),
       id: eventCounter
     });
@@ -41,7 +43,15 @@ app.factory('createRequestService', ['$http', function($http){
 
   //saves the request to database on initial button click
   var saveRequest = function(){
-    $http.post('/createRequest', data).then(function(response){
+    console.log('we are sending teh data ', data.events);
+    request = {
+        recipients: [{
+            // orgName: orgName,
+            // username: username
+        }],
+        events: data.events
+    }
+    $http.post('/createRequest', data.events).then(function(response){
       console.log('response from da server is....... ', response);
     })
   }

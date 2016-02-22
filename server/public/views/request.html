@@ -9,7 +9,7 @@
     </li>
   </ul>
   <ul ng-repeat="item in request.data.events">
-    <li>{{item.event}}</li>
+    <li>{{item.name}}</li>
     <li>
       <p ng-repeat="salad in item.salads">{{salad.quantity}} {{salad.salad}}s</p>
     </li>
@@ -18,7 +18,7 @@
 
 <div class="span10 container">
   <div>
-    <select name="event" placeholder="Event" ng-model="request.newEvent.event">
+    <select name="event" placeholder="Event" ng-model="request.newEvent.name">
       <option ng-repeat="event in request.eventsData.events" ng-value="event.name">{{event.name}}</option>
     </select>
       <div class="salad-dropdowns" ng-repeat="item in request.data.saladCounterArray">
