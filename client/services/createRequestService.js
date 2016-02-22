@@ -41,7 +41,9 @@ app.factory('createRequestService', ['$http', function($http){
 
   //saves the request to database on initial button click
   var saveRequest = function(){
-
+    $http.post('/createRequest', data).then(function(response){
+      console.log('response from da server is....... ', response);
+    })
   }
 
   //sends the request out to receipients on confirmation dialog click

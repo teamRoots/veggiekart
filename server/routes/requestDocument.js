@@ -10,6 +10,7 @@ var Request = require('../../Models/Request');
 //All post routes for sending and confirming data
 
 router.post('/createRequest', function(request, response) {
+        console.log('the request from the client is.....', request);
         var events = [];
         var recipients = [];
         for(var i = 0; i < request.events.length; i++){

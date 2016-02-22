@@ -13,7 +13,7 @@ app.controller('newRequestController', ['createRequestService', 'eventsService',
   // this.getRecipients = createRequestService.getRecipients;
   // this.postRecipients = createRequestService.postRecipients;
   // this.requestComments = createRequestService.requestComments;
-  // this.saveRequest = createRequestService.saveRequest;
+  this.saveRequest = createRequestService.saveRequest;
   // this.sendRequest = createRequestService.sendRequest;
 
 }]);
