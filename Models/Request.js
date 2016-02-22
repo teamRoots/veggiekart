@@ -15,7 +15,8 @@ var RequestSchema = new Schema({
     recipients: [{
         name: String,
         email: String   // is username possibly
-    }]
+    }],
+    message: String
 });
 
 module.exports = mongoose.model('Request', RequestSchema);

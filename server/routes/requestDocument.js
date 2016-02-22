@@ -11,14 +11,16 @@ var Request = require('../../Models/Request');
 
 router.post('/', function(request, response) {
         console.log('the request from the client is.....', request.body);
-        var events = request.body;
-        var recipients = [];
+        var events = request.body.events;
+        var recipients = request.body.recipients;
+        var message = request.body.message;
 
     var newRequest = new Request ({
         event: events,
         status: false,
-        recipients: recipients
-    })
+        recipients: recipients,
+        message: message
+    });
 
     newRequest.save(function(err){
         if(err){
