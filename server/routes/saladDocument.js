@@ -28,10 +28,9 @@ var newsalad = new Salad ({
 console.log('newsalad', newsalad);
 
     Ingredient.findOne({}, function(err, ingredientPush){
-        console.log('createSalad ingredient', ingredientPush)
         if (ingredientPush === null){
             var newIngredientPush = new Ingredient ({
-                ingrediens: []
+                ingredients: []
             });
             for(i = 0; i < request.body.ingredientToPush.length; i++){
             newIngredientPush.ingredients.push(request.body.ingredientToPush[i]);
@@ -42,13 +41,15 @@ console.log('newsalad', newsalad);
                 }
             });
         }else{
-            for(i = 0; i < request.body.ingredientToPush.length; i++){
-                // for(j = 0; j <ingredientPush.ingredients.length; j++){
-                //     if (request.body.ingredientToPush[i] === ingredientPush.ingredients[j]){
-                //         console.log('its a copy');
-                //     }else{
+            // var ingredientsHolder = ingredientPush.ingredients.length;
+            // console.log('alsdkjfa;lsdjkf', ingredientsHolder);
+            // for(i = 0; i < request.body.ingredientToPush.length; i++){
+            //     for(j = 0; j < ingredientsHolder; j++){
+            //         if (request.body.ingredientToPush[i] === ingredientsHolder[j]){
+            //             console.log('its a copy');
+            //         }else{
             ingredientPush.ingredients.push(request.body.ingredientToPush[i]);
-            // }
+        //     }
         // }
     }
 
@@ -57,7 +58,7 @@ console.log('newsalad', newsalad);
                 console.log(err);
             }
         });
-    };
+    // };
 
     });
 newsalad.save(function(err){
