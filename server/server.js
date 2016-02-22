@@ -4,7 +4,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-// var session = require('express-session');
+var session = require('express-session');
 
 //=================================================
 // Routes
@@ -41,7 +41,7 @@ mongoDB.on('open', function(){
 // Eric: commented out until process.env.SECRET is set
 
 // app.use(session({
-//     secret: process.env.SECRET,
+//     secret: 'secret',
 //     key: 'user',
 //     resave: true,
 //     saveUninitialized: false,
