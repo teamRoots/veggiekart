@@ -23,8 +23,6 @@
     </ul>
     <ul class="thirds">
       <li>
-        <!-- This will create a button if the status warrants it
-        <button ng-show="showButtons">Edit Request</button> -->
       </li>
     </ul>
   </div>
@@ -43,10 +41,10 @@
   </div>
 
   <div class="clearfix"></div>
-  <div class=" event-content">
+  <div class="event-content">
     <ul ng-repeat="event in dash.data.events">
-      <li class="thirds">{{event.venueName}}</li>
-      <li class="thirds">{{event.date}}</li>
+      <li class="thirds">{{event.location}}</li>
+      <li class="thirds">{{event.date | date: 'fullDate'}}</li>
       <li class="thirds">{{event.host}}</li>
     </ul>
   </div>

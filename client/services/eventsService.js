@@ -1,25 +1,35 @@
 //Service to grab events from database and hold available for view
 app.factory('eventsService', ['$http', function($http){
   var data = {};
-
-  data.hello = "hello world";
+  var requests = [];
+  var currentEvent = {};
 
   var getEvent = function(){
-    console.log('get yo events ya\'ll!');
-
-    //placeholder event object for testing
-    // data.events = [
-    //   {name: 'Tuesday game'},
-    //   {name: 'Wednesday game'},
-    //   {name: 'Thursday game'}
-    // ];
-    // console.log(data.events);
+    // console.log('get yo events ya\'ll!');
 
     //get the events from the database
     $http.get('/events').then(function(response){
-      console.log('event response.data is ', response.data);
+      // console.log('event response.data is ', response.data);
       data.events = response.data;
-      console.log('data ', data);
+      for (var i = 0; i < data.events.length; i++) {
+        currentEvent.location = data.events[i].venueName;
+        for (var j = 0; j < data.events[i].events.length; j++) {
+          currentEvent.date = data.events[i].events[j].eventDate;
+          currentEvent.host = data.events[i].events[j].orgName;
+          // console.log('new currentEvent object: ', currentEvent);
+          requests.push(currentEvent);
+          // console.log('current requests array ', requests);
+          currentEvent = {};
+          currentEvent.location = data.events[i].venueName;
+        }
+      }
+
+
+      // console.log('new requests array: ', requests);
+      // console.log('data.events ', data.events);
+
+      data.events = requests;
+
     });
   };
 
