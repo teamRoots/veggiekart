@@ -6,7 +6,8 @@ app.factory('eventsService', ['$http', function($http){
   var currentEvent = {};
 
   var getEvents = function(){
-
+    // console.log('get yo events ya\'ll!');
+    requests = [];
     //get the events from the database
     $http.get('/events').then(function(response){
       // console.log('event response.data is ', response.data);
@@ -29,6 +30,7 @@ app.factory('eventsService', ['$http', function($http){
       // console.log('data.events ', data.events);
 
       data.events = requests;
+      console.log('data.events is ', data.events);
 
     });
   };

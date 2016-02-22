@@ -16,7 +16,7 @@ app.factory('createRequestService', ['$http', function($http){
   var addEvent = function(){
     console.log(newEvent.salads);
     data.events.push({
-      name: newEvent.name,
+      location: newEvent.location,
       // date: new Date,
       // salads: newEvent.salads.splice(0),
       // id: eventCounter
