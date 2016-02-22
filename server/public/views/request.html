@@ -50,8 +50,8 @@
 <div class="span10 container">
   <h3 class="push-right">Recipients</h3>
   <div class="clearfix"></div>
-  <div class="recipients-list">
-    <ul>
+  <div>
+    <ul class="recipients-list">
       <li ng-repeat="recipient in request.data.recipients">
         <label><input type="checkbox" ng-model="recipient.checked" />{{recipient.name}}</label>
       </li>
