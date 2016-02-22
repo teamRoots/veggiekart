@@ -5,16 +5,20 @@ app.factory('createRequestService', ['$http', function($http){
     salads: [],
     saladCounterArray: [{id: 0}]
   };
-  var newEvent = {};
+  var newEvent = {
+    salads: []
+  };
   var eventCounter = 0;
   var saladCounter = 0;
+  var request = {};
 
   //adds event to the current request
   var addEvent = function(){
-    console.log('newEvent is ', newEvent);
+    console.log(newEvent.salads);
     data.events.push({
-      event: newEvent.event,
-      salads: newEvent.salads,
+      name: newEvent.name,
+      date: 2016-02-22T18:57:00;
+      salads: newEvent.salads.splice(0),
       id: eventCounter
     });
     console.log('newEvent is ', newEvent);
@@ -34,22 +38,26 @@ app.factory('createRequestService', ['$http', function($http){
 
   //gets the recipients from the server
   var getRecipients = function(){
-
-  }
-
-  //adds recipients to the request
-  var postRecipients = function(){
-
-  }
-
-  //adds comments to the request
-  var requestComments = function(){
-
+    console.log('getRecipients hit');
+    $http.get('/requestRecipients/recipients').then(function(response) {
+      console.log('recipients response', response);
+      data.recipients = response.data;
+    })
   }
 
   //saves the request to database on initial button click
   var saveRequest = function(){
-
+    console.log('we are sending teh data ', data.events);
+    request = {
+        recipients: [{
+            // orgName: orgName,
+            // username: username
+        }],
+        events: data.events
+    }
+    $http.post('/createRequest', data.events).then(function(response){
+      console.log('response from da server is....... ', response);
+    })
   }
 
   //sends the request out to receipients on confirmation dialog click
@@ -61,8 +69,6 @@ app.factory('createRequestService', ['$http', function($http){
     addEvent: addEvent,
     addSalad: addSalad,
     getRecipients: getRecipients,
-    postRecipients: postRecipients,
-    requestComments: requestComments,
     saveRequest: saveRequest,
     sendRequest: sendRequest,
     newEvent: newEvent,

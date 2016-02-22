@@ -177,6 +177,10 @@ select {
   font-size: 18px;
   width: 24%;
   margin: 10px 4%;
+  display: inline-block;
+}
+.select-quantity {
+  width: 10%;
 }
 .add-salad {
   margin: 0 37%;
@@ -219,7 +223,7 @@ li {
   li {
     display: inline-block;
     float: none;
-    width: 24%;
+    width: 30%;
     margin: 0 4%;
   }
 }
@@ -247,4 +251,15 @@ li {
   float: left;
   width: 24%;
   margin: 0 4%;
+}
+
+.salad-dropdowns {
+  padding-left: 35%;
+  width: 65%;
+  select:first-of-type {
+    width: 45%;
+  }
+  select:last-of-type {
+    width: 15%;
+  }
 }

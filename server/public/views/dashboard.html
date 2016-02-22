@@ -41,10 +41,17 @@
   </div>
 
   <div class="clearfix"></div>
+<<<<<<< HEAD
   <div class="event-content">
     <ul ng-repeat="event in dash.data.events">
       <li class="thirds">{{event.location}}</li>
       <li class="thirds">{{event.date | date: 'fullDate'}}</li>
+=======
+  <div class=" event-content">
+    <ul ng-repeat="event in events">
+      <li class="thirds">{{event.name}}</li>
+      <li class="thirds">{{event.date}}</li>
+>>>>>>> 73e18cc616ceb2e7891628236679576c039e43db
       <li class="thirds">{{event.host}}</li>
     </ul>
   </div>

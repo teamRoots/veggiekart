@@ -1,32 +1,45 @@
-app.controller('saladController', ['loginService', '$scope', '$http', function(loginService, $scope, $http){
+app.controller('saladController', ['loginService','saladService', '$scope', '$http', function(loginService, saladService, $scope, $http){
   this.user = loginService.user;
   $scope.listNewIngredients = [];
-  // $scope.newSalad.ingredients = [];
+  $scope.listNewIngredientsDatabase = [];
 
 
 $scope.showSalads = function(){
-  $http.post('/fillSalad').then(function(response){
-    console.log('Fill Salad', response);
-  });
+    saladService.getSalads();
+    $scope.salads = saladService;
+    $scope.ingredientsDatabase = saladService;
 };
 
+$scope.cancelCreation = function(){
+  $scope.newSalad = {};
+  $scope.listNewIngredients = [];
+  $scope.listNewIngredientsDatabase = [];
+}
 $scope.editSalad = function(){
-  $http.post('/editSalad', editData).then(function(response){
-    console.log('editSalad', response);
+  $http.post('/salad/editSalad', editData).then(function(response){
   });
 };
 
-$scope.createSalad = function(){
-  $http.post('/createSalad', createData).then(function(response){
-    console.log('createSalad', response);
+$scope.createNewSalad = function(data){
+  var dataObject = {
+    saladName: data,
+    ingredientArray: $scope.listNewIngredients,
+    ingredientToPush: $scope.listNewIngredientsDatabase
+  };
+  $http.post('/salad/createSalad', dataObject).then(function(response){
+    $scope.newSalad = {};
+    $scope.listNewIngredients = [];
+    $scope.listNewIngredientsDatabase = [];
+    $scope.showSalads();
+
+
+
   });
 };
 
 $scope.createIngredient = function(data){
-  console.log('This is the data', data);
-  // ingredientHolder.push(data);
   $scope.listNewIngredients.push(data);
-  console.log('try this', $scope.listNewIngredients);
+  $scope.listNewIngredientsDatabase.push(data.name);
   $scope.newIngredient = {};
 };
 

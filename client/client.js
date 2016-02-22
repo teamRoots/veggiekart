@@ -7,7 +7,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
       controller: 'loginController',
       controllerAs: 'login'
     })
-    .when('/admin', {
+    .when('/admin/dashboard', {
       templateUrl: 'views/dashboard.html',
       controller: 'dashboardController',
       controllerAs: 'dash'

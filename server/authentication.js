@@ -5,7 +5,7 @@ var passport = require('passport');
 var bcrypt = require('bcrypt');
 var LocalStrategy = require('passport-local').Strategy;
 
-var User = require('../models/user');
+var User = require('../Models/User');
 
 //================================================
 //Exported Passport function for authentication

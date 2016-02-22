@@ -4,20 +4,30 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+<<<<<<< HEAD
 // var session = require('express-session');
+=======
+var session = require('express-session');
+>>>>>>> 73e18cc616ceb2e7891628236679576c039e43db
 
 //=================================================
 // Routes
 
 var passport = require('./authentication');
 var index = require('./routes/index');
-// var salad = require('./routes/saladDocument');
+var salad = require('./routes/saladDocument');
+var createRequest = require('./routes/requestDocument');
+var recipients = require('./routes/recipients');
 var app = express();
 
 //=================================================
 // body parser middleware
 
+<<<<<<< HEAD
 app.use(bodyParser.urlencoded({ extended: false }));
+=======
+app.use(bodyParser.urlencoded({ extended: true }));
+>>>>>>> 73e18cc616ceb2e7891628236679576c039e43db
 app.use(bodyParser.json());
 
 //=================================================
@@ -39,7 +49,7 @@ mongoDB.on('open', function(){
 // Eric: commented out until process.env.SECRET is set
 
 // app.use(session({
-//     secret: process.env.SECRET,
+//     secret: 'secret',
 //     key: 'user',
 //     resave: true,
 //     saveUninitialized: false,
@@ -56,7 +66,10 @@ mongoDB.on('open', function(){
 //=================================================
 // Middleware and routes
 app.use(express.static('server/public'));
-// app.use('/admin', salad);
+app.use('/salad', salad); // try to figure out why routing is having problems
+
+app.use('/createRequest', createRequest);
+app.use('/requestRecipients', recipients);
 app.use('/', index);
 
 //=================================================

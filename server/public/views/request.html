@@ -4,35 +4,38 @@
 <div class="span10 container new-event">
   <ul>
     <li>Event</li>
-    <li>Salads</li>
-    <li>Quantity</li>
+    <li>
+      <p>Salads</p>
+    </li>
   </ul>
   <ul ng-repeat="item in request.data.events">
-    <li>{{item.event}}</li>
-    <li ng-repeat="salad in item.salads">{{salad.salad}}, {{salad.quantity}}</li>
+    <li>{{item.name}}</li>
+    <li>
+      <p ng-repeat="salad in item.salads">{{salad.quantity}} {{salad.salad}}s</p>
+    </li>
   </ul>
 </div>
 
 <div class="span10 container">
   <div>
-    <select name="event" placeholder="Event" ng-model="request.newEvent.event">
+    <select name="event" placeholder="Event" ng-model="request.newEvent.name">
       <option ng-repeat="event in request.eventsData.events" ng-value="event.name">{{event.name}}</option>
     </select>
-  </div>
-  <div ng-repeat="item in request.data.saladCounterArray">
-    <select name="salad" placeholder="Salad" ng-model="request.newEvent.salads[item.id].salad">
-      <option ng-repeat="salad in request.saladsData.salads" ng-value="salad.name">
-        {{salad.name}}</option>
-    </select>
-    <select name="quantity" placeholder="Qty." ng-model="request.newEvent.salads[item.id].quantity">
-      <option value="96">96</option>
-      <option value="184">184</option>
-      <option value="288">288</option>
-      <option value="384">384</option>
-      <option value="480">480</option>
-      <option value="576">576</option>
-    </select>
-  </div>
+      <div class="salad-dropdowns" ng-repeat="item in request.data.saladCounterArray">
+        <select name="salad" placeholder="Salad" ng-model="request.newEvent.salads[item.id].salad">
+          <option ng-repeat="salad in request.saladsData.salads" ng-value="salad.name">
+            {{salad.name}}</option>
+        </select>
+        <select name="quantity" class="select-quantity" placeholder="Qty." ng-model="request.newEvent.salads[item.id].quantity">
+          <option value="96">96</option>
+          <option value="184">184</option>
+          <option value="288">288</option>
+          <option value="384">384</option>
+          <option value="480">480</option>
+          <option value="576">576</option>
+        </select>
+      </div>
+</div>
   <div>
     <p ng-repeat="salad in request.data.salads">{{salad}}</p>
   </div>
@@ -50,8 +53,8 @@
   <div class="clearfix"></div>
   <div class="recipients-list">
     <ul>
-      <li ng-repeat="recipient in recipients">
-        <label>{{recipient.name}}<input type="checkbox" ng-model="recipient.checked" /></label>
+      <li ng-repeat="recipient in request.data.recipients">
+        <label><input type="checkbox" ng-model="recipient.checked" />{{recipient.name}}</label>
       </li>
     </ul>
     <div class="clearfix"></div>
@@ -68,6 +71,6 @@
 </div>
 
 <div class="span10">
-  <input class="message" type="text" ng-model="request.message" placeholder="Message to the farms..."/>
-  <button class="send-request">Send Request</button>
+  <textarea rows="6" cols="30" class="message" ng-model="request.message" placeholder="Message to the farms..."></textarea>
+  <button class="send-request" ng-click="request.saveRequest()">Send Request</button>
 </div>
