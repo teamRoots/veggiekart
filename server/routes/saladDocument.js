@@ -28,33 +28,44 @@ var newsalad = new Salad ({
 console.log('newsalad', newsalad);
 
     Ingredient.findOne({}, function(err, ingredientPush){
+        console.log('createSalad ingredient', ingredientPush)
+        if (ingredientPush === null){
+            var newIngredientPush = new Ingredient ({
+                ingrediens: []
+            });
+            for(i = 0; i < request.body.ingredientToPush.length; i++){
+            newIngredientPush.ingredients.push(request.body.ingredientToPush[i]);
+        }
+            newIngredientPush.save(function(err){
+                if (err){
+                    console.log(err);
+                }
+            });
+        }else{
+            for(i = 0; i < request.body.ingredientToPush.length; i++){
+                // for(j = 0; j <ingredientPush.ingredients.length; j++){
+                //     if (request.body.ingredientToPush[i] === ingredientPush.ingredients[j]){
+                //         console.log('its a copy');
+                //     }else{
+            ingredientPush.ingredients.push(request.body.ingredientToPush[i]);
+            // }
+        // }
+    }
+
+        ingredientPush.save(function(err){
             if (err){
                 console.log(err);
             }
-         else{
-            console.log('createSalad ingredient')
-            response.sendStatus(200);
-        }
+        });
+    };
+
     });
-});
-
-
-
-
-
-
-
-
-
-
-
-
 newsalad.save(function(err){
     if(err){
         console.log(err);
     }
-    response.send(200);
-})
+    response.sendStatus(200);
+});
 });
 
 //===================================
