@@ -34,6 +34,14 @@ router.get('/getRequests', function(request, response) {
         if (err) {
             response.sendStatus(401)
         } else {
+            // var eventsToSend = []
+            // for (var i = 0; i < requests.length; i++) {
+            //     var events = requests[i].event;
+            //     for (var j = 0; j < events.length; j++) {
+            //         console.log(events[j].name);
+            //         eventsToSend.push(events[j].name)
+            //     }
+            // }
             response.send(requests);
         }
     })
