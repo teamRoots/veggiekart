@@ -39,16 +39,6 @@ app.factory('createRequestService', ['$http', function($http){
 
   }
 
-  //adds recipients to the request
-  var postRecipients = function(){
-
-  }
-
-  //adds comments to the request
-  var requestComments = function(){
-
-  }
-
   //saves the request to database on initial button click
   var saveRequest = function(){
 
@@ -63,8 +53,6 @@ app.factory('createRequestService', ['$http', function($http){
     addEvent: addEvent,
     addSalad: addSalad,
     getRecipients: getRecipients,
-    postRecipients: postRecipients,
-    requestComments: requestComments,
     saveRequest: saveRequest,
     sendRequest: sendRequest,
     newEvent: newEvent,
