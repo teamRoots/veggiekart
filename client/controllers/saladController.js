@@ -8,7 +8,7 @@ app.controller('saladController', ['loginService', '$scope', '$http', function(l
 $scope.showSalads = function(){
   $http.post('/salad/fillSalad').then(function(response){
     $scope.salads = response.data.salads;
-    $scope.ingredientsDatabase = response.data.ingredient;
+    $scope.ingredientsDatabase = response.data.ingredient[0].ingredients;
     console.log('response.data', response.data);
 
 
