@@ -4,11 +4,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-<<<<<<< HEAD
-// var session = require('express-session');
-=======
 var session = require('express-session');
->>>>>>> 73e18cc616ceb2e7891628236679576c039e43db
 
 //=================================================
 // Routes
@@ -23,11 +19,8 @@ var app = express();
 //=================================================
 // body parser middleware
 
-<<<<<<< HEAD
-app.use(bodyParser.urlencoded({ extended: false }));
-=======
+
 app.use(bodyParser.urlencoded({ extended: true }));
->>>>>>> 73e18cc616ceb2e7891628236679576c039e43db
 app.use(bodyParser.json());
 
 //=================================================
