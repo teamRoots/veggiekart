@@ -3,6 +3,9 @@
 <div ng-show="saladCreator" class="span10 container">
   <h3 class="push-right">New Salad</h3>
   <div class="clearfix"></div>
+  <select ng-model="newIngredient.name" ng-options="ingredient.name for ingredient in ingredientsDatabase">
+  </select>
+  <button ng-click="addIngredient()">Add</button>
   New Salad: <input type="text" ng-model="newSalad.name" placeholder="Salad Name"/>
   <div class="clearfix"></div>
   <h4 class="push-left">Add Ingredients</h4>
@@ -30,8 +33,10 @@
   <h3 class="push-right">{{salad.name}}</h3>
   <div class="clearfix"></div>
   <div class="salad-ingredients">
+    <!-- <div class="clearfix"> -->
     <ul>
       <li ng-repeat="currentIngredient in salad.ingredients">{{currentIngredient.amount}}.  {{currentIngredient.unit}} of  {{currentIngredient.ingredient_name}} </li>
     </ul>
+  <!-- </div> -->
   </div>
 </div>
