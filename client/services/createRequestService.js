@@ -17,7 +17,7 @@ app.factory('createRequestService', ['$http', function($http){
     console.log(newEvent.salads);
     data.events.push({
       name: newEvent.name,
-      date: 2016-02-22T18:57:00.436Z;
+      date: new Date,
       salads: newEvent.salads.splice(0),
       id: eventCounter
     });
@@ -59,6 +59,13 @@ app.factory('createRequestService', ['$http', function($http){
       console.log('response from da server is....... ', response);
     })
   }
+  var loadRequests = function() {
+    console.log('loadRequests hit');
+    $http.get('/createRequest/getRequests').then(function(response) {
+      console.log(response.data);
+      data.requests = response.data;
+    });
+  }
 
   //sends the request out to receipients on confirmation dialog click
   var sendRequest = function(){
@@ -71,6 +78,7 @@ app.factory('createRequestService', ['$http', function($http){
     getRecipients: getRecipients,
     saveRequest: saveRequest,
     sendRequest: sendRequest,
+    loadRequests: loadRequests,
     newEvent: newEvent,
     data: data
   }

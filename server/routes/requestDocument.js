@@ -28,6 +28,17 @@ router.post('/', function(request, response) {
     })
 });
 
+router.get('/getRequests', function(request, response) {
+    console.log('get request route hit');
+    Request.find({}, function(err, requests) {
+        if (err) {
+            response.sendStatus(401)
+        } else {
+            response.send(requests);
+        }
+    })
+})
+
 //===================================
 //exporting the router
 
