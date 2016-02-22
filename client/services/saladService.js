@@ -14,18 +14,15 @@ app.factory('saladService', ['$http', function($http){
 
   //returns all salads
   var getSalads = function(){
-    data.salads = [
-      {name: 'Crunch Bean Bowl salad'},
-      {name: 'Grand Salami Salad'},
-      {name: 'La Jefa Salad'}
-    ];
-    console.log(data.salads);
+    $http.post('/salad/fillSalad').then(function(response){
+      data.salads = response.data.salads;
+      data.ingredientsDatabase = response.data.ingredient[0].ingredients;
   }
-
+)};
   return {
     addSalad: addSalad,
     getSalads: getSalads,
     data: data
-  }
+  };
 
 }]);
