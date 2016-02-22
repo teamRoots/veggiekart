@@ -252,3 +252,14 @@ li {
   width: 24%;
   margin: 0 4%;
 }
+
+.salad-dropdowns {
+  padding-left: 35%;
+  width: 65%;
+  select:first-of-type {
+    width: 45%;
+  }
+  select:last-of-type {
+    width: 15%;
+  }
+}

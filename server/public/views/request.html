@@ -21,7 +21,7 @@
     <select name="event" placeholder="Event" ng-model="request.newEvent.event">
       <option ng-repeat="event in request.eventsData.events" ng-value="event.name">{{event.name}}</option>
     </select>
-      <div ng-repeat="item in request.data.saladCounterArray">
+      <div class="salad-dropdowns" ng-repeat="item in request.data.saladCounterArray">
         <select name="salad" placeholder="Salad" ng-model="request.newEvent.salads[item.id].salad">
           <option ng-repeat="salad in request.saladsData.salads" ng-value="salad.name">
             {{salad.name}}</option>

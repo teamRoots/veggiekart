@@ -4,7 +4,7 @@ app.controller('newRequestController', ['createRequestService', 'eventsService',
   this.eventsData = eventsService.data;
   this.saladsData = saladService.data;
   console.log('hi Im a request controller');
-  eventsService.getEvent();
+  eventsService.getEvents();
   saladService.getSalads();
 
   //makes the service functions available on scope

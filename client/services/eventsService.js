@@ -15,13 +15,13 @@ app.factory('eventsService', ['$http', function($http){
     // console.log(data.events);
 
     //get the events from the database
-    // $http.get('/events').then(function(response){
-    //   console.log('event response.data is ', response.data);
-      // data.events = response.data;
-      // return data.events;
+    $http.get('/events').then(function(response){
+      console.log('event response.data is ', response.data);
+      data.events = response.data;
+      return data.events;
 
-      // console.log(data.events);
-    // })
+      console.log(data.events);
+    })
   }
 
   return {
