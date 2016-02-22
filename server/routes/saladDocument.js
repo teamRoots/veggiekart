@@ -100,6 +100,15 @@ router.post('/editSalad', function(request, response){
     });
 });
 
+router.post('/deleteSalad', function(request, response){
+    Salad.remove({_id: request.body._id}, function(err, salad){
+        if (err){
+            console.log(err);
+        }
+        response.sendStatus(200);
+    });
+});
+
 
 
 //===================================
