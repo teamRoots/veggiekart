@@ -57,7 +57,7 @@ console.log('newsalad', newsalad);
                 console.log(err);
             }
         });
-    };
+    // };
 
     });
 newsalad.save(function(err){
