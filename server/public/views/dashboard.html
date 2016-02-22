@@ -1,5 +1,5 @@
 <!-- will delete once we have requests in db -->
-<a href="/response">resonse page</a>
+<a href="/response">Response page</a>
 
 
 
@@ -22,8 +22,6 @@
     </ul>
     <ul class="thirds">
       <li>
-        <!-- This will create a button if the status warrants it
-        <button ng-show="showButtons">Edit Request</button> -->
       </li>
     </ul>
   </div>
@@ -40,11 +38,13 @@
     <h4 class="thirds">Hosts</h4>
     <div class="clearfix"></div>
   </div>
+
   <div class="clearfix"></div>
-  <div class=" event-content">
-    <ul ng-repeat="event in events">
-      <li class="thirds">{{event.name}}</li>
-      <li class="thirds">{{event.date}}</li>
+
+  <div class="event-content">
+    <ul ng-repeat="event in dash.data.events">
+      <li class="thirds">{{event.location}}</li>
+      <li class="thirds">{{event.date | date: 'fullDate'}}</li>
       <li class="thirds">{{event.host}}</li>
     </ul>
   </div>
