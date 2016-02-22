@@ -5,7 +5,7 @@ app.factory('eventsService', ['$http', function($http){
   var requests = [];
   var currentEvent = {};
 
-  var getEvent = function(){
+  var getEvents = function(){
 
     //get the events from the database
     $http.get('/events').then(function(response){
