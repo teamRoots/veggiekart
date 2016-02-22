@@ -42,14 +42,14 @@ console.log('newsalad', newsalad);
                 }
             });
         }else{
-            for(i = 0; i < request.body.ingredientToPush.length; i++){
-                for(var j = 0; j < ingredientPush.ingredients.length; j++){
-                    if (request.body.ingredientToPush[i] !== ingredientPush.ingredients[j]){
-                        console.log('its a copy', i, j);
-                    }else{
+            // for(i = 0; i < request.body.ingredientToPush.length; i++){
+            //     for(var j = 0; j < ingredientPush.ingredients.length; j++){
+            //         if (request.body.ingredientToPush[i] !== ingredientPush.ingredients[j]){
+            //             console.log('its a copy', i, j);
+            //         }else{
             ingredientPush.ingredients.push(request.body.ingredientToPush[i]);
-            }
-        }
+            // }
+        // }
     }
 
         ingredientPush.save(function(err){
