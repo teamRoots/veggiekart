@@ -53,8 +53,8 @@
   <div class="clearfix"></div>
   <div class="recipients-list">
     <ul>
-      <li ng-repeat="recipient in recipients">
-        <label>{{recipient.name}}<input type="checkbox" ng-model="recipient.checked" /></label>
+      <li ng-repeat="recipient in request.data.recipients">
+        <label><input type="checkbox" ng-model="recipient.checked" />{{recipient.name}}</label>
       </li>
     </ul>
     <div class="clearfix"></div>

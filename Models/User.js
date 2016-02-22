@@ -15,7 +15,7 @@ var UserSchema = new Schema({
     created_at: Date,
     updated_at: Date
 });
-// presave hook that salts and hashes password
+// presavehook that salts and hashes password
 UserSchema.pre('save', function(next) {
     var user = this;
     console.log('saving user!');
@@ -37,7 +37,7 @@ UserSchema.pre('save', function(next) {
     });
 });
 
-//Mongoose method to compare password and make sure they are unique
+// Mongoose method to compare password and make sure they are unique
 
 UserSchema.methods.comparePassword = function(candidatePassword, cb){
     bcrypt.compare(candidatePassword, this.password, function(err, isMatch){
@@ -47,4 +47,4 @@ UserSchema.methods.comparePassword = function(candidatePassword, cb){
 };
 
 
-module.exports = mongoose.model("User", UserSchema);
+module.exports = mongoose.model('User', UserSchema);

@@ -12,6 +12,8 @@ var mongoose = require('mongoose');
 var passport = require('./authentication');
 var index = require('./routes/index');
 var salad = require('./routes/saladDocument');
+
+var recipients = require('./routes/recipients');
 var app = express();
 
 //=================================================
@@ -58,6 +60,7 @@ mongoDB.on('open', function(){
 app.use(express.static('server/public'));
 app.use('/salad', salad); // try to figure out why routing is having problems
 
+app.use('/requestRecipients', recipients);
 app.use('/', index);
 
 //=================================================

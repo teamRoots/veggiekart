@@ -26,17 +26,17 @@ var newsalad = new Salad ({
     ingredients: ingredients,
 })
 console.log('newsalad', newsalad);
-
-    Ingredient.findOne({}, function(err, ingredientPush){
-            if (err){
-                console.log(err);
-            }
-         else{
-            console.log('createSalad ingredient')
-            response.sendStatus(200);
-        }
-    });
-});
+    //
+    // Ingredient.findOne({}, function(err, ingredientPush){
+    //         if (err){
+    //             console.log(err);
+    //         }
+    //      else{
+    //         console.log('createSalad ingredient')
+    //         response.sendStatus(200);
+    //     }
+    // });
+// });
 
 
 
