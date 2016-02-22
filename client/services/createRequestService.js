@@ -16,10 +16,10 @@ app.factory('createRequestService', ['$http', function($http){
   var addEvent = function(){
     console.log(newEvent.salads);
     data.events.push({
-      name: newEvent.name,
-      // date: new Date,
-      // salads: newEvent.salads.splice(0),
-      // id: eventCounter
+      location: newEvent.location,
+      date: new Date,
+      salads: newEvent.salads.splice(0),
+      id: eventCounter
     });
     console.log('newEvent is ', newEvent);
     console.log('data.events is ', data.events);
@@ -47,15 +47,12 @@ app.factory('createRequestService', ['$http', function($http){
 
   //saves the request to database on initial button click
   var saveRequest = function(){
-    console.log('we are sending teh data ', data.events);
     request = {
-        recipients: [{
-            // orgName: orgName,
-            // username: username
-        }],
-        events: data.events
+        recipients: data.recipients,
+        events: data.events,
+        message: data.message
     }
-    $http.post('/createRequest', data.events).then(function(response){
+    $http.post('/createRequest', request).then(function(response){
       console.log('response from da server is....... ', response);
     })
   }
@@ -64,6 +61,7 @@ app.factory('createRequestService', ['$http', function($http){
     console.log('loadRequests hit');
     $http.get('/createRequest/getRequests').then(function(response) {
       data.requests = response.data;
+      console.log(data.requests);
     })
   };
 
