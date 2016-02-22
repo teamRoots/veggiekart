@@ -12,7 +12,7 @@ app.controller('newRequestController', ['createRequestService', 'eventsService',
   this.addEvent = createRequestService.addEvent;
   this.addSalad = createRequestService.addSalad;
   this.recipients = createRequestService.getRecipients;
-  console.log(this.recipients);
+  console.log('receipients are ', this.recipients);
   // this.getRecipients = createRequestService.getRecipients;
   // this.postRecipients = createRequestService.postRecipients;
   // this.requestComments = createRequestService.requestComments;
