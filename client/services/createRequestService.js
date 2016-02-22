@@ -59,19 +59,19 @@ app.factory('createRequestService', ['$http', function($http){
       console.log('response from da server is....... ', response);
     })
   }
+
   var loadRequests = function() {
     console.log('loadRequests hit');
     $http.get('/createRequest/getRequests').then(function(response) {
-      console.log(response.data);
       data.requests = response.data;
-    });
-  }
+    })
+  };
+
 
   //sends the request out to receipients on confirmation dialog click
   var sendRequest = function(){
 
   }
-
   return {
     addEvent: addEvent,
     addSalad: addSalad,
