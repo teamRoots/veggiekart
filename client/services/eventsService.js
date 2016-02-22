@@ -29,6 +29,7 @@ app.factory('eventsService', ['$http', function($http){
       // console.log('data.events ', data.events);
 
       data.events = requests;
+      console.log('data.events is ', data.events);
 
     });
   };
