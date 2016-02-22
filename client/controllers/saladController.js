@@ -31,9 +31,6 @@ $scope.createNewSalad = function(data){
     $scope.listNewIngredients = [];
     $scope.listNewIngredientsDatabase = [];
     $scope.showSalads();
-
-
-
   });
 };
 
@@ -42,6 +39,16 @@ $scope.createIngredient = function(data){
   $scope.listNewIngredientsDatabase.push(data.name);
   $scope.newIngredient = {};
 };
+
+$scope.deleteSalad = function(data){
+  if (confirm('Are You Sure You Want To Delete This Salad') === true){
+    $http.post('/salad/deleteSalad', data).then(function(response){
+      $scope.showSalads();
+
+  });
+}
+};
+
 
 //===================================
 //initializes the fillSalad function to populate page with salads
