@@ -6,7 +6,7 @@ var router = express.Router();
 
 //===================================
 //All Models for data access
-
+var Ingredient = require('../../Models/Ingredients')
 var Salad = require('../../Models/Salad');
 
 //===================================
@@ -27,6 +27,28 @@ var newsalad = new Salad ({
 })
 console.log('newsalad', newsalad);
 
+    Ingredient.findOne({}, function(err, ingredientPush){
+            if (err){
+                console.log(err);
+            }
+         else{
+            console.log('createSalad ingredient')
+            response.sendStatus(200);
+        }
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
 newsalad.save(function(err){
     if(err){
         console.log(err);
@@ -42,9 +64,19 @@ router.post('/fillSalad', function(request, response){
     Salad.find({}, function(err, salads){
         if (err){
             console.log(err);
-        } else{
-            response.send('++++salads woo hoo', salads);
         }
+        Ingredient.find({}, function(err, ingredients){
+            if (err){
+                console.log(err);
+            }
+         else{
+            var data = {
+                salads: salads,
+                ingredient: ingredients
+            };
+            response.send('++++salads woo hoo', data);
+        }
+    });
     });
 });
 
