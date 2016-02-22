@@ -54,7 +54,7 @@
   <div class="recipients-list">
     <ul>
       <li ng-repeat="recipient in request.data.recipients">
-        <label><input type="checkbox" ng-model="recipient.checked" />{{recipient.name}}</label>
+        <label><input type="checkbox" ng-model="request.data.recipients.checked" />{{recipient.name}}</label>
       </li>
     </ul>
     <div class="clearfix"></div>
@@ -71,6 +71,6 @@
 </div>
 
 <div class="span10">
-  <textarea rows="6" cols="30" class="message" ng-model="request.message" placeholder="Message to the farms..."></textarea>
+  <textarea rows="6" cols="30" class="message" ng-model="request.data.message" placeholder="Message to the farms..."></textarea>
   <button class="send-request" ng-click="request.saveRequest()">Send Request</button>
 </div>
