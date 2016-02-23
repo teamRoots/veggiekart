@@ -6,6 +6,7 @@ var router = express.Router();
 
 var Request = require('../../Models/Request');
 
+//////////////////  for testing  ///////////////////////
 var transporter = require('../nodemailer');
 
 //===================================
@@ -37,6 +38,8 @@ router.post('/', function(request, response) {
             console.log(err);
         }
         response.sendStatus(200);
+
+        //////////////////   for testing  /////////////////
         app.use('/', transporter);
     });
 });
@@ -49,15 +52,15 @@ router.get('/getRequests', function(request, response) {
         } else {
             response.send(requests);
         }
-    })
-})
+    });
+});
 
 router.get('/getRequests/:id', function(request, response) {
     var id = request.params.id;
     console.log('get request id route hit, id: ', id);
     Request.findById(id, function(err, requests) {
         if (err) {
-            response.sendStatus(401)
+            response.sendStatus(401);
         } else {
             response.send(requests);
         }
