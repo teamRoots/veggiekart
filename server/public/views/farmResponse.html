@@ -17,11 +17,33 @@
   </div>
 </div>
 
-<div class="table">
-  <!-- table goes here -->
+<div class="span10 container">
+  <p ng-repeat="user in farm.users">
+    {{user.name}}
+  </p>
+  <table>
+    <thead>
+      <th>Veggie</th>
+      <th>Needed</th>
+      <th ng-repeat="user in farm.users">{{user.name}}</th>
+    </thead>
+    <tbody>
+        <tr ng-repeat="veggie in farm.veggies">
+          <td><strong>{{veggie.name}}</strong></td>
+          <td>{{veggie.quantity}} {{veggie.unit}}</td>
+          <td ng-repeat="user in farm.users">
+            <input ng-change="farm.test()" ng-model="user.commitments[veggie.name].quantity" type="number" placeholder="Qty." min="0"/>
+            <select ng-model="user.commitments[veggie.name].unit">
+              <option value="pounds">lbs.</option>
+              <option value="ounces">oz.</option>
+          </select>
+        </td>
+        </tr>
+    </tbody>
+  </table>
 </div>
 
 <div class="span10">
   <textarea rows="6" cols="30" class="message" ng-model="request.data.message" placeholder="Message to the farms..."></textarea>
-  <button class="send-request" ng-click="request.saveRequest()">Send Response</button>
+  <button class="send-request" ng-click="sendResponse()">Send Response</button>
 </div>

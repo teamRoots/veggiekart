@@ -186,6 +186,8 @@ hr {
     width: 100%;
     font-size: 150%;
     line-height: 60px;
+    padding-left: 10px;
+
   }
   button {
     width: 100%;
@@ -235,15 +237,6 @@ select {
 .btn-holder {
   margin: 20px auto;
 }
-// ul {
-//   list-style-type: none;
-// }
-// li {
-//   display: block;
-//   float: left;
-//   width: 24%;
-//   margin: 0 4%;
-// }
 .message {
   height: 100px;
   overflow: scroll;
@@ -277,6 +270,13 @@ select {
 .recipients-list {
   list-style-type: none;
 }
+.events-display {
+  li, p {
+  vertical-align: top;
+  margin-top: 0;
+  }
+}
+
 //salads styles
 .create-salad-btn {
   margin-bottom: 10px;
@@ -310,7 +310,6 @@ select {
     margin: 0 4%;
   }
 }
-
 .salad-dropdowns {
   padding-left: 35%;
   width: 65%;
@@ -320,4 +319,13 @@ select {
   select:last-of-type {
     width: 15%;
   }
+}
+th {
+  width: 15%;
+}
+input, select {
+  width: 40%;
+}
+select {
+  font-size: 12px;
 }
