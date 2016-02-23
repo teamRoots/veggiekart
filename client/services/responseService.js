@@ -7,6 +7,8 @@ app.factory('responseService', ['$http', function($http){
     console.log('loadRequest hit', id);
     $http.get('/createRequest/getRequests/' + id).then(function(response) {
       console.log(response.data);
+      data.responseToDisplay = response.data
+      
     })
   };
 
