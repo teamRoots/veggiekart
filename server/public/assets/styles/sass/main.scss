@@ -267,8 +267,11 @@ select {
   li {
     display: inline-block;
     float: none;
-    width: 30%;
+    width: 40%;
     margin: 0 4%;
+  }
+  .head {
+    font-weight: bold;
   }
 }
 .recipients-list {
@@ -291,6 +294,7 @@ select {
   list-style-type: none;
   margin-bottom: 10px;
 }
+
 
 //farmResponse styles
 .event-split {
