@@ -12,10 +12,10 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
       controller: 'dashboardController',
       controllerAs: 'dash'
     })
-    .when('/response', {
+    .when('/farm/response', {
       templateUrl: 'views/farmResponse.html',
       controller: 'responseController',
-      controllerAs: 'response'
+      controllerAs: 'farm'
     })
     .when('/admin/salad', {
       templateUrl: 'views/salad.html',

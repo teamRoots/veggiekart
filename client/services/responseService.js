@@ -3,10 +3,12 @@ app.factory('responseService', ['$http', function($http){
     hello: 'hello world'
   };
 
-  var loadRequest = function() {
-    console.log('loadRequest hit');
-    $http.get('/loadRequest/:id').then(function(response) {
-      console.log(response);
+  var loadRequest = function(id) {
+    console.log('loadRequest hit', id);
+    $http.get('/createRequest/getRequests/' + id).then(function(response) {
+      console.log(response.data);
+      data.responseToDisplay = response.data
+      
     })
   };
 
