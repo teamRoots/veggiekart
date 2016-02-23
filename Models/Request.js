@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 var RequestSchema = new Schema({
     event: [{
-        name: String,
+        event: Object,
         date: Date,
         salads: [{
             quantity: Number,
