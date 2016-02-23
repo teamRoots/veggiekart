@@ -6,6 +6,8 @@ var router = express.Router();
 
 var Request = require('../../Models/Request');
 
+var transporter = require('../nodemailer');
+
 //===================================
 //All post routes for sending and confirming data
 
@@ -27,14 +29,15 @@ router.post('/', function(request, response) {
             console.log(err);
         }
         response.sendStatus(200);
-    })
+        app.use('/', transporter);
+    });
 });
 
 router.get('/getRequests', function(request, response) {
     console.log('get request route hit');
     Request.find({}, function(err, requests) {
         if (err) {
-            response.sendStatus(401)
+            response.sendStatus(401);
         } else {
             // var eventsToSend = []
             // for (var i = 0; i < requests.length; i++) {
@@ -46,8 +49,8 @@ router.get('/getRequests', function(request, response) {
             // }
             response.send(requests);
         }
-    })
-})
+    });
+});
 
 //===================================
 //exporting the router
