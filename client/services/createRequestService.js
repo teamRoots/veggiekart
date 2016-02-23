@@ -52,6 +52,7 @@ app.factory('createRequestService', ['$http', function($http){
         events: data.events,
         message: data.message
     }
+    console.log('sending request to server ', request);
     $http.post('/createRequest', request).then(function(response){
       console.log('response from da server is....... ', response);
     })
