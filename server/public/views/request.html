@@ -64,7 +64,7 @@
   <h3 class="push-right">Summary</h3>
   <div class="clearfix"></div>
   <ul>
-    <li ng-repeat="ingredient in ingredients">{{ingredient.name}}: {{ingredient.totalQuantity}}</li>
+    <li ng-repeat="ingredient in request.data.summary">{{ingredient.ingredient_name}}: {{ingredient.amount}} {{ingredient.unit}}</li>
   </ul>
   <div class="clearfix"></div>
 </div>
