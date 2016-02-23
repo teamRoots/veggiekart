@@ -14,14 +14,14 @@ var Salad = require('../../Models/Salad');
 router.post('/createIngredient', function(request, response) {
 var denied = '';
 var str = request.body.newName;
-var newNameHolder = str.toLowerCase();
+var lowerCaseHolder = str.toLowerCase();
 
 Ingredient.findOne({}, function(err, ingredientPush){
     if (ingredientPush === null){
         var newIngredientPush = new Ingredient ({
             ingredients: []
         });
-        newIngredientPush.ingredients.push(request.body.newName);
+        newIngredientPush.ingredients.push(lowerCaseHolder);
 
         newIngredientPush.save(function(err){
             if (err){
@@ -31,14 +31,14 @@ Ingredient.findOne({}, function(err, ingredientPush){
     }
     else{
         for(var i = 0; i < ingredientPush.ingredients.length; i++){
-            if(newNameHolder === ingredientPush.ingredients[i]){
+            if(lowerCaseHolder === ingredientPush.ingredients[i]){
                 denied = true;
             }
         }
         if(denied === true){
             response.send('Ingredient already exists');
         }else {
-            ingredientPush.ingredients.push(request.body.newName);
+            ingredientPush.ingredients.push(lowerCaseHolder);
 
         ingredientPush.save(function(err){
             if (err){
