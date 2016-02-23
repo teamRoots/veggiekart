@@ -16,7 +16,12 @@ app.factory('saladService', ['$http', function($http){
   var getSalads = function(){
     $http.post('/salad/fillSalad').then(function(response){
       data.salads = response.data.salads;
+      if (response.data.ingredient.length !== 0){
       data.ingredientsDatabase = response.data.ingredient[0].ingredients;
+    } else{
+      console.log('no ingredients');
+
+    }
   }
 )};
 
