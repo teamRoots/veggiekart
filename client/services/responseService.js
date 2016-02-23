@@ -5,7 +5,7 @@ app.factory('responseService', ['$http', function($http){
 
   var loadRequest = function() {
     console.log('loadRequest hit');
-    $http.get('/loadRequest/:id').then(function(response) {
+    $http.get('/getRequests/:id').then(function(response) {
       console.log(response);
     })
   };

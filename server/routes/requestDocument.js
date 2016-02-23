@@ -49,6 +49,18 @@ router.get('/getRequests', function(request, response) {
     })
 })
 
+router.get('/getRequests/:id', function(request, response) {
+    var id = request.params.id;
+    console.log('get request id route hit, id: ', id);
+    Request.findById(id, function(err, requests) {
+        if (err) {
+            response.sendStatus(401)
+        } else {
+            response.send(requests);
+        }
+    })
+})
+
 //===================================
 //exporting the router
 
