@@ -4,7 +4,7 @@
   <div>
     <div class="event-split push-left">
       <ul class="farm-response" ng-repeat="event in farm.data">
-        <li>{{event}}</li>
+        <li>{{event.event}}</li>
         <li ng-repeat="salad in event.salads">{{salad.name}}</li>
       </ul>
     </div>
