@@ -17,8 +17,30 @@
   </div>
 </div>
 
-<div class="table">
-  <!-- table goes here -->
+<div class="span10 container">
+  <p ng-repeat="user in farm.users">
+    {{user.name}}
+  </p>
+  <table>
+    <thead>
+      <th>Veggie</th>
+      <th>Needed</th>
+      <th ng-repeat="user in farm.users">{{user.name}}</th>
+    </thead>
+    <tbody>
+        <tr ng-repeat="veggie in farm.veggies">
+          <td><strong>{{veggie.name}}</strong></td>
+          <td>{{veggie.quantity}} {{veggie.unit}}</td>
+          <td ng-repeat="user in farm.users">
+            <input type="number" placeholder="Qty." min="0"/>
+            <select>
+              <option value="pounds">lbs.</option>
+              <option value="ounces">oz.</option>
+          </select>
+        </td>
+        </tr>
+    </tbody>
+  </table>
 </div>
 
 <div class="span10">
