@@ -33,7 +33,7 @@
           <td>{{veggie.quantity}} {{veggie.unit}}</td>
           <td ng-repeat="user in farm.users">
             <input ng-change="farm.test()" ng-model="user.commitments[veggie.name].quantity" type="number" placeholder="Qty." min="0"/>
-            <select ng-model="user.commitments[veggie.name].unit">
+            <select class="table-units" ng-model="user.commitments[veggie.name].unit">
               <option value="pounds">lbs.</option>
               <option value="ounces">oz.</option>
           </select>
