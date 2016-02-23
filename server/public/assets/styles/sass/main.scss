@@ -80,11 +80,7 @@ ul, li {
   display: block;
   float: left;
   padding: 0px;
-  width: 10%;
-  img {
-    margin: 0 auto;
-    width: 100%;
-  }
+  width: 138px;
 }
 .title {
   display: inline-block;
@@ -171,10 +167,13 @@ hr {
   top: 50%;
   left: 50%;
   margin: -84px 0 0 -200px;
-  padding: 0;
+  padding: 0 0 10px 0;
   .login-logo {
     display: inline-block;
     height: 100%;
+    width: 138px;
+  }
+  .logo {
     width: 138px;
   }
   .input {
@@ -190,7 +189,7 @@ hr {
 
   }
   button {
-    width: 100%;
+    width: 400px;
     font-size: 150%;
   }
 }
@@ -326,6 +325,6 @@ th {
 input, select {
   width: 40%;
 }
-select {
+.table-units {
   font-size: 12px;
 }
