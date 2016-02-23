@@ -1,4 +1,4 @@
-<button ng-hide="saladCreator" ng-click="saladCreator = true">Create New Salad</button>
+<button class="create-salad-btn" ng-hide="saladCreator" ng-click="saladCreator = true">Create New Salad</button>
 
 <div ng-show="saladCreator" class="span10 container">
   <h3 class="push-right">New Salad</h3>
@@ -20,7 +20,7 @@
     Ingredient Name: <input type="text" ng-model="newIngredient.name" placeholder="Ingredient Name" />
     <button ng-click="createIngredient(newIngredient); ingredientCreator = false">Add</button>
   </div>
-  
+
   <div class="salad-ingredients">
     <ul class="salad-list">
       <li ng-repeat="listNewIngredient in listNewIngredients track by $index">{{listNewIngredient.quantity}}. {{listNewIngredient.unit}} of  {{listNewIngredient.name}}</li>
@@ -35,10 +35,10 @@
   <button ng-click="deleteSalad(salad)">Delete Salad</button>
   <h3 class="push-right">{{salad.name}}</h3>
   <div class="clearfix"></div>
-  <div>
+  <div class="salad-ingredients">
     <div class="clearfix">
-    <ul class="salad-ingredients">
-      <li ng-repeat="currentIngredient in salad.ingredients">{{currentIngredient.amount}}  {{currentIngredient.unit}} of  {{currentIngredient.ingredient_name}} </li>
+    <ul>
+      <li class="thirds" ng-repeat="currentIngredient in salad.ingredients">{{currentIngredient.amount}}  {{currentIngredient.unit}} of  {{currentIngredient.ingredient_name}} </li>
     </ul>
   </div>
   </div>

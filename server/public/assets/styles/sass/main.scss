@@ -272,6 +272,9 @@ select {
   list-style-type: none;
 }
 //salads styles
+.create-salad-btn {
+  margin-bottom: 10px;
+}
 .salad-list {
   list-style-type: none;
   li {
@@ -283,6 +286,7 @@ select {
 }
 .salad-ingredients {
   list-style-type: none;
+  margin-bottom: 10px;
 }
 
 //farmResponse styles
