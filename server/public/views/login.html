@@ -1,6 +1,10 @@
-<div class="span6 container login">
-  <h2>Welcome to Veggie Kart!</h2>
-  Username: <input type="text" placeholder="username" ng-model="login.user.username" /><br/>
-  Password: <input type="password" placeholder="password" ng-model="login.user.password" /><br/>
+<div class="login">
+  <div class="login-logo">
+    <img src="views/images/RootsLogo.jpg" />
+  </div>
+  <div class="input">
+    <input type="text" placeholder="username" ng-model="login.user.username" /><br/>
+    <input type="password" placeholder="password" ng-model="login.user.password" /><br/>
+  </div>
   <button ng-click="login.login()">Log In</button>
 </div>

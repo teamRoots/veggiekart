@@ -1,10 +1,16 @@
 //Service to handle logins
 app.factory('loginService', ['$http', '$location', function($http, $location){
   var user = {};
+  var userLoggedIn = {loggedIn: false};
 
   //sends login request to server
   var login = function(){
     console.log('user is ', user);
+
+    //TEMPORARILY set userLoggedIn=true so front page of site works. remove after login system working
+    userLoggedIn.loggedIn = true;
+    $location.path('/admin/dashboard');
+    //END TEMPORARY
 
     $http.post('/login', this.user).then(function(response){
       console.log('login post response is ', response);
@@ -29,6 +35,7 @@ app.factory('loginService', ['$http', '$location', function($http, $location){
 
   return {
     login: login,
+    userLoggedIn: userLoggedIn,
     user: user
   }
 
