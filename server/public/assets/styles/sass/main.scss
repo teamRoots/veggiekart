@@ -270,6 +270,12 @@ select {
 .recipients-list {
   list-style-type: none;
 }
+.events-display {
+  li, p {
+  vertical-align: top;
+  margin-top: 0;
+  }
+}
 
 //salads styles
 .create-salad-btn {
