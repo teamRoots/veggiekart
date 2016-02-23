@@ -3,23 +3,24 @@
 <div ng-show="saladCreator" class="span10 container">
   <h3 class="push-right">New Salad</h3>
   <div class="clearfix"></div>
-  Previous Ingredients: <select ng-model="newIngredient.name" ng-options="ingredient for ingredient in ingredientsDatabase.data.ingredientsDatabase">
-  </select>
   New Salad: <input type="text" ng-model="newSalad.name" placeholder="Salad Name"/>
+  Ingredients: <select ng-model="newIngredient.name" ng-options="ingredient for ingredient in ingredientsDatabase.data.ingredientsDatabase">
+  </select>
+  Quantity: <input type="number" ng-model="newIngredient.quantity" placeholder="Qty."  />
+  Unit: <select name="ingredient-unit" ng-model="newIngredient.unit">
+    <option value="pounds">lbs.</option>
+    <option value="ounces">oz.</option>
+  </select>
   <div class="clearfix"></div>
-  <h4 class="push-left">Add Ingredients</h4>
-  <div class="clearfix"></div>
-  <div class="ingredient-creator">
+  <a ng-click="ingredientCreator = true">+ add new ingredient</a>
+  <div ng-show="ingredientCreator" class="ingredient-creator">
+    <h4 class="push-left">Add Ingredient</h4>
+    <div class="clearfix"></div>
     Ingredient Name: <input type="text" ng-model="newIngredient.name" placeholder="Ingredient Name" />
-    Quantity: <input type="number" ng-model="newIngredient.quantity" placeholder="Qty."  />
-    Unit: <select name="ingredient-unit" ng-model="newIngredient.unit">
-      <option value="pounds">lbs.</option>
-      <option value="ounces">oz.</option>
-    </select>
     <button ng-click="createIngredient(newIngredient); ingredientCreator = false">Add</button>
   </div>
   <div class="salad-ingredients">
-    <ul>
+    <ul class="salad-list">
       <li ng-repeat="listNewIngredient in listNewIngredients track by $index">{{listNewIngredient.quantity}}. {{listNewIngredient.unit}} of  {{listNewIngredient.name}}</li>
     </ul>
   </div>
@@ -29,12 +30,13 @@
 </div>
 <!-- This is all salad pieces displayed at the bottom -->
 <div class="span10 container" ng-repeat="salad in salads.data.salads track by $index">
+  <button ng-click="deleteSalad(salad)">Delete Salad</button>
   <h3 class="push-right">{{salad.name}}</h3>
   <div class="clearfix"></div>
-  <div class="salad-ingredients">
+  <div>
     <div class="clearfix">
-    <ul>
-      <li ng-repeat="currentIngredient in salad.ingredients">{{currentIngredient.amount}}.  {{currentIngredient.unit}} of  {{currentIngredient.ingredient_name}} </li>
+    <ul class="salad-ingredients">
+      <li ng-repeat="currentIngredient in salad.ingredients">{{currentIngredient.amount}}  {{currentIngredient.unit}} of  {{currentIngredient.ingredient_name}} </li>
     </ul>
   </div>
   </div>

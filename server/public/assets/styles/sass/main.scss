@@ -59,6 +59,10 @@ body {
   text-align: center;
 }
 
+ul, li {
+  padding: 0;
+}
+
 //index styling
 
 .banner {
@@ -134,6 +138,12 @@ img.bg {
   }
 }
 
+hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), $brown, rgba(0, 0, 0, 0));
+}
+
 //login styling to be seperated out later
 
 .container {
@@ -165,10 +175,16 @@ img.bg {
 .event-content li {
   display: inline-block;
 }
+.events {
+  ul {
+    list-style-type: none;
+  }
+}
 .thirds {
   display: block;
   float: left;
   width: 24%;
+  padding: 0;
   margin: 0 4%;
 }
 
@@ -188,15 +204,15 @@ select {
 .btn-holder {
   margin: 20px auto;
 }
-ul {
-  list-style-type: none;
-}
-li {
-  display: block;
-  float: left;
-  width: 24%;
-  margin: 0 4%;
-}
+// ul {
+//   list-style-type: none;
+// }
+// li {
+//   display: block;
+//   float: left;
+//   width: 24%;
+//   margin: 0 4%;
+// }
 .message {
   height: 100px;
   overflow: scroll;
@@ -213,9 +229,6 @@ li {
   width: 24%;
   margin: 10px 4%;
 }
-
-//new request styling
-
 .new-event {
   ul {
     list-style-type: none;
@@ -227,15 +240,21 @@ li {
     margin: 0 4%;
   }
 }
-//salads styles
-ul {
+.recipients-list {
   list-style-type: none;
 }
-li {
-  display: block;
-  float: left;
-  width: 24%;
-  margin: 0 4%;
+//salads styles
+.salad-list {
+  list-style-type: none;
+  li {
+    display: block;
+    float: left;
+    width: 24%;
+    margin: 0 4%;
+  }
+}
+.salad-ingredients {
+  list-style-type: none;
 }
 
 //farmResponse styles
@@ -243,14 +262,14 @@ li {
   width: 42.5%;
   margin: 0 5%;
 }
-ul {
+.farm-response {
   list-style-type: none;
-}
-li {
-  display: block;
-  float: left;
-  width: 24%;
-  margin: 0 4%;
+  li {
+    display: block;
+    float: left;
+    width: 24%;
+    margin: 0 4%;
+  }
 }
 
 .salad-dropdowns {

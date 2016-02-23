@@ -1,5 +1,5 @@
 //Service to grab events from database and hold available for view
-app.factory('eventsService', ['$http', function($http){
+app.factory('eventsService', ['$http', '$filter', function($http, $filter){
   console.log('events service hit from dashboard');
   var data = {};
   var requests = [];
@@ -16,6 +16,7 @@ app.factory('eventsService', ['$http', function($http){
         currentEvent.location = data.events[i].venueName;
         for (var j = 0; j < data.events[i].events.length; j++) {
           currentEvent.date = data.events[i].events[j].eventDate;
+          currentEvent.displayDate = $filter('date')(currentEvent.date, 'MMM d, yyyy');
           currentEvent.host = data.events[i].events[j].orgName;
           // console.log('new currentEvent object: ', currentEvent);
           requests.push(currentEvent);
