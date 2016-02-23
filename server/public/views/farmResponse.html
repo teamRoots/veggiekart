@@ -29,9 +29,15 @@
     </thead>
     <tbody>
         <tr ng-repeat="veggie in farm.veggies">
-          <td>{{veggie.name}}</td>
+          <td><strong>{{veggie.name}}</strong></td>
           <td>{{veggie.quantity}} {{veggie.unit}}</td>
-          <td ng-repeat="user in farm.users">2</td>
+          <td ng-repeat="user in farm.users">
+            <input type="number" placeholder="Qty." min="0"/>
+            <select>
+              <option value="pounds">lbs.</option>
+              <option value="ounces">oz.</option>
+          </select>
+        </td>
         </tr>
     </tbody>
   </table>
