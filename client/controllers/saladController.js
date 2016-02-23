@@ -12,8 +12,10 @@ $scope.showSalads = function(){
 
 $scope.cancelCreation = function(){
   $scope.newSalad = {};
+  $scope.newIngredient = {};
+  $scope.createNewIngredient = {};
   $scope.listNewIngredients = [];
-}
+};
 $scope.editSalad = function(){
   $http.post('/salad/editSalad', editData).then(function(response){
   });
