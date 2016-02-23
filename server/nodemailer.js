@@ -18,12 +18,15 @@ var mailOptions = {
   html: '<b>This is a VeggieKart test</b>'    //html body
 };
 
-//send mail with defined transport object
-transporter.sendMail(mailOptions, function(error, info){
-  if(error){
-    return console.log(error);
-  }
-  console.log('Message sent: ', info.response);
-});
+//send email with defined transport object
+var sendMessage = function() {
+  transporter.sendMail(mailOptions, function(error, info){
+    if(error){
+      return console.log(error);
+    }
+    console.log('Message sent: ', info.response);
+  });
+};
 
-module.exports = transporter;
+// module.exports = sendMessage;
+exports.sendMessage = sendMessage;

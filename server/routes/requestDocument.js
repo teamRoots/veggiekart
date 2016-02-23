@@ -6,9 +6,6 @@ var router = express.Router();
 
 var Request = require('../../Models/Request');
 
-//////////////////  for testing  ///////////////////////
-var transporter = require('../nodemailer');
-
 //===================================
 //All post routes for sending and confirming data
 
@@ -38,9 +35,6 @@ router.post('/', function(request, response) {
             console.log(err);
         }
         response.sendStatus(200);
-
-        //////////////////   for testing  /////////////////
-        app.use('/', transporter);
     });
 });
 

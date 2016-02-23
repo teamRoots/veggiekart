@@ -17,6 +17,14 @@ var createRequest = require('./routes/requestDocument');
 var recipients = require('./routes/recipients');
 var app = express();
 
+/////////////////////////////////////////////////////////
+/////////////////////  for testing //////////////////////
+/////////////////////////////////////////////////////////
+var nodemailer = require('nodemailer');
+var sendEmail = require('./nodemailer');
+sendEmail.sendMessage();
+/////////////////////////////////////////////////////////
+
 //=================================================
 // body parser middleware
 
