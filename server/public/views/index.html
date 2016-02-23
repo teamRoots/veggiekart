@@ -13,33 +13,9 @@
 
   <base href="/">
 </head>
-<body>
+<body ng-controller="indexController">
 
-  <div  class="banner">
-    <!-- Will add ng-show="userLoggedIn" to display the banner and nav only when logged in -->
-    <div class="header">
-      <div class="title-casing">
-        <div class="logo">
-          <img src="views/images/RootsLogo.jpg" />
-        </div>
-        <div class="title">
-          <h1>Veggie Kart</h1>
-        </div>
-      </div>
-      <div class="clearfix"></div>
-      <div class="logout">
-        <p>Welcome, {{user.name}}!</p>
-        <a href="/" ng-click="logout()">logout</a>
-      </div>
-      <div class="clearfix"></div>
-    </div>
-    <div class="nav">
-      <a href="/admin/dashboard" class="button">Dashboard</a>
-      <a href="/admin/salad" class="button">Salads</a>
-      <a href="/admin/reports" class="button">Reports</a>
-    </div>
-    <div class="clearfix"></div>
-  </div>
+  <div ng-if="userLoggedIn.loggedIn" ng-include src="'views/header.html'"></div>
   <div class="bg-image">
     <img src="views/images/gardening.jpg" class="bg" />
     <div ng-view></div>
