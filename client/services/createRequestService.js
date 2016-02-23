@@ -14,14 +14,19 @@ app.factory('createRequestService', ['$http', function($http){
 
   //adds event to the current request
   var addEvent = function(){
+
+    //adds event to the events array
     data.events.push({
       event: newEvent.event,
       date: newEvent.event.date,
       salads: newEvent.salads.splice(0),
       id: eventCounter
     });
-    console.log('newEvent is ', newEvent);
-    console.log('data.events is ', data.events);
+
+    //calculates the summary object
+    data.summary = vCalc(data.events);
+
+    //increments event count for next id, resets saladCounter
     eventCounter++;
     saladCounter = 1;
   }
@@ -68,7 +73,6 @@ app.factory('createRequestService', ['$http', function($http){
   var sendRequest = function(){
 
   }
-
 
     return {
     addEvent: addEvent,

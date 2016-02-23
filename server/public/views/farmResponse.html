@@ -4,7 +4,7 @@
   <div>
     <div class="event-split push-left">
       <ul class="farm-response" ng-repeat="event in farm.data">
-        <li>{{event}}</li>
+        <li>{{event.event}}</li>
         <li ng-repeat="salad in event.salads">{{salad.name}}</li>
       </ul>
     </div>
@@ -33,7 +33,7 @@
           <td>{{veggie.quantity}} {{veggie.unit}}</td>
           <td ng-repeat="user in farm.users">
             <input ng-change="farm.test()" ng-model="user.commitments[veggie.name].quantity" type="number" placeholder="Qty." min="0"/>
-            <select ng-model="user.commitments[veggie.name].unit">
+            <select class="table-units" ng-model="user.commitments[veggie.name].unit">
               <option value="pounds">lbs.</option>
               <option value="ounces">oz.</option>
           </select>
@@ -45,5 +45,5 @@
 
 <div class="span10">
   <textarea rows="6" cols="30" class="message" ng-model="request.data.message" placeholder="Message to the farms..."></textarea>
-  <button class="send-request" ng-click="request.saveRequest()">Send Response</button>
+  <button class="send-request" ng-click="sendResponse()">Send Response</button>
 </div>
