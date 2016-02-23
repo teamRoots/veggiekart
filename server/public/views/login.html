@@ -1,10 +1,11 @@
-<div class="login">
+<div class="container login">
   <div class="login-logo">
     <img src="views/images/RootsLogo.jpg" />
   </div>
   <div class="input">
     <input type="text" placeholder="username" ng-model="login.user.username" /><br/>
     <input type="password" placeholder="password" ng-model="login.user.password" /><br/>
+    <div class="clearfix"></div>
   </div>
   <button ng-click="login.login()">Log In</button>
 </div>
