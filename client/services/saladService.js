@@ -19,6 +19,8 @@ app.factory('saladService', ['$http', function($http){
       data.ingredientsDatabase = response.data.ingredient[0].ingredients;
   }
 )};
+
+
   return {
     addSalad: addSalad,
     getSalads: getSalads,
