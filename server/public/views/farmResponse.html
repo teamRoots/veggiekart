@@ -1,18 +1,27 @@
 <div class="span10 container">
-  <h3 class="push-left">{{request.date}} produce request</h3>
+  <h3 class="push-left">{{request.date}}Produce Request</h3>
   <div class="clearfix"></div>
   <div>
     <div class="event-split push-left">
-      <ul class="farm-response" ng-repeat="event in request.events">
-        <li>{{event.name}} {{event.date}}</li>
+      <ul class="farm-response" ng-repeat="event in farm.data">
+        <li>{{event}}</li>
         <li ng-repeat="salad in event.salads">{{salad.name}}</li>
       </ul>
     </div>
     <div class="event-split push-left">
-      <h4 class="push-left">Message from Roots</h4>
+      <h4 class="push-left">Message from Roots...</h4>
       <div class="clearfix"></div>
       <p>{{request.message}}</p>
     </div>
     <div class="clearfix"></div>
   </div>
+</div>
+
+<div class="table">
+  <!-- table goes here -->
+</div>
+
+<div class="span10">
+  <textarea rows="6" cols="30" class="message" ng-model="request.data.message" placeholder="Message to the farms..."></textarea>
+  <button class="send-request" ng-click="request.saveRequest()">Send Response</button>
 </div>

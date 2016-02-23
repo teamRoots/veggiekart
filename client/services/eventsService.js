@@ -1,6 +1,5 @@
 //Service to grab events from database and hold available for view
 app.factory('eventsService', ['$http', '$filter', function($http, $filter){
-  console.log('events service hit from dashboard');
   var data = {};
   var requests = [];
   var currentEvent = {};
@@ -31,7 +30,6 @@ app.factory('eventsService', ['$http', '$filter', function($http, $filter){
       // console.log('data.events ', data.events);
 
       data.events = requests;
-      console.log('data.events is ', data.events);
 
     });
   };

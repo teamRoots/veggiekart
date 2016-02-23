@@ -13,16 +13,16 @@
     <div class="clearfix"></div>
   </div>
   <div class="clearfix"></div>
-  <div class="events" ng-repeat="request in requests">
+  <div class="events" ng-repeat="request in dash.requests">
     <ul class="thirds event-names">
-      <li ng-repeat="name in request">
-      </li>
+      <li ng-repeat="event in request.event">{{event.event.location}}<br /><span class="display-date">{{event.event.displayDate}}</span></li>
     </ul>
     <ul class="thirds request-status">
       <li>{{request.status}}</li>
     </ul>
     <ul class="thirds">
       <li>
+        <a href="/farm/response"><button ng-click="dash.requestDetails(request._id)">View</button></a>
       </li>
     </ul>
     <div class="clearfix"></div>

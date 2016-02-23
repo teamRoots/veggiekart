@@ -79,7 +79,7 @@ ul, li {
 .logo {
   display: block;
   float: left;
-  padding: 10px;
+  padding: 0px;
   width: 10%;
   img {
     margin: 0 auto;
@@ -215,6 +215,9 @@ hr {
   padding: 0;
   margin: 0 4%;
 }
+.display-date {
+  margin-left: 15px;
+}
 
 //request styling
 select {
@@ -264,14 +267,20 @@ select {
   li {
     display: inline-block;
     float: none;
-    width: 30%;
+    width: 40%;
     margin: 0 4%;
+  }
+  .head {
+    font-weight: bold;
   }
 }
 .recipients-list {
   list-style-type: none;
 }
 //salads styles
+.create-salad-btn {
+  margin-bottom: 10px;
+}
 .salad-list {
   list-style-type: none;
   li {
@@ -283,7 +292,9 @@ select {
 }
 .salad-ingredients {
   list-style-type: none;
+  margin-bottom: 10px;
 }
+
 
 //farmResponse styles
 .event-split {

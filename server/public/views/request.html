@@ -11,7 +11,7 @@
   <ul ng-repeat="item in request.data.events">
     <li>{{item.event.location}} {{item.event.date | date:'MM/dd/yyyy'}}</li>
     <li>
-      <p ng-repeat="salad in item.salads">{{salad.quantity}} {{salad.salad}}s</p>
+      <p ng-repeat="salad in item.salads">{{salad.quantity}} {{salad.salad.name}}s</p>
     </li>
   </ul>
 </div>
@@ -21,10 +21,11 @@
     <select name="event" placeholder="Event" ng-model="request.newEvent.event" ng-options="event.displayDate group by event.location for event in request.eventsData.events">
     </select>
       <div class="salad-dropdowns" ng-repeat="item in request.data.saladCounterArray">
-        <select name="salad" placeholder="Salad" ng-model="request.newEvent.salads[item.id].salad">
-          <option ng-repeat="salad in request.saladsData.salads" ng-value="salad.name">
+        <!-- <select name="salad" placeholder="Salad" ng-model="request.newEvent.salads[item.id].salad">
+          <option ng-repeat="salad in request.saladsData.salads">
             {{salad.name}}</option>
-        </select>
+        </select> -->
+    <select name="salad" placeholder="Salad" ng-model="request.newEvent.salads[item.id].salad" ng-options="salad.name for salad in request.saladsData.salads"> </select>
         <select name="quantity" class="select-quantity" placeholder="Qty." ng-model="request.newEvent.salads[item.id].quantity">
           <option value="96">96</option>
           <option value="184">184</option>

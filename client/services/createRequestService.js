@@ -14,7 +14,6 @@ app.factory('createRequestService', ['$http', function($http){
 
   //adds event to the current request
   var addEvent = function(){
-    console.log('new event is ', newEvent);
     data.events.push({
       event: newEvent.event,
       date: newEvent.event.date,
@@ -31,16 +30,12 @@ app.factory('createRequestService', ['$http', function($http){
   var addSalad = function(){
     saladCounter++;
     data.saladCounterArray.push({id: saladCounter});
-    console.log('saladCounter is ', saladCounter);
-    console.log('data.saladCounterArray is ', data.saladCounterArray);
     // data.salads.push({name: newEvent.salad, quantity: newEvent.saladQuantity});
   }
 
   //gets the recipients from the server
   var getRecipients = function(){
-    console.log('getRecipients hit');
     $http.get('/requestRecipients/recipients').then(function(response) {
-      console.log('recipients response', response);
       data.recipients = response.data;
     })
   }
@@ -52,17 +47,20 @@ app.factory('createRequestService', ['$http', function($http){
         events: data.events,
         message: data.message
     }
+    console.log('sending request to server ', request);
     $http.post('/createRequest', request).then(function(response){
       console.log('response from da server is....... ', response);
     })
   }
 
   var loadRequests = function() {
-    console.log('loadRequests hit');
     $http.get('/createRequest/getRequests').then(function(response) {
       data.requests = response.data;
-      console.log(data.requests);
-    })
+    });
+  };
+
+  var requestDetails = function(id) {
+    console.log('request id:', id);
   };
 
 
@@ -70,7 +68,9 @@ app.factory('createRequestService', ['$http', function($http){
   var sendRequest = function(){
 
   }
-  return {
+
+
+    return {
     addEvent: addEvent,
     addSalad: addSalad,
     getRecipients: getRecipients,
@@ -78,7 +78,8 @@ app.factory('createRequestService', ['$http', function($http){
     sendRequest: sendRequest,
     loadRequests: loadRequests,
     newEvent: newEvent,
+    requestDetails: requestDetails,
     data: data
-  }
+  };
 
 }]);

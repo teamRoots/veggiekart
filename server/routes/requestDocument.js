@@ -12,15 +12,23 @@ var transporter = require('../nodemailer');
 //All post routes for sending and confirming data
 
 router.post('/', function(request, response) {
+        var recipientsChecked = [];
         console.log('the request from the client is.....', request.body);
         var events = request.body.events;
         var recipients = request.body.recipients;
         var message = request.body.message;
 
+        for(var i = 0; i < recipients.length; i++){
+            console.log(recipients[i].checked);
+            if(recipients[i].checked === true){
+                recipientsChecked.push(recipients[i]);
+            }
+        }
+
     var newRequest = new Request ({
         event: events,
         status: false,
-        recipients: recipients,
+        recipients: recipientsChecked,
         message: message
     });
 
@@ -39,14 +47,18 @@ router.get('/getRequests', function(request, response) {
         if (err) {
             response.sendStatus(401);
         } else {
-            // var eventsToSend = []
-            // for (var i = 0; i < requests.length; i++) {
-            //     var events = requests[i].event;
-            //     for (var j = 0; j < events.length; j++) {
-            //         console.log(events[j].name);
-            //         eventsToSend.push(events[j].name)
-            //     }
-            // }
+            response.send(requests);
+        }
+    })
+})
+
+router.get('/getRequests/:id', function(request, response) {
+    var id = request.params.id;
+    console.log('get request id route hit, id: ', id);
+    Request.findById(id, function(err, requests) {
+        if (err) {
+            response.sendStatus(401)
+        } else {
             response.send(requests);
         }
     });
