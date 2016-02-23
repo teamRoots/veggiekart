@@ -10,15 +10,23 @@ var Request = require('../../Models/Request');
 //All post routes for sending and confirming data
 
 router.post('/', function(request, response) {
+        var recipientsChecked = [];
         console.log('the request from the client is.....', request.body);
         var events = request.body.events;
         var recipients = request.body.recipients;
         var message = request.body.message;
 
+        for(var i = 0; i < recipients.length; i++){
+            console.log(recipients[i].checked);
+            if(recipients[i].checked === true){
+                recipientsChecked.push(recipients[i]);
+            }
+        }
+
     var newRequest = new Request ({
         event: events,
         status: false,
-        recipients: recipients,
+        recipients: recipientsChecked,
         message: message
     });
 
