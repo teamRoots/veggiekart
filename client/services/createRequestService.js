@@ -66,6 +66,10 @@ app.factory('createRequestService', ['$http', function($http){
     })
   };
 
+  var requestDetails = function(id) {
+    console.log('request id:', id);
+  };
+
 
   //sends the request out to receipients on confirmation dialog click
   var sendRequest = function(){
@@ -79,6 +83,7 @@ app.factory('createRequestService', ['$http', function($http){
     sendRequest: sendRequest,
     loadRequests: loadRequests,
     newEvent: newEvent,
+    requestDetails: requestDetails,
     data: data
   }
 
