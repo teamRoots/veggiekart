@@ -11,6 +11,48 @@ var Salad = require('../../Models/Salad');
 
 //===================================
 //Model in database creation
+router.post('/createIngredient', function(request, response) {
+var denied = '';
+var str = request.body.newName;
+var newNameHolder = str.toLowerCase();
+
+Ingredient.findOne({}, function(err, ingredientPush){
+    if (ingredientPush === null){
+        var newIngredientPush = new Ingredient ({
+            ingredients: []
+        });
+        newIngredientPush.ingredients.push(request.body.newName);
+
+        newIngredientPush.save(function(err){
+            if (err){
+                console.log(err);
+            }
+        });
+    }
+    else{
+        for(var i = 0; i < ingredientPush.ingredients.length; i++){
+            if(newNameHolder === ingredientPush.ingredients[i]){
+                denied = true;
+            }
+        }
+        if(denied === true){
+            response.send('Ingredient already exists');
+        }else {
+            ingredientPush.ingredients.push(request.body.newName);
+
+        ingredientPush.save(function(err){
+            if (err){
+                console.log(err);
+            }else {
+                response.sendStatus(200);
+            }
+        });
+    }
+}
+
+});
+});
+
 router.post('/createSalad', function(request, response) {
     var ingredients = [];
     for(i = 0; i < request.body.ingredientArray.length; i++){
@@ -24,43 +66,8 @@ router.post('/createSalad', function(request, response) {
 var newsalad = new Salad ({
     name: request.body.saladName,
     ingredients: ingredients,
-})
-console.log('newsalad', newsalad);
+});
 
-    Ingredient.findOne({}, function(err, ingredientPush){
-        if (ingredientPush === null){
-            var newIngredientPush = new Ingredient ({
-                ingredients: []
-            });
-            for(i = 0; i < request.body.ingredientToPush.length; i++){
-            newIngredientPush.ingredients.push(request.body.ingredientToPush[i]);
-        }
-            newIngredientPush.save(function(err){
-                if (err){
-                    console.log(err);
-                }
-            });
-        }else{
-            // var ingredientsHolder = ingredientPush.ingredients.length;
-            // console.log('alsdkjfa;lsdjkf', ingredientsHolder);
-            // for(i = 0; i < request.body.ingredientToPush.length; i++){
-            //     for(j = 0; j < ingredientsHolder; j++){
-            //         if (request.body.ingredientToPush[i] === ingredientsHolder[j]){
-            //             console.log('its a copy');
-            //         }else{
-            ingredientPush.ingredients.push(request.body.ingredientToPush[i]);
-        //     }
-        // }
-    }
-
-        ingredientPush.save(function(err){
-            if (err){
-                console.log(err);
-            }
-        });
-    // };
-
-    });
 newsalad.save(function(err){
     if(err){
         console.log(err);
