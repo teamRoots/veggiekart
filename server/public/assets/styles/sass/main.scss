@@ -148,7 +148,7 @@ hr {
 
 .container {
   border: 1px solid $brown;
-  margin: 20px auto;
+  // margin: 20px auto;
   background-color: $whitebackground;
   border-radius: 0 8px 8px 8px;
   -webkit-box-shadow: 4px 4px 20px 0px rgba(0,0,0,0.75);
@@ -161,8 +161,36 @@ hr {
 }
 
 .login {
+  display: block;
+  background-color: #fff;
   text-align: center;
-  margin-top: 100px;
+  position: absolute;
+  width: 400px;
+  height: 168px;
+  z-index: 15;
+  top: 50%;
+  left: 50%;
+  margin: -84px 0 0 -200px;
+  padding: 0;
+  .login-logo {
+    display: inline-block;
+    height: 100%;
+    width: 138px;
+  }
+  .input {
+    display: inline-block;
+    padding: 10px;
+    width: 200px;
+  }
+  input {
+    width: 100%;
+    font-size: 150%;
+    line-height: 60px;
+  }
+  button {
+    width: 100%;
+    font-size: 150%;
+  }
 }
 
 //dashboard styling

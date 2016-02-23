@@ -14,12 +14,14 @@
   <button ng-click="pushIngredient(newIngredient); ingredientCreator = false">Add</button>
   <div class="clearfix"></div>
   <a ng-click="ingredientCreator = true">+ add new ingredient</a>
+
   <div ng-show="ingredientCreator" class="ingredient-creator">
     <h4 class="push-left">Add Ingredient</h4>
     <div class="clearfix"></div>
     Ingredient Name: <input type="text" ng-model="createNewIngredient.newName" placeholder="Ingredient Name" />
     <button ng-click="createIngredient(createNewIngredient); ingredientCreator = false">Create Ingredient</button>
   </div>
+  
   <div class="salad-ingredients">
     <ul class="salad-list">
       <li ng-repeat="listNewIngredient in listNewIngredients track by $index">{{listNewIngredient.quantity}}. {{listNewIngredient.unit}} of  {{listNewIngredient.name}}</li>

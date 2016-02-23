@@ -13,9 +13,10 @@
     <div class="clearfix"></div>
   </div>
   <div class="clearfix"></div>
-  <div class="events" ng-repeat="request in dash.requests">
+  <div class="events" ng-repeat="request in requests">
     <ul class="thirds event-names">
-      <li ng-repeat="event in request.event">{{event.name}}</li>
+      <li ng-repeat="name in request">
+      </li>
     </ul>
     <ul class="thirds request-status">
       <li>{{request.status}}</li>
@@ -27,7 +28,6 @@
     <div class="clearfix"></div>
     <hr />
   </div>
-  <div class="clearfix"></div>
   <a href="/admin/request"><button class="push-left">+ Add New Request</button></a>
 </div>
 
@@ -43,7 +43,6 @@
   </div>
 
   <div class="clearfix"></div>
-
   <div class="event-content">
     <ul ng-repeat="event in dash.data.events">
       <li class="thirds">{{event.location}}</li>
