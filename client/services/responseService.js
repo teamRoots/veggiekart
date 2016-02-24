@@ -8,6 +8,14 @@ app.factory('responseService', ['$http', function($http){
       console.log(response.data);
       var events = response.data.event;
       console.log('events:', events);
+      data.eventsInfo = [];
+
+      for (var i = 0; i < events.length; i++) {
+        //cycle through events and pull out information2
+        console.log('event', events[i].event);
+        data.eventsInfo.push(events[i].event);
+      }
+      console.log('data.eventsInfo', data.eventsInfo);
 
 
     })

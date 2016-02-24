@@ -3,8 +3,8 @@
   <div class="clearfix"></div>
   <div>
     <div class="event-split push-left">
-      <ul class="farm-response" ng-repeat="event in farm.data">
-        <li>{{event.event}}</li>
+      <ul class="farm-response" ng-repeat="event in farm.data.eventsInfo">
+        <li>{{event.location}} {{event.displayDate}} {{event.host}}</li>
         <li ng-repeat="salad in event.salads">{{salad.name}}</li>
       </ul>
     </div>
@@ -18,22 +18,20 @@
 </div>
 
 <div class="span10 container">
-  <p ng-repeat="user in farm.users">
-    {{user.name}}
-  </p>
+
   <table>
     <thead>
       <th>Veggie</th>
       <th>Needed</th>
-      <th ng-repeat="user in farm.users">{{user.name}}</th>
+      <th ng-repeat="user in farm.data.request.recipients">{{user.name}}</th>
     </thead>
     <tbody>
         <tr ng-repeat="veggie in farm.veggies">
           <td><strong>{{veggie.name}}</strong></td>
           <td>{{veggie.quantity}} {{veggie.unit}}</td>
-          <td ng-repeat="user in farm.users">
+          <td ng-repeat="user in farm.data.request.recipients">
             <input ng-change="farm.test()" ng-model="user.commitments[veggie.name].quantity" type="number" placeholder="Qty." min="0"/>
-            <select class="table-units" ng-model="user.commitments[veggie.name].unit">
+            <select ng-change="farm.test()" class="table-units" ng-model="user.commitments[veggie.name].unit">
               <option value="pounds">lbs.</option>
               <option value="ounces">oz.</option>
           </select>
