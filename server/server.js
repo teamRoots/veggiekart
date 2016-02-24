@@ -24,8 +24,8 @@ var app = express();
 // console.log('User Env variable: ', process.env.EM_USER);
 
 
-var nodemailer = require('nodemailer');
-var sendEmail = require('./nodemailer');
+// var nodemailer = require('nodemailer');
+// var sendEmail = require('./nodemailer');
 // sendEmail.sendMessage();           //sends email message
 /////////////////////////////////////////////////////////
 

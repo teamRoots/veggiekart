@@ -6,6 +6,9 @@ var router = express.Router();
 
 var Request = require('../../Models/Request');
 
+var nodemailer = require('nodemailer');
+var sendEmail = require('../nodemailer');
+
 //===================================
 //All post routes for sending and confirming data
 
@@ -35,6 +38,7 @@ router.post('/', function(request, response) {
             console.log(err);
         }
         response.sendStatus(200);
+        sendEmail.sendMessage();           //sends email message
     });
 });
 
