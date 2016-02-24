@@ -26,7 +26,7 @@ router.post('/', function(request, response) {
 
     var newRequest = new Request ({
         event: events,
-        status: false,
+        status: 'sent. no responses',
         recipients: recipientsChecked,
         message: message,
         summary: summary

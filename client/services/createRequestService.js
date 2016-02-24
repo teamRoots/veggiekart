@@ -1,5 +1,5 @@
 //Service for admin to create new requests
-app.factory('createRequestService', ['$http', function($http){
+app.factory('createRequestService', ['$http', '$location', function($http, $location){
   var data = {
     events: [],
     salads: [],
@@ -14,6 +14,14 @@ app.factory('createRequestService', ['$http', function($http){
 
   //adds event to the current request
   var addEvent = function(){
+
+    //set salad quantity to 48 if no other value was entered
+    for (var i = 0; i < newEvent.salads.length; i++){
+      console.log('salads ', newEvent.salads[i]);
+      if (!newEvent.salads[i].quantity) {
+        newEvent.salads[i].quantity = 48;
+      }
+    }
 
     //adds event to the events array
     data.events.push({
@@ -56,12 +64,14 @@ app.factory('createRequestService', ['$http', function($http){
     console.log('sending request to server ', request);
     $http.post('/createRequest', request).then(function(response){
       console.log('response from da server is....... ', response);
+      $location.path('/admin/dashboard');
     })
   }
 
   var loadRequests = function() {
     $http.get('/createRequest/getRequests').then(function(response) {
       data.requests = response.data;
+      console.log('data.requests is ', data.requests);
     });
   };
 

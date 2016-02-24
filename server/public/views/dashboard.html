@@ -7,20 +7,24 @@
   <h3 class="push-right">Requests</h3>
   <div class="clearfix"></div>
   <div class="header">
-    <h4 class="thirds">Events</h4>
-    <h4 class="thirds">Status</h4>
-    <h4 class="thirds"></h4>
+    <h4 class="fourths">Requests</h4>
+    <h4 class="fourths">Host</h4>
+    <h4 class="fourths">Status</h4>
+    <h4 class="fourths"></h4>
     <div class="clearfix"></div>
   </div>
   <div class="clearfix"></div>
   <div class="events" ng-repeat="request in dash.requests">
-    <ul class="thirds event-names">
-      <li ng-repeat="event in request.event">{{event.event.location}}<br /><span class="display-date">{{event.event.displayDate}}</span></li>
+    <ul class="fourths event-names">
+      <li ng-repeat="event in request.event">{{event.event.location}}<span class="display-date">{{event.event.displayDate}}</span></li>
     </ul>
-    <ul class="thirds request-status">
+    <ul class="fourths event-names">
+      <li ng-repeat="event in request.event">{{event.event.host}}</li>
+    </ul>
+    <ul class="fourths request-status">
       <li>{{request.status}}</li>
     </ul>
-    <ul class="thirds">
+    <ul class="fourths">
       <li>
         <a href="/farm/response"><button ng-click="dash.requestDetails(request._id)">View</button></a>
       </li>
