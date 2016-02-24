@@ -1,7 +1,7 @@
 //This is the start of the server
 //================================================
 //List of all the required modules and routes
-require('dotenv').config();                 //brings in local environment variables that are not pushed to github (dotenv.env is included in .gitignore)
+// require('dotenv').config();                 //brings in local environment variables that are not pushed to github (dotenv.env is included in .gitignore)
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
