@@ -1,14 +1,14 @@
 app.factory('responseService', ['$http', function($http){
-  var data = {
-    hello: 'hello world'
-  };
+  var data = {};
 
   var loadRequest = function(id) {
     console.log('loadRequest hit', id);
     $http.get('/createRequest/getRequests/' + id).then(function(response) {
+      data.request = response.data;
       console.log(response.data);
       var events = response.data.event;
       console.log('events:', events);
+
 
     })
   };
