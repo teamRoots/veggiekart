@@ -11,12 +11,14 @@ var RequestSchema = new Schema({
             salad: SaladSchema
         }]
     }],
-    status: Boolean,
+    status: String,
     recipients: [{
         name: String,
-        email: String   // is username possibly
+        email: String,   // is username possibly
+        orgName: String
     }],
-    message: String
+    message: String,
+    summary: Array
 });
 
 module.exports = mongoose.model('Request', RequestSchema);

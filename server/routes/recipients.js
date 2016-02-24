@@ -14,6 +14,8 @@ router.get('/recipients', function(request, response) {
       var recipient = {};
       recipient.name = users[i].firstName + " " + users[i].lastName;
       recipient.email = users[i].username;
+      recipient.orgName = users[i].orgName;
+      recipient.checked = true;
       recipients.push(recipient);
     }
     response.send(recipients);

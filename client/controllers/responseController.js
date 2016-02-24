@@ -8,11 +8,18 @@ app.controller('responseController', ['loginService', 'responseService', functio
 
   // responseService.loadRequest(id);
 
-  this.users = [{name: 'Scott'}, {name: 'Zach'},{name: 'Eric'},{name: 'Anthony'}];
-  this.veggies = [{name: 'Parsnip', quantity: 2, unit: 'lbs.'},       {name: 'Spinach', quantity: 2, unit: 'lbs.'}, {name: 'Rutabega', quantity: 2, unit: 'lbs.'}, {name: 'Broccoli', quantity: 2, unit: 'lbs.'}];
+  // this.users = [{name: 'Scott'}, {name: 'Zach'},{name: 'Eric'},{name: 'Anthony'}];
+  // this.veggies = [{name: 'Parsnip', quantity: 2, unit: 'lbs.'}, {name: 'Spinach', quantity: 2, unit: 'lbs.'}, {name: 'Rutabega', quantity: 2, unit: 'lbs.'}, {name: 'Broccoli', quantity: 2, unit: 'lbs.'}];
 
   this.test = function() {
-    console.log('user.commitment:', this.users);
+    console.log('user.commitment:', this.data.request);
   }
+
+  this.sendResponse = responseService.sendResponse;
+
+  // function() {
+  //   console.log('response to send:', this.data.request);
+  //   console.log(responseService.data);
+  // };
 
 }]);
