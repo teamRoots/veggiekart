@@ -50,7 +50,8 @@ app.factory('createRequestService', ['$http', function($http){
     request = {
         recipients: data.recipients,
         events: data.events,
-        message: data.message
+        message: data.message,
+        summary: data.summary
     }
     console.log('sending request to server ', request);
     $http.post('/createRequest', request).then(function(response){

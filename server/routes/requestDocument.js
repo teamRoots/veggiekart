@@ -15,6 +15,7 @@ router.post('/', function(request, response) {
         var events = request.body.events;
         var recipients = request.body.recipients;
         var message = request.body.message;
+        var summary = request.body.summary;
 
         for(var i = 0; i < recipients.length; i++){
             console.log(recipients[i].checked);
@@ -27,7 +28,8 @@ router.post('/', function(request, response) {
         event: events,
         status: false,
         recipients: recipientsChecked,
-        message: message
+        message: message,
+        summary: summary
     });
 
     newRequest.save(function(err){
