@@ -62,6 +62,7 @@ app.factory('createRequestService', ['$http', function($http){
   var loadRequests = function() {
     $http.get('/createRequest/getRequests').then(function(response) {
       data.requests = response.data;
+      console.log('data.requests is ', data.requests);
     });
   };
 

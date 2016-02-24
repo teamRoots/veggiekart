@@ -11,7 +11,7 @@ var RequestSchema = new Schema({
             salad: SaladSchema
         }]
     }],
-    status: Boolean,
+    status: String,
     recipients: [{
         name: String,
         email: String,   // is username possibly
