@@ -5,14 +5,10 @@ app.factory('responseService', ['$http', function($http){
     console.log('loadRequest hit', id);
     $http.get('/createRequest/getRequests/' + id).then(function(response) {
       data.request = response.data;
-      console.log(response.data);
       var events = response.data.event;
-      console.log('events:', events);
       data.eventsInfo = [];
 
       for (var i = 0; i < events.length; i++) {
-        //cycle through events and pull out information2
-        console.log('event', events[i].event);
         data.eventsInfo.push(events[i].event);
       }
       console.log('data.eventsInfo', data.eventsInfo);
@@ -23,7 +19,11 @@ app.factory('responseService', ['$http', function($http){
 
   //sends the response to admin
   var sendResponse = function(){
-    // $http.put('/')
+    console.log('response to send:', data.request._id);
+    var id = data.request._id;
+    $http.put('/createRequest/updateRequest/' + id, data.request).then(function(response) {
+      console.log(response);
+    })
   }
   return {
     loadRequest: loadRequest,
