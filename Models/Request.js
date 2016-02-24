@@ -14,7 +14,8 @@ var RequestSchema = new Schema({
     status: Boolean,
     recipients: [{
         name: String,
-        email: String   // is username possibly
+        email: String,   // is username possibly
+        orgName: String
     }],
     message: String,
     summary: Array
