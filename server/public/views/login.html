@@ -4,7 +4,7 @@
   </div>
   <div class="input">
     <input type="text" placeholder="username" ng-model="login.user.username" /><br/>
-    <input type="password" placeholder="password" ng-model="login.user.password" /><br/>
+    <input type="password" placeholder="password" ng-model="login.user.password" onkeypress="return login.loginInput()" /><br/>
     <div class="clearfix"></div>
   </div>
   <button ng-click="login.login()">Log In</button>

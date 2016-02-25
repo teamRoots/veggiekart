@@ -80,25 +80,18 @@ router.put('/updateRequest/:id', function(request, response) {
         if(error) {
             response.sendStatus(401);
         } else {
-            objectToUpdate = updatedObject;
-            Request.save(function(error) {
+            objectToUpdate.recipients = updatedObject.recipients;
+            objectToUpdate.save(function(error) {
                 if(error) {
                     response.sendStatus(401);
                 } else {
                     response.send(objectToUpdate);
                 }
-            })
+            });
         }
-    })
+    });
 });
-    // Request.findOneAndUpdate({_id: id}, updatedObject, {upsert: true, multi: true, new: true}, function(err, updatedRequest) {
-    //     if (err) {
-    //         response.sendStatus(401);
-    //     } else {
-    //         response.send(updatedRequest);
-    //     }
-//     })
-// });
+
 
 //===================================
 //exporting the router
