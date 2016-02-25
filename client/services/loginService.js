@@ -3,6 +3,11 @@ app.factory('loginService', ['$http', '$location', function($http, $location){
   var user = {};
   var userLoggedIn = {loggedIn: false};
 
+  var loginInput = function(){
+    if (e.keyCode == 13){
+        login();
+    }
+  };
   //sends login request to server
   var login = function(){
 
@@ -32,8 +37,9 @@ app.factory('loginService', ['$http', '$location', function($http, $location){
 
       //displays failure message if login failed
       }
-      //comment out temporarily for testing purposes
-      // else {
+      // comment out temporarily for testing purposes
+      // else
+      //  {
       //   console.log('login failed', response.data);
       //   $location.path('/');
       //   alert('Login failed. Please try again.');
