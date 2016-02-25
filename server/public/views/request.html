@@ -11,28 +11,29 @@
       <p ng-repeat="salad in item.salads">{{salad.quantity}} {{salad.salad.name}}s</p>
     </li>
   </ul>
-</div>
 
-<div class="span10 container">
   <div>
     <select name="event" placeholder="Event" ng-model="request.newEvent.event" ng-options="event.displayDate group by event.location for event in request.eventsData.events">
+      <option value="">Select Event</option>
     </select>
       <div class="salad-dropdowns" ng-repeat="item in request.data.saladCounterArray">
-    <select name="salad" placeholder="Salad" ng-model="request.newEvent.salads[item.id].salad" ng-options="salad.name for salad in request.saladsData.salads"> </select>
+    <select name="salad" placeholder="Salad" ng-model="request.newEvent.salads[item.id].salad" ng-options="salad.name for salad in request.saladsData.salads">
+      <option value="">Select Salad</option>
+    </select>
         <label><input type="number" class="select-quantity" ng-model="request.newEvent.salads[item.id].quantity" placeholder="48" />salads</label>
       </div>
-</div>
+  </div>
   <div>
     <p ng-repeat="salad in request.data.salads">{{salad}}</p>
   </div>
   <a class="add-salad" ng-click="request.addSalad()">+ Add Salad</a>
-</div>
 
-<div class="span10 btn-holder">
-  <button class="push-left" ng-click="request.addEvent()">+ Add Event</button>
-  <div class="clearfix"></div>
-</div>
+  <div class="span10 btn-holder">
+    <button class="push-right" ng-click="request.addEvent()">+ Add Event</button>
+    <div class="clearfix"></div>
+  </div>
 
+</div>
 
 <div class="span10 container">
   <h3 class="push-right">Recipients</h3>
@@ -50,9 +51,11 @@
 <div class="span10 container">
   <h3 class="push-right">Summary</h3>
   <div class="clearfix"></div>
+
   <ul>
-    <li class="summary" ng-repeat="ingredient in request.data.summary">{{ingredient.ingredient_name}}: {{ingredient.amount}} {{ingredient.unit}}</li>
+    <li class="thirds" ng-repeat="ingredient in request.data.summary">{{ingredient.amount}} {{ingredient.unit}} of {{ingredient.ingredient_name}}</li>
   </ul>
+
   <div class="clearfix"></div>
 </div>
 

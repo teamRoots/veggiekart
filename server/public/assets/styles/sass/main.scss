@@ -291,6 +291,10 @@ select {
   display: inline-block;
   width: 24%;
   padding: 5px;
+  input {
+    zoom: 2;
+    width: auto;
+  }
 }
 
 //salads styles
@@ -327,14 +331,14 @@ select {
   }
 }
 .salad-dropdowns {
-  padding-left: 35%;
-  width: 65%;
-  select:first-of-type {
-    width: 45%;
-  }
-  select:last-of-type {
-    width: 15%;
-  }
+  padding-left: 40%;
+  width: 90%;
+  // select:first-of-type {
+  //   width: 45%;
+  // }
+  // select:last-of-type {
+  //   width: 15%;
+  // }
 }
 th {
   width: 15%;
