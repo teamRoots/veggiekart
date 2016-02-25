@@ -186,7 +186,6 @@ hr {
     font-size: 150%;
     line-height: 60px;
     padding-left: 10px;
-
   }
   button {
     width: 400px;
@@ -233,9 +232,14 @@ select {
   width: 24%;
   margin: 10px 4%;
   display: inline-block;
+  font-size: 150%;
+  line-height: 60px;
+  padding-left: 10px;
 }
 .select-quantity {
   width: 10%;
+  font-size: 150%;
+  line-height: 60px;
 }
 .add-salad {
   margin: 0 37%;
@@ -281,6 +285,12 @@ select {
   vertical-align: top;
   margin-top: 0;
   }
+}
+.summary {
+  list-style-type: none;
+  display: inline-block;
+  width: 24%;
+  padding: 5px;
 }
 
 //salads styles

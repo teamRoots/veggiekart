@@ -15,6 +15,6 @@ app.controller('newRequestController', ['createRequestService', 'eventsService',
   // this.postRecipients = createRequestService.postRecipients;
   // this.requestComments = createRequestService.requestComments;
   this.saveRequest = createRequestService.saveRequest;
-  // this.sendRequest = createRequestService.sendRequest;
+  this.sendRequest = createRequestService.sendRequest;
   console.log('salad bring back', saladService.data);
 }]);

@@ -3,7 +3,8 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
   var data = {
     events: [],
     salads: [],
-    saladCounterArray: [{id: 0}]
+    saladCounterArray: [{id: 0}],
+    confirmRequest: false
   };
   var newEvent = {
     salads: []
@@ -53,8 +54,17 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
     })
   }
 
+  //sends the request out to receipients on confirmation dialog click
+  var sendRequest = function(){
+    data.confirmRequest = confirm('Are you sure?');
+    if (data.confirmRequest) {
+      saveRequest();
+    }
+  }
+
   //saves the request to database on initial button click
   var saveRequest = function(){
+
     request = {
         recipients: data.recipients,
         events: data.events,
@@ -64,6 +74,7 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
     console.log('sending request to server ', request);
     $http.post('/createRequest', request).then(function(response){
       console.log('response from da server is....... ', response);
+      data = {};
       $location.path('/admin/dashboard');
     })
   }
@@ -78,12 +89,6 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
   var requestDetails = function(id) {
     console.log('request id:', id);
   };
-
-
-  //sends the request out to receipients on confirmation dialog click
-  var sendRequest = function(){
-
-  }
 
     return {
     addEvent: addEvent,
