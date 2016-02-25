@@ -72,20 +72,30 @@ router.put('/updateRequest/:id', function(request, response) {
     console.log('id sent to server:', id);
     console.log('request sent to server:', request.body);
     var updatedObject = request.body;
-    Request.findOneAndUpdate({_id: id}, updatedObject, {upsert: true, multi: true, new: true}, function(err, updatedRequest) {
-        if (err) {
+
+    Request.findById(id, function(error, objectToUpdate) {
+        if(error) {
             response.sendStatus(401);
         } else {
-            updatedRequest.save(function(err) {
-                if (err) {
-                    response.sendStatus(401)
+            objectToUpdate = updatedObject;
+            Request.save(function(error) {
+                if(error) {
+                    response.sendStatus(401);
                 } else {
-                    response.send(updatedRequest);
+                    response.send(objectToUpdate);
                 }
             })
         }
     })
 });
+    // Request.findOneAndUpdate({_id: id}, updatedObject, {upsert: true, multi: true, new: true}, function(err, updatedRequest) {
+    //     if (err) {
+    //         response.sendStatus(401);
+    //     } else {
+    //         response.send(updatedRequest);
+    //     }
+//     })
+// });
 
 //===================================
 //exporting the router
