@@ -50,9 +50,11 @@
 <div class="span10 container">
   <h3 class="push-right">Summary</h3>
   <div class="clearfix"></div>
+
   <ul>
-    <li class="summary" ng-repeat="ingredient in request.data.summary">{{ingredient.ingredient_name}}: {{ingredient.amount}} {{ingredient.unit}}</li>
+    <li class="thirds" ng-repeat="ingredient in request.data.summary">{{ingredient.amount}} {{ingredient.unit}} of {{ingredient.ingredient_name}}</li>
   </ul>
+  
   <div class="clearfix"></div>
 </div>
 
