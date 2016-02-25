@@ -247,16 +247,25 @@ select {
 .btn-holder {
   margin: 20px auto;
 }
-.message {
-  height: 100px;
-  overflow: scroll;
-  width: 52%;
-  margin: 10px 4%;
-  border: 1px solid $brown;
-  border-radius: 0 8px 8px 8px;
-  -webkit-box-shadow: 4px 4px 20px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 4px 4px 20px 0px rgba(0,0,0,0.75);
-  box-shadow: 4px 4px 20px 0px rgba(0,0,0,0.75);
+.message-box {
+  margin: 0 auto 20px auto;
+  .message {
+    height: 100px;
+    overflow: scroll;
+    width: 50%;
+    margin: 10px 5% 0 0;
+    border: 1px solid $brown;
+    display: block;
+    float: left;
+    border-radius: 0 8px 8px 8px;
+  }
+  button {
+    margin: 10px 0;
+    width: 44%;
+    display: block;
+    float: left;
+    box-shadow: none;
+  }
 }
 .send-request {
   height: 80px;

@@ -54,9 +54,9 @@
     <li class="summary" ng-repeat="ingredient in request.data.summary">{{ingredient.ingredient_name}}: {{ingredient.amount}} {{ingredient.unit}}</li>
   </ul>
   <div class="clearfix"></div>
-</div>
-
-<div class="span10">
-  <textarea rows="6" cols="30" class="message" ng-model="request.data.message" placeholder="Message to the farms..."></textarea>
-  <button class="send-request" ng-click="request.sendRequest()">Send Request</button>
+  <div class="message-box">
+    <textarea rows="6" cols="30" class="message" ng-model="request.data.message" placeholder="Message to the farms..."></textarea>
+    <button class="send-request" ng-click="request.sendRequest()">Send Request</button>
+    <div class="clearfix"></div>
+  </div>
 </div>
