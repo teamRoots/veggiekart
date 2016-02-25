@@ -35,12 +35,15 @@ router.post('/', function(request, response) {
         summary: summary
     });
 
-    newRequest.save(function(err){
+    newRequest.save(function(err, saved){
         if(err){
             console.log(err);
         }
         response.sendStatus(200);
-        sendEmail.sendMessage();           //sends email message
+        console.log('saved is ', saved._id);
+        var emailMessage = 'aaaah email';
+        var gardenURL = 'localhost:3000/createRequests/getRequests/' + saved._id;
+        sendEmail.sendMessage(gardenURL);           //sends email message
     });
 });
 

@@ -62,7 +62,6 @@
   @for $i from 1 through 12 {
     .span#{$i} {
       flex-basis: ($unit * $i) + ($margin * ($i - 1));
-      margin-left: $margin;
       max-width: ($unit * $i) + ($margin * ($i - 1));
     }
 
