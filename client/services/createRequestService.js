@@ -74,7 +74,12 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
     console.log('sending request to server ', request);
     $http.post('/createRequest', request).then(function(response){
       console.log('response from da server is....... ', response);
-      data = {};
+      data.events = [];
+      request = {};
+      data.salads = [];
+      data.summary = [];
+      data.message = '';
+
       $location.path('/admin/dashboard');
     })
   }
