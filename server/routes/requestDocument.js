@@ -58,6 +58,29 @@ router.get('/getRequests', function(request, response) {
     });
 });
 
+router.post('/editRequest', function(request, response) {
+    console.log('get request route hit', request.body);
+    var id = request.body.idHolder;
+    Request.findById(id, function(err, oldRequests) {
+        if (err) {
+            response.sendStatus(401);
+        } else {
+            console.log('oldRequests', oldRequests);
+            oldRequests.recipients = request.body.recipients;
+            oldRequests.event = request.body.events;
+            oldRequests.summary = request.body.summary;
+            oldRequests.message = request.body.message;
+            oldRequests.save(function(err, saved){
+                if(err){
+                    console.log(err);
+                }else {
+                response.sendStatus(200);
+                }
+            });
+        }
+    });
+});
+
 router.get('/getRequests/:id', function(request, response) {
     var id = request.params.id;
     console.log('get request id route hit, id: ', id);

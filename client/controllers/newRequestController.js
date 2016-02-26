@@ -6,7 +6,6 @@ app.controller('newRequestController', ['createRequestService', 'eventsService',
   eventsService.getEvents();
   saladService.getSalads();
   createRequestService.getRecipients();
-
   //makes the service functions available on scope
   this.addEvent = createRequestService.addEvent;
   this.addSalad = createRequestService.addSalad;
@@ -16,5 +15,6 @@ app.controller('newRequestController', ['createRequestService', 'eventsService',
   // this.requestComments = createRequestService.requestComments;
   this.saveRequest = createRequestService.saveRequest;
   this.sendRequest = createRequestService.sendRequest;
+  this.newEditRequest = createRequestService.newEditRequest;
   console.log('salad bring back', saladService.data);
 }]);

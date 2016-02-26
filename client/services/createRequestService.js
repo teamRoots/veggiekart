@@ -1,5 +1,6 @@
 //Service for admin to create new requests
 app.factory('createRequestService', ['$http', '$location', function($http, $location){
+  var idHolder = '';
   var data = {
     events: [],
     salads: [],
@@ -38,7 +39,8 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
     //increments event count for next id, resets saladCounter
     eventCounter++;
     saladCounter = 1;
-  }
+    data.saladCounterArray= [{id: 0}]
+  };
 
   //adds salad to the current event
   var addSalad = function(){
@@ -94,6 +96,31 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
   var requestDetails = function(id) {
     console.log('request id:', id);
   };
+  var editRequest = function(id) {
+    idHolder = id;
+    console.log('request id:best', idHolder);
+  };
+
+  var newEditRequest = function(){
+
+        request = {
+            recipients: data.recipients,
+            events: data.events,
+            message: data.message,
+            summary: data.summary,
+            idHolder: idHolder
+        };
+        $http.post('/createRequest/editRequest', request).then(function(response){
+          data.events = [];
+          request = {};
+          data.salads = [];
+          data.summary = [];
+          data.message = '';
+
+          $location.path('/admin/dashboard');
+        });
+
+  };
 
     return {
     addEvent: addEvent,
@@ -103,6 +130,8 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
     sendRequest: sendRequest,
     loadRequests: loadRequests,
     newEvent: newEvent,
+    editRequest: editRequest,
+    newEditRequest: newEditRequest,
     requestDetails: requestDetails,
     data: data
   };
