@@ -13,8 +13,11 @@ var vCalc = function(events){
       for (var k = 0; k < salad.ingredients.length; k++) {
         ingredient = salad.ingredients[k];
 
-        //multiply the number of ingredients by the number of salads
-        ingredient.amount *= saladQuantity;
+        // //multiply the number of ingredients by the number of salads
+        // ingredient.amount *= saladQuantity;
+
+        //temp multiply function to account for the 48 salads in recipie issue
+        ingredient.amount = ingredient.amount * saladQuantity / 48;
 
         //if the number of ounces is large, convert to pounds
         if (ingredient.unit == 'ounces' && ingredient.amount > 100) {
@@ -38,7 +41,7 @@ var vCalc = function(events){
       //if so, then check if ingredient is already in the summary array
       for (var i = 0; i < summary.length; i++){
         if (summary[i].ingredient_name == ingredient.ingredient_name) {
-          
+
           //if ingredient is already in the summary, add the new amount (doing unit conversion if necessary)
           if (summary[i].unit == ingredient.unit){
             summary[i].amount += ingredient.amount;
