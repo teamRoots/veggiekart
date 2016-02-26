@@ -19,7 +19,6 @@ app.factory('loginService', ['$http', '$location', function($http, $location){
     // ==========================================
     // ++++++++++++++++++++++++++++++++++++++++++
 
-
     $http.post('/authenticate/login', this.user).then(function(response){
       console.log('login post response is ', response);
 
