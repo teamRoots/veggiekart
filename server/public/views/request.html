@@ -19,7 +19,7 @@
       </select>
     </div>
     <div class="salad-picker" ng-repeat="item in request.data.saladCounterArray">
-      <select name="salad" placeholder="Salad" ng-model="request.newEvent.salads[item.id].salad" ng-options="salad.name for salad in request.saladsData.salads">
+      <select name="salad" placeholder="Salad" ng-model="request.newEvent.salads[item.id].salad" ng-options="salad.name for salad in request.saladsData.salads | orderBy: name">
       <option value="">Select Salad</option>
       </select>
       <label><input type="number" class="select-quantity" ng-model="request.newEvent.salads[item.id].quantity" placeholder="48" />salads</label>
