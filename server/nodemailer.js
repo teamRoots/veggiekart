@@ -1,5 +1,6 @@
 //send email with defined transport object
-var sendMessage = function(gardenURL) {
+var sendMessage = function(gardenURL, emailIntro, emailSummary, emailMessage) {
+// var sendMessage = function(gardenURL, emailIntro, emailMessage) {
 
   var nodemailer = require('nodemailer');
 
@@ -19,7 +20,8 @@ var sendMessage = function(gardenURL) {
     to: 'rootsftht@gmail.com',                  //list of comma separated receivers
     subject: 'Test email',                      //subject loginService
     text: 'This is a VeggieKart test',          //plaintext body
-    html: '<b>This is a VeggieKart test of the ' + gardenURL + '</b>'    //html body
+    html: '<b>' + emailIntro + '<br>' + '<br>' + emailSummary + '<br>' + '<br>' + 'http://' + gardenURL + '<br>' + '<br>' + emailMessage + '</b>'    //html body
+    // html: '<b>' + emailIntro + '<br>' + '<br>' + gardenURL + '<br>' + '<br>' + emailMessage + '</b>'    //html body
   };
 
   transporter.sendMail(mailOptions, function(error, info){

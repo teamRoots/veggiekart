@@ -40,10 +40,21 @@ router.post('/', function(request, response) {
             console.log(err);
         }
         response.sendStatus(200);
-        console.log('saved is ', saved._id);
-        var emailMessage = 'aaaah email';
+
+        //pass dynamic data to generate customized email in nodemailer
+        var emailSummary = "Summary of needed vegetables: " + "<br>";
+
+        for (var i = 0; i < summary.length; i++) {
+          emailSummary += summary[i].amount + " " + summary[i].unit + " of " + summary[i].ingredient_name + "<br>";
+        }
+
+        var emailIntro = 'Below is a list of items that are needed for the upcoming event.  Please select the link below and confirm how much you can contribute.';
+        var emailMessage = saved.message;
+        console.log('list of recipients: ', summary);
+        // var gardenURL = 'localhost:3000/respond/' + saved._id;     // for future reference
         var gardenURL = 'localhost:3000/createRequests/getRequests/' + saved._id;
-        sendEmail.sendMessage(gardenURL);           //sends email message
+
+        // sendEmail.sendMessage(gardenURL, emailIntro, emailSummary, emailMessage);       //sends email message
     });
 });
 
