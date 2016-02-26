@@ -115,6 +115,24 @@ router.put('/updateRequest/:id', function(request, response) {
     });
 });
 
+router.post('/findOldRequest', function(request, response) {
+    var id = request.body.idHolder;
+    console.log('get request id route hit, id: ', id.idHolder);
+    if (id === ''){
+        response.send('no assigned Id');
+    }
+    else{
+    Request.findById(id, function(err, requests) {
+        if (err) {
+            console.log('asdfasd',requests)
+            response.sendStatus(401);
+        } else {
+            response.send(requests);
+        }
+    });
+    }
+});
+
 
 //===================================
 //exporting the router

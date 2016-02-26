@@ -2,7 +2,9 @@
 app.factory('loginService', ['$http', '$location', function($http, $location){
   var user = {};
   var userLoggedIn = {loggedIn: false};
-
+  var currentUser = {
+    data: ''
+  };
   var loginInput = function(){
     if (e.keyCode == 13){
         login();
@@ -14,15 +16,16 @@ app.factory('loginService', ['$http', '$location', function($http, $location){
     // For easy use uncomment
     // ++++++++++++++++++++++++++++++++++++++++++
     // ==========================================
-      userLoggedIn.loggedIn = true;
-      $location.path('/admin/dashboard');
+      // userLoggedIn.loggedIn = true;
+      // $location.path('/admin/dashboard');
     // ==========================================
     // ++++++++++++++++++++++++++++++++++++++++++
 
 
     $http.post('/authenticate/login', this.user).then(function(response){
-      console.log('login post response is ', response);
+      console.log('login post response is ', response.data.firstName);
 
+      currentUser.data = response.data.firstName;
       //redirects to admin page if user is admin
       if(response.data.isAdmin == true){
         userLoggedIn.loggedIn = true;
@@ -38,18 +41,20 @@ app.factory('loginService', ['$http', '$location', function($http, $location){
       //displays failure message if login failed
       }
       // comment out temporarily for testing purposes
-      // else
-      //  {
-      //   console.log('login failed', response.data);
-      //   $location.path('/');
-      //   alert('Login failed. Please try again.');
-      // }
-    })
-  }
+      else
+       {
+        console.log('login failed', response.data);
+        $location.path('/');
+        alert('Login failed. Please try again.');
+      }
+    });
+  };
+
 
   return {
     login: login,
     userLoggedIn: userLoggedIn,
+    currentUser: currentUser,
     user: user
   }
 

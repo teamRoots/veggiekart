@@ -1,6 +1,16 @@
 //Service for admin to create new requests
 app.factory('createRequestService', ['$http', '$location', function($http, $location){
   var idHolder = '';
+  var editValue = {
+    editPage: '',
+    requestButtons: '',
+    word: ''
+  };
+  var oldData = {
+    event: [],
+    recipients:[],
+    summary: []
+  }
   var data = {
     events: [],
     salads: [],
@@ -97,8 +107,17 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
     console.log('request id:', id);
   };
   var editRequest = function(id) {
+    editValue.editPage = true;
+    editValue.requestButtons = true;
+    editValue.word = 'Edit New';
     idHolder = id;
-    console.log('request id:best', idHolder);
+  };
+
+  var requestFalseUpdate = function(){
+    editValue.editPage = false;
+    editValue.requestButtons = false;
+    editValue.word = 'New';
+
   };
 
   var newEditRequest = function(){
@@ -122,6 +141,19 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
 
   };
 
+  var showPreviousRequest = function(){
+    var holder = {
+      idHolder: idHolder
+    }
+    $http.post('/createRequest/findOldRequest', holder).then(function(response){
+      console.log(response);
+      oldData.event = response.data.event;
+      oldData.recipients = response.data.recipients;
+      oldData.summary = response.data.summary;
+
+    });
+  };
+
     return {
     addEvent: addEvent,
     addSalad: addSalad,
@@ -130,9 +162,13 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
     sendRequest: sendRequest,
     loadRequests: loadRequests,
     newEvent: newEvent,
+    oldData: oldData,
     editRequest: editRequest,
     newEditRequest: newEditRequest,
+    requestFalseUpdate: requestFalseUpdate,
     requestDetails: requestDetails,
+    showPreviousRequest: showPreviousRequest,
+    editValue: editValue,
     data: data
   };
 

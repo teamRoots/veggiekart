@@ -1,5 +1,27 @@
+<div ng-if="request.editValue.editPage" class="span10 container new-event">
+  <h3 class="push-right">Current Request</h3>
+  <div class="clearfix"></div>
+  <h4>Current Events and Salads</h4>
+  <ul class="events-display" ng-repeat="item in request.oldData.event">
+    <li>{{item.event.location}} {{item.event.date | date:'MM/dd/yyyy'}}</li>
+    <li>
+      <p ng-repeat="salad in item.salads">{{salad.quantity}} {{salad.salad.name}}s</p>
+    </li>
+  </ul>
+  <h4>Current Recipients</h4>
+  <ul class="recipients-list">
+    <li class="summary" ng-repeat="recipient in request.oldData.recipients">{{recipient.name}}, {{recipient.orgName}}</li>
+  </ul>
+  <h4>Current Ingredients Summary</h4>
+  <ul>
+    <li class="thirds" ng-repeat="ingredient in request.oldData.summary">{{ingredient.amount}} {{ingredient.unit}} of {{ingredient.ingredient_name}}</li>
+  </ul>
+
+
+
+</div>
 <div class="span10 container new-event">
-  <h3 class="push-right">New Request</h3>
+  <h3 class="push-right">{{request.editValue.word}} Request</h3>
   <div class="clearfix"></div>
   <ul class="header">
     <li><h4>Event</h4></li>
@@ -62,8 +84,8 @@
   <div class="clearfix"></div>
   <div class="message-box">
     <textarea rows="6" cols="30" class="message" ng-model="request.data.message" placeholder="Message to the farms..."></textarea>
-    <button class="send-request" ng-click="request.sendRequest()">Send Request</button>
-    <button class="send-request" ng-click="request.newEditRequest()">Edit Request</button>
+    <button ng-hide="request.editValue.requestButtons" class="send-request" ng-click="request.sendRequest()">Send Request</button>
+    <button ng-show="request.editValue.requestButtons" class="send-request" ng-click="request.newEditRequest()">Finish Editing Request</button>
     <div class="clearfix"></div>
   </div>
 </div>
