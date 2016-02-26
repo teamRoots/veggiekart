@@ -225,24 +225,37 @@ hr {
 .display-date {
   margin-left: 15px;
 }
+.view-btn {
+  padding: 5px;
+}
 
 //request styling
 select {
   font-size: 18px;
-  width: 24%;
-  margin: 10px 4%;
-  display: inline-block;
-  font-size: 150%;
+  margin: 10px 0;
   line-height: 60px;
   padding-left: 10px;
 }
+.event-picker {
+  width: 45%;
+  display: block;
+  float: left;
+}
 .select-quantity {
   width: 10%;
-  font-size: 150%;
-  line-height: 60px;
+  font-size: 18px;
 }
+.salad-picker {
+  width: 50%;
+  display: block;
+  float: left;
+  select {
+    width: 72%;
+  }
+}
+
 .add-salad {
-  margin: 0 37%;
+  margin: 0 auto 0 50%;
 }
 .btn-holder {
   margin: 20px auto;
@@ -264,7 +277,6 @@ select {
     width: 44%;
     display: block;
     float: left;
-    box-shadow: none;
   }
 }
 .send-request {
@@ -342,12 +354,7 @@ select {
 .salad-dropdowns {
   padding-left: 40%;
   width: 90%;
-  // select:first-of-type {
-  //   width: 45%;
-  // }
-  // select:last-of-type {
-  //   width: 15%;
-  // }
+
 }
 th {
   width: 15%;

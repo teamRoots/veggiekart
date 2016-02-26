@@ -12,24 +12,27 @@
     </li>
   </ul>
 
-  <div>
-    <select name="event" placeholder="Event" ng-model="request.newEvent.event" ng-options="event.displayDate group by event.location for event in request.eventsData.events">
-      <option value="">Select Event</option>
-    </select>
-      <div class="salad-dropdowns" ng-repeat="item in request.data.saladCounterArray">
-    <select name="salad" placeholder="Salad" ng-model="request.newEvent.salads[item.id].salad" ng-options="salad.name for salad in request.saladsData.salads">
+  <div class="new-request">
+    <div class="event-picker">
+      <select name="event" placeholder="Event" ng-model="request.newEvent.event" ng-options="event.displayDate group by event.location for event in request.eventsData.events">
+        <option value="">Select Event</option>
+      </select>
+    </div>
+    <div class="salad-picker" ng-repeat="item in request.data.saladCounterArray">
+      <select name="salad" placeholder="Salad" ng-model="request.newEvent.salads[item.id].salad" ng-options="salad.name for salad in request.saladsData.salads">
       <option value="">Select Salad</option>
-    </select>
-        <label><input type="number" class="select-quantity" ng-model="request.newEvent.salads[item.id].quantity" placeholder="48" />salads</label>
-      </div>
+      </select>
+      <label><input type="number" class="select-quantity" ng-model="request.newEvent.salads[item.id].quantity" placeholder="48" />salads</label>
+    </div>
+    <div class="clearfix"></div>
   </div>
   <div>
     <p ng-repeat="salad in request.data.salads">{{salad}}</p>
   </div>
   <a class="add-salad" ng-click="request.addSalad()">+ Add Salad</a>
 
-  <div class="span10 btn-holder">
-    <button class="push-right" ng-click="request.addEvent()">+ Add Event</button>
+  <div class="btn-holder">
+    <button class="push-left" ng-click="request.addEvent()">+ Add Event</button>
     <div class="clearfix"></div>
   </div>
 
