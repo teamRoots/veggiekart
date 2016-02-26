@@ -1,5 +1,16 @@
 //Service for admin to create new requests
 app.factory('createRequestService', ['$http', '$location', function($http, $location){
+  var idHolder = '';
+  var editValue = {
+    editPage: '',
+    requestButtons: '',
+    word: ''
+  };
+  var oldData = {
+    event: [],
+    recipients:[],
+    summary: []
+  }
   var data = {
     events: [],
     salads: [],
@@ -38,7 +49,8 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
     //increments event count for next id, resets saladCounter
     eventCounter++;
     saladCounter = 1;
-  }
+    data.saladCounterArray= [{id: 0}]
+  };
 
   //adds salad to the current event
   var addSalad = function(){
@@ -74,7 +86,12 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
     console.log('sending request to server ', request);
     $http.post('/createRequest', request).then(function(response){
       console.log('response from da server is....... ', response);
-      data = {};
+      data.events = [];
+      request = {};
+      data.salads = [];
+      data.summary = [];
+      data.message = '';
+
       $location.path('/admin/dashboard');
     })
   }
@@ -89,6 +106,53 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
   var requestDetails = function(id) {
     console.log('request id:', id);
   };
+  var editRequest = function(id) {
+    editValue.editPage = true;
+    editValue.requestButtons = true;
+    editValue.word = 'Edit New';
+    idHolder = id;
+  };
+
+  var requestFalseUpdate = function(){
+    editValue.editPage = false;
+    editValue.requestButtons = false;
+    editValue.word = 'New';
+
+  };
+
+  var newEditRequest = function(){
+
+        request = {
+            recipients: data.recipients,
+            events: data.events,
+            message: data.message,
+            summary: data.summary,
+            idHolder: idHolder
+        };
+        $http.post('/createRequest/editRequest', request).then(function(response){
+          data.events = [];
+          request = {};
+          data.salads = [];
+          data.summary = [];
+          data.message = '';
+
+          $location.path('/admin/dashboard');
+        });
+
+  };
+
+  var showPreviousRequest = function(){
+    var holder = {
+      idHolder: idHolder
+    }
+    $http.post('/createRequest/findOldRequest', holder).then(function(response){
+      console.log(response);
+      oldData.event = response.data.event;
+      oldData.recipients = response.data.recipients;
+      oldData.summary = response.data.summary;
+
+    });
+  };
 
     return {
     addEvent: addEvent,
@@ -98,7 +162,13 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
     sendRequest: sendRequest,
     loadRequests: loadRequests,
     newEvent: newEvent,
+    oldData: oldData,
+    editRequest: editRequest,
+    newEditRequest: newEditRequest,
+    requestFalseUpdate: requestFalseUpdate,
     requestDetails: requestDetails,
+    showPreviousRequest: showPreviousRequest,
+    editValue: editValue,
     data: data
   };
 

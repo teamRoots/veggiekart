@@ -58,6 +58,29 @@ router.get('/getRequests', function(request, response) {
     });
 });
 
+router.post('/editRequest', function(request, response) {
+    console.log('get request route hit', request.body);
+    var id = request.body.idHolder;
+    Request.findById(id, function(err, oldRequests) {
+        if (err) {
+            response.sendStatus(401);
+        } else {
+            console.log('oldRequests', oldRequests);
+            oldRequests.recipients = request.body.recipients;
+            oldRequests.event = request.body.events;
+            oldRequests.summary = request.body.summary;
+            oldRequests.message = request.body.message;
+            oldRequests.save(function(err, saved){
+                if(err){
+                    console.log(err);
+                }else {
+                response.sendStatus(200);
+                }
+            });
+        }
+    });
+});
+
 router.get('/getRequests/:id', function(request, response) {
     var id = request.params.id;
     console.log('get request id route hit, id: ', id);
@@ -90,6 +113,24 @@ router.put('/updateRequest/:id', function(request, response) {
             });
         }
     });
+});
+
+router.post('/findOldRequest', function(request, response) {
+    var id = request.body.idHolder;
+    console.log('get request id route hit, id: ', id.idHolder);
+    if (id === ''){
+        response.send('no assigned Id');
+    }
+    else{
+    Request.findById(id, function(err, requests) {
+        if (err) {
+            console.log('asdfasd',requests)
+            response.sendStatus(401);
+        } else {
+            response.send(requests);
+        }
+    });
+    }
 });
 
 
