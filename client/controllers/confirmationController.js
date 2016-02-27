@@ -2,7 +2,9 @@ app.controller('confirmationController', ['responseService', function(responseSe
 
   this.data = responseService.data;
 
-
+  this.test = function() {
+    console.log('user.commitment:', this.data.request);
+  }
 
   responseService.loadRequest();
 
