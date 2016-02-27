@@ -1,5 +1,5 @@
 <div class="span10 container">
-  <h3 class="push-left">{{request.date}}Produce Request</h3>
+  <h3 class="push-left">Produce Request</h3>
   <div class="clearfix"></div>
   <div>
     <div class="event-split push-left">
@@ -31,10 +31,10 @@
           <td>{{veggie.amount}} {{veggie.unit}}</td>
           <td ng-repeat="user in farm.data.request.recipients">
             <input ng-change="farm.test()" ng-model="user.commitments[veggie.ingredient_name].quantity" type="number" placeholder="Qty." min="0"/>
-            <select ng-change="farm.test()" class="table-units" ng-model="user.commitments[veggie.ingredient_name].unit">
-              <option value="pounds">lbs.</option>
-              <option value="ounces">oz.</option>
-          </select>
+          <!-- <select ng-change="farm.test()" class="table-units" ng-model="user.commitments[veggie.ingredient_name].unit">
+            <option value="pounds">lbs.</option>
+            <option value="ounces">oz.</option>
+          </select> -->
         </td>
         </tr>
     </tbody>

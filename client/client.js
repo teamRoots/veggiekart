@@ -27,6 +27,11 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
       controller: 'reportsController',
       controllerAs: 'reports'
     })
+    .when('/admin/confirm', {
+      templateUrl: 'views/requestConfirmation.html',
+      controller: 'confirmationController',
+      controllerAs: 'confirm'
+    })
     .when('/admin/request', {
       templateUrl: 'views/request.html',
       controller: 'newRequestController',

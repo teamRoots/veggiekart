@@ -1,25 +1,47 @@
 <div class="span10 container">
-  <h3 class="push-left">{{request.date}}Produce Request</h3>
+  <h3 class="push-left">Produce Request</h3>
   <div class="clearfix"></div>
   <div>
     <div class="event-split push-left">
-      <ul class="farm-response" ng-repeat="event in request.events">
-        <li>{{event.name}} {{event.date}}</li>
+      <ul class="farm-response" ng-repeat="event in confirm.data.eventsInfo">
+        <li>{{event.location}} {{event.displayDate}} {{event.host}}</li>
         <li ng-repeat="salad in event.salads">{{salad.name}}</li>
       </ul>
     </div>
     <div class="event-split push-left">
       <h4 class="push-left">Message from Roots...</h4>
       <div class="clearfix"></div>
-      <p>{{request.message}}</p>
+      <p>{{farm.data.request.message}}</p>
     </div>
     <div class="clearfix"></div>
   </div>
 </div>
 
-<div class="table">
-  <!-- table goes here -->
+<div class="span10 container">
+
+  <table>
+    <thead>
+      <th>Veggie</th>
+      <th>Requested</th>
+      <th ng-repeat="user in confirm.data.request.recipients">{{user.orgName}}</th>
+    </thead>
+    <tbody>
+        <tr ng-repeat="veggie in confirm.data.request.summary">
+          <td><strong>{{veggie.ingredient_name}}</strong></td>
+          <td>{{veggie.amount}} {{veggie.unit}}</td>
+          <td>user.</td>
+          <td ng-repeat="user in confirm.data.request.recipients">
+            <input ng-change="confirm.test()" ng-model="user.commitments[veggie.ingredient_name].quantity" type="number" placeholder="Qty." min="0"/>
+          <!-- <select ng-change="farm.test()" class="table-units" ng-model="user.commitments[veggie.ingredient_name].unit">
+            <option value="pounds">lbs.</option>
+            <option value="ounces">oz.</option>
+          </select> -->
+        </td>
+        </tr>
+    </tbody>
+  </table>
 </div>
+
 
 <div class="span10">
   <textarea rows="6" cols="30" class="message" ng-model="request.data.message" placeholder="Message to the farms..."></textarea>
