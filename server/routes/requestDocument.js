@@ -56,8 +56,8 @@ router.post('/', function(request, response) {
         //parse out list of recipients to be emailed
         var emailRecipients = "";
 
-        for (var i = 0; i < saved.recipients.length; i++){
-          emailRecipients += saved.recipients[i].email + ', ';
+        for (var j = 0; j < saved.recipients.length; j++){
+          emailRecipients += saved.recipients[j].email + ', ';
         }
 
         //remove last comma and space in recipient list string
@@ -152,7 +152,7 @@ router.post('/findOldRequest', function(request, response) {
     else{
     Request.findById(id, function(err, requests) {
         if (err) {
-            console.log('asdfasd',requests)
+            console.log('asdfasd',requests);
             response.sendStatus(401);
         } else {
             response.send(requests);
