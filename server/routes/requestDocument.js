@@ -42,19 +42,36 @@ router.post('/', function(request, response) {
         response.sendStatus(200);
 
         //pass dynamic data to generate customized email in nodemailer
-        var emailSummary = "Summary of needed vegetables: " + "<br>";
+        //underline first line of summary
+        // var emailSummary = '<a style=\"text-decoration: underline\;\">' + "Summary of needed vegetables:" + '</a>' + " " + "<br>";
 
+        //bold the first line of summary
+        var emailSummary = "<b>" + "Summary of needed vegetables: " + "</b>" + "<br>";
+
+        //parse out summary of vegetables into text string for email body
         for (var i = 0; i < summary.length; i++) {
           emailSummary += summary[i].amount + " " + summary[i].unit + " of " + summary[i].ingredient_name + "<br>";
         }
 
-        var emailIntro = 'Below is a list of items that are needed for the upcoming event.  Please select the link below and confirm how much you can contribute.';
+        //parse out list of recipients to be emailed
+        var emailRecipients = "";
+
+        for (var i = 0; i < saved.recipients.length; i++){
+          emailRecipients += saved.recipients[i].email + ', ';
+        }
+
+        //remove last comma and space in recipient list string
+        emailRecipients = emailRecipients.slice(0,-2);
+
+        var emailIntro = 'Below is a list of items that are needed for the upcoming event.  Please select the link below and confirm how much your team can contribute.';
         var emailMessage = saved.message;
-        console.log('list of recipients: ', summary);
+        var emailSubject = 'New Request - Roots for the Home Team';
+        console.log('list of recipients: ', emailRecipients);
+
         // var gardenURL = 'localhost:3000/respond/' + saved._id;     // for future reference
         var gardenURL = 'localhost:3000/createRequests/getRequests/' + saved._id;
 
-        // sendEmail.sendMessage(gardenURL, emailIntro, emailSummary, emailMessage);       //sends email message
+        sendEmail.sendMessage(emailSubject, emailRecipients, gardenURL, emailIntro, emailSummary, emailMessage);       //sends email message
     });
 });
 
