@@ -3,10 +3,11 @@ app.controller('newRequestController', ['createRequestService', 'eventsService',
   this.newEvent = createRequestService.newEvent;
   this.eventsData = eventsService.data;
   this.saladsData = saladService.data;
+  this.oldData = createRequestService.oldData;
   eventsService.getEvents();
   saladService.getSalads();
   createRequestService.getRecipients();
-
+  createRequestService.showPreviousRequest();
   //makes the service functions available on scope
   this.addEvent = createRequestService.addEvent;
   this.addSalad = createRequestService.addSalad;
@@ -16,5 +17,8 @@ app.controller('newRequestController', ['createRequestService', 'eventsService',
   // this.requestComments = createRequestService.requestComments;
   this.saveRequest = createRequestService.saveRequest;
   this.sendRequest = createRequestService.sendRequest;
-  console.log('salad bring back', saladService.data);
+  this.newEditRequest = createRequestService.newEditRequest;
+  this.editValue = createRequestService.editValue;
+
+
 }]);

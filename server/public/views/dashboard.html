@@ -27,12 +27,13 @@
     <ul class="fourths">
       <li>
         <a href="/farm/response"><button class="view-btn" ng-click="dash.requestDetails(request._id)">View</button></a>
+        <a href="/admin/request"><button class="view-btn" ng-click="dash.editRequest(request._id)">Edit</button></a>
       </li>
     </ul>
     <div class="clearfix"></div>
     <hr />
   </div>
-  <a href="/admin/request"><button class="push-left">+ Add New Request</button></a>
+  <a href="/admin/request"><button class="push-left" ng-click="dash.requestFalseUpdate()">+ Add New Request</button></a>
   <div class="clearfix"></div>
 </div>
 

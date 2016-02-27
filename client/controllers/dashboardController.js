@@ -2,7 +2,10 @@ app.controller('dashboardController', ['loginService', 'eventsService', 'createR
   this.user = loginService.user;
   this.data = eventsService.data;
   this.requestDetails = responseService.loadRequest;
+  this.editRequest = createRequestService.editRequest;
   this.requests = createRequestService.data.requests;
+  this.requestFalseUpdate = createRequestService.requestFalseUpdate;
+  // createRequestService.requestFalseUpdate;
 
   eventsService.getEvents();
   createRequestService.loadRequests();

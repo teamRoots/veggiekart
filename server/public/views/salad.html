@@ -4,7 +4,7 @@
   <h3 class="push-right">New Salad</h3>
   <div class="clearfix"></div>
   New Salad: <input type="text" ng-model="newSalad.name" placeholder="Salad Name"/>
-  Ingredients: <select ng-model="newIngredient.name" ng-options="ingredient for ingredient in ingredientsDatabase.data.ingredientsDatabase">
+  Ingredients: <select ng-model="newIngredient.name" ng-options="ingredient for ingredient in ingredientsDatabase.data.ingredientsDatabase | orderBy:name">
   </select>
   Quantity: <input type="number" ng-model="newIngredient.quantity" placeholder="Qty."  />
   Unit: <select name="ingredient-unit" ng-model="newIngredient.unit">
@@ -32,7 +32,7 @@
   <button ng-click="cancelCreation(); saladCreator = false">Cancel</button>
 </div>
 <!-- This is all salad pieces displayed at the bottom -->
-<div class="span10 container" ng-repeat="salad in salads.data.salads track by $index">
+<div class="span10 container" ng-repeat="salad in salads.data.salads | orderBy: name">
   <button ng-click="deleteSalad(salad)">Delete Salad</button>
   <h3 class="push-right">{{salad.name}}</h3>
   <div class="clearfix"></div>

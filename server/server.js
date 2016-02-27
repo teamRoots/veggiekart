@@ -16,6 +16,7 @@ var index = require('./routes/index');
 var salad = require('./routes/saladDocument');
 var createRequest = require('./routes/requestDocument');
 var recipients = require('./routes/recipients');
+var respond = require('./routes/respond.js');
 var app = express();
 
 /////////////////////////////////////////////////////////
@@ -76,6 +77,7 @@ app.use('/salad', salad); // try to figure out why routing is having problems
 app.use('/authenticate', authenticate);
 app.use('/createRequest', createRequest);
 app.use('/requestRecipients', recipients);
+app.use('/respond', respond);
 app.use('/', index);
 
 //=================================================
