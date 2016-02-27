@@ -1,5 +1,5 @@
 //send email with defined transport object
-var sendMessage = function(gardenURL) {
+var sendMessage = function(emailSubject, emailRecipients, gardenURL, emailIntro, emailSummary, emailMessage) {
 
   var nodemailer = require('nodemailer');
 
@@ -16,10 +16,11 @@ var sendMessage = function(gardenURL) {
   //setup e-mail data with unicode symbols
   var mailOptions = {
     from: 'rootsftht@gmail.com',                //sender address
-    to: 'rootsftht@gmail.com',                  //list of comma separated receivers
-    subject: 'Test email',                      //subject loginService
-    text: 'This is a VeggieKart test',          //plaintext body
-    html: '<b>This is a VeggieKart test of the ' + gardenURL + '</b>'    //html body
+    // to: emailRecipients,                                                 //uncomment to use live recipients
+    to: 'rootsftht@gmail.com, srjorgens@gmail.com, scottjorgens@aol.com',      //list of comma separated recipients
+    subject: emailSubject,                      //subject loginService
+    text: '',                                   //plaintext body
+    html: '<span>' + emailIntro + '<br>' + '<br>' + emailSummary + '<br>' + '<br>' + 'http://' + gardenURL + '<br>' + '<br>' + emailMessage + '</span>'    //html body
   };
 
   transporter.sendMail(mailOptions, function(error, info){
@@ -30,5 +31,4 @@ var sendMessage = function(gardenURL) {
   });
 };
 
-// module.exports = sendMessage;
 exports.sendMessage = sendMessage;
