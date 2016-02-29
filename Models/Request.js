@@ -14,10 +14,12 @@ var RequestSchema = new Schema({
     status: String,
     recipients: [{
         name: String,
-        email: String, 
+        email: String,
         orgName: String,
         commitments: Object,
-        confirmations: Object
+        confirmations: Object,
+        toSueMessage: String,
+        fromSueMessage: String
     }],
     message: String,
     summary: Array

@@ -5,7 +5,7 @@ app.factory('loginService', ['$http', '$location', function($http, $location){
   var userLoggedIn = {loggedIn: false};
   var currentUser = {
     data: '',
-    admin: ''
+    admin: true //take this true out before deployment
   };
   var loginInput = function(){
     if (e.keyCode == 13){
