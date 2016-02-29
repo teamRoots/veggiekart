@@ -28,12 +28,12 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
   var addEvent = function(){
 
     //set salad quantity to 48 if no other value was entered
-    // for (var i = 0; i < newEvent.salads.length; i++){
-    //   console.log('salads ', newEvent.salads[i]);
-    //   if (!newEvent.salads[i].quantity) {
-    //     newEvent.salads[i].quantity = 48;
-    //   }
-    // }
+    for (var i = 0; i < newEvent.salads.length; i++){
+      console.log('salads ', newEvent.salads[i]);
+      if (!newEvent.salads[i].quantity) {
+        newEvent.salads[i].quantity = 48;
+      }
+    }
 
     //adds event to the events array
     data.events.push({
@@ -49,7 +49,6 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
     //increments event count for next id, resets saladCounter
     eventCounter++;
     saladCounter = 1;
-    data.saladCounterArray= [{id: 0}]
   };
 
   //adds salad to the current event
@@ -91,7 +90,7 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
       data.salads = [];
       data.summary = [];
       data.message = '';
-      
+
     })
   }
 
