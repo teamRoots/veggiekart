@@ -15,23 +15,27 @@
   </div>
   <div class="clearfix"></div>
   <div class="events" ng-repeat="request in dash.requests">
-    <ul class="fourths event-names">
-      <li ng-repeat="event in request.event">{{event.event.location}}<span class="display-date">{{event.event.displayDate}}</span></li>
-    </ul>
-    <ul class="fourths event-names">
-      <li ng-repeat="event in request.event">{{event.event.host}}</li>
-    </ul>
-    <ul class="fourths request-status">
-      <li>{{request.status}}</li>
-    </ul>
-    <ul class="fourths">
-      <li>
-        <a href="/admin/confirm"><button class="view-btn" ng-click="dash.requestDetails(request._id)">View</button></a>
-        <a href="/admin/request"><button class="view-btn" ng-click="dash.editRequest(request._id)">Edit</button></a>
-      </li>
-    </ul>
-    <div class="clearfix"></div>
-    <hr />
+    <a href="/admin/confirm">
+      <div ng-click="dash.requestDetails(request._id)">
+        <ul class="fourths event-names">
+          <li ng-repeat="event in request.event">{{event.event.location}}<span class="display-date">{{event.event.displayDate}}</span></li>
+        </ul>
+        <ul class="fourths event-names">
+          <li ng-repeat="event in request.event">{{event.event.host}}</li>
+        </ul>
+        <ul class="fourths request-status">
+          <li>{{request.status}}</li>
+        </ul>
+        <ul class="fourths">
+          <li>
+            <a href="/admin/confirm"><button class="view-btn" ng-click="dash.requestDetails(request._id)">View</button></a>
+            <a href="/admin/request"><button class="view-btn" ng-click="dash.editRequest(request._id)">Edit</button></a>
+          </li>
+        </ul>
+        <div class="clearfix"></div>
+        <hr />
+      </div>
+    </a>
   </div>
   <a href="/admin/request"><button class="push-left" ng-click="dash.requestFalseUpdate()">+ Add New Request</button></a>
   <div class="clearfix"></div>
