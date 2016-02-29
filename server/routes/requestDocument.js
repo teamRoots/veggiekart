@@ -68,7 +68,7 @@ router.post('/', function(request, response) {
 
         //check if message was submitted on webpage and store
         if (saved.message) {
-          var emailMessage = saved.message;
+          emailMessage = saved.message;
         }
         var emailSubject = 'New Request - Roots for the Home Team';
         console.log('list of recipients: ', emailRecipients);
