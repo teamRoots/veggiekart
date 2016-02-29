@@ -2,6 +2,7 @@
   <h3 class="push-left">Produce Request</h3>
   <div class="clearfix"></div>
   <div>
+    <a href="/admin/request"><button class="view-btn" ng-click="confirm.editRequest()">Edit Request</button></a>
     <div class="event-split push-left">
       <ul class="farm-response" ng-repeat="event in confirm.data.eventsInfo">
         <li>{{event.location}} {{event.displayDate}} {{event.host}}</li>
@@ -41,7 +42,7 @@
   </table>
 
   <label>Personalized Message Recipient</label>
-  <select name="recipient" placeholder="Event" ng-model="personalMessage" ng-options="recipient.indexOf(confirm.data.request.recipients) as recipient.name for recipient in confirm.data.request.recipients">
+  <select name="recipient" placeholder="Event" ng-model="personalMessage" ng-options="recipient as recipient.name for recipient in confirm.data.request.recipients track by recipient._id">
     <!-- <option ng-repeat="recipient in confirm.data.request.recipients" value="{{recipient.name}}">{{recipient.name}}</option> -->
   </select>
 
@@ -57,6 +58,6 @@
 <div class="span10 container">
   <h3 class="push-right">Summary</h3>
   <div class="clearfix"></div>
-  <button class="send-request" ng-click="confirm.confirmRequest()">Confirm Request</button>
+  <button class="push-right send-request" ng-click="confirm.confirmRequest()">Confirm Request</button>
   <div class="clearfix"></div>
 </div>

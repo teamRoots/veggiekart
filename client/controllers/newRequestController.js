@@ -7,7 +7,7 @@ app.controller('newRequestController', ['createRequestService', 'eventsService',
   eventsService.getEvents();
   saladService.getSalads();
   createRequestService.getRecipients();
-  createRequestService.showPreviousRequest();
+  // createRequestService.showPreviousRequest(); // was for edit opened on edit button click
   this.cancelEvent = createRequestService.cancelEvent;
   //makes the service functions available on scope
   this.addEvent = createRequestService.addEvent;

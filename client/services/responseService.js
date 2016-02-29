@@ -1,4 +1,4 @@
-app.factory('responseService', ['$http', function($http){
+app.factory('responseService', ['$http', '$location', function($http, $location){
   var data = {};
 
   var loadRequest = function(id) {
@@ -12,8 +12,6 @@ app.factory('responseService', ['$http', function($http){
         data.eventsInfo.push(events[i].event);
       }
       console.log('data.eventsInfo', data.eventsInfo);
-
-
     })
   };
 

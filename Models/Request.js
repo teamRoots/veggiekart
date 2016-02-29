@@ -17,7 +17,9 @@ var RequestSchema = new Schema({
         email: String,
         orgName: String,
         commitments: Object,
-        confirmations: Object
+        confirmations: Object,
+        toSueMessage: String,
+        fromSueMessage: String
     }],
     message: String,
     summary: Array
