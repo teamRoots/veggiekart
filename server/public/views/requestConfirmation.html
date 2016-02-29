@@ -41,7 +41,7 @@
   </table>
 
   <label>Personalized Message Recipient</label>
-  <select name="recipient" placeholder="Event" ng-model="personalMessage" ng-options="recipient as recipient.name for recipient in confirm.data.request.recipients track by recipient._id">
+  <select name="recipient" placeholder="Event" ng-model="personalMessage" ng-options="recipient.indexOf(confirm.data.request.recipients) as recipient.name for recipient in confirm.data.request.recipients">
     <!-- <option ng-repeat="recipient in confirm.data.request.recipients" value="{{recipient.name}}">{{recipient.name}}</option> -->
   </select>
 
