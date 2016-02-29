@@ -16,7 +16,7 @@
     </div>
     <div class="clearfix"></div>
   </div>
-  <div class="nav">
+  <div ng-if="user.admin" class="nav" ng-cloak>
     <a href="/admin/dashboard" class="button">Dashboard</a>
     <a href="/admin/salad" class="button">Salads</a>
     <a href="/admin/reports" class="button">Reports</a>
