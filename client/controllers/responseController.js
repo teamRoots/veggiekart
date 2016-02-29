@@ -4,7 +4,7 @@ app.controller('responseController', ['loginService', 'responseService', functio
   // this.request = responseService.data.requestToDisplay;
   console.log('this.data:', this.data.event);
 
-  var id = loginService.userRespondId;
+  var id = loginService.userLoggedIn.respondId;
   console.log('id is ', id);
 
   responseService.loadRequest(id);
