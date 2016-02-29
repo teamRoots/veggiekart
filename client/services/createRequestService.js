@@ -49,7 +49,6 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
     //increments event count for next id, resets saladCounter
     eventCounter++;
     saladCounter = 1;
-    data.saladCounterArray= [{id: 0}]
   };
 
   //adds salad to the current event
@@ -92,7 +91,6 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
       data.summary = [];
       data.message = '';
 
-      $location.path('/admin/dashboard');
     })
   }
 
@@ -154,6 +152,16 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
     });
   };
 
+  var cancelEvent = function(){
+    data.events = [];
+    request = {};
+    data.salads = [];
+    data.summary = [];
+    data.message = '';
+
+    $location.path('/admin/dashboard');
+  };
+
     return {
     addEvent: addEvent,
     addSalad: addSalad,
@@ -169,6 +177,7 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
     requestDetails: requestDetails,
     showPreviousRequest: showPreviousRequest,
     editValue: editValue,
+    cancelEvent: cancelEvent,
     data: data
   };
 
