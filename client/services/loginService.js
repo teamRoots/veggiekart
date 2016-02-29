@@ -27,6 +27,8 @@ app.factory('loginService', ['$http', '$location', function($http, $location){
       console.log('userrrrrrr', response.data.user.isAdmin);
       currentUser.admin = response.data.user.isAdmin;
 
+      console.log('response.data.id is ', id);
+      
       user = response.data.user;
       if (response.data.id) {
         userRespondId = response.data.id;
