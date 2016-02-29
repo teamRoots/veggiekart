@@ -64,7 +64,12 @@ router.post('/', function(request, response) {
         emailRecipients = emailRecipients.slice(0,-2);
 
         var emailIntro = 'Below is a list of items that are needed for the upcoming event.  Please select the link below and confirm how much your team can contribute.';
-        var emailMessage = saved.message;
+        var emailMessage = "";
+
+        //check if message was submitted on webpage and store
+        if (saved.message) {
+          emailMessage = saved.message;
+        }
         var emailSubject = 'New Request - Roots for the Home Team';
         console.log('list of recipients: ', emailRecipients);
 
