@@ -365,6 +365,9 @@ th {
 input, select {
   width: 40%;
 }
+table {
+  overflow-x: scroll;
+}
 .table-units {
   font-size: 12px;
 }

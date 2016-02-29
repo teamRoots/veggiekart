@@ -64,7 +64,12 @@ router.post('/', function(request, response) {
         emailRecipients = emailRecipients.slice(0,-2);
 
         var emailIntro = 'Below is a list of items that are needed for the upcoming event.  Please select the link below and confirm how much your team can contribute.';
-        var emailMessage = saved.message;
+        var emailMessage = "";
+
+        //check if message was submitted on webpage and store
+        if (saved.message) {
+          emailMessage = saved.message;
+        }
         var emailSubject = 'New Request - Roots for the Home Team';
         console.log('list of recipients: ', emailRecipients);
 
@@ -122,6 +127,28 @@ router.get('/getRequests/:id', function(request, response) {
 });
 
 router.put('/updateRequest/:id', function(request, response) {
+    var id = request.params.id;
+    console.log('id sent to server:', id);
+    console.log('request sent to server:', request.body);
+    var updatedObject = request.body;
+
+    Request.findById(id, function(error, objectToUpdate) {
+        if(error) {
+            response.sendStatus(401);
+        } else {
+            objectToUpdate.recipients = updatedObject.recipients;
+            objectToUpdate.save(function(error) {
+                if(error) {
+                    response.sendStatus(401);
+                } else {
+                    response.send(objectToUpdate);
+                }
+            });
+        }
+    });
+});
+
+router.put('/confirmRequest/:id', function(request, response) {
     var id = request.params.id;
     console.log('id sent to server:', id);
     console.log('request sent to server:', request.body);
