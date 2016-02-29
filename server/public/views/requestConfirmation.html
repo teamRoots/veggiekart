@@ -39,10 +39,24 @@
         </tr>
     </tbody>
   </table>
+
+  <label>Personalized Message Recipient</label>
+  <select name="recipient" placeholder="Event" ng-model="personalMessage" ng-options="recipient as recipient.name for recipient in confirm.data.request.recipients track by recipient._id">
+    <!-- <option ng-repeat="recipient in confirm.data.request.recipients" value="{{recipient.name}}">{{recipient.name}}</option> -->
+  </select>
+
+  {{personalMessage}}
+
+  <div class="message-box">
+    <textarea rows="6" cols="30" class="message" ng-model="personalMessage.message" placeholder="Message to {{personalMessage.name}}..."></textarea>
+    <button class="send-request" ng-click="confirm.addMessage()">Add Message</button>
+    <div class="clearfix"></div>
+  </div>
 </div>
 
-
-<div class="span10">
-  <textarea rows="6" cols="30" class="message" ng-model="request.data.message" placeholder="Message to the farms..."></textarea>
+<div class="span10 container">
+  <h3 class="push-right">Summary</h3>
+  <div class="clearfix"></div>
   <button class="send-request" ng-click="confirm.confirmRequest()">Confirm Request</button>
+  <div class="clearfix"></div>
 </div>

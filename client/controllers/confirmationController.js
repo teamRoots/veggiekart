@@ -6,6 +6,10 @@ app.controller('confirmationController', ['responseService', function(responseSe
     console.log('user.commitment:', this.data.request);
   }
 
+  this.addMessage = function() {
+    console.log('message:', this.data.request)
+  }
+
   this.confirmRequest = responseService.confirmRequest;
 
   responseService.loadRequest();
