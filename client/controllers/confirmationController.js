@@ -1,4 +1,4 @@
-app.controller('confirmationController', ['responseService', function(responseService) {
+app.controller('confirmationController', ['responseService', 'createRequestService', function(responseService, createRequestService) {
 
   this.data = responseService.data;
 
@@ -10,8 +10,11 @@ app.controller('confirmationController', ['responseService', function(responseSe
     console.log('message:', this.data.request)
   }
 
+  this.editRequest = createRequestService.editRequest;
+
   this.confirmRequest = responseService.confirmRequest;
 
+  console.log('createRequestService says...', createRequestService.data.holdId);
   responseService.loadRequest();
 
 }]);
