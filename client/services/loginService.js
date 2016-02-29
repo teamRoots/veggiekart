@@ -1,6 +1,7 @@
 //Service to handle logins
 app.factory('loginService', ['$http', '$location', function($http, $location){
   var user = {};
+  var userRespondId;
   var userLoggedIn = {loggedIn: false};
   var currentUser = {
     data: ''
@@ -22,17 +23,20 @@ app.factory('loginService', ['$http', '$location', function($http, $location){
     // ++++++++++++++++++++++++++++++++++++++++++
 
     $http.post('/authenticate/login', this.user).then(function(response){
-      console.log('login post response is ', response.data.firstName);
+      user = response.data.user;
+      if (response.data.id) {
+        userRespondId = response.data.id;
+      }
 
-      currentUser.data = response.data.firstName;
+      currentUser.data = response.data.user.firstName;
       //redirects to admin page if user is admin
-      if(response.data.isAdmin == true){
+      if(user.isAdmin == true){
         userLoggedIn.loggedIn = true;
         console.log('user is an admin!');
         $location.path('/admin/dashboard');
 
       //redirects to user page if user is not admin
-      } else if(response.data.isAdmin == false) {
+      } else if (user.isAdmin == false) {
         userLoggedIn.loggedIn = true;
         console.log('user is NOT an admin!');
         $location.path('/user');
@@ -53,6 +57,7 @@ app.factory('loginService', ['$http', '$location', function($http, $location){
   return {
     login: login,
     userLoggedIn: userLoggedIn,
+    userRespondId: userRespondId,
     currentUser: currentUser,
     user: user
   }

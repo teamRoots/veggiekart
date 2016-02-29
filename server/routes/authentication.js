@@ -9,8 +9,12 @@ var router = express.Router();
 //All get routes to direct location when authenticating
 
 router.get('/success', function(request, response){
-    console.log('success request', request.user);
-    response.send(request.user);
+    var id = request.session.respond;
+    request.holder = {
+      user: request.user,
+      id: id
+    }
+    response.send(request.holder);
 });
 
 router.get('/failure', function(request, response){

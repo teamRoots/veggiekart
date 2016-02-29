@@ -6,6 +6,8 @@ router.get('/:id', function(request, response){
 
   request.session.respond = id;
 
+  console.log('the session.respond is ', id);
+
   response.redirect('/');
 });
 
