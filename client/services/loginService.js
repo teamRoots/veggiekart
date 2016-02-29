@@ -4,7 +4,8 @@ app.factory('loginService', ['$http', '$location', function($http, $location){
   var userRespondId;
   var userLoggedIn = {loggedIn: false};
   var currentUser = {
-    data: ''
+    data: '',
+    admin: ''
   };
   var loginInput = function(){
     if (e.keyCode == 13){
@@ -23,6 +24,9 @@ app.factory('loginService', ['$http', '$location', function($http, $location){
     // ++++++++++++++++++++++++++++++++++++++++++
 
     $http.post('/authenticate/login', this.user).then(function(response){
+      console.log('userrrrrrr', response.data.user.isAdmin);
+      currentUser.admin = response.data.user.isAdmin;
+
       user = response.data.user;
       if (response.data.id) {
         userRespondId = response.data.id;
