@@ -43,17 +43,17 @@ app.factory('loginService', ['$http', '$location', function($http, $location){
       } else if (user.isAdmin == false) {
         userLoggedIn.loggedIn = true;
         console.log('user is NOT an admin!');
-        $location.path('/user');
+        $location.path('/farm/response');
 
       //displays failure message if login failed
       }
       // comment out temporarily for testing purposes
-      // else
-      //  {
-      //   console.log('login failed', response.data);
-      //   $location.path('/');
-      //   alert('Login failed. Please try again.');
-      // }
+      else
+       {
+        console.log('login failed', response.data);
+        $location.path('/');
+        alert('Login failed. Please try again.');
+      }
     });
   };
 
