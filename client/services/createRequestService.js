@@ -106,11 +106,12 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
   var requestDetails = function(id) {
     console.log('request id:', id);
   };
-  var editRequest = function(id) {
+  var editRequest = function() {
+    console.log('holdId', data.holdId);
     editValue.editPage = true;
     editValue.requestButtons = true;
     editValue.word = 'Edit New';
-    idHolder = id;
+    idHolder = data.holdId;
   };
 
   var requestFalseUpdate = function(){
@@ -127,7 +128,7 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
             events: data.events,
             message: data.message,
             summary: data.summary,
-            idHolder: idHolder
+            idHolder: data.holdId
         };
         $http.post('/createRequest/editRequest', request).then(function(response){
           data.events = [];
@@ -143,7 +144,7 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
 
   var showPreviousRequest = function(){
     var holder = {
-      idHolder: idHolder
+      idHolder: data.holdId
     }
     $http.post('/createRequest/findOldRequest', holder).then(function(response){
       console.log(response);

@@ -262,6 +262,9 @@ select {
 }
 .btn-holder {
   margin: 20px auto;
+  button {
+    margin: 0 0 0 2%;
+  }
 }
 .message-box {
   margin: 0 auto 20px auto;
@@ -284,8 +287,8 @@ select {
 }
 .send-request {
   height: 80px;
-  width: 24%;
-  margin: 10px 4%;
+  width: 44%;
+  margin: 10px 0;
 }
 .new-event {
   ul {
