@@ -148,6 +148,28 @@ router.put('/updateRequest/:id', function(request, response) {
     });
 });
 
+router.put('/confirmRequest/:id', function(request, response) {
+    var id = request.params.id;
+    console.log('id sent to server:', id);
+    console.log('request sent to server:', request.body);
+    var updatedObject = request.body;
+
+    Request.findById(id, function(error, objectToUpdate) {
+        if(error) {
+            response.sendStatus(401);
+        } else {
+            objectToUpdate.recipients = updatedObject.recipients;
+            objectToUpdate.save(function(error) {
+                if(error) {
+                    response.sendStatus(401);
+                } else {
+                    response.send(objectToUpdate);
+                }
+            });
+        }
+    });
+});
+
 router.post('/findOldRequest', function(request, response) {
     var id = request.body.idHolder;
     console.log('get request id route hit, id: ', id.idHolder);

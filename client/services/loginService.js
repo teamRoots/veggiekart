@@ -17,8 +17,8 @@ app.factory('loginService', ['$http', '$location', function($http, $location){
     // For easy use uncomment
     // ++++++++++++++++++++++++++++++++++++++++++
     // ==========================================
-      // userLoggedIn.loggedIn = true;
-      // $location.path('/admin/dashboard');
+      userLoggedIn.loggedIn = true;
+      $location.path('/admin/dashboard');
     // ==========================================
     // ++++++++++++++++++++++++++++++++++++++++++
 
@@ -44,12 +44,12 @@ app.factory('loginService', ['$http', '$location', function($http, $location){
       //displays failure message if login failed
       }
       // comment out temporarily for testing purposes
-      else
-       {
-        console.log('login failed', response.data);
-        $location.path('/');
-        alert('Login failed. Please try again.');
-      }
+      // else
+      //  {
+      //   console.log('login failed', response.data);
+      //   $location.path('/');
+      //   alert('Login failed. Please try again.');
+      // }
     });
   };
 
