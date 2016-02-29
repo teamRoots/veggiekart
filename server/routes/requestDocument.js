@@ -168,6 +168,15 @@ router.put('/confirmRequest/:id', function(request, response) {
             });
         }
     });
+    //send summary email to Sue and individual emails to growers
+
+    //build emailSummary
+    var emailSummary = "<b>" + "Summary of required items: " + "</b>" + "<br>";
+    console.log('Updated object: ', updatedObject);
+    for (var i = 0; i < updatedObject.summary.length; i++){
+      emailSummary += updatedObject.summary[i].amount + " " + updatedObject.summary[i].unit + " of " + updatedObject.summary[i].ingredient_name + "<br>";
+    }
+    console.log(emailSummary);
 });
 
 router.post('/findOldRequest', function(request, response) {
