@@ -90,6 +90,8 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
       data.salads = [];
       data.summary = [];
       data.message = '';
+      $location.path('/admin/dashboard');
+
 
     })
   }
