@@ -8,6 +8,7 @@ app.controller('newRequestController', ['createRequestService', 'eventsService',
   saladService.getSalads();
   createRequestService.getRecipients();
   createRequestService.showPreviousRequest();
+  this.cancelEvent = createRequestService.cancelEvent;
   //makes the service functions available on scope
   this.addEvent = createRequestService.addEvent;
   this.addSalad = createRequestService.addSalad;
