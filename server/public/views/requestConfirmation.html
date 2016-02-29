@@ -29,9 +29,8 @@
         <tr ng-repeat="veggie in confirm.data.request.summary">
           <td><strong>{{veggie.ingredient_name}}</strong></td>
           <td>{{veggie.amount}} {{veggie.unit}}</td>
-          <td>user.</td>
           <td ng-repeat="user in confirm.data.request.recipients">
-            <input ng-change="confirm.test()" ng-model="user.commitments[veggie.ingredient_name].quantity" type="number" placeholder="Qty." min="0"/>
+            <input ng-change="confirm.test()" ng-model="user.confirmations[veggie.ingredient_name].quantity" type="number" placeholder="Qty." min="0"/> {{veggie.unit}}
           <!-- <select ng-change="farm.test()" class="table-units" ng-model="user.commitments[veggie.ingredient_name].unit">
             <option value="pounds">lbs.</option>
             <option value="ounces">oz.</option>
@@ -45,5 +44,5 @@
 
 <div class="span10">
   <textarea rows="6" cols="30" class="message" ng-model="request.data.message" placeholder="Message to the farms..."></textarea>
-  <button class="send-request" ng-click="request.saveRequest()">Confirm Request</button>
+  <button class="send-request" ng-click="confirm.confirmRequest()">Confirm Request</button>
 </div>

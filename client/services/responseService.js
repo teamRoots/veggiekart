@@ -25,9 +25,18 @@ app.factory('responseService', ['$http', function($http){
       console.log(response);
     })
   }
+
+  var confirmRequest = function(){
+    console.log('response to send:', data.request._id);
+    var id = data.request._id;
+    $http.put('/createRequest/confirmRequest/' + id, data.request).then(function(response) {
+      console.log(response);
+    })
+  }
   return {
     loadRequest: loadRequest,
     sendResponse: sendResponse,
+    confirmRequest: confirmRequest,
     data: data
   }
 
