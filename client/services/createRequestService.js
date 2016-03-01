@@ -45,6 +45,7 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
 
     //calculates the summary object
     data.summary = vCalc(data.events);
+    console.log('data.summary after vCalc is ', data.summary);
 
     //increments event count for next id, resets saladCounter
     eventCounter++;
@@ -68,6 +69,7 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
   //sends the request out to receipients on confirmation dialog click
   var sendRequest = function(){
     data.confirmMessage = 'Are you sure? ';
+    data.dataValidated = true;
 
     console.log('data.events is ', data.events);
     console.log('data.recipients is ', data.recipients);
@@ -75,6 +77,7 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
     //checks if any events have been added
     if (!data.events || data.events.length == 0) {
       data.confirmMessage += 'You didn\'t add any events.';
+      data.dataValidated = false;
     }
 
     //checks if any recipients were added
@@ -88,7 +91,8 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
 
     if (!anyRecipients) {
       console.log('no recipients');
-      data.confirmMessage += 'You did\'t add any recipients.';
+      data.confirmMessage += 'You didn\'t add any recipients.';
+      data.dataValidated = false;
     }
 
     //displays dialog modal
@@ -108,6 +112,7 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
     }
     console.log('sending request to server ', request);
     $http.post('/createRequest', request).then(function(response){
+      data.confirmIcon = false;
       console.log('response from da server is....... ', response);
       data.events = [];
       request = {};
