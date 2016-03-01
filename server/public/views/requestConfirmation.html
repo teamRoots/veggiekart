@@ -12,7 +12,7 @@
     <div class="event-split push-left">
       <h4 class="push-left">Message from Roots...</h4>
       <div class="clearfix"></div>
-      <p>{{farm.data.request.message}}</p>
+      <p>{{confirm.data.request.message}}</p>
     </div>
     <div class="clearfix"></div>
   </div>
@@ -42,14 +42,14 @@
   </table>
 
   <label>Personalized Message Recipient</label>
-  <select name="recipient" placeholder="Event" ng-model="personalMessage" ng-options="recipient as recipient.name for recipient in confirm.data.request.recipients track by recipient._id">
+  <select name="recipient" placeholder="Event" ng-model="messageRecipient" ng-options="recipient as recipient.name for recipient in confirm.data.request.recipients track by $index">
     <!-- <option ng-repeat="recipient in confirm.data.request.recipients" value="{{recipient.name}}">{{recipient.name}}</option> -->
   </select>
 
-  {{personalMessage}}
+  {{messageRecipient}}
 
   <div class="message-box">
-    <textarea rows="6" cols="30" class="message" ng-model="personalMessage.message" placeholder="Message to {{personalMessage.name}}..."></textarea>
+    <textarea rows="6" cols="30" class="message" ng-model="confirm.data.request.recipients[$index].message" placeholder="Message to {{personalMessage.name}}..."></textarea>
     <button class="send-request" ng-click="confirm.addMessage()">Add Message</button>
     <div class="clearfix"></div>
   </div>
