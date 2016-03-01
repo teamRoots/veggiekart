@@ -1,63 +1,57 @@
 <div class="span10 container">
-  <h3 class="push-left">Produce Request</h3>
-  <div class="clearfix"></div>
-  <div>
-    <a href="/admin/request"><button class="view-btn" ng-click="confirm.editRequest()">Edit Request</button></a>
-    <div class="event-split push-left">
-      <ul class="farm-response" ng-repeat="event in confirm.data.eventsInfo">
-        <li>{{event.location}} {{event.displayDate}} {{event.host}}</li>
-        <li ng-repeat="salad in event.salads">{{salad.name}}</li>
-      </ul>
-    </div>
-    <div class="event-split push-left">
-      <h4 class="push-left">Message from Roots...</h4>
+  <div class="sub-container">
+    <h3 class="push-left">Produce Request</h3>
+    <div class="clearfix"></div>
+    <div>
+      <a href="/admin/request"><button class="view-btn" ng-click="confirm.editRequest()">Edit Request</button></a>
+      <div class="event-split push-left">
+        <ul class="farm-response" ng-repeat="event in confirm.data.eventsInfo">
+          <li>{{event.location}} {{event.displayDate}} {{event.host}}</li>
+          <li ng-repeat="salad in event.salads">{{salad.name}}</li>
+        </ul>
+      </div>
+      <div class="event-split push-left">
+        <h4 class="push-left">Message from Roots...</h4>
+        <div class="clearfix"></div>
+        <p>{{confirm.data.request.message}}</p>
+      </div>
       <div class="clearfix"></div>
-      <p>{{confirm.data.request.message}}</p>
     </div>
+  </div>
+  <div class="sub-container">
+    <table>
+      <thead>
+        <th>Veggie</th>
+        <th>Requested</th>
+        <th ng-repeat="user in confirm.data.request.recipients">{{user.orgName}}</th>
+      </thead>
+      <tbody>
+          <tr ng-repeat="veggie in confirm.data.request.summary">
+            <td><strong>{{veggie.ingredient_name}}</strong></td>
+            <td>{{veggie.amount}} {{veggie.unit}}</td>
+            <td ng-repeat="user in confirm.data.request.recipients">
+              <input ng-change="confirm.test()" ng-model="user.confirmations[veggie.ingredient_name].quantity" type="number" placeholder="Qty." min="0"/> {{veggie.unit}}
+          </td>
+          </tr>
+      </tbody>
+    </table>
+    <label>Personalized Message Recipient</label>
+    <select name="recipient" placeholder="Event" ng-model="messageRecipient" ng-options="recipient as recipient.name for recipient in confirm.data.request.recipients track by $index">
+      <!-- <option ng-repeat="recipient in confirm.data.request.recipients" value="{{recipient.name}}">{{recipient.name}}</option> -->
+    </select>
+
+    {{messageRecipient}}
+
+    <div class="message-box">
+      <textarea rows="6" cols="30" class="message" ng-model="confirm.data.request.recipients[$index].message" placeholder="Message to {{personalMessage.name}}..."></textarea>
+      <button class="send-request" ng-click="confirm.addMessage()">Add Message</button>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <div class="sub-container">
+    <h3 class="push-right">Summary</h3>
+    <div class="clearfix"></div>
+    <button class="push-right send-request" ng-click="confirm.confirmRequest()">Confirm Request</button>
     <div class="clearfix"></div>
   </div>
-</div>
-
-<div class="span10 container">
-
-  <table>
-    <thead>
-      <th>Veggie</th>
-      <th>Requested</th>
-      <th ng-repeat="user in confirm.data.request.recipients">{{user.orgName}}</th>
-    </thead>
-    <tbody>
-        <tr ng-repeat="veggie in confirm.data.request.summary">
-          <td><strong>{{veggie.ingredient_name}}</strong></td>
-          <td>{{veggie.amount}} {{veggie.unit}}</td>
-          <td ng-repeat="user in confirm.data.request.recipients">
-            <input ng-change="confirm.test()" ng-model="user.confirmations[veggie.ingredient_name].quantity" type="number" placeholder="Qty." min="0"/> {{veggie.unit}}
-          <!-- <select ng-change="farm.test()" class="table-units" ng-model="user.commitments[veggie.ingredient_name].unit">
-            <option value="pounds">lbs.</option>
-            <option value="ounces">oz.</option>
-          </select> -->
-        </td>
-        </tr>
-    </tbody>
-  </table>
-
-  <label>Personalized Message Recipient</label>
-  <select name="recipient" placeholder="Event" ng-model="messageRecipient" ng-options="recipient as recipient.name for recipient in confirm.data.request.recipients track by $index">
-    <!-- <option ng-repeat="recipient in confirm.data.request.recipients" value="{{recipient.name}}">{{recipient.name}}</option> -->
-  </select>
-
-  {{messageRecipient}}
-
-  <div class="message-box">
-    <textarea rows="6" cols="30" class="message" ng-model="confirm.data.request.recipients[$index].message" placeholder="Message to {{personalMessage.name}}..."></textarea>
-    <button class="send-request" ng-click="confirm.addMessage()">Add Message</button>
-    <div class="clearfix"></div>
-  </div>
-</div>
-
-<div class="span10 container">
-  <h3 class="push-right">Summary</h3>
-  <div class="clearfix"></div>
-  <button class="push-right send-request" ng-click="confirm.confirmRequest()">Confirm Request</button>
-  <div class="clearfix"></div>
 </div>

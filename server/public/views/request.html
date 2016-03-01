@@ -1,92 +1,88 @@
 <div ng-if="request.editValue.editPage" class="span10 container new-event">
-  <h3 class="push-right">Current Request</h3>
-  <div class="clearfix"></div>
-  <h4>Current Events and Salads</h4>
-  <ul class="events-display" ng-repeat="item in request.oldData.event">
-    <li>{{item.event.location}} {{item.event.date | date:'MM/dd/yyyy'}}</li>
-    <li>
-      <p ng-repeat="salad in item.salads">{{salad.quantity}} {{salad.salad.name}}s</p>
-    </li>
-  </ul>
-  <h4>Current Recipients</h4>
-  <ul class="recipients-list">
-    <li class="summary" ng-repeat="recipient in request.oldData.recipients">{{recipient.name}}, {{recipient.orgName}}</li>
-  </ul>
-  <h4>Current Ingredients Summary</h4>
-  <ul>
-    <li class="thirds" ng-repeat="ingredient in request.oldData.summary">{{ingredient.amount}} {{ingredient.unit}} of {{ingredient.ingredient_name}}</li>
-  </ul>
-
-
-
-</div>
-<div class="span10 container new-event">
-  <h3 class="push-right">{{request.editValue.word}} Request</h3>
-  <div class="clearfix"></div>
-  <ul class="header">
-    <li><h4>Event</h4></li>
-    <li><h4>Salads</h4></li>
-  </ul>
-  <ul class="events-display" ng-repeat="item in request.data.events">
-    <li>{{item.event.location}} {{item.event.date | date:'MM/dd/yyyy'}}</li>
-    <li>
-      <p ng-repeat="salad in item.salads">{{salad.quantity}} {{salad.salad.name}}s</p>
-    </li>
-  </ul>
-
-  <div class="new-request">
-    <div class="event-picker">
-      <select name="event" placeholder="Event" ng-model="request.newEvent.event" ng-options="event.displayDate group by event.location for event in request.eventsData.events">
-        <option value="">Select Event</option>
-      </select>
-    </div>
-    <div class="salad-picker" ng-repeat="item in request.data.saladCounterArray">
-      <select name="salad" placeholder="Salad" ng-model="request.newEvent.salads[item.id].salad" ng-options="salad.name for salad in request.saladsData.salads | orderBy: name">
-      <option value="">Select Salad</option>
-      </select>
-      <label><input type="number" class="select-quantity" ng-model="request.newEvent.salads[item.id].quantity" placeholder="48" />salads</label>
-    </div>
+  <div class="sub-container">
+    <h3 class="push-right">Current Request</h3>
     <div class="clearfix"></div>
-  </div>
-  <div>
-    <p ng-repeat="salad in request.data.salads">{{salad}}</p>
-  </div>
-  <a class="add-salad" ng-click="request.addSalad()">+ Add Salad</a>
-
-  <div class="btn-holder">
-    <button class="push-right" ng-click="request.addEvent()">+ Add Event</button>
-    <button class="push-right" ng-click="request.cancelEvent()">Cancel</button>
-    <div class="clearfix"></div>
-  </div>
-
-</div>
-
-<div class="span10 container">
-  <h3 class="push-right">Recipients</h3>
-  <div class="clearfix"></div>
-  <div>
-    <ul class="recipients-list">
-      <li class="summary" ng-repeat="recipient in request.data.recipients">
-        <label><input type="checkbox" ng-model="recipient.checked" />{{recipient.name}}, {{recipient.orgName}}</label>
+    <h4>Current Events and Salads</h4>
+    <ul class="events-display" ng-repeat="item in request.oldData.event">
+      <li>{{item.event.location}} {{item.event.date | date:'MM/dd/yyyy'}}</li>
+      <li>
+        <p ng-repeat="salad in item.salads">{{salad.quantity}} {{salad.salad.name}}s</p>
       </li>
     </ul>
-    <div class="clearfix"></div>
   </div>
-</div>
+  <div class="sub-container">
+    <h4>Current Recipients</h4>
+    <ul class="recipients-list">
+      <li class="summary" ng-repeat="recipient in request.oldData.recipients">{{recipient.name}}, {{recipient.orgName}}</li>
+    </ul>
+    <h4>Current Ingredients Summary</h4>
+    <ul>
+      <li class="thirds" ng-repeat="ingredient in request.oldData.summary">{{ingredient.amount}} {{ingredient.unit}} of {{ingredient.ingredient_name}}</li>
+    </ul>
+  </div>
 
-<div class="span10 container">
-  <h3 class="push-right">Summary</h3>
-  <div class="clearfix"></div>
-
-  <ul>
-    <li class="thirds" ng-repeat="ingredient in request.data.summary">{{ingredient.amount}} {{ingredient.unit}} of {{ingredient.ingredient_name}}</li>
-  </ul>
-
-  <div class="clearfix"></div>
-  <div class="message-box">
-    <textarea rows="6" cols="30" class="message" ng-model="request.data.message" placeholder="Message to the farms..."></textarea>
-    <button ng-hide="request.editValue.requestButtons" class="send-request" ng-click="request.sendRequest()">Send Request</button>
-    <button ng-show="request.editValue.requestButtons" class="send-request" ng-click="request.newEditRequest()">Finish Editing Request</button>
+  <div class="sub-container">
+    <h3 class="push-right">{{request.editValue.word}} Request</h3>
     <div class="clearfix"></div>
+    <ul class="header">
+      <li><h4>Event</h4></li>
+      <li><h4>Salads</h4></li>
+    </ul>
+    <ul class="events-display" ng-repeat="item in request.data.events">
+      <li>{{item.event.location}} {{item.event.date | date:'MM/dd/yyyy'}}</li>
+      <li>
+        <p ng-repeat="salad in item.salads">{{salad.quantity}} {{salad.salad.name}}s</p>
+      </li>
+    </ul>
+
+    <div class="new-request">
+      <div class="event-picker">
+        <select name="event" placeholder="Event" ng-model="request.newEvent.event" ng-options="event.displayDate group by event.location for event in request.eventsData.events">
+          <option value="">Select Event</option>
+        </select>
+      </div>
+      <div class="salad-picker" ng-repeat="item in request.data.saladCounterArray">
+        <select name="salad" placeholder="Salad" ng-model="request.newEvent.salads[item.id].salad" ng-options="salad.name for salad in request.saladsData.salads | orderBy: name">
+        <option value="">Select Salad</option>
+        </select>
+        <label><input type="number" class="select-quantity" ng-model="request.newEvent.salads[item.id].quantity" placeholder="48" />salads</label>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div>
+      <p ng-repeat="salad in request.data.salads">{{salad}}</p>
+    </div>
+    <a class="add-salad" ng-click="request.addSalad()">+ Add Salad</a>
+    <div class="btn-holder">
+      <button class="push-right" ng-click="request.addEvent()">+ Add Event</button>
+      <button class="push-right" ng-click="request.cancelEvent()">Cancel</button>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <div class="sub-container">
+    <h3 class="push-right">Recipients</h3>
+    <div class="clearfix"></div>
+    <div>
+      <ul class="recipients-list">
+        <li class="summary" ng-repeat="recipient in request.data.recipients">
+          <label><input type="checkbox" ng-model="recipient.checked" />{{recipient.name}}, {{recipient.orgName}}</label>
+        </li>
+      </ul>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <div class="sub-container">
+    <h3 class="push-right">Summary</h3>
+    <div class="clearfix"></div>
+    <ul>
+      <li class="thirds" ng-repeat="ingredient in request.data.summary">{{ingredient.amount}} {{ingredient.unit}} of {{ingredient.ingredient_name}}</li>
+    </ul>
+    <div class="clearfix"></div>
+    <div class="message-box">
+      <textarea rows="6" cols="30" class="message" ng-model="request.data.message" placeholder="Message to the farms..."></textarea>
+      <button ng-hide="request.editValue.requestButtons" class="send-request" ng-click="request.sendRequest()">Send Request</button>
+      <button ng-show="request.editValue.requestButtons" class="send-request" ng-click="request.newEditRequest()">Finish Editing Request</button>
+      <div class="clearfix"></div>
+    </div>
   </div>
 </div>
