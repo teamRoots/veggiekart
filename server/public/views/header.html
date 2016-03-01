@@ -1,6 +1,6 @@
-<div class="span10 banner">
+<!-- <div class="span10 banner"> -->
   <!-- Will add ng-show="userLoggedIn" to display the banner and nav only when logged in -->
-  <div class="header">
+  <div class="span10 header">
     <div class="title-casing">
       <div>
         <img class="logo" src="views/images/RootsLogo.png" />
@@ -10,16 +10,16 @@
       </div>
     </div>
     <div class="clearfix"></div>
-    <div class="logout">
+    <div class="logout push-right">
       <p>Welcome, {{user.data}}!</p>
       <a href="/" ng-click="logout(); userLoggedIn.loggedIn = false">logout</a>
     </div>
     <div class="clearfix"></div>
   </div>
-  <div ng-if="user.admin" class="nav" ng-cloak>
+  <div ng-if="user.admin" class="span10 nav" ng-cloak>
     <a href="/admin/dashboard" class="button">Dashboard</a>
     <a href="/admin/salad" class="button">Salads</a>
     <a href="/admin/reports" class="button">Reports</a>
   </div>
   <div class="clearfix"></div>
-</div>
+<!-- </div> -->
