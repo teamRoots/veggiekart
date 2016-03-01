@@ -4,8 +4,8 @@
   </div>
   <div class="input">
     <input type="text" placeholder="username" ng-model="login.user.username" /><br/>
-    <input type="password" placeholder="password" ng-model="login.user.password"/><br/>
+    <input type="password" placeholder="password" ng-model="login.user.password" ng-keyup="$event.keyCode == 13 && login.login()"/><br/>
     <div class="clearfix"></div>
   </div>
-  <button ng-click="login.login()">Log In</button>
+  <button ng-click="login.login()">Log In<i class="icon-signin icon-large pull-right"></i></button>
 </div>

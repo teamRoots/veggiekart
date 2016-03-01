@@ -20,8 +20,8 @@ app.factory('loginService', ['$http', '$location', function($http, $location){
     // For easy use uncomment
     // ++++++++++++++++++++++++++++++++++++++++++
     // ==========================================
-    //   userLoggedIn.loggedIn = true;
-    //   $location.path('/admin/dashboard');
+      // userLoggedIn.loggedIn = true;
+      // $location.path('/admin/dashboard');
     // // ==========================================
     // ++++++++++++++++++++++++++++++++++++++++++
 

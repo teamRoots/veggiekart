@@ -1,46 +1,47 @@
-<button class="create-salad-btn" ng-hide="saladCreator" ng-click="saladCreator = true">Create New Salad</button>
 
-<div ng-show="saladCreator" class="span10 container">
-  <h3 class="push-right">New Salad</h3>
-  <div class="clearfix"></div>
-  New Salad: <input type="text" ng-model="newSalad.name" placeholder="Salad Name"/>
-  Ingredients: <select ng-model="newIngredient.name" ng-options="ingredient for ingredient in ingredientsDatabase.data.ingredientsDatabase | orderBy:name">
-  </select>
-  Quantity: <input type="number" ng-model="newIngredient.quantity" placeholder="Qty."  />
-  Unit: <select name="ingredient-unit" ng-model="newIngredient.unit">
-    <option value="lbs.">lbs.</option>
-    <option value="oz.">oz.</option>
-  </select>
-  <button ng-click="pushIngredient(newIngredient); ingredientCreator = false">Add</button>
-  <div class="clearfix"></div>
-  <a ng-click="ingredientCreator = true">+ add new ingredient</a>
-
-  <div ng-show="ingredientCreator" class="ingredient-creator">
-    <h4 class="push-left">Add Ingredient</h4>
+<div class="span10 container">
+  <button class="create-salad-btn" ng-hide="saladCreator" ng-click="saladCreator = true"><i class="icon-food"></i> Create New Salad</button>
+  <div ng-show="saladCreator" class="sub-container">
+    <h3 class="push-right">New Salad</h3>
     <div class="clearfix"></div>
-    Ingredient Name: <input type="text" ng-model="createNewIngredient.newName" placeholder="Ingredient Name" />
-    <button ng-click="createIngredient(createNewIngredient); ingredientCreator = false">Create Ingredient</button>
-  </div>
+    New Salad: <input type="text" ng-model="newSalad.name" placeholder="Salad Name"/>
+    Ingredients: <select ng-model="newIngredient.name" ng-options="ingredient for ingredient in ingredientsDatabase.data.ingredientsDatabase | orderBy:name">
+    </select>
+    Quantity: <input type="number" ng-model="newIngredient.quantity" placeholder="Qty."  />
+    Unit: <select name="ingredient-unit" ng-model="newIngredient.unit">
+      <option value="lbs.">lbs.</option>
+      <option value="oz.">oz.</option>
+    </select>
+    <button ng-click="pushIngredient(newIngredient); ingredientCreator = false"><i class="icon-plus"></i> Add Ingredient</button>
+    <div class="clearfix"></div>
+    <a ng-click="ingredientCreator = true">+ add new ingredient</a>
 
-  <div class="salad-ingredients">
-    <ul class="salad-list">
-      <li ng-repeat="listNewIngredient in listNewIngredients track by $index">{{listNewIngredient.quantity}}. {{listNewIngredient.unit}} of  {{listNewIngredient.name}}</li>
-    </ul>
+    <div ng-show="ingredientCreator" class="ingredient-creator">
+      <h4 class="push-left">Add Ingredient</h4>
+      <div class="clearfix"></div>
+      Ingredient Name: <input type="text" ng-model="createNewIngredient.newName" placeholder="Ingredient Name" />
+      <button ng-click="createIngredient(createNewIngredient); ingredientCreator = false">Create Ingredient</button>
+    </div>
+
+    <div class="salad-ingredients">
+      <ul class="salad-list">
+        <li ng-repeat="listNewIngredient in listNewIngredients track by $index">{{listNewIngredient.quantity}}. {{listNewIngredient.unit}} of  {{listNewIngredient.name}}</li>
+      </ul>
+    </div>
+    <div class="clearfix"></div>
+    <button ng-click="createNewSalad(newSalad.name); saladCreator = false"><i class="icon-food"></i> Add Salad</button>
+    <button ng-click="cancelCreation(); saladCreator = false" class="btn-negative"><i class="icon-trash"></i> Cancel</button>
   </div>
-  <div class="clearfix"></div>
-  <button ng-click="createNewSalad(newSalad.name); saladCreator = false">Confirm</button>
-  <button ng-click="cancelCreation(); saladCreator = false">Cancel</button>
-</div>
-<!-- This is all salad pieces displayed at the bottom -->
-<div class="span10 container" ng-repeat="salad in salads.data.salads | orderBy: name">
-  <button ng-click="deleteSalad(salad)">Delete Salad</button>
-  <h3 class="push-right">{{salad.name}}</h3>
-  <div class="clearfix"></div>
-  <div class="salad-ingredients">
-    <div class="clearfix">
-    <ul>
-      <li class="thirds" ng-repeat="currentIngredient in salad.ingredients">{{currentIngredient.amount}}  {{currentIngredient.unit}} of  {{currentIngredient.ingredient_name}} </li>
-    </ul>
-  </div>
+  <!-- This is all salad pieces displayed at the bottom -->
+  <div class="sub-container" ng-repeat="salad in salads.data.salads | orderBy: name">
+    <button ng-click="deleteSalad(salad)" class="btn-negative"><i class="icon-trash icon-large"></i> Delete Salad</button>
+    <h3 class="push-right">{{salad.name}}</h3>
+    <div class="clearfix"></div>
+    <div class="salad-ingredients">
+      <div class="clearfix"></div>
+      <ul>
+        <li class="thirds" ng-repeat="currentIngredient in salad.ingredients">{{currentIngredient.amount}}  {{currentIngredient.unit}} of  {{currentIngredient.ingredient_name}} </li>
+      </ul>
+    </div>
   </div>
 </div>
