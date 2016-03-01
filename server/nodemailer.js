@@ -1,5 +1,5 @@
 //send email with defined transport object
-var sendMessage = function(emailSubject, emailRecipients, gardenURL, emailIntro, emailSummary, emailMessage) {
+var sendMessage = function(emailSubject, emailRecipients, emailIntro, emailSummary, emailMessage, gardenURL) {
 
   var nodemailer = require('nodemailer');
 

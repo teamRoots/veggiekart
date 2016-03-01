@@ -76,7 +76,7 @@ router.post('/', function(request, response) {
         // var gardenURL = 'localhost:3000/respond/' + saved._id;     // for future reference
         var gardenURL = 'localhost:3000/createRequests/getRequests/' + saved._id;
 
-        sendEmail.sendMessage(emailSubject, emailRecipients, gardenURL, emailIntro, emailSummary, emailMessage);       //sends email message
+        sendEmail.sendMessage(emailSubject, emailRecipients, emailIntro, emailSummary, emailMessage, gardenURL);       //sends email message
     });
 });
 
