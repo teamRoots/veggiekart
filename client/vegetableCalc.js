@@ -20,9 +20,9 @@ var vCalc = function(events){
         ingredient.amount = ingredient.amount * saladQuantity / 48;
 
         //if the number of ounces is large, convert to pounds
-        if (ingredient.unit == 'ounces' && ingredient.amount > 100) {
+        if (ingredient.unit == 'oz.' && ingredient.amount > 100) {
           ingredient.amount /= 16;
-          ingredient.unit = 'pounds';
+          ingredient.unit = 'lbs.';
         }
 
         //add ingredients to the summary array
@@ -45,9 +45,9 @@ var vCalc = function(events){
           //if ingredient is already in the summary, add the new amount (doing unit conversion if necessary)
           if (summary[i].unit == ingredient.unit){
             summary[i].amount += ingredient.amount;
-          } else if (summary[i].unit == 'ounces' && ingredient.unit == 'pounds') {
+          } else if (summary[i].unit == 'oz.' && ingredient.unit == 'lbs.') {
             summary[i].unit += (ingredient.unit / 16);
-          } else if (summary[i].unit == 'pounds' && ingredient.unit == 'ounces') {
+          } else if (summary[i].unit == 'lbs.' && ingredient.unit == 'oz.') {
             summary[i].unit += (ingredient.unit * 16);
           }
           return;
