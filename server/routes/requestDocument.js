@@ -172,9 +172,25 @@ router.put('/confirmRequest/:id', function(request, response) {
 
     //build emailSummary
     var emailSummary = "<b>" + "Summary of required items: " + "</b>" + "<br>";
-    console.log('Updated object: ', updatedObject);
+    // console.log('Updated object: ', updatedObject);
     for (var i = 0; i < updatedObject.summary.length; i++){
       emailSummary += updatedObject.summary[i].amount + " " + updatedObject.summary[i].unit + " of " + updatedObject.summary[i].ingredient_name + "<br>";
+    }
+
+    //cycle through all recipients and add their confirmed items and quantities to Summary
+    emailSummary += "<br>" + "<b>" + "Summary of confirmed items by grower: " + "</b>" + "<br>";
+    var unitMeasure = "";
+    for (var j = 0; j < updatedObject.recipients.length; j++){
+      emailSummary += updatedObject.recipients[j].orgName + ": " + "<br>";
+      for (var veggie in updatedObject.recipients[j].confirmations) {
+        for (var k = 0; k < updatedObject.summary.length; k++){
+          if (updatedObject.summary[k].ingredient_name == veggie){
+            unitMeasure = updatedObject.summary[k].unit;
+          }
+        }
+        emailSummary += updatedObject.recipients[j].confirmations[veggie].quantity + " " + unitMeasure + " of " + veggie + "<br>";
+        unitMeasure = "";
+      }
     }
     console.log(emailSummary);
 });
