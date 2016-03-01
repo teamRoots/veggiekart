@@ -20,6 +20,9 @@
 $buttonColor: $green;
 $buttonDark: darken($green, 10%);
 $buttonDarker: darken($buttonDark, 10%);
+$buttonNegative: $orange;
+$buttonNegativeDark: darken($orange, 10%);
+$buttonNegativeDarker: darken($buttonNegativeDark, 10%);
 
 button{
   background: $green;
@@ -419,12 +422,15 @@ table {
 }
 
 .back-button {
-  background-color: $orange;
   width: 44%;
+}
+
+.btn-negative {
+  background-color: $buttonNegative;
   &:hover {
-    background: $brown;
+    background: $buttonNegativeDark;
   }
   &:active {
-    background: $brown;
+    background: $buttonNegativeDarker;
   }
 }

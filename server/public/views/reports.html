@@ -4,5 +4,11 @@
 </div>
 
 <div class="span10 container">
-  
+  <ul class="events-display" ng-repeat="request in reports.stuff track by $index">
+    <li>
+      {{request}}
+    </li>
+  </ul>
+
+  <button ng-click="reports.postGardenConfirmations()">a;slkdjf;als</button>
 </div>

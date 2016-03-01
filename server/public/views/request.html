@@ -52,10 +52,10 @@
     <div>
       <p ng-repeat="salad in request.data.salads">{{salad}}</p>
     </div>
-    <a class="add-salad" ng-click="request.addSalad()">+ Add Salad</a>
+    <a class="add-salad" ng-click="request.addSalad()"><i class="icon-plus"></i> Add Salad</a>
     <div class="btn-holder">
-      <button class="push-right" ng-click="request.addEvent()">+ Add Event</button>
-      <button class="push-right" ng-click="request.cancelEvent()">Cancel</button>
+      <button class="push-right" ng-click="request.addEvent()"><i class="icon-plus"></i> Add Event</button>
+      <button class="push-right btn-negative" ng-click="request.cancelEvent()"><i class="icon-trash"></i>Cancel</button>
       <div class="clearfix"></div>
     </div>
   </div>
@@ -84,7 +84,7 @@
   <div class="clearfix"></div>
   <div class="message-box">
     <textarea rows="6" cols="30" class="message" ng-model="request.data.message" placeholder="Message to the farms..."></textarea>
-    <button ng-hide="request.editValue.requestButtons" class="send-request" ng-click="request.sendRequest()">Send Request</button>
+    <button ng-hide="request.editValue.requestButtons" class="send-request" ng-click="request.sendRequest()"><i class="icon-envelope"></i> Send Request</button>
     <button ng-show="request.editValue.requestButtons" class="send-request" ng-click="request.sendRequest()">Finish Editing Request</button>
     <div class="clearfix"></div>
     <ul>
@@ -103,7 +103,7 @@
 <div ng-if="request.data.confirmRequest" class="overlay"></div>
 <div ng-if="request.data.confirmRequest" class="modal container">
   <h3>{{request.data.confirmMessage}}<i ng-if="request.data.confirmIcon" class="icon-spinner icon-spin icon-large"></i></h3>
-  <button class="back-button" ng-click="request.data.confirmRequest = false"><i class="icon-remove"></i> Back to edit</button>
-  <button class="send-button" ng-hide="request.editValue.requestButtons" ng-click="request.saveRequest()">Send Request <i class="icon-envelope"></i></button>
-  <button class="send-button" ng-show="request.editValue.requestButtons" ng-click="request.newEditRequest()">Send Request <i class="icon-envelope"></i></button>
+  <button class="back-button btn-negative" ng-click="request.data.confirmRequest = false"><i class="icon-remove"></i> Back to edit</button>
+  <button class="send-button" ng-hide="request.editValue.requestButtons" ng-click="request.saveRequest()"><i class="icon-envelope"></i> Send Request</button>
+  <button class="send-button" ng-show="request.editValue.requestButtons" ng-click="request.newEditRequest()"><i class="icon-envelope"></i> Send Request</button>
 </div>
