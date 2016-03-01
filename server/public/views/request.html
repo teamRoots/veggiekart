@@ -71,8 +71,21 @@
       <div class="clearfix"></div>
     </div>
   </div>
-  <div class="sub-container">
-    <h3 class="push-right">Summary</h3>
+</div>
+
+<div class="span10 container">
+  <h3 class="push-right">Summary</h3>
+  <div class="clearfix"></div>
+
+  <ul>
+    <li class="thirds" ng-repeat="ingredient in request.data.summary">{{ingredient.amount}} {{ingredient.unit}} of {{ingredient.ingredient_name}}</li>
+  </ul>
+
+  <div class="clearfix"></div>
+  <div class="message-box">
+    <textarea rows="6" cols="30" class="message" ng-model="request.data.message" placeholder="Message to the farms..."></textarea>
+    <button ng-hide="request.editValue.requestButtons" class="send-request" ng-click="request.sendRequest()">Send Request</button>
+    <button ng-show="request.editValue.requestButtons" class="send-request" ng-click="request.sendRequest()">Finish Editing Request</button>
     <div class="clearfix"></div>
     <ul>
       <li class="thirds" ng-repeat="ingredient in request.data.summary">{{ingredient.amount}} {{ingredient.unit}} of {{ingredient.ingredient_name}}</li>
@@ -85,4 +98,12 @@
       <div class="clearfix"></div>
     </div>
   </div>
+</div>
+
+<div ng-if="request.data.confirmRequest" class="overlay"></div>
+<div ng-if="request.data.confirmRequest" class="modal container">
+  <h3>Are you sure? {{request.data.confirmMessage}}</h3>
+  <button class="back-button" ng-click="request.data.confirmRequest = false">Go back to edit</button>
+  <button class="send-button" ng-hide="request.editValue.requestButtons" ng-click="request.saveRequest()">Send Request</button>
+  <button class="send-button" ng-show="request.editValue.requestButtons" ng-click="request.newEditRequest()">Send Request</button>
 </div>

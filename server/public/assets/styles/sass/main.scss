@@ -375,3 +375,46 @@ table {
 .table-units {
   font-size: 12px;
 }
+
+/* Dialog displays via modal */
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 10;
+}
+
+.modal {
+    width: 400px;
+    height: 150px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -75px;
+    margin-left: -200px;
+    text-align: center;
+    z-index: 11; /* 1px higher than the overlay layer */
+    padding: 22px 0px 0px 0px;
+    .button {
+      width: 44%;
+    }
+  }
+
+.send-button {
+  width: 44%;
+}
+
+.back-button {
+  background-color: $orange;
+  width: 44%;
+  &:hover {
+    background: $brown;
+  }
+  &:active {
+    background: $brown;
+  }
+}
