@@ -52,6 +52,7 @@ var vCalc = function(events){
           }
           return;
         }
+        ingredient = Math.round(ingredient * 100) / 100;
       }
       summary.push(ingredient);
     } else {
