@@ -67,14 +67,38 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
 
   //sends the request out to receipients on confirmation dialog click
   var sendRequest = function(){
-    data.confirmRequest = confirm('Are you sure?');
-    if (data.confirmRequest) {
-      saveRequest();
+    data.confirmMessage = 'Are you sure? ';
+
+    console.log('data.events is ', data.events);
+    console.log('data.recipients is ', data.recipients);
+
+    //checks if any events have been added
+    if (!data.events || data.events.length == 0) {
+      data.confirmMessage += 'You didn\'t add any events.';
     }
+
+    //checks if any recipients were added
+    var anyRecipients = false;
+
+    for (var i = 0; i < data.recipients.length; i++) {
+      if (data.recipients[i].checked == true) {
+        anyRecipients = true;
+      }
+    }
+
+    if (!anyRecipients) {
+      console.log('no recipients');
+      data.confirmMessage += 'You did\'t add any recipients.';
+    }
+
+    //displays dialog modal
+    data.confirmRequest = true;
   }
 
   //saves the request to database on initial button click
   var saveRequest = function(){
+    data.confirmMessage = '';
+    data.confirmIcon = true;
 
     request = {
         recipients: data.recipients,

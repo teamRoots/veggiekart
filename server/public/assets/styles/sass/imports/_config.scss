@@ -14,7 +14,6 @@ $orange: #DC7238;
 $yellow: #F4B73C;
 $green: #68A445;
 $blue: #6B99FF;
-// $whitebackground: rgba(255, 248, 233, 0.95);  //old one
 $whitebackground: rgba(255, 255, 255, 0.90);
 $orangebackground: rgba(220, 114, 56, 0.95);
 
@@ -31,13 +30,30 @@ $orangebackground: rgba(220, 114, 56, 0.95);
 }
 
 //universal container styling
+
+// .sub-container {
+//   width: 100%;
+//   border-radius: none;
+//   border-top: 1px solid $brown;
+//   // -webkit-box-shadow: 4px 4px 20px 0px $brown;
+//   // -moz-box-shadow: 4px 4px 20px 0px $brown;
+//   // box-shadow: 4px 4px 20px 0px $brown;
+// }
 .container {
   background-color: $whitebackground;
-  padding: 0 10px;
+  padding: 0;
   border: 1px solid $brown;
   text-align: left;
   border-radius: 0 8px 8px 8px;
   -webkit-box-shadow: 4px 4px 20px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 4px 4px 20px 0px rgba(0,0,0,0.75);
   box-shadow: 4px 4px 20px 0px rgba(0,0,0,0.75);
+  .sub-container {
+    width: 100%;
+    border-radius: none;
+    border-top: 1px solid $brown;
+    &:first-child {
+      border: none;
+    }
+  }
 }

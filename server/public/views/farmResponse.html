@@ -1,47 +1,43 @@
 <div class="span10 container">
-  <h3 class="push-left">Produce Request</h3>
-  <div class="clearfix"></div>
-  <div>
-    <div class="event-split push-left">
-      <ul class="farm-response" ng-repeat="event in farm.data.eventsInfo">
-        <li>{{event.location}} {{event.displayDate}} {{event.host}}</li>
-        <li ng-repeat="salad in event.salads">{{salad.name}}</li>
-      </ul>
-    </div>
-    <div class="event-split push-left">
-      <h4 class="push-left">Message from Roots...</h4>
+  <div class="subcontainer">
+    <h3 class="push-left">Produce Request</h3>
+    <div class="clearfix"></div>
+    <div>
+      <div class="event-split push-left">
+        <ul class="farm-response" ng-repeat="event in farm.data.eventsInfo">
+          <li>{{event.location}} {{event.displayDate}} {{event.host}}</li>
+          <li ng-repeat="salad in event.salads">{{salad.name}}</li>
+        </ul>
+      </div>
+      <div class="event-split push-left">
+        <h4 class="push-left">Message from Roots...</h4>
+        <div class="clearfix"></div>
+        <p>{{farm.data.request.message}}</p>
+      </div>
       <div class="clearfix"></div>
-      <p>{{farm.data.request.message}}</p>
     </div>
-    <div class="clearfix"></div>
   </div>
-</div>
-
-<div class="span10 container">
-
-  <table>
-    <thead>
-      <th>Veggie</th>
-      <th>Needed</th>
-      <th ng-repeat="user in farm.data.request.recipients">{{user.orgName}}</th>
-    </thead>
-    <tbody>
-        <tr ng-repeat="veggie in farm.data.request.summary">
-          <td><strong>{{veggie.ingredient_name}}</strong></td>
-          <td>{{veggie.amount}} {{veggie.unit}}</td>
-          <td ng-repeat="user in farm.data.request.recipients">
-            <input ng-change="farm.test()" ng-model="user.commitments[veggie.ingredient_name].quantity" type="number" placeholder="Qty." min="0"/>
-          <!-- <select ng-change="farm.test()" class="table-units" ng-model="user.commitments[veggie.ingredient_name].unit">
-            <option value="pounds">lbs.</option>
-            <option value="ounces">oz.</option>
-          </select> -->
-        </td>
-        </tr>
-    </tbody>
-  </table>
-  <div class="message-box">
-    <textarea rows="6" cols="30" class="message" ng-model="request.data.message" placeholder="Message to the farms..."></textarea>
-    <button class="send-request" ng-click="farm.sendResponse()">Send Response</button>
-    <div class="clearfix"></div>
+  <div class="sub-container">
+    <table>
+      <thead>
+        <th>Veggie</th>
+        <th>Needed</th>
+        <th ng-repeat="user in farm.data.request.recipients">{{user.orgName}}</th>
+      </thead>
+      <tbody>
+          <tr ng-repeat="veggie in farm.data.request.summary">
+            <td><strong>{{veggie.ingredient_name}}</strong></td>
+            <td>{{veggie.amount}} {{veggie.unit}}</td>
+            <td ng-repeat="user in farm.data.request.recipients">
+              <input ng-change="farm.test()" ng-model="user.commitments[veggie.ingredient_name].quantity" type="number" placeholder="Qty." min="0"/>
+          </td>
+          </tr>
+      </tbody>
+    </table>
+    <div class="message-box">
+      <textarea rows="6" cols="30" class="message" ng-model="request.data.message" placeholder="Message to the farms..."></textarea>
+      <button class="send-request" ng-click="farm.sendResponse()">Send Response</button>
+      <div class="clearfix"></div>
+    </div>
   </div>
 </div>
