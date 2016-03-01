@@ -3,7 +3,7 @@
     <h3 class="push-left">Produce Request</h3>
     <div class="clearfix"></div>
     <div>
-      <a href="/admin/request"><button class="view-btn" ng-click="confirm.editRequest()">Edit Request</button></a>
+      <a href="/admin/request"><button class="view-btn" ng-click="confirm.editRequest()"><i class="icon-pencil"></i> Edit Request</button></a>
       <div class="event-split push-left">
         <ul class="farm-response" ng-repeat="event in confirm.data.eventsInfo">
           <li>{{event.location}} {{event.displayDate}} {{event.host}}</li>
@@ -51,7 +51,7 @@
   <div class="sub-container">
     <h3 class="push-right">Summary</h3>
     <div class="clearfix"></div>
-    <button class="push-right send-request" ng-click="confirm.confirmRequest()">Confirm Request</button>
+    <button class="push-right send-request" ng-click="confirm.confirmRequest()"><i class="icon-envelope"></i> Confirm Request</button>
     <div class="clearfix"></div>
   </div>
 </div>
