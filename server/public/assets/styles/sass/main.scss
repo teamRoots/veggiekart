@@ -66,14 +66,15 @@ ul, li {
 //index styling
 
 .banner {
-  margin-bottom: 20px;
-  margin-left: 0;
+  margin: 10px auto 0 auto;
+  padding: 0 40px;
   -webkit-box-shadow: 0px 4px 20px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 4px 20px 0px rgba(0,0,0,0.75);
   box-shadow: 0px 4px 20px 0px rgba(0,0,0,0.75);
 }
 .header {
-  background-color: $orangebackground;
+  width: 100%;
+  background-color: $whitebackground;
   border-bottom: 1px solid $brown;
 }
 .logo {
