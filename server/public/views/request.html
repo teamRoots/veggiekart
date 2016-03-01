@@ -1,5 +1,5 @@
-<div ng-if="request.editValue.editPage" class="span10 container new-event">
-  <div class="sub-container">
+<div  class="span10 container new-event">
+  <div ng-if="request.editValue.editPage" class="sub-container">
     <h3 class="push-right">Current Request</h3>
     <div class="clearfix"></div>
     <h4>Current Events and Salads</h4>
@@ -10,7 +10,7 @@
       </li>
     </ul>
   </div>
-  <div class="sub-container">
+  <div ng-if="request.editValue.editPage" class="sub-container">
     <h4>Current Recipients</h4>
     <ul class="recipients-list">
       <li class="summary" ng-repeat="recipient in request.oldData.recipients">{{recipient.name}}, {{recipient.orgName}}</li>
@@ -71,39 +71,30 @@
       <div class="clearfix"></div>
     </div>
   </div>
-</div>
-
-<div class="span10 container">
-  <h3 class="push-right">Summary</h3>
-  <div class="clearfix"></div>
-
-  <ul>
-    <li class="thirds" ng-repeat="ingredient in request.data.summary">{{ingredient.amount}} {{ingredient.unit}} of {{ingredient.ingredient_name}}</li>
-  </ul>
-
-  <div class="clearfix"></div>
-  <div class="message-box">
-    <textarea rows="6" cols="30" class="message" ng-model="request.data.message" placeholder="Message to the farms..."></textarea>
-    <button ng-hide="request.editValue.requestButtons" class="send-request" ng-click="request.sendRequest()"><i class="icon-envelope"></i> Send Request</button>
-    <button ng-show="request.editValue.requestButtons" class="send-request" ng-click="request.sendRequest()">Finish Editing Request</button>
+  <div class="span10 sub-container">
+    <h3 class="push-right">Summary</h3>
     <div class="clearfix"></div>
+
     <ul>
       <li class="thirds" ng-repeat="ingredient in request.data.summary">{{ingredient.amount}} {{ingredient.unit}} of {{ingredient.ingredient_name}}</li>
     </ul>
+
     <div class="clearfix"></div>
-    <div class="message-box">
+    <div ng-hide="request.editValue.editPage" class="message-box">
       <textarea rows="6" cols="30" class="message" ng-model="request.data.message" placeholder="Message to the farms..."></textarea>
-      <button ng-hide="request.editValue.requestButtons" class="send-request" ng-click="request.sendRequest()">Send Request</button>
-      <button ng-show="request.editValue.requestButtons" class="send-request" ng-click="request.newEditRequest()">Finish Editing Request</button>
+      <button ng-hide="request.editValue.requestButtons" class="send-request" ng-click="request.sendRequest()"><i class="icon-envelope"></i> Send Request</button>
+      <button ng-show="request.editValue.requestButtons" class="send-request" ng-click="request.sendRequest()">Finish Editing Request</button>
       <div class="clearfix"></div>
+      <ul>
+        <li class="thirds" ng-repeat="ingredient in request.data.summary">{{ingredient.amount}} {{ingredient.unit}} of {{ingredient.ingredient_name}}</li>
+      </ul>
+      <div class="clearfix"></div>
+      <div ng-show="request.editValue.editPage" class="message-box">
+        <textarea rows="6" cols="30" class="message" ng-model="request.data.message" placeholder="Message to the farms..."></textarea>
+        <button ng-hide="request.editValue.requestButtons" class="send-request" ng-click="request.sendRequest()">Send Request</button>
+        <button ng-show="request.editValue.requestButtons" class="send-request" ng-click="request.newEditRequest()">Finish Editing Request</button>
+        <div class="clearfix"></div>
+      </div>
     </div>
   </div>
-</div>
-
-<div ng-if="request.data.confirmRequest" class="overlay"></div>
-<div ng-if="request.data.confirmRequest" class="modal container">
-  <h3>{{request.data.confirmMessage}}<i ng-if="request.data.confirmIcon" class="icon-spinner icon-spin icon-large"></i></h3>
-  <button class="back-button btn-negative" ng-click="request.data.confirmRequest = false"><i class="icon-remove"></i> Back to edit</button>
-  <button class="send-button" ng-hide="request.editValue.requestButtons" ng-click="request.saveRequest()"><i class="icon-envelope"></i> Send Request</button>
-  <button class="send-button" ng-show="request.editValue.requestButtons" ng-click="request.newEditRequest()"><i class="icon-envelope"></i> Send Request</button>
 </div>
