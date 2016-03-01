@@ -11,7 +11,7 @@
     <div class="clearfix"></div>
     <div class="events" ng-repeat="request in dash.requests">
       <div ng-click="dash.requestDetails(request._id)">
-        <p class="edit-icon icon-sort-down icon-2x"></p>
+        <!-- <p class="edit-icon icon-sort-down icon-2x"></p> -->
         <ul class="thirds event-names">
           <li ng-repeat="event in request.event">{{event.event.location}}<span class="display-date">{{event.event.displayDate}}</span></li>
         </ul>
