@@ -50,7 +50,7 @@ router.post('/', function(request, response) {
 
         //parse out summary of vegetables into text string for email body
         for (var i = 0; i < summary.length; i++) {
-          emailSummary += summary[i].amount + " " + summary[i].unit + " of " + summary[i].ingredient_name + "<br>";
+          emailSummary += summary[i].amount + " " + summary[i].unit + " "+ summary[i].ingredient_name + "<br>";
         }
 
         //parse out list of recipients to be emailed
@@ -174,7 +174,7 @@ router.put('/confirmRequest/:id', function(request, response) {
     var emailSummary = "<b>" + "Summary of required items: " + "</b>" + "<br>";
     // console.log('Updated object: ', updatedObject);
     for (var i = 0; i < updatedObject.summary.length; i++){
-      emailSummary += updatedObject.summary[i].amount + " " + updatedObject.summary[i].unit + " of " + updatedObject.summary[i].ingredient_name + "<br>";
+      emailSummary += updatedObject.summary[i].amount + " " + updatedObject.summary[i].unit + " " + updatedObject.summary[i].ingredient_name + "<br>";
     }
 
     //cycle through all recipients and add their confirmed items and quantities to Summary
@@ -188,7 +188,7 @@ router.put('/confirmRequest/:id', function(request, response) {
             unitMeasure = updatedObject.summary[k].unit;
           }
         }
-        emailSummary += updatedObject.recipients[j].confirmations[veggie].quantity + " " + unitMeasure + " of " + veggie + "<br>";
+        emailSummary += updatedObject.recipients[j].confirmations[veggie].quantity + " " + unitMeasure + " " + veggie + "<br>";
         unitMeasure = "";
       }
     }
