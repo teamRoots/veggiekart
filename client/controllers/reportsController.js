@@ -12,7 +12,7 @@ var loopQuantityPush = '';
 var garden = {
   name: '',
   vegetables: []
-}
+};
 var gardensLengthHolder = 0;
 for (var i = 0; i < this.requests.length; i++){
   console.log('first loop hit', this.requests);
@@ -25,7 +25,7 @@ for (var i = 0; i < this.requests.length; i++){
       gardensLengthHolder = gardenConfirmationDisplay.gardens.length
     }
     for (var gI = 0; gI < gardensLengthHolder; gI++){
-      console.log('third loop hit', gardenConfirmationDisplay.gardens);
+      console.log('third loop hit', gardenConfirmationDisplay.gardens, [gI]);
         if(gardenConfirmationDisplay.gardens.length === 0){
           console.log('length ISSUE');
           loopPush = true;
@@ -37,12 +37,13 @@ for (var i = 0; i < this.requests.length; i++){
           loopPush = true;
         }else {
           loopPush = false;
-          gI = gardensLengthHolder;
+
+//=================================
+          //
           // for (var prop in this.requests[i].recipients[j].confirmations){
-          //   console.log('fourth loop', this.requests[i].recipients[j].confirmations[prop]);
-          //   console.log('fifth loop',gardenConfirmationDisplay.gardens[gI]);
-          //   for (var gJ; gJ < gardenConfirmationDisplay.gardens[gI].vegetables.length; gJ++){
-          //     console.log('fifth loop',gardenConfirmationDisplay.gardens[gI].vegetables[gJ]);
+          //   console.log('fourth loop', this.requests[i].recipients[j].confirmations[prop], 'length', gardenConfirmationDisplay.gardens[gI].vegetables.length);
+          //   for (var gJ = 0 ; gJ < gardenConfirmationDisplay.gardens[gI].vegetables.length; gJ++){
+          //     console.log('fifth loop',gardenConfirmationDisplay.gardens[gI].vegetables, [gJ]);
           //
           //     if(this.requests[i].recipients[j].confirmations[prop] != gardenConfirmationDisplay.gardens[gI].vegetables[gJ]){
           //       loopQuantityPush = true;
@@ -57,6 +58,8 @@ for (var i = 0; i < this.requests.length; i++){
           //
           //   }
           // }
+//=================================
+          gI = gardensLengthHolder;
 
         }
       }
