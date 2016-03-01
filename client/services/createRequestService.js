@@ -67,7 +67,7 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
 
   //sends the request out to receipients on confirmation dialog click
   var sendRequest = function(){
-    data.confirmMessage = '';
+    data.confirmMessage = 'Are you sure? ';
 
     console.log('data.events is ', data.events);
     console.log('data.recipients is ', data.recipients);
@@ -97,7 +97,8 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
 
   //saves the request to database on initial button click
   var saveRequest = function(){
-    data.confirmMessage = 'sending';
+    data.confirmMessage = '';
+    data.confirmIcon = true;
 
     request = {
         recipients: data.recipients,
