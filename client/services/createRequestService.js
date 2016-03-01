@@ -97,6 +97,7 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
 
   //saves the request to database on initial button click
   var saveRequest = function(){
+    data.confirmMessage = 'sending';
 
     request = {
         recipients: data.recipients,
