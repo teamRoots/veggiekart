@@ -1,7 +1,7 @@
 app.controller('saladController', ['loginService','saladService', '$scope', '$http', function(loginService, saladService, $scope, $http){
   this.user = loginService.user;
   $scope.listNewIngredients = [];
-
+  var saladPendingDelete = {};
 
 $scope.showSalads = function(){
     saladService.getSalads();
@@ -40,13 +40,28 @@ $scope.createIngredient = function(data){
 });
 };
 
-$scope.deleteSalad = function(data){
-  if (confirm('Are You Sure You Want To Delete This Salad') === true){
-    $http.post('/salad/deleteSalad', data).then(function(response){
-      $scope.showSalads();
+$scope.confirmDelete = function(salad){
+  $scope.showDeleteModal = true;
+  $scope.confirmIcon = false;
+  $scope.deleteMessage = 'Are you sure?';
+  saladPendingDelete = salad;
+};
 
-  });
-}
+$scope.removeDeleteModal = function(){
+  $scope.showDeleteModal = false;
+  $scope.confirmIcon = false;
+  $scope.deleteMessage = 'Are you sure?';
+};
+
+$scope.deleteSalad = function(){
+    $scope.confirmIcon = true;
+    $http.post('/salad/deleteSalad', saladPendingDelete).then(function(response){
+      console.log('SALAD DELETED');
+      $scope.showDeleteModal = false;
+      $scope.deleteMessage = '';
+      $scope.confirmIcon = false;
+      $scope.showSalads();
+    });
 };
 
 $scope.pushIngredient = function(data){
