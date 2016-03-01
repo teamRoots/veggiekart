@@ -183,7 +183,6 @@ hr {
   }
   input {
     width: 100%;
-    font-size: 150%;
     line-height: 60px;
     padding-left: 10px;
   }
@@ -221,8 +220,10 @@ hr {
   }
 }
 .events:hover {
-  background-color: rgba(255, 255, 255, 0.95);
-  .edit-icon {display: inline-block}
+  background-color: rgba(255, 255, 255, 0.35);
+  font-weight: bolder;
+  border-left: 4px solid $green;
+  margin: 0 0 0 -4px;
 }
 .edit-icon {
   display: none;
