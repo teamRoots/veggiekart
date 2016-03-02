@@ -52,14 +52,14 @@
 <div ng-if="addSaladError" class="overlay"></div>
 <div ng-if="addSaladError" class="modal container">
   <h3>{{addSaladErrorMessage}}</h3>
-  <button class="back-button" ng-click="removeSaladError()"><i class="icon-remove"></i> Go back</button>
+  <button class="back-button btn-negative" ng-click="removeSaladError()"><i class="icon-remove"></i> Go back</button>
 </div>
 
 <!-- Add ingredient error modal -->
 <div ng-if="addIngredientError" class="overlay"></div>
 <div ng-if="addIngredientError" class="modal container">
   <h3>{{addIngredientErrorMessage}}</h3>
-  <button class="back-button" ng-click="removeIngredientError()"><i class="icon-remove"></i> Go back</button>
+  <button class="back-button btn-negative" ng-click="removeIngredientError()"><i class="icon-remove"></i> Go back</button>
 </div>
 
 <!-- Delete salad modal -->
