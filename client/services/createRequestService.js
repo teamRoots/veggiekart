@@ -27,6 +27,7 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
   //adds event to the current request
   var addEvent = function(){
 
+    //confirm there is an event and a salad, if none then display error
     if (!newEvent.event || newEvent.event.length < 1){
       console.log('event error folks');
       data.eventError = true;
