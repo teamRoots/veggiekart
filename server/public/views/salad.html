@@ -29,7 +29,7 @@
       </ul>
     </div>
     <div class="clearfix"></div>
-    <button ng-click="createNewSalad(newSalad.name); saladCreator = false"><i class="icon-food"></i> Add Salad</button>
+    <button ng-click="createNewSalad(newSalad.name)"><i class="icon-food"></i> Add Salad</button>
     <button ng-click="cancelCreation(); saladCreator = false" class="btn-negative"><i class="icon-trash"></i> Cancel</button>
   </div>
   <!-- This is all salad pieces displayed at the bottom -->
@@ -45,6 +45,13 @@
     </div>
     <div class="clearfix"></div>
   </div>
+</div>
+
+<!-- Add salad error modal -->
+<div ng-if="addSaladError" class="overlay"></div>
+<div ng-if="addSaladError" class="modal container">
+  <h3>{{addSaladErrorMessage}}</h3>
+  <button class="back-button" ng-click="removeSaladError()"><i class="icon-remove"></i> Go back</button>
 </div>
 
 <!-- Add ingredient error modal -->

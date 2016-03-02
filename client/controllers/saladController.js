@@ -22,16 +22,41 @@ $scope.editSalad = function(){
 };
 
 $scope.createNewSalad = function(data){
+
+  //check that necessary form inputs have been added
+  if (typeof data === 'undefined' || data === '') {
+    console.log('newSalad undefined');
+    $scope.addSaladError = true;
+    $scope.addSaladErrorMessage = 'Please add a salad name';
+    return;
+  }
+
+  if ($scope.listNewIngredients.length < 1) {
+    console.log('newIngredients missing');
+    $scope.addSaladError = true;
+    $scope.addSaladErrorMessage = 'Please add ingredients to the salad';
+    return;
+  };
+
+  //create object to send to server
   var dataObject = {
     saladName: data,
     ingredientArray: $scope.listNewIngredients
   };
+
+  //send salad to server
   $http.post('/salad/createSalad', dataObject).then(function(response){
     $scope.newSalad = {};
     $scope.listNewIngredients = [];
+    $scope.saladCreator = false;
     $scope.showSalads();
   });
 };
+
+$scope.removeSaladError = function(){
+  $scope.addSaladError = false;
+  $scope.addSaladErrorMessage = '';
+}
 
 $scope.createIngredient = function(data){
   $http.post('/salad/createIngredient', data).then(function(response){
