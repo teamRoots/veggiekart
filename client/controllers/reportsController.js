@@ -13,6 +13,7 @@ var garden = {
   name: '',
   vegetables: []
 };
+var vegetableLengthHolder = 0;
 var gardensLengthHolder = 0;
 for (var i = 0; i < this.requests.length; i++){
   console.log('first loop hit', this.requests);
@@ -39,25 +40,38 @@ for (var i = 0; i < this.requests.length; i++){
           loopPush = false;
 
 //=================================
-          //
-          // for (var prop in this.requests[i].recipients[j].confirmations){
-          //   console.log('fourth loop', this.requests[i].recipients[j].confirmations[prop], 'length', gardenConfirmationDisplay.gardens[gI].vegetables.length);
-          //   for (var gJ = 0 ; gJ < gardenConfirmationDisplay.gardens[gI].vegetables.length; gJ++){
-          //     console.log('fifth loop',gardenConfirmationDisplay.gardens[gI].vegetables, [gJ]);
-          //
-          //     if(this.requests[i].recipients[j].confirmations[prop] != gardenConfirmationDisplay.gardens[gI].vegetables[gJ]){
-          //       loopQuantityPush = true;
-          //
-          //     }else {
-          //       loopQuantityPush = false;
-          //       gardenConfirmationDisplay.gardens[gI].vegetables[gJ].quantity += this.requests[i].recipients[j].confirmations[prop].quantity;
-          //     }
-          //   }
-          //   if(loopQuantityPush === true){
-          //     gardenConfirmationDisplay.gardens[gI].vegetables.push(this.requests[i].recipients[j].confirmations[prop]);
-          //
-          //   }
-          // }
+
+          for (var prop in this.requests[i].recipients[j].confirmations){
+            console.log('fourth loop', this.requests[i].recipients[j].confirmations, 'length', gardenConfirmationDisplay.gardens[gI].vegetables.length, prop);
+
+
+            if(gardenConfirmationDisplay.gardens[gI].vegetables.length === 0){
+              vegetableLengthHolder  = 1;
+            }
+            else{
+              vegetableLengthHolder = gardenConfirmationDisplay.gardens[gI].vegetables.length
+            }
+
+            for (var gJ = 0 ; gJ < vegetableLengthHolder; gJ++){
+              console.log('fifth loop',gardenConfirmationDisplay.gardens[gI].vegetables, [gJ]);
+
+              if(this.requests[i].recipients[j].confirmations[prop] != gardenConfirmationDisplay.gardens[gI].vegetables[gJ]){
+                loopQuantityPush = true;
+
+              }else {
+                loopQuantityPush = false;
+                gardenConfirmationDisplay.gardens[gI].vegetables[gJ].quantity += this.requests[i].recipients[j].confirmations[prop].quantity;
+              }
+            }
+            if(loopQuantityPush === true){
+              currentVeg = {
+                name : prop,
+                quantity: this.requests[i].recipients[j].confirmations[prop].quantity
+              }
+              gardenConfirmationDisplay.gardens[gI].vegetables.push(currentVeg);
+
+            }
+          }
 //=================================
           gI = gardensLengthHolder;
 
@@ -69,7 +83,6 @@ for (var i = 0; i < this.requests.length; i++){
           console.log('gardenarray', gardenConfirmationDisplay.gardens);
         garden.name = this.requests[i].recipients[j].orgName;
         garden.vegetables = [];
-        garden.vegetables.push(this.requests[i].recipients[j].confirmations);
         gardenConfirmationDisplay.gardens.push(garden);
         console.log('garden', garden);
         j--;
