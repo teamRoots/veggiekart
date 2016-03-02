@@ -1,21 +1,21 @@
 
 <div class="span10 container">
   <button class="create-salad-btn" ng-hide="saladCreator" ng-click="saladCreator = true"><i class="icon-food"></i> Create New Salad</button>
-  <div ng-show="saladCreator" class="sub-container">
+  <div class="salad-creator" ng-show="saladCreator" class="sub-container">
     <h3 class="push-right">New Salad</h3>
     <div class="clearfix"></div>
     Salad Name: <input type="text" ng-model="newSalad.name" placeholder="Salad Name"/>
     <div class="clearfix"></div>
-    Ingredients: <select ng-model="newIngredient.name" ng-options="ingredient for ingredient in ingredientsDatabase.data.ingredientsDatabase | orderBy:name">
+    Ingredients: <select class="ingredient-picker" ng-model="newIngredient.name" ng-options="ingredient for ingredient in ingredientsDatabase.data.ingredientsDatabase | orderBy:name">
     </select>
-    <input type="number" ng-model="newIngredient.quantity" placeholder="Qty."  />
-    Unit: <select name="ingredient-unit" ng-model="newIngredient.unit">
+    <input class="ingredient-quantity" type="number" ng-model="newIngredient.quantity" placeholder="Qty."  />
+    Unit: <select class="unit-picker" name="ingredient-unit" ng-model="newIngredient.unit">
       <option value="lbs.">lbs.</option>
       <option value="oz.">oz.</option>
     </select>
     <button ng-click="pushIngredient(newIngredient); ingredientCreator = false"><i class="icon-plus"></i> Add Ingredient</button>
     <div class="clearfix"></div>
-    <a ng-click="ingredientCreator = true">+ add new ingredient</a>
+    <a ng-click="ingredientCreator = true">+ create new ingredient</a>
 
     <div ng-show="ingredientCreator" class="ingredient-creator">
       <h4 class="push-left">Add Ingredient</h4>

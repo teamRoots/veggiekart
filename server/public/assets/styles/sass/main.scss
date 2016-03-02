@@ -378,6 +378,17 @@ select {
     clear: left;
   }
 }
+.salad-creator {
+  .ingredient-picker {
+    width: 40%;
+  }
+  .ingredient-quantity {
+    width: 10%;
+  }
+  .unit-picker {
+    width: 15%;
+  }
+}
 
 
 //farmResponse styles
