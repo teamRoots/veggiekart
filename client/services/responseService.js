@@ -49,6 +49,21 @@ app.factory('responseService', ['$http', '$location', function($http, $location)
   }
 
   var addMessage = function() {
+
+    //check that all inputs are as expected
+    if (typeof this.messageRecipient == 'undefined' || this.messageRecipient == null) {
+      data.addMessageError = true;
+      data.addMessageErrorMessage = 'Please choose a recipient';
+      return;
+    };
+
+    if (typeof this.message == 'undefined' || this.message == null || this.message.length < 1) {
+      data.addMessageError = true;
+      data.addMessageErrorMessage = 'Please add a message for ' + this.messageRecipient.name;
+      return;
+    };
+
+    //add message
     var name = this.messageRecipient.name;
     var message = this.message;
     var recipients = data.request.recipients;
