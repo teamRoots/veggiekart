@@ -170,9 +170,26 @@ router.put('/confirmRequest/:id', function(request, response) {
     });
     //send summary email to Sue and individual emails to growers
 
+    var emailSubject = "Request Confirmation Summary";
+
+    //uncomment when ready for roll-out implementation
+    // var emailRecipients = "sue@rootsforthehometeam.org";
+
+    //comment out when ready for rollout implementation
+    var emailRecipients = "srjorgens@gmail.com";
+
+    //build emailIntro
+    var emailIntro = "Below is a summary of the confirmed amounts of produce to be provided from each grower for the following scheduled event(s)." + "<br>" + "<br>";
+
+    emailIntro += "<b>" + "Event(s):" + "</b>" + "<br>";
+
+    for (var h = 0; h < updatedObject.event.length; h++){
+      emailIntro += "Location: " + updatedObject.event[h].event.location + "<br>" + "Date: " + updatedObject.event[h].event.displayDate + "<br>" + "Host: " + updatedObject.event[h].event.host + "<br>";
+    }
+
     //build emailSummary
     var emailSummary = "<b>" + "Summary of required items: " + "</b>" + "<br>";
-    // console.log('Updated object: ', updatedObject);
+
     for (var i = 0; i < updatedObject.summary.length; i++){
       emailSummary += updatedObject.summary[i].amount + " " + updatedObject.summary[i].unit + " of " + updatedObject.summary[i].ingredient_name + "<br>";
     }
@@ -191,8 +208,12 @@ router.put('/confirmRequest/:id', function(request, response) {
         emailSummary += updatedObject.recipients[j].confirmations[veggie].quantity + " " + unitMeasure + " of " + veggie + "<br>";
         unitMeasure = "";
       }
+      emailSummary += "<br>";
     }
     console.log(emailSummary);
+
+    //send request confirmation of all grower confirmations to Sue
+    sendEmail.sendMessage(emailSubject, emailRecipients, emailIntro, emailSummary);
 });
 
 router.post('/findOldRequest', function(request, response) {
