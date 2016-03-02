@@ -1,9 +1,9 @@
 
 <div class="span10 container">
   <button class="create-salad-btn" ng-hide="saladCreator" ng-click="saladCreator = true"><i class="icon-food"></i> Create New Salad</button>
-
-  <div class="salad-creator" ng-show="saladCreator" class="sub-container">
-
+  <div></div>
+  <!-- shows the saladCreator -->
+  <div class="salad-creator" ng-show="saladCreator" class="sub-container salad-creator">
     <h3 class="push-right">New Salad</h3>
     <div class="clearfix"></div>
     Salad Name: <input type="text" ng-model="newSalad.name" placeholder="Salad Name"/>
@@ -26,14 +26,21 @@
       <button ng-click="createIngredient(createNewIngredient); ingredientCreator = false">Create Ingredient</button>
     </div>
 
+    <div>
+      <h4>Salad: {{newSalad.name}}</h4>
+    </div>
+
     <div class="salad-ingredients">
       <ul class="salad-list">
         <li ng-repeat="listNewIngredient in listNewIngredients track by $index">{{listNewIngredient.quantity}}. {{listNewIngredient.unit}} of  {{listNewIngredient.name}}</li>
       </ul>
     </div>
     <div class="clearfix"></div>
-    <button ng-click="createNewSalad(newSalad.name)"><i class="icon-food"></i> Add Salad</button>
-    <button ng-click="cancelCreation(); saladCreator = false" class="btn-negative"><i class="icon-trash"></i> Cancel</button>
+    <div class="btn-holder">
+      <button ng-click="createNewSalad(newSalad.name)" class="push-right"><i class="icon-food"></i> Add Salad</button>
+      <button ng-click="cancelCreation(); saladCreator = false" class="btn-negative push-right"><i class="icon-trash"></i> Cancel</button>
+    </div>
+    <div class="clearfix"></div>
   </div>
 
   <!-- This is all salad pieces displayed at the bottom -->

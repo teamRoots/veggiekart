@@ -473,3 +473,12 @@ table {
 ul.message-summary {
   list-style-type: none;
 }
+
+//salad creator dialog
+.salad-creator {
+  // margin: 20px;
+  border: 1px solid $brown;
+  border-top: 0px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.95);
+}
