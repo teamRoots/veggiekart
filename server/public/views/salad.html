@@ -1,6 +1,8 @@
 
 <div class="span10 container">
   <button class="create-salad-btn" ng-hide="saladCreator" ng-click="saladCreator = true"><i class="icon-food"></i> Create New Salad</button>
+
+  <!-- shows the add salad dialog -->
   <div ng-show="saladCreator" class="sub-container">
     <h3 class="push-right">New Salad</h3>
     <div class="clearfix"></div>
@@ -33,6 +35,7 @@
     <button ng-click="createNewSalad(newSalad.name)"><i class="icon-food"></i> Add Salad</button>
     <button ng-click="cancelCreation(); saladCreator = false" class="btn-negative"><i class="icon-trash"></i> Cancel</button>
   </div>
+
   <!-- This is all salad pieces displayed at the bottom -->
   <div class="sub-container" ng-repeat="salad in salads.data.salads | orderBy: name">
     <button ng-click="confirmDelete(salad)" class="btn-negative"><i class="icon-trash icon-large"></i> Delete Salad</button>
