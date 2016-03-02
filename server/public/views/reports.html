@@ -1,14 +1,14 @@
 <div class="span10 container">
-  <select placeholder="Confirmed Orders">
+  <select ng-model="showReport.user" ng-options="recipient.orgName for recipient in reports.recipients.recipients" ng-change="reports.grabUserReport()">
   </select>
 </div>
 
 <div class="span10 container">
-  <ul class="events-display" ng-repeat="request in reports.stuff track by $index">
-    <li>
-      {{request}}
-    </li>
-  </ul>
+  <div class="events-display" ng-repeat="report in reports.allReports">
+    <p>
+      {{report}}
+    </p>
+  </div>
 
   <button ng-click="reports.postGardenConfirmations()">load gardens</button>
 </div>

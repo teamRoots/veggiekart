@@ -1,10 +1,25 @@
 app.controller('reportsController', ['createRequestService', 'eventsService', 'saladService', 'loginService', function(createRequestService, eventsService, saladService, loginService){
   this.user = loginService.user;
   this.requests = createRequestService.data.requests;
-var gardenConfirmationDisplay = {
+  this.recipients = createRequestService.data;
+createRequestService.getRecipients();
+
+console.log('sdlkfj;pre;', this.recipients);
+
+this.grabUserReport = function(){
+postGardenConfirmations();
+this.allReports = gardenConfirmationDisplay.gardens;
+}
+
+
+
+
+
+gardenConfirmationDisplay = {
   gardens:[]};
 
-this.postGardenConfirmations = function(){
+var postGardenConfirmations = function(){
+  console.log('sdlkfj;', this.recipients);
 var newUnit = 0;
 var loopPush = '';
 var loopQuantityPush = '';
@@ -18,6 +33,7 @@ var garden = {
 };
 var vegetableLengthHolder = 0;
 var gardensLengthHolder = 0;
+this.requests = createRequestService.data.requests;
 
 for (var i = 0; i < this.requests.length; i++){
   console.log('first loop hit', this.requests);
@@ -103,17 +119,7 @@ for (var i = 0; i < this.requests.length; i++){
                 }
 
               }
-              // ===================================================
-
-
-
-
-
-
-
                 gJ = vegetableLengthHolder;
-
-
               }
             }
 
@@ -155,13 +161,9 @@ for (var i = 0; i < this.requests.length; i++){
         gI--;
 
       }
-
   }
 }
-this.stuff = gardenConfirmationDisplay.gardens;
+this.allReports = gardenConfirmationDisplay.gardens;
 
 };
-
-
-
 }]);
