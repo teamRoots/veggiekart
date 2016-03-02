@@ -1,15 +1,22 @@
 app.controller('reportsController', ['createRequestService', 'eventsService', 'saladService', 'loginService', function(createRequestService, eventsService, saladService, loginService){
-  this.user = loginService.user;
-  this.requests = createRequestService.data.requests;
-  this.recipients = createRequestService.data;
+var selectCounter = 0;
+
+this.user = loginService.user;
+this.requests = createRequestService.data.requests;
+this.recipients = createRequestService.data;
 createRequestService.getRecipients();
 
 console.log('sdlkfj;pre;', this.recipients);
 
 this.grabUserReport = function(){
+selectCounter++;
+if(selectCounter <= 1){
 postGardenConfirmations();
 this.allReports = gardenConfirmationDisplay.gardens;
-}
+  }else {
+    this.allReports = gardenConfirmationDisplay.gardens;
+  }
+};
 
 
 

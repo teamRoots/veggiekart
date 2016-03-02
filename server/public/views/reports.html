@@ -1,14 +1,12 @@
 <div class="span10 container">
-  <select ng-model="showReport.user" ng-options="recipient.orgName for recipient in reports.recipients.recipients" ng-change="reports.grabUserReport()">
+  <select ng-model="organization" ng-options="recipient.orgName for recipient in reports.recipients.recipients" ng-change="reports.grabUserReport()">
   </select>
 </div>
 
 <div class="span10 container">
-  <div class="events-display" ng-repeat="report in reports.allReports">
-    <p>
+  <div class="events-display" ng-repeat="report in reports.allReports | filter: organization.orgName">
+
       {{report}}
-    </p>
   </div>
 
-  <button ng-click="reports.postGardenConfirmations()">load gardens</button>
 </div>
