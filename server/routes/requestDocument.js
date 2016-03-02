@@ -50,7 +50,7 @@ router.post('/', function(request, response) {
 
         //parse out summary of vegetables into text string for email body
         for (var i = 0; i < summary.length; i++) {
-          emailSummary += summary[i].amount + " " + summary[i].unit + " "+ summary[i].ingredient_name + "<br>";
+          emailSummary += summary[i].amount + " " + summary[i].unit + " " + summary[i].ingredient_name + "<br>";
         }
 
         //parse out list of recipients to be emailed
@@ -73,10 +73,14 @@ router.post('/', function(request, response) {
         var emailSubject = 'New Request - Roots for the Home Team';
         console.log('list of recipients: ', emailRecipients);
 
-        // var gardenURL = 'localhost:3000/respond/' + saved._id;     // for future reference
-        var gardenURL = 'localhost:3000/createRequests/getRequests/' + saved._id;
+        var gardenURL = 'localhost:3000/respond/' + saved._id;     // for future reference
+        // var gardenURL = 'localhost:3000/createRequests/getRequests/' + saved._id;   //for initial testing
 
-        sendEmail.sendMessage(emailSubject, emailRecipients, gardenURL, emailIntro, emailSummary, emailMessage);       //sends email message
+        //build html message
+        var emailHTML = '<span>' + emailIntro + '<br>' + '<br>' + emailSummary + '<br>' + '<br>' + 'http://' + gardenURL + '<br>' + '<br>' + emailMessage + '</span>';
+
+        // sendEmail.sendMessage(emailSubject, emailRecipients, emailIntro, emailSummary, emailMessage, gardenURL);       //sends email message
+        sendEmail.sendMessage(emailSubject, emailRecipients, emailHTML);       //sends email message
     });
 });
 
@@ -168,31 +172,82 @@ router.put('/confirmRequest/:id', function(request, response) {
             });
         }
     });
-    //send summary email to Sue and individual emails to growers
+
+    //build and send request confirmation summary email to Sue
+    var emailSubject = 'Request Confirmation Summary';
+
+    var emailRecipients = 'sue@rootsforthehometeam.org';
+
+    //build emailIntro
+    var emailIntro = 'Below is a summary of the confirmed amounts of produce to be provided for the following scheduled event(s).' + '<br>' + '<br>';
+
+    emailIntro += '<b>' + 'Event(s):' + '</b>' + '<br>';
+
+    for (var h = 0; h < updatedObject.event.length; h++){
+      emailIntro += 'Location: ' + updatedObject.event[h].event.location + '<br>' + 'Date: ' + updatedObject.event[h].event.displayDate + '<br>' + 'Host: ' + updatedObject.event[h].event.host + '<br>' + '<br>';
+    }
 
     //build emailSummary
-    var emailSummary = "<b>" + "Summary of required items: " + "</b>" + "<br>";
-    // console.log('Updated object: ', updatedObject);
+    var emailSummary = '<b>' + 'Summary of required items: ' + '</b>' + '<br>';
+
     for (var i = 0; i < updatedObject.summary.length; i++){
-      emailSummary += updatedObject.summary[i].amount + " " + updatedObject.summary[i].unit + " " + updatedObject.summary[i].ingredient_name + "<br>";
+      emailSummary += updatedObject.summary[i].amount + ' ' + updatedObject.summary[i].unit + ' ' + updatedObject.summary[i].ingredient_name + '<br>';
     }
 
     //cycle through all recipients and add their confirmed items and quantities to Summary
-    emailSummary += "<br>" + "<b>" + "Summary of confirmed items by grower: " + "</b>" + "<br>";
-    var unitMeasure = "";
+    emailSummary += '<br>' + '<b>' + 'Summary of confirmed items by grower: ' + '</b>' + '<br>';
+    var unitMeasure = '';
     for (var j = 0; j < updatedObject.recipients.length; j++){
-      emailSummary += updatedObject.recipients[j].orgName + ": " + "<br>";
+      emailSummary += updatedObject.recipients[j].orgName + ': ' + '<br>';
       for (var veggie in updatedObject.recipients[j].confirmations) {
         for (var k = 0; k < updatedObject.summary.length; k++){
           if (updatedObject.summary[k].ingredient_name == veggie){
             unitMeasure = updatedObject.summary[k].unit;
           }
         }
-        emailSummary += updatedObject.recipients[j].confirmations[veggie].quantity + " " + unitMeasure + " " + veggie + "<br>";
-        unitMeasure = "";
+        emailSummary += updatedObject.recipients[j].confirmations[veggie].quantity + ' ' + unitMeasure + ' ' + veggie + '<br>';
+        unitMeasure = '';
       }
+      emailSummary += '<br>';
     }
-    console.log(emailSummary);
+
+    //build html message
+    var emailHTML = '<span>' + emailIntro + '<br>' + emailSummary + '</span>';
+
+    //send request confirmation email of all grower confirmations to Sue
+    sendEmail.sendMessage(emailSubject, emailRecipients, emailHTML);
+
+    //build and send request confirmation email to each Recipient
+    emailSubject = 'Request Confirmation with Roots for the Home Team';
+    //cycle through all recipients and add their confirmed items and quantities to Summary
+    for (var l = 0; l < updatedObject.recipients.length; l++){
+      emailSummary = '<b>' + 'Summary of confirmed items by ' + updatedObject.recipients[l].orgName + ': ' + '</b>' + '<br>';
+      unitMeasure = '';
+      for (var veggie in updatedObject.recipients[l].confirmations) {
+        for (var m = 0; m < updatedObject.summary.length; m++){
+          if (updatedObject.summary[m].ingredient_name == veggie){
+            unitMeasure = updatedObject.summary[m].unit;
+          }
+        }
+        emailSummary += updatedObject.recipients[l].confirmations[veggie].quantity + ' ' + unitMeasure + ' ' + veggie + '<br>';
+        unitMeasure = '';
+      }
+      emailSummary += '<br>';
+
+      //set recipients email address
+      var emailRecipients = "";
+
+      emailRecipients = updatedObject.recipients[l].email;
+
+      //build html message
+      var emailHTML = '<span>' + emailIntro + '<br>' + emailSummary + '</span>';
+
+      console.log('emailHTML: ', emailHTML);
+      console.log('emailRecipients: ', emailRecipients);
+
+      //send request confirmation email of all grower confirmations to Sue
+      sendEmail.sendMessage(emailSubject, emailRecipients, emailHTML);
+    }
 });
 
 router.post('/findOldRequest', function(request, response) {
