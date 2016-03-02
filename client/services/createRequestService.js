@@ -112,6 +112,7 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
 
     //displays dialog modal
     data.confirmRequest = true;
+    loadRequests();
   }
 
   //saves the request to database on initial button click
@@ -135,8 +136,9 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
       data.salads = [];
       data.summary = [];
       data.message = '';
-      $location.path('/admin/dashboard');
 
+    }).then(loadRequests()).then(function() {
+      // $location.path('/admin/dashboard');
     })
   }
 
@@ -144,6 +146,7 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
     $http.get('/createRequest/getRequests').then(function(response) {
       data.requests = response.data;
       console.log('data.requests is ', data.requests);
+      
     });
   };
 
