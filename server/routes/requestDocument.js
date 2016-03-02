@@ -172,18 +172,14 @@ router.put('/confirmRequest/:id', function(request, response) {
             });
         }
     });
-    //send summary email to Sue and individual emails to growers
 
+    //build and send request confirmation summary email to Sue
     var emailSubject = 'Request Confirmation Summary';
 
-    //uncomment when ready for roll-out implementation
-    // var emailRecipients = 'sue@rootsforthehometeam.org';
-
-    //comment out when ready for rollout implementation
-    var emailRecipients = 'scottjorgens@aol.com';
+    var emailRecipients = 'sue@rootsforthehometeam.org';
 
     //build emailIntro
-    var emailIntro = 'Below is a summary of the confirmed amounts of produce to be provided by each grower for the following scheduled event(s).' + '<br>' + '<br>';
+    var emailIntro = 'Below is a summary of the confirmed amounts of produce to be provided for the following scheduled event(s).' + '<br>' + '<br>';
 
     emailIntro += '<b>' + 'Event(s):' + '</b>' + '<br>';
 
@@ -214,14 +210,44 @@ router.put('/confirmRequest/:id', function(request, response) {
       }
       emailSummary += '<br>';
     }
-    console.log(emailSummary);
 
     //build html message
     var emailHTML = '<span>' + emailIntro + '<br>' + emailSummary + '</span>';
 
-    //send request confirmation of all grower confirmations to Sue
-    // sendEmail.sendMessage(emailSubject, emailRecipients, emailIntro, emailSummary);
-    sendEmail.sendMessage(emailSubject, emailRecipients, emailHTML);
+    //send request confirmation email of all grower confirmations to Sue
+    // sendEmail.sendMessage(emailSubject, emailRecipients, emailHTML);
+
+    //build and send request confirmation email to each Recipient
+    emailSubject = 'Request Confirmation with Roots for the Home Team';
+    //cycle through all recipients and add their confirmed items and quantities to Summary
+    for (var l = 0; l < updatedObject.recipients.length; l++){
+      emailSummary = '<b>' + 'Summary of confirmed items by ' + updatedObject.recipients[l].orgName + ': ' + '</b>' + '<br>';
+      unitMeasure = '';
+      for (var veggie in updatedObject.recipients[l].confirmations) {
+        for (var m = 0; m < updatedObject.summary.length; m++){
+          if (updatedObject.summary[m].ingredient_name == veggie){
+            unitMeasure = updatedObject.summary[m].unit;
+          }
+        }
+        emailSummary += updatedObject.recipients[l].confirmations[veggie].quantity + ' ' + unitMeasure + ' ' + veggie + '<br>';
+        unitMeasure = '';
+      }
+      emailSummary += '<br>';
+
+      //set recipients email address
+      var emailRecipients = "";
+
+      emailRecipients = updatedObject.recipients[l].email;
+
+      //build html message
+      var emailHTML = '<span>' + emailIntro + '<br>' + emailSummary + '</span>';
+
+      console.log('emailHTML: ', emailHTML);
+      console.log('emailRecipients: ', emailRecipients);
+
+      //send request confirmation email of all grower confirmations to Sue
+      sendEmail.sendMessage(emailSubject, emailRecipients, emailHTML);
+    }
 });
 
 router.post('/findOldRequest', function(request, response) {
