@@ -1,20 +1,23 @@
 
 <div class="span10 container">
   <button class="create-salad-btn" ng-hide="saladCreator" ng-click="saladCreator = true"><i class="icon-food"></i> Create New Salad</button>
-  <div ng-show="saladCreator" class="sub-container">
+
+  <!-- shows the saladCreator -->
+  <div class="salad-creator" ng-show="saladCreator" class="sub-container salad-creator">
     <h3 class="push-right">New Salad</h3>
     <div class="clearfix"></div>
-    New Salad: <input type="text" ng-model="newSalad.name" placeholder="Salad Name"/>
-    Ingredients: <select ng-model="newIngredient.name" ng-options="ingredient for ingredient in ingredientsDatabase.data.ingredientsDatabase | orderBy:name">
+    Salad Name: <input type="text" ng-model="newSalad.name" placeholder="Salad Name"/>
+    <div class="clearfix"></div>
+    Ingredients: <select class="ingredient-picker" ng-model="newIngredient.name" ng-options="ingredient for ingredient in ingredientsDatabase.data.ingredientsDatabase | orderBy:name">
     </select>
-    Quantity: <input type="number" ng-model="newIngredient.quantity" placeholder="Qty."  />
-    Unit: <select name="ingredient-unit" ng-model="newIngredient.unit">
+    <input class="ingredient-quantity" type="number" ng-model="newIngredient.quantity" placeholder="Qty."  />
+    Unit: <select class="unit-picker" name="ingredient-unit" ng-model="newIngredient.unit">
       <option value="lbs.">lbs.</option>
       <option value="oz.">oz.</option>
     </select>
     <button ng-click="pushIngredient(newIngredient); ingredientCreator = false"><i class="icon-plus"></i> Add Ingredient</button>
     <div class="clearfix"></div>
-    <a ng-click="ingredientCreator = true">+ add new ingredient</a>
+    <a ng-click="ingredientCreator = true">+ create new ingredient</a>
 
     <div ng-show="ingredientCreator" class="ingredient-creator">
       <h4 class="push-left">Add Ingredient</h4>
@@ -23,15 +26,23 @@
       <button ng-click="createIngredient(createNewIngredient); ingredientCreator = false">Create Ingredient</button>
     </div>
 
+    <div ng-if="newSalad.name">
+      <h4>Salad: {{newSalad.name}}</h4>
+    </div>
+
     <div class="salad-ingredients">
       <ul class="salad-list">
         <li ng-repeat="listNewIngredient in listNewIngredients track by $index">{{listNewIngredient.quantity}}. {{listNewIngredient.unit}} of  {{listNewIngredient.name}}</li>
       </ul>
     </div>
     <div class="clearfix"></div>
-    <button ng-click="createNewSalad(newSalad.name); saladCreator = false"><i class="icon-food"></i> Add Salad</button>
-    <button ng-click="cancelCreation(); saladCreator = false" class="btn-negative"><i class="icon-trash"></i> Cancel</button>
+    <div class="btn-holder">
+      <button ng-click="createNewSalad(newSalad.name)" class="push-right"><i class="icon-food"></i> Add Salad</button>
+      <button ng-click="cancelCreation(); saladCreator = false" class="btn-negative push-right"><i class="icon-trash"></i> Cancel</button>
+    </div>
+    <div class="clearfix"></div>
   </div>
+
   <!-- This is all salad pieces displayed at the bottom -->
   <div class="sub-container" ng-repeat="salad in salads.data.salads | orderBy: name">
     <button ng-click="confirmDelete(salad)" class="btn-negative"><i class="icon-trash icon-large"></i> Delete Salad</button>
@@ -47,6 +58,21 @@
   </div>
 </div>
 
+<!-- Add salad error modal -->
+<div ng-if="addSaladError" class="overlay"></div>
+<div ng-if="addSaladError" class="modal container">
+  <h3>{{addSaladErrorMessage}}</h3>
+  <button class="back-button btn-negative" ng-click="removeSaladError()"><i class="icon-remove"></i> Go back</button>
+</div>
+
+<!-- Add ingredient error modal -->
+<div ng-if="addIngredientError" class="overlay"></div>
+<div ng-if="addIngredientError" class="modal container">
+  <h3>{{addIngredientErrorMessage}}</h3>
+  <button class="back-button btn-negative" ng-click="removeIngredientError()"><i class="icon-remove"></i> Go back</button>
+</div>
+
+<!-- Delete salad modal -->
 <div ng-if="showDeleteModal" class="overlay"></div>
 <div ng-if="showDeleteModal" class="modal container">
   <h3>{{deleteMessage}}<i ng-if="confirmIcon" class="icon-spinner icon-spin icon-large"></i></h3>

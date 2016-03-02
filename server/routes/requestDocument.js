@@ -215,7 +215,7 @@ router.put('/confirmRequest/:id', function(request, response) {
     var emailHTML = '<span>' + emailIntro + '<br>' + emailSummary + '</span>';
 
     //send request confirmation email of all grower confirmations to Sue
-    // sendEmail.sendMessage(emailSubject, emailRecipients, emailHTML);
+    sendEmail.sendMessage(emailSubject, emailRecipients, emailHTML);
 
     //build and send request confirmation email to each Recipient
     emailSubject = 'Request Confirmation with Roots for the Home Team';

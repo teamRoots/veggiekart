@@ -24,7 +24,7 @@
   <div class="sub-container">
     <h3 class="push-right">{{request.editValue.word}} Request</h3>
     <div class="clearfix"></div>
-    <ul class="header">
+    <ul class="inpage-header">
       <li><h4>Event</h4></li>
       <li><h4>Salads</h4></li>
     </ul>
@@ -37,7 +37,7 @@
 
     <div class="new-request">
       <div class="event-picker">
-        <select name="event" placeholder="Event" ng-model="request.newEvent.event" ng-options="event.displayDate group by event.location for event in request.eventsData.events">
+        <select class="event-picker" name="event" placeholder="Event" ng-model="request.newEvent.event" ng-options="event.displayDate group by event.location for event in request.eventsData.events">
           <option value="">Select Event</option>
         </select>
       </div>
@@ -71,7 +71,7 @@
       <div class="clearfix"></div>
     </div>
   </div>
-  <div class="span10 sub-container">
+  <div class="sub-container">
     <h3 class="push-right">Summary</h3>
     <div class="clearfix"></div>
 
@@ -92,10 +92,18 @@
         <div class="clearfix"></div>
       </div>
     </div>
+    <div class="clearfix"></div>
   </div>
 </div>
 
-<!-- Confirm dialog modal -->
+<!-- Add Event validation modal -->
+<div ng-if="request.data.eventError" class="overlay"></div>
+<div ng-if="request.data.eventError" class="modal container">
+  <h3>{{request.data.eventErrorMessage}}</h3>
+  <button class="back-button btn-negative" ng-click="request.data.eventError = false"><i class="icon-remove"></i> Back to Add Event</button>
+</div>
+
+<!-- Send Confirmation dialog modal -->
 <div ng-if="request.data.confirmRequest" class="overlay"></div>
 <div ng-if="request.data.confirmRequest" class="modal container">
   <h3>{{request.data.confirmMessage}}<i ng-if="request.data.confirmIcon" class="icon-spinner icon-spin icon-large"></i></h3>
