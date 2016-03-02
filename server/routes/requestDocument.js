@@ -73,8 +73,8 @@ router.post('/', function(request, response) {
         var emailSubject = 'New Request - Roots for the Home Team';
         console.log('list of recipients: ', emailRecipients);
 
-        //var gardenURL = 'localhost:3000/respond/' + saved._id;     // for future reference
-        var gardenURL = 'localhost:3000/createRequests/getRequests/' + saved._id;
+        var gardenURL = 'localhost:3000/respond/' + saved._id;     // for future reference
+        // var gardenURL = 'localhost:3000/createRequests/getRequests/' + saved._id;   //for initial testing
 
         //build html message
         var emailHTML = '<span>' + emailIntro + '<br>' + '<br>' + emailSummary + '<br>' + '<br>' + 'http://' + gardenURL + '<br>' + '<br>' + emailMessage + '</span>';
