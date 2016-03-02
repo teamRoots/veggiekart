@@ -27,6 +27,21 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
   //adds event to the current request
   var addEvent = function(){
 
+    //confirm there is an event and a salad, if none then display error
+    if (!newEvent.event || newEvent.event.length < 1){
+      console.log('event error folks');
+      data.eventError = true;
+      data.eventErrorMessage = 'Please select an event date from the dropdown.';
+      return;
+    };
+
+    if (!newEvent.event || newEvent.salads.length < 1){
+      console.log('salad error folks');
+      data.eventError = true;
+      data.eventErrorMessage = 'Please select a salad from the dropdown.';
+      return;
+    };
+
     //set salad quantity to 48 if no other value was entered
     for (var i = 0; i < newEvent.salads.length; i++){
       console.log('salads ', newEvent.salads[i]);
@@ -113,6 +128,7 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
     console.log('sending request to server ', request);
     $http.post('/createRequest', request).then(function(response){
       data.confirmIcon = false;
+      data.confirmRequest = false;
       console.log('response from da server is....... ', response);
       data.events = [];
       request = {};

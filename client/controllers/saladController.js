@@ -65,10 +65,46 @@ $scope.deleteSalad = function(){
 };
 
 $scope.pushIngredient = function(data){
+
+  //check that necessary form inputs have been added
+  if (typeof data === 'undefined') {
+    console.log('newIngredient undefined');
+    $scope.addIngredientError = true;
+    $scope.addIngredientErrorMessage = 'Please select an ingredient';
+    return;
+  }
+
+  if (!data.name) {
+    console.log('newIngredient name missing');
+    $scope.addIngredientError = true;
+    $scope.addIngredientErrorMessage = 'Please select an ingredient';
+    return;
+  };
+
+  if (!data.quantity) {
+    console.log('newIngredient quantity missing');
+    $scope.addIngredientError = true;
+    $scope.addIngredientErrorMessage = 'Please select a quantity';
+    return;
+  };
+
+  if (!data.unit) {
+    console.log('newIngredient unit missing');
+    $scope.addIngredientError = true;
+    $scope.addIngredientErrorMessage = 'Please select a unit';
+    return;
+  };
+
+  //push data to incredients array
   $scope.listNewIngredients.push(data);
   $scope.newIngredient = {};
 };
 
+$scope.removeIngredientError = function(){
+  $scope.addIngredientError = false;
+  $scope.addIngredientErrorMessage = '';
+  return;
+};
 
 //===================================
 //initializes the fillSalad function to populate page with salads

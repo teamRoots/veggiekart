@@ -48,6 +48,14 @@
   </div>
 </div>
 
+<!-- Add ingredient error modal -->
+<div ng-if="addIngredientError" class="overlay"></div>
+<div ng-if="addIngredientError" class="modal container">
+  <h3>{{addIngredientErrorMessage}}</h3>
+  <button class="back-button" ng-click="removeIngredientError()"><i class="icon-remove"></i> Go back</button>
+</div>
+
+<!-- Delete salad modal -->
 <div ng-if="showDeleteModal" class="overlay"></div>
 <div ng-if="showDeleteModal" class="modal container">
   <h3>{{deleteMessage}}<i ng-if="confirmIcon" class="icon-spinner icon-spin icon-large"></i></h3>
