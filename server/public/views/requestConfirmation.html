@@ -58,3 +58,10 @@
     <div class="clearfix"></div>
   </div>
 </div>
+
+<!-- Add message error modal -->
+<div ng-if="confirm.data.addMessageError" class="overlay"></div>
+<div ng-if="confirm.data.addMessageError" class="modal container">
+  <h3>{{confirm.data.addMessageErrorMessage}}</h3>
+  <button class="back-button btn-negative" ng-click="confirm.data.addMessageError = false"><i class="icon-remove"></i> Go back</button>
+</div>
