@@ -1,19 +1,34 @@
 app.factory('responseService', ['$http', '$location', function($http, $location){
   var data = {};
+  data.fromSueMessages =[];
 
   var loadRequest = function(id) {
     console.log('loadRequest hit', id);
     $http.get('/createRequest/getRequests/' + id).then(function(response) {
       data.request = response.data;
       var events = response.data.event;
+      var recipients = response.data.recipients;
+      console.log(recipients);
       data.eventsInfo = [];
 
       for (var i = 0; i < events.length; i++) {
         data.eventsInfo.push(events[i].event);
       }
+
+      for (var i = 0; i < recipients.length; i++) {
+        if (recipients[i].fromSueMessage !== undefined) {
+          var messageToPush = {
+                                name: recipients[i].name,
+                                message: recipients[i].fromSueMessage
+          }
+          console.log(messageToPush);
+          data.fromSueMessages.push(messageToPush);
+        }
+      }
       console.log('data.eventsInfo', data.eventsInfo);
     })
   };
+
 
   //sends the response to admin
   var sendResponse = function(){
@@ -32,10 +47,32 @@ app.factory('responseService', ['$http', '$location', function($http, $location)
       console.log(response);
     })
   }
+
+  var addMessage = function() {
+    var name = this.messageRecipient.name;
+    var message = this.message;
+    var recipients = data.request.recipients;
+    var messageToShow = {
+                          name: name,
+                          message: message
+                          }
+
+    data.fromSueMessages.push(messageToShow);
+
+    for (var i = 0; i < recipients.length; i++) {
+      if (recipients[i].name == name) {
+        recipients[i].fromSueMessage = message;
+        console.log(recipients[i]);
+
+      }
+    }
+  }
+
   return {
     loadRequest: loadRequest,
     sendResponse: sendResponse,
     confirmRequest: confirmRequest,
+    addMessage: addMessage,
     data: data
   }
 

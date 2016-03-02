@@ -36,20 +36,23 @@
       </tbody>
     </table>
     <label>Personalized Message Recipient</label>
-    <select name="recipient" placeholder="Event" ng-model="messageRecipient" ng-options="recipient as recipient.name for recipient in confirm.data.request.recipients track by $index">
-      <!-- <option ng-repeat="recipient in confirm.data.request.recipients" value="{{recipient.name}}">{{recipient.name}}</option> -->
+    <select name="recipient" placeholder="Event" ng-model="confirm.messageRecipient" ng-options="recipient as recipient.name for recipient in confirm.data.request.recipients">
     </select>
-
-    {{messageRecipient}}
-
+  </div>
+  <div class="sub-container">
     <div class="message-box">
-      <textarea rows="6" cols="30" class="message" ng-model="confirm.data.request.recipients[$index].message" placeholder="Message to {{personalMessage.name}}..."></textarea>
+      <h3 class="push-right">Add Messages</h3>
+      <div class="clearfix"></div>
+
+      <textarea rows="6" cols="30" class="message" ng-model="confirm.message" placeholder="Message to {{confirm.messageRecipient.name}}..."></textarea>
       <button class="send-request" ng-click="confirm.addMessage()">Add Message</button>
       <div class="clearfix"></div>
     </div>
-  </div>
-  <div class="sub-container">
-    <h3 class="push-right">Summary</h3>
+    <h3 class="push-right">Message Summary</h3>
+    <div class="clearfix"></div>
+    <ul class="message-summary">
+      <li ng-repeat="message in confirm.data.fromSueMessages"><strong>{{message.name}}: </strong>{{message.message}}</li>
+    </ul>
     <div class="clearfix"></div>
     <button class="push-right send-request" ng-click="confirm.confirmRequest()"><i class="icon-envelope"></i> Confirm Request</button>
     <div class="clearfix"></div>
