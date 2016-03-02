@@ -1,7 +1,7 @@
 
 <div class="span10 container">
   <button class="create-salad-btn" ng-hide="saladCreator" ng-click="saladCreator = true"><i class="icon-food"></i> Create New Salad</button>
-  <div></div>
+
   <!-- shows the saladCreator -->
   <div class="salad-creator" ng-show="saladCreator" class="sub-container salad-creator">
     <h3 class="push-right">New Salad</h3>
@@ -26,7 +26,7 @@
       <button ng-click="createIngredient(createNewIngredient); ingredientCreator = false">Create Ingredient</button>
     </div>
 
-    <div>
+    <div ng-if="newSalad.name">
       <h4>Salad: {{newSalad.name}}</h4>
     </div>
 
