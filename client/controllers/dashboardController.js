@@ -10,7 +10,6 @@ app.controller('dashboardController', ['loginService', 'eventsService', 'createR
     createRequestService.data.holdId = id;
     $location.path('/admin/confirm')
   }
-  // createRequestService.requestFalseUpdate;
 
   eventsService.getEvents();
   createRequestService.loadRequests();
