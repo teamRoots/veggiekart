@@ -32,7 +32,7 @@ button{
   -webkit-box-shadow: 4px 4px 20px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 4px 4px 20px 0px rgba(0,0,0,0.75);
   box-shadow: 4px 4px 20px 0px rgba(0,0,0,0.75);
-  font-size: 17px;
+  font-size: 16px;
   padding: 10px 1%;
   display: inline-block;
   outline: 0;
@@ -79,7 +79,7 @@ ul, li {
   margin: 20px auto 0 auto;
   padding: 0 40px;
   border-radius: 0 8px 0 0;
-  background-color: $whitebackground;
+  background-color: white;
   border-bottom: 1px solid $brown;
 }
 img.logo {
@@ -168,7 +168,6 @@ hr {
   z-index: 15;
   top: 32%;
   left: 32%;
-  // margin: -84px 0 0 -200px;
   padding: 0 0 10px 0;
   img.login-logo {
     display: block;
@@ -185,10 +184,12 @@ hr {
     width: 100%;
     line-height: 60px;
     padding-left: 10px;
+    font-size: 18px;
+    margin-bottom: 3px;
   }
   input:focus{
     outline: none;
-    box-shadow: 0px 0px 5px #61C5FA;
+    box-shadow: 0px 0px 5px $green;
     border:1px solid $green;
   }
   button {
@@ -197,19 +198,23 @@ hr {
     border: none;
     border-radius: 0 0 8px 8px;
     opacity: 0.95%;
+    padding-right: 25px;
     &:active {
-
+      left: 0;
+      top: 0;
     }
   }
 }
 
 //dashboard styling
-
-.header {
-  h4 {
-    display: inline;
-  }
+.inpage-header {
+  margin: 20px auto 0 auto;
+  // padding: 0 40px;
+  border-radius: 0 8px 0 0;
+  background-color: $whitebackground;
+  border-bottom: 1px solid $brown;
 }
+
 .event-content li {
   display: inline-block;
 }
@@ -260,6 +265,10 @@ select {
   width: 45%;
   display: block;
   float: left;
+  margin-left: 1%;
+  select {
+    width: 72%;
+  }
 }
 .select-quantity {
   width: 10%;
@@ -272,10 +281,17 @@ select {
   select {
     width: 72%;
   }
+  &:not(:first-child) {
+    display: block;
+    float: right;
+    clear: right;
+    margin-right: 4%;
+  }
 }
 
+
 .add-salad {
-  margin: 0 auto 0 50%;
+  margin: 0 auto 0 46%;
 }
 .btn-holder {
   margin: 20px auto;
@@ -315,7 +331,7 @@ select {
     display: inline-block;
     float: none;
     width: 40%;
-    margin: 0 4%;
+    margin: 0 2%;
   }
   .head {
     font-weight: bold;
@@ -336,7 +352,7 @@ select {
   width: 24%;
   padding: 5px;
   input {
-    zoom: 2;
+    zoom: 1.2;
     width: auto;
   }
 }
@@ -440,4 +456,9 @@ table {
   &:active {
     background: $buttonNegativeDarker;
   }
+}
+
+//confirmation page styles
+ul.message-summary {
+  list-style-type: none;
 }
