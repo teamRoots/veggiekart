@@ -1,5 +1,5 @@
 //Service to handle logins
-app.factory('loginService', ['$http', '$location', function($http, $location){
+app.factory('loginService', ['$http', '$location', 'createRequestService', function($http, $location, createRequestService){
   var user = {};
   var userLoggedIn = {
     loggedIn: false,
@@ -56,7 +56,7 @@ app.factory('loginService', ['$http', '$location', function($http, $location){
         $location.path('/');
         alert('Login failed. Please try again.');
       }
-    });
+    }).then(createRequestService.loadRequests());
   };
 
 
