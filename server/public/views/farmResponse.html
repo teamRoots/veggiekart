@@ -10,7 +10,7 @@
         </ul>
       </div>
       <div class="event-split push-left">
-        <h4 class="push-left">Message from Roots...</h4>
+        <h4 class="push-left">Message from Roots:</h4>
         <div class="clearfix"></div>
         <p>{{farm.data.request.message}}</p>
       </div>
@@ -29,15 +29,24 @@
             <td><strong>{{veggie.ingredient_name}}</strong></td>
             <td>{{veggie.amount}} {{veggie.unit}}</td>
             <td ng-repeat="user in farm.data.request.recipients">
-              <input ng-change="farm.test()" ng-model="user.commitments[veggie.ingredient_name].quantity" type="number" placeholder="Qty." min="0"/>
+              <input ng-if="farm.user.username == user.email"  ng-change="farm.test()" ng-model="user.commitments[veggie.ingredient_name].quantity" type="number" placeholder="Qty." min="0"/>
+              <div ng-if="farm.user.username !== user.email">{{user.commitments[veggie.ingredient_name].quantity}}</div>
           </td>
           </tr>
       </tbody>
     </table>
     <div class="message-box">
-      <textarea rows="6" cols="30" class="message" ng-model="request.data.message" placeholder="Message to the farms..."></textarea>
-      <button class="send-request" ng-click="farm.sendResponse()">Send Response</button>
+      <textarea rows="6" cols="30" class="message" ng-model="request.data.message" placeholder="Message to Roots"></textarea>
+      <button class="send-request" ng-click="farm.validateResponse()">Send Response</button>
       <div class="clearfix"></div>
     </div>
   </div>
+</div>
+
+<!-- Send Response dialog modal -->
+<div ng-if="farm.data.confirmRequest" class="overlay"></div>
+<div ng-if="farm.data.confirmRequest" class="modal container">
+  <h3>{{farm.data.confirmMessage}}<i ng-if="farm.data.confirmIcon" class="icon-spinner icon-spin icon-large"></i></h3>
+  <button class="back-button btn-negative" ng-click="farm.data.confirmRequest = false"><i class="icon-remove"></i> Back to edit</button>
+  <a href="/admin/dashboard"><button class="send-button" ng-click="farm.sendResponse()"><i class="icon-envelope"></i> Send Request</button></a>
 </div>
