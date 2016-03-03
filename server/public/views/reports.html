@@ -1,7 +1,4 @@
 <div class="span10 container">
-  <div class="clearfix"></div>
-  <h2 class="push-right">Analytics</h2>
-  <div class="clearfix"></div>
   <h3>Select an Organization</h3>
     <select placeholder="Choose An Organization" ng-model="organization" ng-options="recipient.orgName for recipient in reports.recipients.recipients" ng-change="reports.grabUserReport()">
       <option value="">Show All Reports</option>
