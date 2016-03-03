@@ -135,14 +135,14 @@ app.factory('responseService', ['$http', '$location', 'loginService', function($
     data.deleteIcon = true;
     var idHolder = {
       id: id
-    }
+    };
     $http.post('/createRequest/deleteRequest', idHolder).then(function(response) {
       console.log(response.data);
       data.deleteIcon = false;
       data.deleteError = false;
       $location.path('/admin/dashboard');
     });
-  }
+  };
 
   return {
     loadRequest: loadRequest,
