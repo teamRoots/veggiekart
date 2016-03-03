@@ -86,7 +86,7 @@
     </ul>
 
     <div class="clearfix"></div>
-    <button class="push-right send-request" ng-click="confirm.confirmRequest()"><i class="icon-envelope"></i> Confirm Request</button>
+    <button class="push-right send-request" ng-click="confirm.confirmCheck()"><i class="icon-envelope icon-large"></i> Confirm Request</button>
     <div class="clearfix"></div>
 
   </div>
@@ -106,4 +106,12 @@
   <h3>{{confirm.data.deleteMessage}}</h3>
   <button class="back-button" ng-click="confirm.data.deleteError = false"><i class="icon-remove"></i> Go back</button>
   <button class="back-button btn-negative" ng-click="confirm.deleteRequest(confirm.data.request._id)"><i class="icon-trash icon-large"></i> Delete Request</button>
+</div>
+
+<!-- Confirm Request error modal -->
+<div ng-if="confirm.data.confirmError" class="overlay"></div>
+<div ng-if="confirm.data.confirmError" class="modal container">
+  <h3>{{confirm.data.confirmErrorMessage}}<i ng-if="confirm.data.confirmIcon" class="icon-spinner icon-spin icon-large"></i></h3>
+  <button class="back-button btn-negative" ng-click="confirm.data.confirmError = false"><i class="icon-remove"></i> Go back</button>
+  <button class="back-button" ng-click="confirm.confirmRequest()"><i class="icon-envelope icon-large"></i> Send Confirmation</button>
 </div>

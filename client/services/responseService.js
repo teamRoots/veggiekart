@@ -3,7 +3,8 @@ app.factory('responseService', ['$http', '$location', 'loginService', function($
     confirmRequest: false,
     confirmIcon: false,
     deleteError: false,
-    deleteIcon: false
+    deleteIcon: false,
+    confirmError: false
   };
   data.fromAdminMessages =[];      //is this needed?  it is needed inside loadRequest to refresh messages when changing from request to request
 
@@ -87,12 +88,21 @@ app.factory('responseService', ['$http', '$location', 'loginService', function($
     });
   };
 
+  var confirmCheck = function() {
+    data.confirmError = true;
+    data.confirmErrorMessage = 'Are you sure?';
+  };
+
   var confirmRequest = function(){
     // console.log('response to send:', data.request._id);
+    data.confirmIcon = true;
     console.log('data.request:', data.request);
     var id = data.request._id;
     $http.put('/createRequest/confirmRequest/' + id, data.request).then(function(response) {
+      data.confirmError = false;
+      data.confirmErrorMessage = '';
       console.log(response);
+      $location.path(('/admin/dashboard'));
     });
   };
 
@@ -150,6 +160,7 @@ app.factory('responseService', ['$http', '$location', 'loginService', function($
     sendResponse: sendResponse,
     confirmRequest: confirmRequest,
     confirmDelete: confirmDelete,
+    confirmCheck: confirmCheck,
     addMessage: addMessage,
     validateResponse: validateResponse,
     data: data
