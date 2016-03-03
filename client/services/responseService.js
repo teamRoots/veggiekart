@@ -1,5 +1,6 @@
 app.factory('responseService', ['$http', '$location', 'loginService', function($http, $location, loginService){
   var data = {
+    exitConfirm: false,
     confirmRequest: false,
     confirmIcon: false,
     deleteError: false,
@@ -86,6 +87,7 @@ app.factory('responseService', ['$http', '$location', 'loginService', function($
     $http.put('/createRequest/updateRequest/' + id, data.request).then(function(response) {
       console.log(response);
     });
+    data.exitConfirm = true;
   };
 
   var confirmCheck = function() {

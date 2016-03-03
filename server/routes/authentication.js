@@ -23,6 +23,14 @@ router.get('/failure', function(request, response){
     response.send(false);
 });
 
+router.get('/logout', function(request, response){
+  console.log('router hit');
+    request.session.destroy(function (err) {
+      response.sendStatus(200); //Inside a callback… bulletproof!
+});
+});
+
+
 //===================================
 //post call for passport authentication
 
