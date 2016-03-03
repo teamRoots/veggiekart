@@ -1,16 +1,13 @@
 <!-- <div class="span10 banner"> -->
   <!-- Will add ng-show="userLoggedIn" to display the banner and nav only when logged in -->
   <div class="span10 header">
-    <div class="title-casing">
-      <div>
-        <a href="/admin/dashboard"><img class="logo" src="views/images/RootsLogo.png" /></a>
-      </div>
-      <div class="title">
-        <h1>Veggie Kart</h1>
-      </div>
+    <div class="logo">
+      <img src="views/images/RootsLogo.png" />
     </div>
-    <div class="clearfix"></div>
-    <div class="logout push-right">
+    <div class="title">
+      <h1>Veggie Kart</h1>
+    </div>
+    <div class="logout">
       <p>Welcome, {{user.data}}!</p>
       <a href="/" ng-click="logout(); userLoggedIn.loggedIn = false">logout</a>
     </div>
