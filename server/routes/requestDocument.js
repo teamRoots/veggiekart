@@ -206,7 +206,10 @@ router.put('/confirmRequest/:id', function(request, response) {
             unitMeasure = updatedObject.summary[k].unit;
           }
         }
-        emailSummary += updatedObject.recipients[j].confirmations[veggie].quantity + ' ' + unitMeasure + ' ' + veggie + '<br>';
+        //check for null values if quantity was previously added and removed from DB
+        if(updatedObject.recipients[j].confirmations[veggie].quantity){
+          emailSummary += updatedObject.recipients[j].confirmations[veggie].quantity + ' ' + unitMeasure + ' ' + veggie + '<br>';
+        }
         unitMeasure = '';
       }
       emailSummary += '<br>';
@@ -254,7 +257,7 @@ router.put('/confirmRequest/:id', function(request, response) {
       console.log('emailHTML: ', emailHTML);
       console.log('emailRecipients: ', emailRecipients);
 
-      //send request confirmation email of all grower confirmations to Sue
+      //send request confirmation email to each grower
       sendEmail.sendMessage(emailSubject, emailRecipients, emailHTML);
     }
 });

@@ -16,7 +16,9 @@ var sendMessage = function(emailSubject, emailRecipients, emailHTML) {
   //setup e-mail data with unicode symbols
   var mailOptions = {
     from: 'rootsftht@gmail.com',                //sender address
-    // to: emailRecipients,                                                 //uncomment to use live recipients
+    // to: emailRecipients,                                                 //uncomment to
+//HOT! DON'T TOUCH!!!!
+    // use live recipients
     to: 'rootsftht@gmail.com, srjorgens@gmail.com, scottjorgens@aol.com',      //list of comma separated recipients
     subject: emailSubject,                      //subject loginService
     text: '',                                   //plaintext body
