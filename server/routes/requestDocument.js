@@ -277,6 +277,17 @@ router.post('/findOldRequest', function(request, response) {
     }
 });
 
+router.post('/deleteRequest', function(request, response){
+    console.log('request.body', request.body);
+    Request.remove({_id: request.body.id}, function(err, res){
+        if (err){
+            console.log(err);
+        }else {
+            response.send('request deleted');
+        }
+    });
+});
+
 
 //===================================
 //exporting the router

@@ -124,8 +124,20 @@ app.factory('responseService', ['$http', '$location', 'loginService', function($
     }
   }
 
+  var deleteRequest = function(id){
+    var idHolder = {
+      id: id
+    }
+    $http.post('/createRequest/deleteRequest', idHolder).then(function(response) {
+      console.log(response.data);
+      $location.path('/admin/dashboard');
+
+    });
+  }
+
   return {
     loadRequest: loadRequest,
+    deleteRequest: deleteRequest,
     sendResponse: sendResponse,
     confirmRequest: confirmRequest,
     addMessage: addMessage,

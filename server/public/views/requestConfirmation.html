@@ -4,6 +4,7 @@
     <div class="clearfix"></div>
     <div>
       <a href="/admin/request"><button class="view-btn" ng-click="confirm.editRequest()"><i class="icon-pencil"></i> Edit Request</button></a>
+      <button ng-click="confirm.deleteRequest(confirm.data.request._id)" class="btn-negative"><i class="icon-trash icon-large"></i> Delete Request</button>
       <div class="event-split push-left">
         <ul class="farm-response" ng-repeat="event in confirm.data.eventsInfo">
           <li>{{event.location}} {{event.displayDate}} {{event.host}}</li>
