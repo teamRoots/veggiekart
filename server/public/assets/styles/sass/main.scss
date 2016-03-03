@@ -260,8 +260,10 @@ hr {
 .display-date {
   margin-left: 15px;
 }
-.view-btn {
+button.view-btn {
   padding: 5px;
+  margin-left: 3%;
+  margin-top: 22px;
 }
 
 //request styling
@@ -463,8 +465,10 @@ table {
   width: 44%;
 }
 
-.btn-negative {
+button.btn-negative {
   background-color: $buttonNegative;
+  padding: 5px;
+  margin-top: 22px;
   &:hover {
     background: $buttonNegativeDark;
   }
