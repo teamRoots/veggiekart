@@ -12,6 +12,8 @@ app.controller('confirmationController', ['responseService', 'createRequestServi
 
   this.confirmDelete = responseService.confirmDelete;
 
+  this.confirmCheck = responseService.confirmCheck;
+
   responseService.loadRequest();
   console.log('responseService', this.data);
 }]);
