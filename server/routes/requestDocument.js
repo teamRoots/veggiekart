@@ -235,12 +235,17 @@ router.put('/confirmRequest/:id', function(request, response) {
       emailSummary += '<br>';
 
       //set recipients email address
-      var emailRecipients = "";
-
       emailRecipients = updatedObject.recipients[l].email;
 
+      //check for message from Sue and add personalized message to grower
+      var emailMessage = '';
+
+      if (updatedObject.recipients[l].fromSueMessage){
+        emailMessage = '<b>' + 'Message from Sue:' + '</b>' + '<br>' + updatedObject.recipients[l].fromSueMessage;
+      }
+
       //build html message
-      var emailHTML = '<span>' + emailIntro + '<br>' + emailSummary + '</span>';
+      emailHTML = '<span>' + emailIntro + '<br>' + emailSummary + '<br>' + emailMessage + '</span>';
 
       console.log('emailHTML: ', emailHTML);
       console.log('emailRecipients: ', emailRecipients);
