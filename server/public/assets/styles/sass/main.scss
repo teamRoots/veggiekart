@@ -485,6 +485,11 @@ ul.message-summary {
 
 .col-center {
   text-align: center;
+  div {
+    display: inline-block;
+    padding: 2px;
+    width: 44%;
+  }
 }
 
 .left-divide {
