@@ -1,28 +1,21 @@
 <div class="span10 container">
   <div class="clearfix"></div>
-  <h2>Select an Organization</h2>
+  <h2 class="push-right">Analytics</h2>
+  <div class="clearfix"></div>
+  <h3>Select an Organization</h3>
     <select placeholder="Choose An Organization" ng-model="organization" ng-options="recipient.orgName for recipient in reports.recipients.recipients" ng-change="reports.grabUserReport()">
       <option value="">Show All Reports</option>
   </select>
 
-</div>
-
-<div class="span10 container">
-  <div class="events-display" ng-repeat="report in reports.allReports | filter: organization.orgName">
-    <h2>Current Report</h2>
-    <h4>Organization</h4>
-    <p>{{report.name}}</p>
-    <h4>Total Ingredient Amounts  *</h4>
-    <ul ng-repeat="vegetable in report.vegetables">
-      <li>{{vegetable.name}}, {{vegetable.quantity}} {{vegetable.unit}}  </li>
-    </ul>
-    <br>
-
-
-    <br/>
-
-    <p>* Shows the current amount of total confirmations on all current request.</p>
-
+  <div class="sub-container" ng-repeat="report in reports.allReports | filter: organization.orgName">
+    <div class="events-display" >
+      <h3 class="push-right">{{report.name}}</h3>
+      <div class="clearfix"></div>
+      <h4>Total Produce Confirmed</h4>
+      <ul>
+        <li class="halves" ng-repeat="vegetable in report.vegetables">{{vegetable.name}}: {{vegetable.quantity}} {{vegetable.unit}}  </li>
+      </ul>
+      <div class="clearfix"></div>
+    </div>
   </div>
-
 </div>
