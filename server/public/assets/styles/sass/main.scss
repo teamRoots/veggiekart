@@ -231,7 +231,7 @@ hr {
   background-color: rgba(255, 255, 255, 0.35);
   font-weight: bolder;
   border-left: 5px solid $green;
-  margin: 0 0 0 -4px;
+  margin-right: -4px;
 }
 .edit-icon {
   display: none;
@@ -433,8 +433,7 @@ input, select {
 }
 table {
   table-layout: fixed;
-  // overflow-x: scroll;
-  white-space: nowrap;
+  white-space: nowrap;;
   td {
     width: 40px;
   }
@@ -518,7 +517,6 @@ button.btn-negative {
 
 //salad creator dialog
 .salad-creator {
-  // margin: 20px;
   border: 1px solid $brown;
   border-top: 0px;
   padding: 20px;
