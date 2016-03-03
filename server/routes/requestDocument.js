@@ -227,18 +227,26 @@ router.put('/confirmRequest/:id', function(request, response) {
             unitMeasure = updatedObject.summary[m].unit;
           }
         }
-        emailSummary += updatedObject.recipients[l].confirmations[veggie].quantity + ' ' + unitMeasure + ' ' + veggie + '<br>';
+        //check for null values if quantity was previously added and removed from DB
+        if(updatedObject.recipients[l].confirmations[veggie].quantity){
+          emailSummary += updatedObject.recipients[l].confirmations[veggie].quantity + ' ' + unitMeasure + ' ' + veggie + '<br>';
+        }
         unitMeasure = '';
       }
       emailSummary += '<br>';
 
       //set recipients email address
-      var emailRecipients = "";
-
       emailRecipients = updatedObject.recipients[l].email;
 
+      //check for message from Sue and add personalized message to grower
+      var emailMessage = '';
+
+      if (updatedObject.recipients[l].fromSueMessage){
+        emailMessage = '<b>' + 'Message from Sue:' + '</b>' + '<br>' + updatedObject.recipients[l].fromSueMessage;
+      }
+
       //build html message
-      var emailHTML = '<span>' + emailIntro + '<br>' + emailSummary + '</span>';
+      emailHTML = '<span>' + emailIntro + '<br>' + emailSummary + '<br>' + emailMessage + '</span>';
 
       console.log('emailHTML: ', emailHTML);
       console.log('emailRecipients: ', emailRecipients);

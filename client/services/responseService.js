@@ -1,5 +1,8 @@
-app.factory('responseService', ['$http', '$location', function($http, $location){
-  var data = {};
+app.factory('responseService', ['$http', '$location', 'loginService', function($http, $location, loginService){
+  var data = {
+    confirmRequest: false,
+    confirmIcon: false
+  };
   data.fromSueMessages =[];
 
   var loadRequest = function(id) {
@@ -8,11 +11,18 @@ app.factory('responseService', ['$http', '$location', function($http, $location)
       data.request = response.data;
       var events = response.data.event;
       var recipients = response.data.recipients;
-      console.log(recipients);
+      console.log(response);
       data.eventsInfo = [];
 
       for (var i = 0; i < events.length; i++) {
         data.eventsInfo.push(events[i].event);
+      }
+
+      //if existing toAdminMessage, then grab that to populate the text field
+      for (var i = 0; i < recipients.length; i++) {
+        if (recipients[i].toAdminMessage !== undefined) {
+          data.toAdminMessage = recipients[i].toAdminMessage;
+        }
       }
 
       for (var i = 0; i < recipients.length; i++) {
@@ -29,10 +39,40 @@ app.factory('responseService', ['$http', '$location', function($http, $location)
     })
   };
 
+  //validated the response and display modal confirmation
+  var validateResponse = function(){
+    data.confirmRequest = true;
+    data.confirmMessage = 'Are you sure? '
+    recipients = data.request.recipients;
+
+    for (var i = 0; i < recipients.length; i++){
+      if (recipients[i].email === loginService.user.username) {
+        if (typeof recipients[i].commitments === 'undefined' || recipients[i].commitments === null) {
+          data.confirmMessage += 'No vegetables added. ';
+          return;
+        }
+      };
+    };
+
+    if (typeof data.toAdminMessage === 'undefined' || data.toAdminMessage === null || data.toAdminMessage === '') {
+      data.confirmMessage += 'No message added.';
+    }
+
+  };
 
   //sends the response to admin
   var sendResponse = function(){
-    console.log('response to send:', data.request._id);
+
+    //add message to requests
+    for (var i = 0; i < data.request.recipients.length; i++) {
+      if (data.request.recipients[i].email === loginService.user.username){
+        console.log('ready to add the message ', data.toAdminMessage);
+        data.request.recipients[i].toAdminMessage = data.toAdminMessage;
+      }
+    }
+
+    //send request to server
+    console.log('response to send:', data.request);
     var id = data.request._id;
     $http.put('/createRequest/updateRequest/' + id, data.request).then(function(response) {
       console.log(response);
@@ -88,6 +128,7 @@ app.factory('responseService', ['$http', '$location', function($http, $location)
     sendResponse: sendResponse,
     confirmRequest: confirmRequest,
     addMessage: addMessage,
+    validateResponse: validateResponse,
     data: data
   }
 

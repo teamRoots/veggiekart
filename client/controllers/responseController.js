@@ -17,6 +17,7 @@ app.controller('responseController', ['loginService', 'responseService', functio
   }
 
   this.sendResponse = responseService.sendResponse;
+  this.validateResponse = responseService.validateResponse;
 
   // function() {
   //   console.log('response to send:', this.data.request);
