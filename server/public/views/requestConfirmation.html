@@ -1,7 +1,10 @@
 <div class="span10 container">
+
+  <!-- Produce request section -->
   <div class="sub-container">
     <h3 class="push-left">Produce Request</h3>
     <div class="clearfix"></div>
+
     <div>
       <a href="/admin/request"><button class="view-btn" ng-click="confirm.editRequest()"><i class="icon-pencil"></i> Edit Request</button></a>
       <div class="event-split push-left">
@@ -10,34 +13,54 @@
           <li ng-repeat="salad in event.salads">{{salad.name}}</li>
         </ul>
       </div>
+
       <div class="event-split push-left">
         <h4 class="push-left">Message from Roots...</h4>
         <div class="clearfix"></div>
         <p>{{confirm.data.request.message}}</p>
       </div>
+
       <div class="clearfix"></div>
     </div>
   </div>
+
+  <!-- Veggie table section -->
   <div class="sub-container">
+
     <table>
+
       <thead>
-        <th>Veggie</th>
-        <th>Requested</th>
-        <th ng-repeat="user in confirm.data.request.recipients">{{user.orgName}}</th>
+        <th><h4>Veggie</h4></th>
+        <th><h4>Requested</h4></th>
+        <th class="left-divide col-center" ng-repeat="user in confirm.data.request.recipients" colspan="2"><h4>{{user.orgName}}</h4></th>
       </thead>
+
       <tbody>
-          <tr ng-repeat="veggie in confirm.data.request.summary">
-            <td><strong>{{veggie.ingredient_name}}</strong></td>
-            <td>{{veggie.amount}} {{veggie.unit}}</td>
-            <td ng-repeat="user in confirm.data.request.recipients">
-              <input ng-change="confirm.test()" ng-model="user.confirmations[veggie.ingredient_name].quantity" type="number" placeholder="Qty." min="0"/> {{veggie.unit}}
+        <tr>
+          <td></td>
+          <td></td>
+          <td class="left-divide col-center">Confirmed<br />Amount</td>
+          <td class="col-center">Responded<br />Available</td>
+        </tr>
+        <tr ng-repeat="veggie in confirm.data.request.summary">
+          <td><strong>{{veggie.ingredient_name}}</strong></td>
+          <td>{{veggie.amount}} {{veggie.unit}}</td>
+          <td class="left-divide col-center" ng-repeat="user in confirm.data.request.recipients">
+            <input class="confirm-quantity" ng-change="confirm.test()" ng-model="user.confirmations[veggie.ingredient_name].quantity" type="tel" placeholder="Qty." min="0"/>
           </td>
-          </tr>
+          <td class="col-center" ng-repeat="user in confirm.data.request.recipients">
+            {{user.commitments[veggie.ingredient_name].quantity}} {{veggie.unit}}
+          </td>
+        </tr>
       </tbody>
+
     </table>
 
   </div>
+
+  <!-- Add Message section -->
   <div class="sub-container">
+
     <div class="message-box">
       <h3 class="push-right">Add Messages</h3>
       <div class="clearfix"></div>
@@ -48,15 +71,20 @@
       <button class="send-request" ng-click="confirm.addMessage()">Add Message</button>
       <div class="clearfix"></div>
     </div>
+
     <h3 class="push-right">Message Summary</h3>
     <div class="clearfix"></div>
+
     <ul class="message-summary">
       <li ng-repeat="message in confirm.data.fromAdminMessages"><strong>{{message.name}}: </strong>{{message.message}}</li>
     </ul>
+
     <div class="clearfix"></div>
     <button class="push-right send-request" ng-click="confirm.confirmRequest()"><i class="icon-envelope"></i> Confirm Request</button>
     <div class="clearfix"></div>
+
   </div>
+
 </div>
 
 <!-- Add message error modal -->
