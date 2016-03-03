@@ -95,6 +95,7 @@ router.get('/getRequests', function(request, response) {
 });
 
 router.post('/editRequest', function(request, response) {
+    console.log('response', request.body);
     var id = request.body.idHolder;
     Request.findById(id, function(err, oldRequests) {
         if (err) {
@@ -102,6 +103,7 @@ router.post('/editRequest', function(request, response) {
         } else {
             console.log('oldRequests', oldRequests);
             oldRequests.recipients = request.body.recipients;
+            console.log('recipient', oldRequests.recipients);
             oldRequests.event = request.body.events;
             oldRequests.summary = request.body.summary;
             oldRequests.message = request.body.message;
@@ -109,6 +111,7 @@ router.post('/editRequest', function(request, response) {
                 if(err){
                     console.log(err);
                 }else {
+                    console.log('saved', saved);
                 response.sendStatus(200);
                 }
             });
