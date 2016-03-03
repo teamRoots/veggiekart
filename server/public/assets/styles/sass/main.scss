@@ -83,22 +83,27 @@ ul, li {
   background-color: white;
   border-bottom: 1px solid $brown;
 }
-img.logo {
-  display: block;
+.logo  {
+  width: 24%;
   float: left;
-  padding: 0px;
-  margin-top: 10px;
-  width: 90px;
-}
-.title-casing {
-  margin: 0;
-  h1 {
-    margin: 0;
+  img {
+    display: block;
+    float: left;
+    padding: 0px;
+    margin-top: 8px;
+    width: 90px;
   }
 }
+.title {
+  width: 49%;
+  float: left;
+}
+
 .logout {
-  text-align: left;
-  margin: 10px 0 5px 0;
+  width: 24%;
+  text-align: right;
+  float: left;
+  margin: 44px 0 0 1%;
   p {
     display: inline-block;
     margin: 0;
@@ -255,8 +260,10 @@ hr {
 .display-date {
   margin-left: 15px;
 }
-.view-btn {
+button.view-btn {
   padding: 5px;
+  margin-left: 3%;
+  margin-top: 22px;
 }
 
 //request styling
@@ -458,8 +465,10 @@ table {
   width: 44%;
 }
 
-.btn-negative {
+button.btn-negative {
   background-color: $buttonNegative;
+  padding: 5px;
+  margin-top: 22px;
   &:hover {
     background: $buttonNegativeDark;
   }
