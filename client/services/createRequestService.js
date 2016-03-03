@@ -4,7 +4,8 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
   var editValue = {
     editPage: '',
     requestButtons: '',
-    word: ''
+    word: '',
+    if: false
   };
   var oldData = {
     event: [],
@@ -78,6 +79,7 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
   var getRecipients = function(){
     $http.get('/requestRecipients/recipients').then(function(response) {
       data.recipients = response.data;
+      console.log('recipients', data.recipients);
     })
   }
 
@@ -112,7 +114,6 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
 
     //displays dialog modal
     data.confirmRequest = true;
-    loadRequests();
   }
 
   //saves the request to database on initial button click
@@ -133,12 +134,11 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
       console.log('response from da server is....... ', response);
       data.events = [];
       request = {};
-      data.salads = [];
+      // data.salads = [];
       data.summary = [];
       data.message = '';
+      $location.path('/admin/dashboard');
 
-    }).then(loadRequests()).then(function() {
-      // $location.path('/admin/dashboard');
     })
   }
 
@@ -146,7 +146,6 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
     $http.get('/createRequest/getRequests').then(function(response) {
       data.requests = response.data;
       console.log('data.requests is ', data.requests);
-      
     });
   };
 
@@ -154,22 +153,25 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
     console.log('request id:', id);
   };
   var editRequest = function() {
+    showPreviousRequest();
     console.log('holdId', data.holdId);
-    editValue.editPage = true;
+    editValue.editPage = false;
     editValue.requestButtons = true;
     editValue.word = 'Edit New';
     idHolder = data.holdId;
+    editValue.if = true;
+
   };
 
   var requestFalseUpdate = function(){
     editValue.editPage = false;
     editValue.requestButtons = false;
     editValue.word = 'New';
+    editValue.if = false;
 
   };
 
   var newEditRequest = function(){
-
         request = {
             recipients: data.recipients,
             events: data.events,
@@ -178,9 +180,10 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
             idHolder: data.holdId
         };
         $http.post('/createRequest/editRequest', request).then(function(response){
+          console.log('response', response);
           data.events = [];
           request = {};
-          data.salads = [];
+          // data.salads = [];
           data.summary = [];
           data.message = '';
 
@@ -205,7 +208,7 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
   var cancelEvent = function(){
     data.events = [];
     request = {};
-    data.salads = [];
+    // data.salads = [];
     data.summary = [];
     data.message = '';
 
