@@ -95,6 +95,7 @@ router.get('/getRequests', function(request, response) {
 });
 
 router.post('/editRequest', function(request, response) {
+    console.log('response', request.body);
     var id = request.body.idHolder;
     Request.findById(id, function(err, oldRequests) {
         if (err) {
@@ -102,6 +103,7 @@ router.post('/editRequest', function(request, response) {
         } else {
             console.log('oldRequests', oldRequests);
             oldRequests.recipients = request.body.recipients;
+            console.log('recipient', oldRequests.recipients);
             oldRequests.event = request.body.events;
             oldRequests.summary = request.body.summary;
             oldRequests.message = request.body.message;
@@ -109,6 +111,7 @@ router.post('/editRequest', function(request, response) {
                 if(err){
                     console.log(err);
                 }else {
+                    console.log('saved', saved);
                 response.sendStatus(200);
                 }
             });
@@ -241,8 +244,8 @@ router.put('/confirmRequest/:id', function(request, response) {
       //check for message from Sue and add personalized message to grower
       var emailMessage = '';
 
-      if (updatedObject.recipients[l].fromSueMessage){
-        emailMessage = '<b>' + 'Message from Sue:' + '</b>' + '<br>' + updatedObject.recipients[l].fromSueMessage;
+      if (updatedObject.recipients[l].fromAdminMessage){
+        emailMessage = '<b>' + 'Message from Sue:' + '</b>' + '<br>' + updatedObject.recipients[l].fromAdminMessage;
       }
 
       //build html message

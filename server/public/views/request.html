@@ -1,5 +1,5 @@
 <div  class="span10 container new-event">
-  <div ng-if="request.editValue.editPage" class="sub-container">
+  <div ng-if="request.editValue.if" class="sub-container">
     <h3 class="push-right">Current Request</h3>
     <div class="clearfix"></div>
     <h4>Current Events and Salads</h4>
@@ -10,7 +10,7 @@
       </li>
     </ul>
   </div>
-  <div ng-if="request.editValue.editPage" class="sub-container">
+  <div ng-if="request.editValue.if" class="sub-container">
     <h4>Current Recipients</h4>
     <ul class="recipients-list">
       <li class="summary" ng-repeat="recipient in request.oldData.recipients">{{recipient.name}}, {{recipient.orgName}}</li>
@@ -83,14 +83,14 @@
     <div ng-hide="request.editValue.editPage" class="message-box">
       <textarea rows="6" cols="30" class="message" ng-model="request.data.message" placeholder="Message to the farms..."></textarea>
       <button ng-hide="request.editValue.requestButtons" class="send-request" ng-click="request.sendRequest()"><i class="icon-envelope"></i> Send Request</button>
-      <button ng-show="request.editValue.requestButtons" class="send-request" ng-click="request.sendRequest()">Finish Editing Request</button>
+      <button ng-show="request.editValue.requestButtons" class="send-request" ng-click="request.newEditRequest()">Finish Editing Request</button>
       <div class="clearfix"></div>
-      <div ng-show="request.editValue.editPage" class="message-box">
+      <!-- <div ng-show="request.editValue.editPage" class="message-box">
         <textarea rows="6" cols="30" class="message" ng-model="request.data.message" placeholder="Message to the farms..."></textarea>
         <button ng-hide="request.editValue.requestButtons" class="send-request" ng-click="request.sendRequest()">Send Request</button>
         <button ng-show="request.editValue.requestButtons" class="send-request" ng-click="request.newEditRequest()">Finish Editing Request</button>
         <div class="clearfix"></div>
-      </div>
+      </div> -->
     </div>
     <div class="clearfix"></div>
   </div>
