@@ -241,8 +241,8 @@ router.put('/confirmRequest/:id', function(request, response) {
       //check for message from Sue and add personalized message to grower
       var emailMessage = '';
 
-      if (updatedObject.recipients[l].fromSueMessage){
-        emailMessage = '<b>' + 'Message from Sue:' + '</b>' + '<br>' + updatedObject.recipients[l].fromSueMessage;
+      if (updatedObject.recipients[l].fromAdminMessage){
+        emailMessage = '<b>' + 'Message from Sue:' + '</b>' + '<br>' + updatedObject.recipients[l].fromAdminMessage;
       }
 
       //build html message

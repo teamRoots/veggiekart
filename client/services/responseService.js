@@ -3,7 +3,7 @@ app.factory('responseService', ['$http', '$location', 'loginService', function($
     confirmRequest: false,
     confirmIcon: false
   };
-  data.fromSueMessages =[];
+  data.fromAdminMessages =[];      //is this needed?  it is needed inside loadRequest to refresh messages when changing from request to request
 
   var loadRequest = function(id) {
     console.log('loadRequest hit', id);
@@ -13,6 +13,7 @@ app.factory('responseService', ['$http', '$location', 'loginService', function($
       var recipients = response.data.recipients;
       console.log(response);
       data.eventsInfo = [];
+      data.fromAdminMessages = [];      //for testing a bug; wasn't initializing when changing requests
 
       for (var i = 0; i < events.length; i++) {
         data.eventsInfo.push(events[i].event);
@@ -26,13 +27,13 @@ app.factory('responseService', ['$http', '$location', 'loginService', function($
       }
 
       for (var i = 0; i < recipients.length; i++) {
-        if (recipients[i].fromSueMessage !== undefined) {
+        if (recipients[i].fromAdminMessage !== undefined) {
           var messageToPush = {
                                 name: recipients[i].name,
-                                message: recipients[i].fromSueMessage
+                                message: recipients[i].fromAdminMessage
           }
           console.log(messageToPush);
-          data.fromSueMessages.push(messageToPush);
+          data.fromAdminMessages.push(messageToPush);
         }
       }
       console.log('data.eventsInfo', data.eventsInfo);
@@ -112,11 +113,11 @@ app.factory('responseService', ['$http', '$location', 'loginService', function($
                           message: message
                           }
 
-    data.fromSueMessages.push(messageToShow);
+    data.fromAdminMessages.push(messageToShow);
 
     for (var i = 0; i < recipients.length; i++) {
       if (recipients[i].name == name) {
-        recipients[i].fromSueMessage = message;
+        recipients[i].fromAdminMessage = message;
         console.log(recipients[i]);
 
       }
