@@ -6,7 +6,6 @@ this.requests = createRequestService.data.requests;
 this.recipients = createRequestService.data;
 createRequestService.getRecipients();
 
-console.log('sdlkfj;pre;', this.recipients);
 
 this.grabUserReport = function(){
 selectCounter++;
@@ -17,16 +16,24 @@ this.allReports = gardenConfirmationDisplay.gardens;
     this.allReports = gardenConfirmationDisplay.gardens;
   }
 };
-
-
-
-
-
 gardenConfirmationDisplay = {
   gardens:[]};
 
+
+
+
+
+
+
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//===============================================================
+//          Do not mess with this function!
+
+//           Works by Miracles and Magic!
+//===============================================================
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 var postGardenConfirmations = function(){
-  console.log('sdlkfj;', this.recipients);
 var newUnit = 0;
 var loopPush = '';
 var loopQuantityPush = '';

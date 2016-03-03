@@ -97,12 +97,22 @@ router.get('/getRequests', function(request, response) {
 router.post('/editRequest', function(request, response) {
     console.log('response', request.body);
     var id = request.body.idHolder;
+    var recipientsChecked = [];
+    var recipients = request.body.recipients;
+
+    for(var i = 0; i < recipients.length; i++){
+        console.log(recipients[i].checked);
+        if(recipients[i].checked === true){
+            recipientsChecked.push(recipients[i]);
+        }
+    }
+
     Request.findById(id, function(err, oldRequests) {
         if (err) {
             response.sendStatus(401);
         } else {
             console.log('oldRequests', oldRequests);
-            oldRequests.recipients = request.body.recipients;
+            oldRequests.recipients = recipientsChecked;
             console.log('recipient', oldRequests.recipients);
             oldRequests.event = request.body.events;
             oldRequests.summary = request.body.summary;
