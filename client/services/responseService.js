@@ -1,9 +1,16 @@
 app.factory('responseService', ['$http', '$location', 'loginService', function($http, $location, loginService){
   var data = {
     confirmRequest: false,
-    confirmIcon: false
+    confirmIcon: false,
+    deleteError: false,
+    deleteIcon: false
   };
   data.fromAdminMessages =[];      //is this needed?  it is needed inside loadRequest to refresh messages when changing from request to request
+
+  var confirmDelete = function() {
+    data.deleteError = true;
+    data.deleteMessage = 'Are you sure?';
+  };
 
   var loadRequest = function(id) {
     console.log('loadRequest hit', id);
@@ -125,21 +132,24 @@ app.factory('responseService', ['$http', '$location', 'loginService', function($
   };
 
   var deleteRequest = function(id){
+    data.deleteIcon = true;
     var idHolder = {
       id: id
-    }
+    };
     $http.post('/createRequest/deleteRequest', idHolder).then(function(response) {
       console.log(response.data);
+      data.deleteIcon = false;
+      data.deleteError = false;
       $location.path('/admin/dashboard');
-
     });
-  }
+  };
 
   return {
     loadRequest: loadRequest,
     deleteRequest: deleteRequest,
     sendResponse: sendResponse,
     confirmRequest: confirmRequest,
+    confirmDelete: confirmDelete,
     addMessage: addMessage,
     validateResponse: validateResponse,
     data: data

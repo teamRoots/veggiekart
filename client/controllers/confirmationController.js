@@ -10,6 +10,8 @@ app.controller('confirmationController', ['responseService', 'createRequestServi
 
   this.deleteRequest = responseService.deleteRequest;
 
+  this.confirmDelete = responseService.confirmDelete;
+
   responseService.loadRequest();
   console.log('responseService', this.data);
 }]);

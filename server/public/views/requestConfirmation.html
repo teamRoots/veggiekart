@@ -7,7 +7,7 @@
 
     <div>
       <a href="/admin/request"><button class="view-btn" ng-click="confirm.editRequest()"><i class="icon-pencil"></i> Edit Request</button></a>
-      <button ng-click="confirm.deleteRequest(confirm.data.request._id)" class="btn-negative"><i class="icon-trash icon-large"></i> Delete Request</button>
+      <button ng-click="confirm.confirmDelete()" class="btn-negative"><i class="icon-trash icon-large"></i> Delete Request</button>
       <div class="event-split push-left">
         <ul class="farm-response" ng-repeat="event in confirm.data.eventsInfo">
           <li>{{event.location}} {{event.displayDate}} {{event.host}}</li>
@@ -97,4 +97,12 @@
 <div ng-if="confirm.data.addMessageError" class="modal container">
   <h3>{{confirm.data.addMessageErrorMessage}}</h3>
   <button class="back-button btn-negative" ng-click="confirm.data.addMessageError = false"><i class="icon-remove"></i> Go back</button>
+</div>
+
+<!-- Delete request error modal -->
+<div ng-if="confirm.data.deleteError" class="overlay"></div>
+<div ng-if="confirm.data.deleteError" class="modal container">
+  <h3>{{confirm.data.deleteMessage}}</h3>
+  <button class="back-button" ng-click="confirm.data.deleteError = false"><i class="icon-remove"></i> Go back</button>
+  <button class="back-button btn-negative" ng-click="confirm.deleteRequest(confirm.data.request._id)"><i class="icon-trash icon-large"></i> Delete Request</button>
 </div>
