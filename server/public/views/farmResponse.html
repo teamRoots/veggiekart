@@ -48,5 +48,5 @@
 <div ng-if="farm.data.confirmRequest" class="modal container">
   <h3>{{farm.data.confirmMessage}}<i ng-if="farm.data.confirmIcon" class="icon-spinner icon-spin icon-large"></i></h3>
   <button class="back-button btn-negative" ng-click="farm.data.confirmRequest = false"><i class="icon-remove"></i> Back to edit</button>
-  <a href="/admin/dashboard"><button class="send-button" ng-click="farm.sendResponse()"><i class="icon-envelope"></i> Send Response</button></a>
+  <a href="/" ng-click="logout(); userLoggedIn.loggedIn = false"><button class="send-button" ng-click="farm.sendResponse()"><i class="icon-envelope"></i> Send Response</button></a>
 </div>

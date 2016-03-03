@@ -31,19 +31,19 @@ app.factory('responseService', ['$http', '$location', 'loginService', function($
           var messageToPush = {
                                 name: recipients[i].name,
                                 message: recipients[i].fromAdminMessage
-          }
+          };
           console.log(messageToPush);
           data.fromAdminMessages.push(messageToPush);
         }
       }
       console.log('data.eventsInfo', data.eventsInfo);
-    })
+    });
   };
 
   //validated the response and display modal confirmation
   var validateResponse = function(){
     data.confirmRequest = true;
-    data.confirmMessage = 'Are you sure? '
+    data.confirmMessage = 'Are you sure? ';
     recipients = data.request.recipients;
 
     for (var i = 0; i < recipients.length; i++){
@@ -52,8 +52,8 @@ app.factory('responseService', ['$http', '$location', 'loginService', function($
           data.confirmMessage += 'No vegetables added. ';
           return;
         }
-      };
-    };
+      }
+    }
 
     if (typeof data.toAdminMessage === 'undefined' || data.toAdminMessage === null || data.toAdminMessage === '') {
       data.confirmMessage += 'No message added.';
@@ -77,8 +77,8 @@ app.factory('responseService', ['$http', '$location', 'loginService', function($
     var id = data.request._id;
     $http.put('/createRequest/updateRequest/' + id, data.request).then(function(response) {
       console.log(response);
-    })
-  }
+    });
+  };
 
   var confirmRequest = function(){
     // console.log('response to send:', data.request._id);
@@ -86,23 +86,23 @@ app.factory('responseService', ['$http', '$location', 'loginService', function($
     var id = data.request._id;
     $http.put('/createRequest/confirmRequest/' + id, data.request).then(function(response) {
       console.log(response);
-    })
-  }
+    });
+  };
 
   var addMessage = function() {
 
     //check that all inputs are as expected
-    if (typeof this.messageRecipient == 'undefined' || this.messageRecipient == null) {
+    if (typeof this.messageRecipient == 'undefined' || this.messageRecipient === null) {
       data.addMessageError = true;
       data.addMessageErrorMessage = 'Please choose a recipient';
       return;
-    };
+    }
 
-    if (typeof this.message == 'undefined' || this.message == null || this.message.length < 1) {
+    if (typeof this.message == 'undefined' || this.message === null || this.message.length < 1) {
       data.addMessageError = true;
       data.addMessageErrorMessage = 'Please add a message for ' + this.messageRecipient.name;
       return;
-    };
+    }
 
     //add message
     var name = this.messageRecipient.name;
@@ -111,7 +111,7 @@ app.factory('responseService', ['$http', '$location', 'loginService', function($
     var messageToShow = {
                           name: name,
                           message: message
-                          }
+                        };
 
     data.fromAdminMessages.push(messageToShow);
 
@@ -122,15 +122,27 @@ app.factory('responseService', ['$http', '$location', 'loginService', function($
 
       }
     }
+  };
+
+  var deleteRequest = function(id){
+    var idHolder = {
+      id: id
+    }
+    $http.post('/createRequest/deleteRequest', idHolder).then(function(response) {
+      console.log(response.data);
+      $location.path('/admin/dashboard');
+
+    });
   }
 
   return {
     loadRequest: loadRequest,
+    deleteRequest: deleteRequest,
     sendResponse: sendResponse,
     confirmRequest: confirmRequest,
     addMessage: addMessage,
     validateResponse: validateResponse,
     data: data
-  }
+  };
 
 }]);

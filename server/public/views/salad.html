@@ -1,6 +1,7 @@
 
 <div class="span10 container">
-  <button class="create-salad-btn" ng-hide="saladCreator" ng-click="saladCreator = true"><i class="icon-food"></i> Create New Salad</button>
+  <button class="create-salad-btn push-right" ng-hide="saladCreator" ng-click="saladCreator = true"><i class="icon-food"></i> Create New Salad</button>
+  <div class="clearfix"></div>
 
   <!-- shows the saladCreator -->
   <div class="salad-creator" ng-show="saladCreator" class="sub-container salad-creator">
@@ -23,7 +24,7 @@
       <h4 class="push-left">Add Ingredient</h4>
       <div class="clearfix"></div>
       Ingredient Name: <input type="text" ng-model="createNewIngredient.newName" placeholder="Ingredient Name" />
-      <button ng-click="createIngredient(createNewIngredient); ingredientCreator = false">Create Ingredient</button>
+      <button class="push-right" ng-click="createIngredient(createNewIngredient); ingredientCreator = false">Create Ingredient</button>
     </div>
 
     <div ng-if="newSalad.name">
@@ -45,8 +46,8 @@
 
   <!-- This is all salad pieces displayed at the bottom -->
   <div class="sub-container" ng-repeat="salad in salads.data.salads | orderBy: name">
-    <button ng-click="confirmDelete(salad)" class="btn-negative"><i class="icon-trash icon-large"></i> Delete Salad</button>
-    <h3 class="push-right">{{salad.name}}</h3>
+    <button ng-click="confirmDelete(salad)" class="btn-negative push-right"><i class="icon-trash icon-large"></i> Delete Salad</button>
+    <h3 class="push-left">{{salad.name}}</h3>
     <div class="clearfix"></div>
     <div class="salad-ingredients">
       <div class="clearfix"></div>

@@ -36,6 +36,7 @@ button{
   padding: 10px 1%;
   display: inline-block;
   outline: 0;
+  width: 26%;
   &:hover {
     background: $buttonDark;
   }
@@ -220,9 +221,6 @@ hr {
 }
 .events {
   cursor: pointer;
-  ul {
-    list-style-type: none;
-  }
 }
 .events:hover {
   background-color: rgba(255, 255, 255, 0.35);
@@ -232,6 +230,13 @@ hr {
 }
 .edit-icon {
   display: none;
+}
+.halves {
+  display: block;
+  float: left;
+  width: 42%;
+  padding: 0;
+  margin: 0 4%;
 }
 .thirds {
   display: block;
@@ -324,9 +329,6 @@ select {
   margin: 10px 0;
 }
 .new-event {
-  ul {
-    list-style-type: none;
-  }
   li {
     display: inline-block;
     float: none;
@@ -337,9 +339,7 @@ select {
     font-weight: bold;
   }
 }
-.recipients-list {
-  list-style-type: none;
-}
+
 .events-display {
   li, p {
   vertical-align: top;
@@ -347,7 +347,6 @@ select {
   }
 }
 .summary {
-  list-style-type: none;
   display: inline-block;
   width: 24%;
   padding: 5px;
@@ -362,7 +361,6 @@ select {
   margin-bottom: 10px;
 }
 .salad-list {
-  list-style-type: none;
   li {
     display: block;
     float: left;
@@ -372,7 +370,6 @@ select {
   }
 }
 .salad-ingredients {
-  list-style-type: none;
   margin-bottom: 10px;
   li:nth-child(4) {
     clear: left;
@@ -400,7 +397,6 @@ select {
   margin: 0 5%;
 }
 .farm-response {
-  list-style-type: none;
   li {
     display: block;
     float: left;
@@ -473,9 +469,6 @@ table {
 }
 
 //confirmation page styles
-ul.message-summary {
-  list-style-type: none;
-}
 
 .confirm-quantity {
   width: 80px;
@@ -503,4 +496,10 @@ ul.message-summary {
   border-top: 0px;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.95);
+}
+
+
+
+ul {
+  list-style-type: none;
 }

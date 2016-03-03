@@ -8,6 +8,8 @@ app.controller('confirmationController', ['responseService', 'createRequestServi
 
   this.confirmRequest = responseService.confirmRequest;
 
-  responseService.loadRequest();
+  this.deleteRequest = responseService.deleteRequest;
 
+  responseService.loadRequest();
+  console.log('responseService', this.data);
 }]);
