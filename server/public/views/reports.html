@@ -1,14 +1,26 @@
 <div class="span10 container">
-  <select placeholder="Confirmed Orders">
+  <h2>Select an Organization</h2>
+  <br/>
+  <select ng-model="organization" ng-options="recipient.orgName for recipient in reports.recipients.recipients" ng-change="reports.grabUserReport()">
   </select>
 </div>
 
 <div class="span10 container">
-  <ul class="events-display" ng-repeat="request in reports.stuff track by $index">
-    <li>
-      {{request}}
-    </li>
-  </ul>
+  <div class="events-display" ng-repeat="report in reports.allReports | filter: organization.orgName">
+    <h2>Current Report</h2>
+    <h4>Organization</h4>
+    <p>{{report.name}}</p>
+    <h4>Total Ingredient Amounts  *</h4>
+    <ul ng-repeat="vegetable in report.vegetables">
+      <li>{{vegetable.name}}, {{vegetable.quantity}} {{vegetable.unit}}  </li>
+    </ul>
+    <br>
 
-  <button ng-click="reports.postGardenConfirmations()">load gardens</button>
+
+    <br/>
+
+    <p>* Shows the current amount of total confirmations on all current request.</p>
+
+  </div>
+
 </div>

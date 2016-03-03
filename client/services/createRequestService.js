@@ -209,7 +209,6 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
     data.summary = [];
     data.message = '';
 
-    $location.path('/admin/dashboard');
   };
 
     return {
