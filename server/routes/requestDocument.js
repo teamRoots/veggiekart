@@ -229,7 +229,10 @@ router.put('/confirmRequest/:id', function(request, response) {
             unitMeasure = updatedObject.summary[m].unit;
           }
         }
-        emailSummary += updatedObject.recipients[l].confirmations[veggie].quantity + ' ' + unitMeasure + ' ' + veggie + '<br>';
+        //check for null values if quantity was previously added and removed from DB
+        if(updatedObject.recipients[l].confirmations[veggie].quantity){
+          emailSummary += updatedObject.recipients[l].confirmations[veggie].quantity + ' ' + unitMeasure + ' ' + veggie + '<br>';
+        }
         unitMeasure = '';
       }
       emailSummary += '<br>';
