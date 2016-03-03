@@ -2,7 +2,7 @@ app.controller('dashboardController', ['loginService', 'eventsService', 'createR
   this.user = loginService.user;
   this.data = eventsService.data;
   // this.editRequest = createRequestService.editRequest;
-  this.requests = createRequestService.data.requests;
+  this.requestsObj = createRequestService.data;
   this.requestFalseUpdate = createRequestService.requestFalseUpdate;
 
   this.requestDetails = function(id) {

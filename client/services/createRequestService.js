@@ -1,5 +1,6 @@
 //Service for admin to create new requests
 app.factory('createRequestService', ['$http', '$location', function($http, $location){
+
   var idHolder = '';
   var editValue = {
     editPage: '',
@@ -15,6 +16,7 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
   var data = {
     events: [],
     salads: [],
+    requests: [],
     saladCounterArray: [{id: 0}],
     confirmRequest: false
   };
@@ -137,8 +139,7 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
       // data.salads = [];
       data.summary = [];
       data.message = '';
-      $location.path('/admin/dashboard');
-
+      loadRequests();
     })
   }
 
@@ -146,6 +147,7 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
     $http.get('/createRequest/getRequests').then(function(response) {
       data.requests = response.data;
       console.log('data.requests is ', data.requests);
+      $location.path('admin/dashboard');
     });
   };
 

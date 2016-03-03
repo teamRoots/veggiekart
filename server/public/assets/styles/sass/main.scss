@@ -225,7 +225,7 @@ hr {
 .events:hover {
   background-color: rgba(255, 255, 255, 0.35);
   font-weight: bolder;
-  border-left: 4px solid $green;
+  border-left: 5px solid $green;
   margin: 0 0 0 -4px;
 }
 .edit-icon {
@@ -478,6 +478,11 @@ table {
 
 .col-center {
   text-align: center;
+  div {
+    display: inline-block;
+    padding: 2px;
+    width: 44%;
+  }
 }
 
 .left-divide {
