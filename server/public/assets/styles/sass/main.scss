@@ -477,6 +477,20 @@ ul.message-summary {
   list-style-type: none;
 }
 
+.confirm-quantity {
+  width: 80px;
+  height: 40px;
+  padding: 10px;
+}
+
+.col-center {
+  text-align: center;
+}
+
+.left-divide {
+  border-left: 1px solid $brown;
+}
+
 //salad creator dialog
 .salad-creator {
   // margin: 20px;
