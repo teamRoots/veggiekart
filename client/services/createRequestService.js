@@ -174,6 +174,7 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
   };
 
   var newEditRequest = function(){
+    console.log('recipient', data.recipients)
         request = {
             recipients: data.recipients,
             events: data.events,
