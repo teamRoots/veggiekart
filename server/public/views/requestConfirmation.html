@@ -32,25 +32,29 @@
 
       <thead>
         <th><h4>Veggie</h4></th>
-        <th><h4>Requested</h4></th>
+        <th class="left-divide col-center"><h4>Requested</h4></th>
         <th class="left-divide col-center" ng-repeat="user in confirm.data.request.recipients" colspan="2"><h4>{{user.orgName}}</h4></th>
       </thead>
 
       <tbody>
         <tr>
           <td></td>
-          <td></td>
-          <td class="left-divide col-center">Confirmed<br />Amount</td>
-          <td class="col-center">Responded<br />Available</td>
+          <td class="left-divide col-center"></td>
+          <td colspan="2" class="left-divide col-center" ng-repeat="user in confirm.data.request.recipients">
+            <div>Confirmed<br />Amount</div>
+            <div>Responded<br />Available</div>
+          </td>
         </tr>
         <tr ng-repeat="veggie in confirm.data.request.summary">
           <td><strong>{{veggie.ingredient_name}}</strong></td>
-          <td>{{veggie.amount}} {{veggie.unit}}</td>
-          <td class="left-divide col-center" ng-repeat="user in confirm.data.request.recipients">
-            <input class="confirm-quantity" ng-change="confirm.test()" ng-model="user.confirmations[veggie.ingredient_name].quantity" type="tel" placeholder="Qty." min="0"/>
-          </td>
-          <td class="col-center" ng-repeat="user in confirm.data.request.recipients">
-            {{user.commitments[veggie.ingredient_name].quantity}} {{veggie.unit}}
+          <td class="left-divide col-center">{{veggie.amount}} {{veggie.unit}}</td>
+          <td colspan="2" class="left-divide col-center" ng-repeat="user in confirm.data.request.recipients">
+            <div>
+              <input class="confirm-quantity" ng-change="confirm.test()" ng-model="user.confirmations[veggie.ingredient_name].quantity" type="tel" placeholder="Qty." min="0"/>
+            </div>
+            <div>
+              {{user.commitments[veggie.ingredient_name].quantity}} {{veggie.unit}}
+            </div>
           </td>
         </tr>
       </tbody>
