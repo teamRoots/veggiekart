@@ -36,7 +36,7 @@
       </tbody>
     </table>
     <div class="message-box">
-      <textarea rows="6" cols="30" class="message" ng-model="request.data.message" placeholder="Message to Roots"></textarea>
+      <textarea rows="6" cols="30" class="message" ng-model="farm.data.toAdminMessage" placeholder="{{farm.data.toAdminMessage}}"></textarea>
       <button class="send-request" ng-click="farm.validateResponse()">Send Response</button>
       <div class="clearfix"></div>
     </div>
@@ -48,5 +48,5 @@
 <div ng-if="farm.data.confirmRequest" class="modal container">
   <h3>{{farm.data.confirmMessage}}<i ng-if="farm.data.confirmIcon" class="icon-spinner icon-spin icon-large"></i></h3>
   <button class="back-button btn-negative" ng-click="farm.data.confirmRequest = false"><i class="icon-remove"></i> Back to edit</button>
-  <a href="/admin/dashboard"><button class="send-button" ng-click="farm.sendResponse()"><i class="icon-envelope"></i> Send Request</button></a>
+  <a href="/admin/dashboard"><button class="send-button" ng-click="farm.sendResponse()"><i class="icon-envelope"></i> Send Response</button></a>
 </div>

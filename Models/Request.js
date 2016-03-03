@@ -18,8 +18,8 @@ var RequestSchema = new Schema({
         orgName: String,
         commitments: Object,
         confirmations: Object,
-        toSueMessage: String,
-        fromSueMessage: String
+        toAdminMessage: String,
+        fromAdminMessage: String
     }],
     message: String,
     summary: Array
