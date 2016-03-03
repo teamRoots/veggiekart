@@ -10,6 +10,7 @@ var router = express.Router();
 
 router.get('/success', function(request, response){
     var id = request.session.respond;
+    console.log('somehow success')
     request.holder = {
       user: request.user,
       id: id
@@ -19,7 +20,7 @@ router.get('/success', function(request, response){
 
 router.get('/failure', function(request, response){
     console.log('failure request', request.user);
-    response.send('failure');
+    response.send(false);
 });
 
 //===================================

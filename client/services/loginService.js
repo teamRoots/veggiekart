@@ -9,11 +9,7 @@ app.factory('loginService', ['$http', '$location', 'createRequestService', funct
     data: '',
     admin: false
   };
-  var loginInput = function(){
-    if (e.keyCode == 13){
-        login();
-    }
-  };
+
   //sends login request to server
   var login = function(){
 
@@ -26,25 +22,32 @@ app.factory('loginService', ['$http', '$location', 'createRequestService', funct
     // ++++++++++++++++++++++++++++++++++++++++++
 
     $http.post('/authenticate/login', this.user).then(function(response){
-      console.log('userrrrrrr', response.data.user.isAdmin);
-      currentUser.admin = response.data.user.isAdmin;
-
+      // console.log('userrrrrrr', response.data.user.isAdmin);
+      console.log('response', response);
       user = response.data.user;
       if (response.data.id) {
         userLoggedIn.respondId = response.data.id;
       }
-
-      currentUser.data = response.data.user.firstName;
+      if(response.data === false){
+        console.log('login failed', response.data);
+        $location.path('/');
+        alert('Login failed. Please try again.');
+      }
       //redirects to admin page if user is admin
-      if(user.isAdmin == true){
+      else if(user.isAdmin == true){
         userLoggedIn.loggedIn = true;
         console.log('user is an admin!');
+        currentUser.admin = response.data.user.isAdmin;
+        currentUser.data = response.data.user.firstName;
+
         $location.path('/admin/dashboard');
 
       //redirects to user page if user is not admin
       } else if (user.isAdmin == false) {
         userLoggedIn.loggedIn = true;
         console.log('user is NOT an admin!');
+        currentUser.admin = response.data.user.isAdmin;
+        currentUser.data = response.data.user.firstName;
         $location.path('/farm/response');
 
       //displays failure message if login failed

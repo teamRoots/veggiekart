@@ -85,7 +85,6 @@ router.post('/', function(request, response) {
 });
 
 router.get('/getRequests', function(request, response) {
-    console.log('get request route hit');
     Request.find({}, function(err, requests) {
         if (err) {
             response.sendStatus(401);
@@ -96,7 +95,6 @@ router.get('/getRequests', function(request, response) {
 });
 
 router.post('/editRequest', function(request, response) {
-    console.log('get request route hit', request.body);
     var id = request.body.idHolder;
     Request.findById(id, function(err, oldRequests) {
         if (err) {

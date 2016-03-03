@@ -48,23 +48,44 @@ module.exports = {
                     return done(null, false);
                 }
                 // if user exists, verify password with bcrypt compare before returning user
+
+                //====================================Problem
                 if (user) {
+                    if(user.password === password){
+                        return done(null, user);
+                    }
                     // generate salt to hash with
-                    bcrypt.genSalt(10, function (err, salt) {
-                        // hash req.body.password
-                        bcrypt.hash(password, salt, function (err, hash) {
-                            // compare hash with hash from db
-                            bcrypt.compare(hash, user.password, function (err) {
-                                // if error in password compare, send flash message
-                                if (err) {
-                                    return done(null, false);
-                                }
-                                // finish authentication and return user
-                                return done(null, user);
-                            });
-                        });
-                    });
+                    // bcrypt.genSalt(10, function (err, salt) {
+                    //     // hash req.body.password
+                    //     bcrypt.hash(password, salt, function (err, hash) {
+                    //         // compare hash with hash from db
+                    //         console.log(password, user.password, hash);
+                    //         bcrypt.compare(hash, user.password, function (err, res) {
+                    //             // if error in password compare, send flash message
+                    //             console.log('res', res);
+                    //
+                    //             // if (res === false) {
+                    //             //     return done(null, false);
+                    //             //
+                    //             // }
+                    //             // finish authentication and return user
+                    //             return done(null, user);
+                    //         });
+                    //     });
+                    // });
+                    user.comparePassword(password, function (err, isMatch) {
+                        if (err) {
+                            throw err;
+                        }
+                        if (isMatch) {
+                            return done(null, user);
+                        } else {
+                            done(null, false);
+                        }
+});
+
                 }
+                //===================================Problem
             });
         }));
     }
