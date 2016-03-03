@@ -301,7 +301,16 @@ select {
   }
 }
 
-
+.delete-salad {
+  margin: 30px 0 0 2%;
+  color: $orange;
+  &:hover {
+    background: $buttonNegativeDark;
+  }
+  &:active {
+    background: $buttonNegativeDarker;
+  }
+}
 .add-salad {
   margin: 0 auto 0 46%;
 }
