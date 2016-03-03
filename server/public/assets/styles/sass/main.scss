@@ -432,7 +432,12 @@ input, select {
   width: 40%;
 }
 table {
-  overflow-x: scroll;
+  table-layout: fixed;
+  // overflow-x: scroll;
+  white-space: nowrap;
+  td {
+    width: 40px;
+  }
 }
 .table-units {
   font-size: 12px;
@@ -508,6 +513,7 @@ button.btn-negative {
 
 .left-divide {
   border-left: 1px solid $brown;
+  padding-right: 10px;
 }
 
 //salad creator dialog
