@@ -64,7 +64,7 @@ router.post('/', function(request, response) {
         emailRecipients = emailRecipients.slice(0,-2);
 
         //build email intro
-        var emailIntro = 'Below is a list of items that are needed for the upcoming scheduled event(s).  Please click the link below to confirm how much your growers will contribute.' + '<br>' + '<br>';
+        var emailIntro = 'Hello,' + '<br>' + '<br>' + 'Below is a list of items that are needed for the upcoming scheduled event(s).  Please click the link below to confirm how much your growers will contribute.' + '<br>' + '<br>';
 
         emailIntro += '<b>' + 'Event(s):' + '</b>' + '<br>';
 
@@ -152,7 +152,7 @@ router.post('/editRequest', function(request, response) {
                 emailRecipients = emailRecipients.slice(0,-2);
 
                 //build email intro
-                var emailIntro = 'Below is an updated list of items that are needed for the upcoming scheduled event(s).  Please click the link below to confirm how much your growers will contribute.' + '<br>' + '<br>';
+                var emailIntro = 'Hello,' + '<br>' + '<br>' + 'Below is an updated list of items that are needed for the upcoming scheduled event(s).  Please click the link below to confirm how much your growers will contribute.' + '<br>' + '<br>';
                 emailIntro += '<b>' + 'Event(s):' + '</b>' + '<br>';
 
                 for (var k = 0; k < saved.event.length; k++){
@@ -242,7 +242,7 @@ router.put('/confirmRequest/:id', function(request, response) {
     var emailRecipients = 'sue@rootsforthehometeam.org';
 
     //build emailIntro
-    var emailIntro = 'Below is a summary of the confirmed amounts of produce to be provided for the following scheduled event(s).' + '<br>' + '<br>';
+    var emailIntro = 'Hello,' + '<br>' + '<br>' + 'Below is a summary of the confirmed amounts of produce to be provided for the following scheduled event(s).' + '<br>' + '<br>';
 
     emailIntro += '<b>' + 'Event(s):' + '</b>' + '<br>';
 
