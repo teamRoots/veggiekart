@@ -6,7 +6,8 @@ var SaladSchema = new Schema({
     ingredients: [{
         ingredient_name: String,
         amount: Number,
-        unit: String
+        unit: String,
+        totalSalads: Number
     }]
 });
 

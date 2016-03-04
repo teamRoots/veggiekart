@@ -71,7 +71,7 @@ app.factory('responseService', ['$http', '$location', 'loginService', function($
   };
 
   //sends the response to admin
-  var sendResponse = function(){
+  var sendResponse = function(user){
 
     //add message to requests
     for (var i = 0; i < data.request.recipients.length; i++) {
@@ -80,11 +80,15 @@ app.factory('responseService', ['$http', '$location', 'loginService', function($
         data.request.recipients[i].toAdminMessage = data.toAdminMessage;
       }
     }
-
+    var objectHolder = {
+      dataRequest: data.request,
+      user: user
+    };
     //send request to server
+    console.log('user',user);
     console.log('response to send:', data.request);
     var id = data.request._id;
-    $http.put('/createRequest/updateRequest/' + id, data.request).then(function(response) {
+    $http.put('/createRequest/updateRequest/' + id, objectHolder).then(function(response) {
       console.log(response);
     });
     data.exitConfirm = true;
