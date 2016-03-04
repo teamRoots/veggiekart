@@ -62,9 +62,17 @@ app.factory('loginService', ['$http', '$location', 'createRequestService', funct
     }).then(createRequestService.loadRequests());
   };
 
+  var logout = function(){
+    console.log('asdfalskdfja;lksdjfa;lskdjfal;sdfjals;kfj');
+    $http.get('/authenticate/logout').then(function(response){
+      console.log('YOLO');
+      $location.path('/');
+    });
+  }
 
   return {
     login: login,
+    logout: logout,
     userLoggedIn: userLoggedIn,
     currentUser: currentUser,
     user: user

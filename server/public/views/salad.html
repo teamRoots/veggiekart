@@ -46,8 +46,8 @@
 
   <!-- This is all salad pieces displayed at the bottom -->
   <div class="sub-container" ng-repeat="salad in salads.data.salads | orderBy: name">
-    <button ng-click="confirmDelete(salad)" class="btn-negative push-right"><i class="icon-trash icon-large"></i> Delete Salad</button>
-    <h3 class="push-left">{{salad.name}}</h3>
+    <i ng-click="confirmDelete(salad)" class="delete-salad push-right icon-trash icon-large"></i>
+    <h3 class="push-right">{{salad.name}}</h3>
     <div class="clearfix"></div>
     <div class="salad-ingredients">
       <div class="clearfix"></div>

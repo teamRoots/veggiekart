@@ -41,7 +41,7 @@ html {
 
 .container {
   background-color: $whitebackground;
-  padding: 0;
+  padding: 0 0 10px 0;
   // border: 1px solid $brown;
   text-align: left;
   border-radius: 0 0 8px 8px;
@@ -50,6 +50,7 @@ html {
   box-shadow: 4px 4px 20px 0px rgba(0,0,0,0.75);
   .sub-container {
     width: 100%;
+    padding: 0 0 10px 0;
     border-radius: none;
     border-top: 1px solid $brown;
     &:first-child {

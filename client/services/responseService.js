@@ -1,9 +1,18 @@
 app.factory('responseService', ['$http', '$location', 'loginService', function($http, $location, loginService){
   var data = {
+    exitConfirm: false,
     confirmRequest: false,
-    confirmIcon: false
+    confirmIcon: false,
+    deleteError: false,
+    deleteIcon: false,
+    confirmError: false
   };
   data.fromAdminMessages =[];      //is this needed?  it is needed inside loadRequest to refresh messages when changing from request to request
+
+  var confirmDelete = function() {
+    data.deleteError = true;
+    data.deleteMessage = 'Are you sure?';
+  };
 
   var loadRequest = function(id) {
     console.log('loadRequest hit', id);
@@ -78,14 +87,24 @@ app.factory('responseService', ['$http', '$location', 'loginService', function($
     $http.put('/createRequest/updateRequest/' + id, data.request).then(function(response) {
       console.log(response);
     });
+    data.exitConfirm = true;
+  };
+
+  var confirmCheck = function() {
+    data.confirmError = true;
+    data.confirmErrorMessage = 'Are you sure?';
   };
 
   var confirmRequest = function(){
     // console.log('response to send:', data.request._id);
+    data.confirmIcon = true;
     console.log('data.request:', data.request);
     var id = data.request._id;
     $http.put('/createRequest/confirmRequest/' + id, data.request).then(function(response) {
+      data.confirmError = false;
+      data.confirmErrorMessage = '';
       console.log(response);
+      $location.path(('/admin/dashboard'));
     });
   };
 
@@ -124,10 +143,26 @@ app.factory('responseService', ['$http', '$location', 'loginService', function($
     }
   };
 
+  var deleteRequest = function(id){
+    data.deleteIcon = true;
+    var idHolder = {
+      id: id
+    };
+    $http.post('/createRequest/deleteRequest', idHolder).then(function(response) {
+      console.log(response.data);
+      data.deleteIcon = false;
+      data.deleteError = false;
+      $location.path('/admin/dashboard');
+    });
+  };
+
   return {
     loadRequest: loadRequest,
+    deleteRequest: deleteRequest,
     sendResponse: sendResponse,
     confirmRequest: confirmRequest,
+    confirmDelete: confirmDelete,
+    confirmCheck: confirmCheck,
     addMessage: addMessage,
     validateResponse: validateResponse,
     data: data

@@ -83,22 +83,27 @@ ul, li {
   background-color: white;
   border-bottom: 1px solid $brown;
 }
-img.logo {
-  display: block;
+.logo  {
+  width: 24%;
   float: left;
-  padding: 0px;
-  margin-top: 10px;
-  width: 90px;
-}
-.title-casing {
-  margin: 0;
-  h1 {
-    margin: 0;
+  img {
+    display: block;
+    float: left;
+    padding: 0px;
+    margin-top: 8px;
+    width: 90px;
   }
 }
+.title {
+  width: 49%;
+  float: left;
+}
+
 .logout {
-  text-align: left;
-  margin: 10px 0 5px 0;
+  width: 24%;
+  text-align: right;
+  float: left;
+  margin: 44px 0 0 1%;
   p {
     display: inline-block;
     margin: 0;
@@ -167,8 +172,8 @@ hr {
   height: 168px;
   border-radius: 0 8px 0 0;
   z-index: 15;
-  top: 32%;
-  left: 32%;
+  top: 37%;
+  left: 38%;
   padding: 0 0 10px 0;
   img.login-logo {
     display: block;
@@ -221,18 +226,22 @@ hr {
 }
 .events {
   cursor: pointer;
-  ul {
-    list-style-type: none;
-  }
 }
 .events:hover {
   background-color: rgba(255, 255, 255, 0.35);
   font-weight: bolder;
-  border-left: 4px solid $green;
-  margin: 0 0 0 -4px;
+  border-left: 5px solid $green;
+  margin-right: -4px;
 }
 .edit-icon {
   display: none;
+}
+.halves {
+  display: block;
+  float: left;
+  width: 42%;
+  padding: 0;
+  margin: 0 4%;
 }
 .thirds {
   display: block;
@@ -251,8 +260,10 @@ hr {
 .display-date {
   margin-left: 15px;
 }
-.view-btn {
+button.view-btn {
   padding: 5px;
+  margin-left: 3%;
+  margin-top: 22px;
 }
 
 //request styling
@@ -290,7 +301,16 @@ select {
   }
 }
 
-
+.delete-salad {
+  margin: 30px 0 0 2%;
+  color: $orange;
+  &:hover {
+    background: $buttonNegativeDark;
+  }
+  &:active {
+    background: $buttonNegativeDarker;
+  }
+}
 .add-salad {
   margin: 0 auto 0 46%;
 }
@@ -325,9 +345,6 @@ select {
   margin: 10px 0;
 }
 .new-event {
-  ul {
-    list-style-type: none;
-  }
   li {
     display: inline-block;
     float: none;
@@ -338,9 +355,7 @@ select {
     font-weight: bold;
   }
 }
-.recipients-list {
-  list-style-type: none;
-}
+
 .events-display {
   li, p {
   vertical-align: top;
@@ -348,7 +363,6 @@ select {
   }
 }
 .summary {
-  list-style-type: none;
   display: inline-block;
   width: 24%;
   padding: 5px;
@@ -363,7 +377,6 @@ select {
   margin-bottom: 10px;
 }
 .salad-list {
-  list-style-type: none;
   li {
     display: block;
     float: left;
@@ -373,7 +386,6 @@ select {
   }
 }
 .salad-ingredients {
-  list-style-type: none;
   margin-bottom: 10px;
   li:nth-child(4) {
     clear: left;
@@ -401,7 +413,6 @@ select {
   margin: 0 5%;
 }
 .farm-response {
-  list-style-type: none;
   li {
     display: block;
     float: left;
@@ -421,7 +432,11 @@ input, select {
   width: 40%;
 }
 table {
-  overflow-x: scroll;
+  table-layout: fixed;
+  white-space: nowrap;;
+  td {
+    width: 40px;
+  }
 }
 .table-units {
   font-size: 12px;
@@ -463,8 +478,10 @@ table {
   width: 44%;
 }
 
-.btn-negative {
+button.btn-negative {
   background-color: $buttonNegative;
+  padding: 5px;
+  margin-top: 22px;
   &:hover {
     background: $buttonNegativeDark;
   }
@@ -474,9 +491,6 @@ table {
 }
 
 //confirmation page styles
-ul.message-summary {
-  list-style-type: none;
-}
 
 .confirm-quantity {
   width: 80px;
@@ -486,17 +500,31 @@ ul.message-summary {
 
 .col-center {
   text-align: center;
+  div {
+    display: inline-block;
+    padding: 2px;
+    width: 44%;
+  }
+}
+.table {
+  overflow-x: scroll;
 }
 
 .left-divide {
   border-left: 1px solid $brown;
+  padding-right: 10px;
 }
 
 //salad creator dialog
 .salad-creator {
-  // margin: 20px;
   border: 1px solid $brown;
   border-top: 0px;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.95);
+}
+
+
+
+ul {
+  list-style-type: none;
 }

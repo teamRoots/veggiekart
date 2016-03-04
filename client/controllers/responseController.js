@@ -1,6 +1,8 @@
 app.controller('responseController', ['loginService', 'responseService', function(loginService, responseService){
   this.user = loginService.user;
   this.data = responseService.data;
+  this.userLoggedIn = loginService.userLoggedIn;
+
   // this.request = responseService.data.requestToDisplay;
   console.log('this.data:', this.data.event);
 
