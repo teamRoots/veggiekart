@@ -49,7 +49,8 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
     for (var i = 0; i < newEvent.salads.length; i++){
       console.log('salads ', newEvent.salads[i]);
       if (!newEvent.salads[i].quantity) {
-        newEvent.salads[i].quantity = newEvent.salads[i].salad.totalSalads;
+        newEvent.salads[i].quantity = 48;
+        // newEvent.salads[i].salad.totalSalads;
       }
     }
 
