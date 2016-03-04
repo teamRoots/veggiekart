@@ -264,6 +264,7 @@ button.view-btn {
   padding: 5px;
   margin-left: 3%;
   margin-top: 22px;
+  width: 44%;
 }
 
 //request styling
@@ -470,18 +471,11 @@ table {
     }
   }
 
-.send-button {
-  width: 44%;
-}
-
-.back-button {
-  width: 44%;
-}
-
 button.btn-negative {
   background-color: $buttonNegative;
   padding: 5px;
   margin-top: 22px;
+  width: 44%;
   &:hover {
     background: $buttonNegativeDark;
   }
