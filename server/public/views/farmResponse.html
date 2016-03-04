@@ -20,15 +20,15 @@
   <div class="sub-container table">
     <table>
       <thead>
-        <th>Veggie</th>
-        <th>Needed</th>
-        <th ng-repeat="user in farm.data.request.recipients">{{user.orgName}}</th>
+        <th class="left-divide right-divide col-center"><h4>Veggie</h4></th>
+        <th class="right-divide col-center"><h4>Needed</h4></th>
+        <th class="right-divide col-center" ng-repeat="user in farm.data.request.recipients">{{user.orgName}}</th>
       </thead>
       <tbody>
           <tr ng-repeat="veggie in farm.data.request.summary">
-            <td><strong>{{veggie.ingredient_name}}</strong></td>
-            <td>{{veggie.amount}} {{veggie.unit}}</td>
-            <td ng-repeat="user in farm.data.request.recipients">
+            <td class="left-divide right-divide"><strong>{{veggie.ingredient_name}}</strong></td>
+            <td class="right-divide col-center">{{veggie.amount}} {{veggie.unit}}</td>
+            <td class="right-divide col-center" ng-repeat="user in farm.data.request.recipients">
               <input ng-if="farm.user.username == user.email"  ng-change="farm.test()" ng-model="user.commitments[veggie.ingredient_name].quantity" type="number" placeholder="Qty." min="0"/>
               <div ng-if="farm.user.username !== user.email">{{user.commitments[veggie.ingredient_name].quantity}}</div>
           </td>
