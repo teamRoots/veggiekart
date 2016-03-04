@@ -45,7 +45,7 @@ router.post('/', function(request, response) {
         //underline first line of summary
         // var emailSummary = '<a style=\"text-decoration: underline\;\">' + "Summary of needed vegetables:" + '</a>' + " " + "<br>";
 
-        //bold the first line of summary
+        //build email summary
         var emailSummary = "<b>" + "Summary of needed vegetables: " + "</b>" + "<br>";
 
         //parse out summary of vegetables into text string for email body
@@ -63,24 +63,32 @@ router.post('/', function(request, response) {
         //remove last comma and space in recipient list string
         emailRecipients = emailRecipients.slice(0,-2);
 
-        var emailIntro = 'Below is a list of items that are needed for the upcoming event.  Please select the link below and confirm how much your team can contribute.';
+        //build email intro
+        var emailIntro = 'Below is a list of items that are needed for the upcoming scheduled event(s).  Please click the link below to confirm how much your growers will contribute.' + '<br>' + '<br>';
+
+        emailIntro += '<b>' + 'Event(s):' + '</b>' + '<br>';
+
+        for (var k = 0; k < saved.event.length; k++){
+          emailIntro += 'Location: ' + saved.event[k].event.location + '<br>' + 'Date: ' + saved.event[k].event.displayDate + '<br>' + 'Host: ' + saved.event[k].event.host + '<br>' + '<br>';
+        }
+
+        //build special message from Roots for the Home Team
         var emailMessage = "";
 
         //check if message was submitted on webpage and store
         if (saved.message) {
-          emailMessage = saved.message;
+          emailMessage = '<b>' + 'Message from Roots for the Home Team:' + '</b>' + '<br>' + saved.message;
         }
         var emailSubject = 'New Request - Roots for the Home Team';
         console.log('list of recipients: ', emailRecipients);
 
-        var gardenURL = 'localhost:3000/respond/' + saved._id;     // for future reference
-        // var gardenURL = 'localhost:3000/createRequests/getRequests/' + saved._id;   //for initial testing
+        var gardenURL = '<b>' + 'Click here to confirm your contributions:' + '</b>' + '<br>' + 'http://localhost:3000/respond/' + saved._id;
 
         //build html message
-        var emailHTML = '<span>' + emailIntro + '<br>' + '<br>' + emailSummary + '<br>' + '<br>' + 'http://' + gardenURL + '<br>' + '<br>' + emailMessage + '</span>';
+        var emailHTML = '<span>' + emailIntro + '<br>' + emailSummary + '<br>' + '<br>' + gardenURL + '<br>' + '<br>' + emailMessage + '</span>';
 
-        // sendEmail.sendMessage(emailSubject, emailRecipients, emailIntro, emailSummary, emailMessage, gardenURL);       //sends email message
-        sendEmail.sendMessage(emailSubject, emailRecipients, emailHTML);       //sends email message
+        //send email to recipients
+        sendEmail.sendMessage(emailSubject, emailRecipients, emailHTML);
     });
 });
 
@@ -113,6 +121,50 @@ router.post('/editRequest', function(request, response) {
                 }else {
                     console.log('saved', saved);
                 response.sendStatus(200);
+
+                //send an email after updating request
+                //build email summary
+                var emailSummary = "<b>" + "Summary of needed vegetables: " + "</b>" + "<br>";
+
+                //parse out summary of vegetables into text string for email body
+                for (var i = 0; i < saved.summary.length; i++) {
+                  emailSummary += saved.summary[i].amount + " " + saved.summary[i].unit + " " + saved.summary[i].ingredient_name + "<br>";
+                }
+
+                //parse out list of recipients to be emailed
+                var emailRecipients = "";
+
+                for (var j = 0; j < saved.recipients.length; j++){
+                  emailRecipients += saved.recipients[j].email + ', ';
+                }
+
+                //remove last comma and space in recipient list string
+                emailRecipients = emailRecipients.slice(0,-2);
+
+                //build email intro
+                var emailIntro = 'Below is an updated list of items that are needed for the upcoming scheduled event(s).  Please click the link below to confirm how much your growers will contribute.' + '<br>' + '<br>';
+                emailIntro += '<b>' + 'Event(s):' + '</b>' + '<br>';
+
+                for (var k = 0; k < saved.event.length; k++){
+                  emailIntro += 'Location: ' + saved.event[k].event.location + '<br>' + 'Date: ' + saved.event[k].event.displayDate + '<br>' + 'Host: ' + saved.event[k].event.host + '<br>' + '<br>';
+                }
+
+                var emailMessage = "";
+
+                //check if message was submitted on webpage and store
+                if (saved.message) {
+                  emailMessage = '<b>' + 'Message from Roots for the Home Team:' + '</b>' + '<br>' + saved.message;
+                }
+
+                var emailSubject = 'Updated Request - Roots for the Home Team';
+
+                var gardenURL = '<b>' + 'Click here to confirm your contributions:' + '</b>' + '<br>' + 'http://localhost:3000/respond/' + saved._id;
+
+                //build html message
+                var emailHTML = '<span>' + emailIntro + '<br>' + emailSummary + '<br>' + '<br>' + gardenURL + '<br>' + '<br>' + emailMessage + '</span>';
+
+                // send email to recipients
+                sendEmail.sendMessage(emailSubject, emailRecipients, emailHTML);
                 }
             });
         }
@@ -248,7 +300,7 @@ router.put('/confirmRequest/:id', function(request, response) {
       var emailMessage = '';
 
       if (updatedObject.recipients[l].fromAdminMessage){
-        emailMessage = '<b>' + 'Message from Sue:' + '</b>' + '<br>' + updatedObject.recipients[l].fromAdminMessage;
+        emailMessage = '<b>' + 'Message from Roots for the Home Team:' + '</b>' + '<br>' + updatedObject.recipients[l].fromAdminMessage;
       }
 
       //build html message
