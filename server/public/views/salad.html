@@ -8,6 +8,7 @@
     <h3 class="push-right">New Salad</h3>
     <div class="clearfix"></div>
     Salad Name: <input type="text" ng-model="newSalad.name" placeholder="Salad Name"/>
+    Recipe Total: <input type="text" ng-model="newSalad.total" placeholder="Total Salads"/>
     <div class="clearfix"></div>
     Ingredients: <select class="ingredient-picker" ng-model="newIngredient.name" ng-options="ingredient for ingredient in ingredientsDatabase.data.ingredientsDatabase | orderBy:name">
     </select>
@@ -38,7 +39,7 @@
     </div>
     <div class="clearfix"></div>
     <div class="btn-holder">
-      <button ng-click="createNewSalad(newSalad.name)" class="push-right"><i class="icon-food"></i> Add Salad</button>
+      <button ng-click="createNewSalad(newSalad)" class="push-right"><i class="icon-food"></i> Add Salad</button>
       <button ng-click="cancelCreation(); saladCreator = false" class="btn-negative push-right"><i class="icon-trash"></i> Cancel</button>
     </div>
     <div class="clearfix"></div>

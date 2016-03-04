@@ -17,7 +17,7 @@ var vCalc = function(events){
         // ingredient.amount *= saladQuantity;
 
         //temp multiply function to account for the 48 salads in recipie issue
-        ingredient.amount = ingredient.amount * saladQuantity / 48;
+        // ingredient.amount = ingredient.amount * saladQuantity / 48;
 
         //if the number of ounces is large, convert to pounds
         if (ingredient.unit == 'oz.' && ingredient.amount > 100) {
@@ -46,9 +46,9 @@ var vCalc = function(events){
           if (summary[i].unit == ingredient.unit){
             summary[i].amount += ingredient.amount;
           } else if (summary[i].unit == 'oz.' && ingredient.unit == 'lbs.') {
-            summary[i].unit += (ingredient.unit / 16);
+            summary[i].amount += (ingredient.amount / 16);
           } else if (summary[i].unit == 'lbs.' && ingredient.unit == 'oz.') {
-            summary[i].unit += (ingredient.unit * 16);
+            summary[i].amount += (ingredient.amount * 16);
           }
           return;
         }

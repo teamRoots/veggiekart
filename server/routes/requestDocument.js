@@ -192,7 +192,7 @@ router.get('/getRequests/:id', function(request, response) {
         }
     });
 });
-// http://localhost:3000/respond/56d9b7ee725599adc465ee4d
+
 router.put('/updateRequest/:id', function(request, response) {
     var id = request.params.id;
     var statusHolder = 0;
