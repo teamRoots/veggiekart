@@ -47,12 +47,12 @@
 <div ng-if="farm.data.confirmRequest" class="overlay"></div>
 <div ng-if="farm.data.confirmRequest" class="modal container">
   <h3>{{farm.data.confirmMessage}}<i ng-if="farm.data.confirmIcon" class="icon-spinner icon-spin icon-large"></i></h3>
-  <button class="back-button btn-negative" ng-click="farm.data.confirmRequest = false"><i class="icon-remove"></i> Back to edit</button>
+  <button class="modal-btn btn-negative" ng-click="farm.data.confirmRequest = false"><i class="icon-remove"></i> Back to edit</button>
   <button class="send-button" ng-click="farm.sendResponse(farm.user); farm.data.confirmRequest = false"><i class="icon-envelope"></i> Send Response</button>
 </div>
 
 <div ng-if="farm.data.exitConfirm" class="overlay"></div>
 <div ng-if="farm.data.exitConfirm" class="modal container">
   <h3>You Have Sent Your Response!<i ng-if="farm.data.confirmIcon" class="icon-spinner icon-spin icon-large"></i></h3>
-  <button class="back-button btn-negative" ng-click="farm.data.exitConfirm = false">Back to Page </button>
+  <button class="modal-btn btn-negative" ng-click="farm.data.exitConfirm = false">Back to Page </button>
 </div>
