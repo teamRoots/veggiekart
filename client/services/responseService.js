@@ -15,14 +15,13 @@ app.factory('responseService', ['$http', '$location', 'loginService', function($
   };
 
   var loadRequest = function(id) {
-    console.log('loadRequest hit', id);
     $http.get('/createRequest/getRequests/' + id).then(function(response) {
       data.request = response.data;
-      var events = response.data.event;
-      var recipients = response.data.recipients;
-      console.log(response);
       data.eventsInfo = [];
       data.fromAdminMessages = [];      //for testing a bug; wasn't initializing when changing requests
+
+      var events = response.data.event;
+      var recipients = response.data.recipients;
 
       for (var i = 0; i < events.length; i++) {
         data.eventsInfo.push(events[i].event);
@@ -37,15 +36,14 @@ app.factory('responseService', ['$http', '$location', 'loginService', function($
 
       for (var i = 0; i < recipients.length; i++) {
         if (recipients[i].fromAdminMessage !== undefined) {
-          var messageToPush = {
-                                name: recipients[i].name,
-                                message: recipients[i].fromAdminMessage
-          };
-          console.log(messageToPush);
+          var messageToPush =
+            {
+              name: recipients[i].name,
+              message: recipients[i].fromAdminMessage
+            };
           data.fromAdminMessages.push(messageToPush);
         }
       }
-      console.log('data.eventsInfo', data.eventsInfo);
     });
   };
 
@@ -76,21 +74,22 @@ app.factory('responseService', ['$http', '$location', 'loginService', function($
     //add message to requests
     for (var i = 0; i < data.request.recipients.length; i++) {
       if (data.request.recipients[i].email === loginService.user.username){
-        console.log('ready to add the message ', data.toAdminMessage);
         data.request.recipients[i].toAdminMessage = data.toAdminMessage;
       }
     }
+
     var objectHolder = {
       dataRequest: data.request,
       user: user
     };
+
     //send request to server
-    console.log('user',user);
-    console.log('response to send:', data.request);
     var id = data.request._id;
+
     $http.put('/createRequest/updateRequest/' + id, objectHolder).then(function(response) {
       console.log(response);
     });
+
     data.exitConfirm = true;
   };
 
@@ -100,14 +99,12 @@ app.factory('responseService', ['$http', '$location', 'loginService', function($
   };
 
   var confirmRequest = function(){
-    // console.log('response to send:', data.request._id);
     data.confirmIcon = true;
-    console.log('data.request:', data.request);
     var id = data.request._id;
+
     $http.put('/createRequest/confirmRequest/' + id, data.request).then(function(response) {
       data.confirmError = false;
       data.confirmErrorMessage = '';
-      console.log(response);
       $location.path(('/admin/dashboard'));
     });
   };
@@ -141,19 +138,18 @@ app.factory('responseService', ['$http', '$location', 'loginService', function($
     for (var i = 0; i < recipients.length; i++) {
       if (recipients[i].name == name) {
         recipients[i].fromAdminMessage = message;
-        console.log(recipients[i]);
-
       }
     }
   };
 
   var deleteRequest = function(id){
     data.deleteIcon = true;
+
     var idHolder = {
       id: id
     };
+
     $http.post('/createRequest/deleteRequest', idHolder).then(function(response) {
-      console.log(response.data);
       data.deleteIcon = false;
       data.deleteError = false;
       $location.path('/admin/dashboard');
