@@ -8,6 +8,7 @@
     <h3 class="push-right">New Salad</h3>
     <div class="clearfix"></div>
     Salad Name: <input type="text" ng-model="newSalad.name" placeholder="Salad Name"/>
+    Yield: <input class="ingredient-quantity" type="number" ng-model="newSalad.total" />
     <div class="clearfix"></div>
     Ingredients: <select class="ingredient-picker" ng-model="newIngredient.name" ng-options="ingredient for ingredient in ingredientsDatabase.data.ingredientsDatabase | orderBy:name">
     </select>
@@ -38,7 +39,7 @@
     </div>
     <div class="clearfix"></div>
     <div class="btn-holder">
-      <button ng-click="createNewSalad(newSalad.name)" class="push-right"><i class="icon-food"></i> Add Salad</button>
+      <button ng-click="createNewSalad(newSalad)" class="push-right"><i class="icon-food"></i> Add Salad</button>
       <button ng-click="cancelCreation(); saladCreator = false" class="btn-negative push-right"><i class="icon-trash"></i> Cancel</button>
     </div>
     <div class="clearfix"></div>
@@ -63,20 +64,20 @@
 <div ng-if="addSaladError" class="overlay"></div>
 <div ng-if="addSaladError" class="modal container">
   <h3>{{addSaladErrorMessage}}</h3>
-  <button class="back-button btn-negative" ng-click="removeSaladError()"><i class="icon-remove"></i> Go back</button>
+  <button class="modal-btn btn-negative" ng-click="removeSaladError()"><i class="icon-remove"></i> Go back</button>
 </div>
 
 <!-- Add ingredient error modal -->
 <div ng-if="addIngredientError" class="overlay"></div>
 <div ng-if="addIngredientError" class="modal container">
   <h3>{{addIngredientErrorMessage}}</h3>
-  <button class="back-button btn-negative" ng-click="removeIngredientError()"><i class="icon-remove"></i> Go back</button>
+  <button class="modal-btn btn-negative" ng-click="removeIngredientError()"><i class="icon-remove"></i> Go back</button>
 </div>
 
 <!-- Delete salad modal -->
 <div ng-if="showDeleteModal" class="overlay"></div>
 <div ng-if="showDeleteModal" class="modal container">
   <h3>{{deleteMessage}}<i ng-if="confirmIcon" class="icon-spinner icon-spin icon-large"></i></h3>
-  <button class="back-button" ng-click="removeDeleteModal()"><i class="icon-remove"></i> Back to salads</button>
-  <button class="send-button btn-negative" ng-click="deleteSalad()"><i class="icon-trash"></i> Delete Salad</button>
+  <button class="modal-btn" ng-click="removeDeleteModal()"><i class="icon-remove"></i> Back to salads</button>
+  <button class="modal-btn btn-negative" ng-click="deleteSalad()"><i class="icon-trash"></i> Delete Salad</button>
 </div>

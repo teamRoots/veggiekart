@@ -100,14 +100,14 @@
 <div ng-if="request.data.eventError" class="overlay"></div>
 <div ng-if="request.data.eventError" class="modal container">
   <h3>{{request.data.eventErrorMessage}}</h3>
-  <button class="back-button btn-negative" ng-click="request.data.eventError = false"><i class="icon-remove"></i> Back to Add Event</button>
+  <button class="modal-btn btn-negative" ng-click="request.data.eventError = false"><i class="icon-remove"></i> Back to Add Event</button>
 </div>
 
 <!-- Send Confirmation dialog modal -->
 <div ng-if="request.data.confirmRequest" class="overlay"></div>
 <div ng-if="request.data.confirmRequest" class="modal container">
   <h3>{{request.data.confirmMessage}}<i ng-if="request.data.confirmIcon" class="icon-spinner icon-spin icon-large"></i></h3>
-  <button class="back-button btn-negative" ng-click="request.data.confirmRequest = false"><i class="icon-remove"></i> Back to edit</button>
-  <a href="/admin/dashboard"><button class="send-button" ng-if="!request.editValue.editPage && request.data.dataValidated" ng-click="request.saveRequest()"><i class="icon-envelope"></i> Send Request</button></a>
-  <button class="send-button" ng-if="request.editValue.editPage && request.data.dataValidated" ng-click="request.newEditRequest()"><i class="icon-envelope"></i> Edit Request</button>
+  <button class="modal-btn btn-negative" ng-click="request.data.confirmRequest = false"><i class="icon-remove"></i> Back to edit</button>
+  <a href="/admin/dashboard"><button class="modal-btn" ng-if="!request.editValue.editPage && request.data.dataValidated" ng-click="request.saveRequest()"><i class="icon-envelope"></i> Send Request</button></a>
+  <button class="modal-btn" ng-if="request.editValue.editPage && request.data.dataValidated" ng-click="request.newEditRequest()"><i class="icon-envelope"></i> Edit Request</button>
 </div>

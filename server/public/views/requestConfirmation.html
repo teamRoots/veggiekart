@@ -6,8 +6,8 @@
     <!-- <div class="clearfix"></div> -->
 
     <div>
-      <a href="/admin/request"><button class="push-right view-btn" ng-click="confirm.editRequest()"><i class="icon-pencil"></i> Edit Request</button></a>
-      <button ng-click="confirm.confirmDelete()" class="push-right btn-negative"><i class="icon-trash icon-large"></i> Delete Request</button>
+      <a href="/admin/request"><button class="push-right view-btn confirmation-btn" ng-click="confirm.editRequest()"><i class="icon-pencil"></i> Edit Request</button></a>
+      <button ng-click="confirm.confirmDelete()" class="push-right btn-negative confirmation-btn"><i class="icon-trash icon-large"></i> Delete Request</button>
       <div class="clearfix"></div>
       <div class="event-split push-left">
         <ul class="farm-response" ng-repeat="event in confirm.data.eventsInfo">
@@ -97,21 +97,21 @@
 <div ng-if="confirm.data.addMessageError" class="overlay"></div>
 <div ng-if="confirm.data.addMessageError" class="modal container">
   <h3>{{confirm.data.addMessageErrorMessage}}</h3>
-  <button class="back-button btn-negative" ng-click="confirm.data.addMessageError = false"><i class="icon-remove"></i> Go back</button>
+  <button class="modal-btn btn-negative" ng-click="confirm.data.addMessageError = false"><i class="icon-remove"></i> Go back</button>
 </div>
 
 <!-- Delete request error modal -->
 <div ng-if="confirm.data.deleteError" class="overlay"></div>
 <div ng-if="confirm.data.deleteError" class="modal container">
   <h3>{{confirm.data.deleteMessage}}</h3>
-  <button class="back-button" ng-click="confirm.data.deleteError = false"><i class="icon-remove"></i> Go back</button>
-  <button class="back-button btn-negative" ng-click="confirm.deleteRequest(confirm.data.request._id)"><i class="icon-trash icon-large"></i> Delete Request</button>
+  <button class="modal-btn" ng-click="confirm.data.deleteError = false"><i class="icon-remove"></i> Go back</button>
+  <button class="modal-btn btn-negative" ng-click="confirm.deleteRequest(confirm.data.request._id)"><i class="icon-trash icon-large"></i> Delete Request</button>
 </div>
 
 <!-- Confirm Request error modal -->
 <div ng-if="confirm.data.confirmError" class="overlay"></div>
 <div ng-if="confirm.data.confirmError" class="modal container">
   <h3>{{confirm.data.confirmErrorMessage}}<i ng-if="confirm.data.confirmIcon" class="icon-spinner icon-spin icon-large"></i></h3>
-  <button class="back-button btn-negative" ng-click="confirm.data.confirmError = false"><i class="icon-remove"></i> Go back</button>
-  <button class="back-button" ng-click="confirm.confirmRequest()"><i class="icon-envelope icon-large"></i> Send Confirmation</button>
+  <button class="modal-btn btn-negative" ng-click="confirm.data.confirmError = false"><i class="icon-remove"></i> Go back</button>
+  <button class="modal-btn" ng-click="confirm.confirmRequest()"><i class="icon-envelope icon-large"></i> Send Confirmation</button>
 </div>

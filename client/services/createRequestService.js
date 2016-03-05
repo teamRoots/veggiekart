@@ -50,6 +50,7 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
       console.log('salads ', newEvent.salads[i]);
       if (!newEvent.salads[i].quantity) {
         newEvent.salads[i].quantity = 48;
+        // newEvent.salads[i].salad.totalSalads;
       }
     }
 
