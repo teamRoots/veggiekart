@@ -25,7 +25,7 @@ app.factory('saladService', ['$http', function($http){
         console.log('no ingredients');
       }
 
-    };
+    }
 )};
 
   return {
