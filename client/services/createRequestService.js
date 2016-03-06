@@ -148,7 +148,7 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
     $http.get('/createRequest/getRequests').then(function(response) {
       data.requests = response.data;
       console.log('data.requests is ', data.requests);
-      $location.path('admin/dashboard');
+      // $location.path('admin/dashboard');
     });
   };
 

@@ -388,6 +388,9 @@ html {
     .container .sub-container:first-child {
       border: none; }
 
+ul {
+  list-style-type: none; }
+
 .clearfix,
 .group {
   zoom: 1; }
@@ -2427,7 +2430,9 @@ button.btn-negative, .btn-negative.button {
   border-top: 0px;
   padding: 20px; }
 
-ul {
-  list-style-type: none; }
+.fade.ng-hide {
+  transition: all linear 0.5s;
+  opacity: 0;
+  height: 0; }
 
 /*# sourceMappingURL=main.css.map */

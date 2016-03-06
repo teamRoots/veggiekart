@@ -1,4 +1,4 @@
-var app = angular.module('veggieKart', ['ngRoute']);
+var app = angular.module('veggieKart', ['ngRoute', 'ngAnimate']);
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
   $routeProvider
