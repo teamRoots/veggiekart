@@ -1,0 +1,49 @@
+.container {
+  button {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+}
+.login {
+  display: block;
+  background-color: $whitebackground;
+  text-align: center;
+  position: absolute;
+  width: 400px;
+  height: 168px;
+  border-radius: 0 8px 0 0;
+  z-index: 15;
+  top: 37%;
+  left: 38%;
+  padding: 0 0 10px 0;
+  img.login-logo {
+    display: block;
+    float: left;
+    margin: 5px 0 0 20px;
+    width: 136px;
+  }
+  .input {
+    display: inline-block;
+    width: 200px;
+    margin-top: 15px;
+  }
+  input {
+    width: 100%;
+    line-height: 60px;
+    padding-left: 10px;
+    font-size: 18px;
+    margin-bottom: 3px;
+}
+  button {
+    width: 400px;
+    font-size: 150%;
+    border: none;
+    border-radius: 0 0 8px 8px;
+    opacity: 0.95%;
+    padding-right: 25px;
+    &:active {
+      left: 0;
+      top: 0;
+    }
+  }
+}

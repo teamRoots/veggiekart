@@ -1,0 +1,109 @@
+select {
+  font-size: 18px;
+  margin: 10px 0;
+  line-height: 60px;
+  padding-left: 10px;
+}
+.to-selector {
+  width: 50%;
+  select {
+    width: 90%;
+  }
+}
+.event-picker {
+  width: 45%;
+  display: block;
+  float: left;
+  margin-left: 1%;
+  select {
+    width: 72%;
+  }
+}
+.select-quantity {
+  width: 10%;
+  font-size: 18px;
+}
+.salad-picker {
+  width: 50%;
+  display: block;
+  float: left;
+  select {
+    width: 72%;
+  }
+  &:not(:first-child) {
+    display: block;
+    float: right;
+    clear: right;
+    margin-right: 4%;
+  }
+}
+.delete-salad {
+  cursor: pointer;
+  margin: 30px 0 0 2%;
+  color: $orange;
+  &:hover {
+    color: $buttonNegativeDark;
+  }
+  &:active {
+    color: $buttonNegativeDarker;
+  }
+}
+.add-salad {
+  margin: 0 auto 0 46%;
+}
+.btn-holder {
+  margin: 20px auto;
+  button {
+    margin: 0 0 0 2%;
+  }
+}
+.message-box {
+  margin: 0 auto 20px auto;
+  .message {
+    height: 100px;
+    overflow: scroll;
+    width: 50%;
+    margin: 10px 5% 0 0;
+    border: 1px solid $brown;
+    display: block;
+    float: left;
+    border-radius: 0 8px 8px 8px;
+  }
+  button {
+    margin: 10px 0;
+    width: 44%;
+    display: block;
+    float: left;
+  }
+}
+.send-request {
+  height: 80px;
+  width: 44%;
+  margin: 10px 0;
+}
+.new-event {
+  li {
+    display: inline-block;
+    float: none;
+    width: 40%;
+    margin: 0 2%;
+  }
+  .head {
+    font-weight: bold;
+  }
+}
+.events-display {
+  li, p {
+  vertical-align: top;
+  margin-top: 0;
+  }
+}
+.summary {
+  display: inline-block;
+  width: 24%;
+  padding: 5px;
+  input {
+    zoom: 1.2;
+    width: auto;
+  }
+}
