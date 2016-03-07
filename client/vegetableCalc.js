@@ -46,9 +46,9 @@ vCalc = function(events){
           if (summary[i].unit == ingredient.unit){
             summary[i].amount += ingredient.amount;
           } else if (summary[i].unit == 'oz.' && ingredient.unit == 'lbs.'){
-            summary[i].unit += (ingredient.unit / 16);
+            summary[i].amount  += (ingredient.amount  / 16);
           } else if (summary[i].unit == 'lbs.' && ingredient.unit == 'oz.'){
-            summary[i].unit += (ingredient.unit * 16);
+            summary[i].amount  += (ingredient.amount  * 16);
           }
           return;
         }

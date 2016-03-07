@@ -51,7 +51,7 @@
           <td class="right-divide col-center">{{veggie.amount}} {{veggie.unit}}</td>
           <td colspan="2" class="right-divide col-center" ng-repeat="user in confirm.data.request.recipients">
             <div>
-              <input class="confirm-quantity" ng-change="confirm.test()" ng-model="user.confirmations[veggie.ingredient_name].quantity" type="tel" placeholder="Qty." min="0"/>
+              <input class="confirm-quantity" ng-change="confirm.test()" ng-model="user.confirmations[veggie.ingredient_name].quantity" type="number" placeholder="Qty." min="0"/>
             </div>
             <div>
               {{user.commitments[veggie.ingredient_name].quantity}} {{veggie.unit}}
