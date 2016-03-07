@@ -61,3 +61,149 @@ a {
     }
   }
 }
+$buttonColor: $green;
+$buttonDark: darken($green, 10%);
+$buttonDarker: darken($buttonDark, 10%);
+$buttonNegative: $orange;
+$buttonNegativeDark: darken($orange, 10%);
+$buttonNegativeDarker: darken($buttonNegativeDark, 10%);
+
+button{
+  background: $green;
+  border-radius: 0 4px 4px 4px;
+  border: 1px solid $brown;
+  color: white;
+  -webkit-box-shadow: 4px 4px 20px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 4px 4px 20px 0px rgba(0,0,0,0.75);
+  box-shadow: 4px 4px 20px 0px rgba(0,0,0,0.75);
+  font-size: 16px;
+  padding: 5px 1%;
+  display: inline-block;
+  outline: 0;
+  width: 26%;
+  &:hover {
+    background: $buttonDark;
+  }
+  &:active {
+    background: $buttonDarker;
+    position: relative;
+    left: 2px;
+    top: 2px;
+  }
+}
+
+
+.button {
+  @extend button;
+  display: block;
+  float: left;
+  border: 0;
+  &:active {
+    left: 0;
+    top: 0;
+  }
+}
+
+body {
+  text-align: center;
+}
+
+ul, li {
+  padding: 0;
+}
+
+input:focus{
+  outline: none;
+  box-shadow: 0px 0px 5px $green;
+  border:1px solid $green;
+}
+
+//index styling
+
+.banner {
+  margin: 20px auto 0 auto;
+  padding: 0 40px;
+  -webkit-box-shadow: 0px 4px 20px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 4px 20px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 4px 20px 0px rgba(0,0,0,0.75);
+}
+.header {
+  margin: 20px auto 0 auto;
+  padding: 0 40px;
+  border-radius: 0 8px 0 0;
+  background-color: white;
+  border-bottom: 1px solid $brown;
+}
+.logo  {
+  width: 24%;
+  float: left;
+  img {
+    display: block;
+    float: left;
+    padding: 0px;
+    margin-top: 8px;
+    width: 90px;
+  }
+}
+.title {
+  width: 49%;
+  float: left;
+}
+
+.logout {
+  width: 24%;
+  text-align: right;
+  float: left;
+  margin: 44px 0 0 1%;
+  p {
+    display: inline-block;
+    margin: 0;
+  }
+  a {
+    display: inline-block;;
+  }
+}
+
+.nav {
+  margin: 0 auto;
+  a {
+    text-decoration: none;
+    width: (100% / 3);
+    border-radius: 0;
+    margin: 0;
+    box-shadow: none;
+    opacity: 0.95;
+    border-bottom: 1px solid $brown;
+  }
+}
+img.bg {
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -100;
+}
+
+@media screen and (max-width: 1024px) { /* Specific to this particular image */
+  img.bg {
+    left: 50%;
+    margin-left: -512px;   /* 50% */
+  }
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), $brown, rgba(0, 0, 0, 0));
+}
+ul {
+  list-style-type: none;
+}
