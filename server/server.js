@@ -52,7 +52,6 @@ mongoDB.on('open', function(){
 
 //=================================================
 // use and configure server sessions
-// Eric: commented out until process.env.SECRET is set
 
 app.use(session({
   secret: 'secret',
@@ -73,7 +72,7 @@ passport.init(app);
 //=================================================
 // Middleware and routes
 app.use(express.static('server/public'));
-app.use('/salad', salad); // try to figure out why routing is having problems
+app.use('/salad', salad); 
 app.use('/authenticate', authenticate);
 app.use('/createRequest', createRequest);
 app.use('/requestRecipients', recipients);
