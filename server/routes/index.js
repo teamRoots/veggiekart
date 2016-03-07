@@ -24,8 +24,6 @@ router.get('/events', function(request, response){
   });
 });
 
-//===================================
-//Post routes for controller responses
 
 //===================================
 //exporting the router

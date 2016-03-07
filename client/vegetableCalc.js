@@ -26,6 +26,8 @@ vCalc = function(events){
         }
 
         //add ingredients to the summary array
+        // ingredient.amount = ingredient.amount.toFixed(2);
+
         addToSummary(ingredient);
       }
     }
@@ -53,8 +55,10 @@ vCalc = function(events){
           return;
         }
       }
+      // ingredient.amount = ingredient.amount.toFixed(2);
       summary.push(ingredient);
     } else {
+      // ingredient.amount = ingredient.amount.toFixed(2);
       summary.push(ingredient);
     }
   }
