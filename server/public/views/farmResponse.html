@@ -20,15 +20,15 @@
   <div class="sub-container table">
     <table>
       <thead>
-        <th>Veggie</th>
-        <th>Needed</th>
-        <th ng-repeat="user in farm.data.request.recipients">{{user.orgName}}</th>
+        <th class="left-divide right-divide col-center"><h4>Veggie</h4></th>
+        <th class="right-divide col-center"><h4>Needed</h4></th>
+        <th class="right-divide col-center" ng-repeat="user in farm.data.request.recipients">{{user.orgName}}</th>
       </thead>
       <tbody>
           <tr ng-repeat="veggie in farm.data.request.summary">
-            <td><strong>{{veggie.ingredient_name}}</strong></td>
-            <td>{{veggie.amount}} {{veggie.unit}}</td>
-            <td ng-repeat="user in farm.data.request.recipients">
+            <td class="left-divide right-divide"><strong>{{veggie.ingredient_name}}</strong></td>
+            <td class="right-divide col-center">{{veggie.amount}} {{veggie.unit}}</td>
+            <td class="right-divide col-center" ng-repeat="user in farm.data.request.recipients">
               <input ng-if="farm.user.username == user.email"  ng-change="farm.test()" ng-model="user.commitments[veggie.ingredient_name].quantity" type="number" placeholder="Qty." min="0"/>
               <div ng-if="farm.user.username !== user.email">{{user.commitments[veggie.ingredient_name].quantity}}</div>
           </td>
@@ -47,12 +47,12 @@
 <div ng-if="farm.data.confirmRequest" class="overlay"></div>
 <div ng-if="farm.data.confirmRequest" class="modal container">
   <h3>{{farm.data.confirmMessage}}<i ng-if="farm.data.confirmIcon" class="icon-spinner icon-spin icon-large"></i></h3>
-  <button class="btn-negative" ng-click="farm.data.confirmRequest = false"><i class="icon-remove"></i> Back to edit</button>
-  <button class="view-btn" ng-click="farm.sendResponse(); farm.data.confirmRequest = false"><i class="icon-envelope"></i> Send Response</button>
+  <button class="modal-btn btn-negative" ng-click="farm.data.confirmRequest = false"><i class="icon-remove"></i> Back to edit</button>
+  <button class="modal-btnsend-button" ng-click="farm.sendResponse(farm.user); farm.data.confirmRequest = false"><i class="icon-envelope"></i> Send Response</button>
 </div>
 
 <div ng-if="farm.data.exitConfirm" class="overlay"></div>
 <div ng-if="farm.data.exitConfirm" class="modal container">
   <h3>You Have Sent Your Response!<i ng-if="farm.data.confirmIcon" class="icon-spinner icon-spin icon-large"></i></h3>
-  <button class="btn-negative" ng-click="farm.data.exitConfirm = false">Back to Page </button>
+  <button class="modal-btn btn-negative" ng-click="farm.data.exitConfirm = false">Back to Page </button>
 </div>

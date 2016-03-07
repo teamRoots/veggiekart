@@ -19,7 +19,8 @@ var RequestSchema = new Schema({
         commitments: Object,
         confirmations: Object,
         toAdminMessage: String,
-        fromAdminMessage: String
+        fromAdminMessage: String,
+        submittedResponse: Boolean
     }],
     message: String,
     summary: Array

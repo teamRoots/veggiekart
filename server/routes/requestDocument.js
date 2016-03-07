@@ -195,15 +195,35 @@ router.get('/getRequests/:id', function(request, response) {
 
 router.put('/updateRequest/:id', function(request, response) {
     var id = request.params.id;
-    console.log('id sent to server:', id);
-    console.log('request sent to server:', request.body);
-    var updatedObject = request.body;
+    var statusHolder = 0;
+    console.log('id sent to server:', request.body.user);
+    console.log('request sent to server:', request.body.dataRequest);
+    var updatedObject = request.body.dataRequest;
+
+
+    for (var x = 0; x < request.body.dataRequest.recipients.length; x++){
+        if (request.body.dataRequest.recipients[x].email == request.body.user.username){
+            console.log('first hit');
+            request.body.dataRequest.recipients[x].submittedResponse = true;
+        }
+    }
 
     Request.findById(id, function(error, objectToUpdate) {
         if(error) {
             response.sendStatus(401);
         } else {
+
+
+            for (var y = 0; y < request.body.dataRequest.recipients.length; y++){
+                if (request.body.dataRequest.recipients[y].submittedResponse === true){
+                    statusHolder++;
+                    console.log('second hit');
+
+                }
+        }
+
             objectToUpdate.recipients = updatedObject.recipients;
+            objectToUpdate.status = statusHolder + ' of ' + request.body.dataRequest.recipients.length + ' have responded';
             objectToUpdate.save(function(error) {
                 if(error) {
                     response.sendStatus(401);

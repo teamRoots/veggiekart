@@ -64,8 +64,10 @@ router.post('/createSalad', function(request, response) {
     ingredients.push(ingredient);
 }
 var newsalad = new Salad ({
-    name: request.body.saladName,
+    name: request.body.saladName.name,
+    totalSalads: request.body.saladName.total,
     ingredients: ingredients,
+
 });
 
 newsalad.save(function(err){

@@ -5,29 +5,26 @@ app.factory('eventsService', ['$http', '$filter', function($http, $filter){
   var currentEvent = {};
 
   var getEvents = function(){
-    // console.log('get yo events ya\'ll!');
     requests = [];
+
     //get the events from the database
     $http.get('/events').then(function(response){
-      // console.log('event response.data is ', response.data);
       data.events = response.data;
+
       for (var i = 0; i < data.events.length; i++) {
         currentEvent.location = data.events[i].venueName;
+
         for (var j = 0; j < data.events[i].events.length; j++) {
           currentEvent.date = data.events[i].events[j].eventDate;
           currentEvent.displayDate = $filter('date')(currentEvent.date, 'MMM d, yyyy');
           currentEvent.host = data.events[i].events[j].orgName;
-          // console.log('new currentEvent object: ', currentEvent);
+
           requests.push(currentEvent);
-          // console.log('current requests array ', requests);
+
           currentEvent = {};
           currentEvent.location = data.events[i].venueName;
         }
       }
-
-
-      // console.log('new requests array: ', requests);
-      // console.log('data.events ', data.events);
 
       data.events = requests;
 
