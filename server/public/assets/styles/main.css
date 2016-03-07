@@ -362,6 +362,9 @@ html {
 *, *:before, *:after {
   box-sizing: inherit; }
 
+a {
+  cursor: pointer; }
+
 .push-left {
   margin-top: 20px;
   display: block;
@@ -2223,6 +2226,11 @@ select {
   margin: 10px 0;
   line-height: 60px;
   padding-left: 10px; }
+
+.to-selector {
+  width: 50%; }
+  .to-selector select {
+    width: 90%; }
 
 .event-picker {
   width: 45%;

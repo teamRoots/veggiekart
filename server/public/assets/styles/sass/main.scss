@@ -275,6 +275,12 @@ select {
   line-height: 60px;
   padding-left: 10px;
 }
+.to-selector {
+  width: 50%;
+  select {
+    width: 90%;
+  }
+}
 .event-picker {
   width: 45%;
   display: block;
