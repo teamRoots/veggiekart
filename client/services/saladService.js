@@ -2,16 +2,16 @@
 app.factory('saladService', ['$http', function($http){
   var data = {};
 
-  //these are unused??? addSalad and deleteSalad
-  //adds salad recipe to the database
-  // var addSalad = function(){
-  //
-  // }
-  //
-  // //deletes salad recipe from the database
-  // var deleteSalad = function(){
-  //
-  // }
+  // these are unused??? addSalad and deleteSalad
+  // adds salad recipe to the database
+  var addSalad = function(){
+
+  }
+
+  //deletes salad recipe from the database
+  var deleteSalad = function(){
+
+  }
 
   //returns all salads
   var getSalads = function(){
