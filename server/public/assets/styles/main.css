@@ -2257,12 +2257,13 @@ select {
     margin-right: 4%; }
 
 .delete-salad {
+  cursor: pointer;
   margin: 30px 0 0 2%;
   color: #DC7238; }
   .delete-salad:hover {
-    background: #bf5922; }
+    color: #bf5922; }
   .delete-salad:active {
-    background: #94451a; }
+    color: #94451a; }
 
 .add-salad {
   margin: 0 auto 0 46%; }
@@ -2378,9 +2379,10 @@ table {
   z-index: 10; }
 
 .modal {
-  width: 400px;
+  width: 480px;
   height: 200px;
   position: fixed;
+  border-radius: 0 4px 4px 4px;
   top: 50%;
   left: 50%;
   margin-top: -100px;

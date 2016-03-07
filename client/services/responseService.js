@@ -93,7 +93,7 @@ app.factory('responseService', ['$http', '$location', 'loginService', function($
   };
 
   var confirmCheck = function() {
-    data.confirmError = true;
+    // data.confirmError = true;
     data.confirmErrorMessage = 'Are you sure?';
   };
 

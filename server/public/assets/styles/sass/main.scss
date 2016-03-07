@@ -310,13 +310,14 @@ select {
 }
 
 .delete-salad {
+  cursor: pointer;
   margin: 30px 0 0 2%;
   color: $orange;
   &:hover {
-    background: $buttonNegativeDark;
+    color: $buttonNegativeDark;
   }
   &:active {
-    background: $buttonNegativeDarker;
+    color: $buttonNegativeDarker;
   }
 }
 .add-salad {
@@ -464,9 +465,10 @@ table {
 }
 
 .modal {
-    width: 400px;
+    width: 480px;
     height: 200px;
     position: fixed;
+    border-radius: 0 4px 4px 4px;
     top: 50%;
     left: 50%;
     margin-top: -100px;
