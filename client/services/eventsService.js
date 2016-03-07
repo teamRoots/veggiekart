@@ -18,22 +18,16 @@ app.factory('eventsService', ['$http', '$filter', function($http, $filter){
           currentEvent.date = data.events[i].events[j].eventDate;
           currentEvent.displayDate = $filter('date')(currentEvent.date, 'MMM d, yyyy');
           currentEvent.host = data.events[i].events[j].orgName;
-
           requests.push(currentEvent);
-
           currentEvent = {};
           currentEvent.location = data.events[i].venueName;
         }
       }
-
       data.events = requests;
-
     });
   };
-
   return {
     getEvents: getEvents,
     data: data
   };
-
 }]);

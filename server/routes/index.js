@@ -11,8 +11,7 @@ var Schedule = require('../../Models/Schedule');
 //All get routes that send to html view
 
 router.get('/', function(request, response){
-    console.log('request.session.respond in the index router is ', request.session.respond);
-    response.sendFile(path.join(__dirname, '../public/views/index.html'));
+  response.sendFile(path.join(__dirname, '../public/views/index.html'));
 });
 
 router.get('/events', function(request, response){
@@ -27,10 +26,6 @@ router.get('/events', function(request, response){
 
 //===================================
 //Post routes for controller responses
-
-
-
-
 
 //===================================
 //exporting the router

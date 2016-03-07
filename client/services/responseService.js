@@ -89,7 +89,6 @@ app.factory('responseService', ['$http', '$location', 'loginService', function($
     $http.put('/createRequest/updateRequest/' + id, objectHolder).then(function(response) {
       console.log(response);
     });
-
     data.exitConfirm = true;
   };
 
@@ -129,9 +128,9 @@ app.factory('responseService', ['$http', '$location', 'loginService', function($
     var message = this.message;
     var recipients = data.request.recipients;
     var messageToShow = {
-                          name: name,
-                          message: message
-                        };
+      name: name,
+      message: message
+    };
 
     data.fromAdminMessages.push(messageToShow);
 
@@ -167,5 +166,4 @@ app.factory('responseService', ['$http', '$location', 'loginService', function($
     validateResponse: validateResponse,
     data: data
   };
-
 }]);

@@ -29,25 +29,22 @@ app.factory('loginService', ['$http', '$location', 'createRequestService', funct
       }
 
       if(response.data === false){
-        console.log('login failed', response.data);
         $location.path('/');
         alert('Login failed. Please try again.');
       }
 
       //redirects to admin page if user is admin
-      else if(user.isAdmin == true){
+      else if(user.isAdmin === true){
         userLoggedIn.loggedIn = true;
         currentUser.admin = response.data.user.isAdmin;
         currentUser.data = response.data.user.firstName;
-
         $location.path('/admin/dashboard');
 
       //redirects to user page if user is not admin
-      } else if (user.isAdmin == false) {
+    } else if (user.isAdmin === false){
         userLoggedIn.loggedIn = true;
         currentUser.admin = response.data.user.isAdmin;
         currentUser.data = response.data.user.firstName;
-
         $location.path('/farm/response');
       } else {
         $location.path('/');
@@ -60,7 +57,7 @@ app.factory('loginService', ['$http', '$location', 'createRequestService', funct
     $http.get('/authenticate/logout').then(function(response){
       $location.path('/');
     });
-  }
+  };
 
   return {
     login: login,
@@ -68,6 +65,5 @@ app.factory('loginService', ['$http', '$location', 'createRequestService', funct
     userLoggedIn: userLoggedIn,
     currentUser: currentUser,
     user: user
-  }
-
+  };
 }]);

@@ -7,5 +7,4 @@ app.controller('indexController', ['$scope', 'loginService', '$location', functi
       $location.path('/admin/dashboard');
     }
   };
-  console.log($scope.user);
 }]);

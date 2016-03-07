@@ -10,11 +10,11 @@ var router = express.Router();
 
 router.get('/success', function(request, response){
     var id = request.session.respond;
-    console.log('somehow success')
+    console.log('somehow success');
     request.holder = {
       user: request.user,
       id: id
-    }
+    };
     response.send(request.holder);
 });
 
@@ -25,17 +25,16 @@ router.get('/failure', function(request, response){
 
 router.get('/logout', function(request, response){
   console.log('router hit');
-    request.session.destroy(function (err) {
-      response.sendStatus(200); //Inside a callback… bulletproof!
+  request.session.destroy(function (err) {
+    response.sendStatus(200); //Inside a callback… bulletproof!
+  });
 });
-});
-
 
 //===================================
 //post call for passport authentication
 
 router.post('/login', passport.authenticate('local', {
-    successRedirect: '/authenticate/success', failureRedirect:'/authenticate/failure'
+  successRedirect: '/authenticate/success', failureRedirect:'/authenticate/failure'
 }));
 
 //===================================

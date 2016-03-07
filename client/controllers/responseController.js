@@ -3,27 +3,15 @@ app.controller('responseController', ['loginService', 'responseService', functio
   this.data = responseService.data;
   this.userLoggedIn = loginService.userLoggedIn;
 
-  // this.request = responseService.data.requestToDisplay;
-  console.log('this.data:', this.data.event);
-
   var id = loginService.userLoggedIn.respondId;
-  console.log('id is ', id);
 
   responseService.loadRequest(id);
 
-  // this.users = [{name: 'Scott'}, {name: 'Zach'},{name: 'Eric'},{name: 'Anthony'}];
-  // this.veggies = [{name: 'Parsnip', quantity: 2, unit: 'lbs.'}, {name: 'Spinach', quantity: 2, unit: 'lbs.'}, {name: 'Rutabega', quantity: 2, unit: 'lbs.'}, {name: 'Broccoli', quantity: 2, unit: 'lbs.'}];
-
   this.test = function() {
-    console.log('user.commitment:', this.data.request);
-  }
+    // console.log('user.commitment:', this.data.request);
+  };
 
   this.sendResponse = responseService.sendResponse;
   this.validateResponse = responseService.validateResponse;
-
-  // function() {
-  //   console.log('response to send:', this.data.request);
-  //   console.log(responseService.data);
-  // };
 
 }]);

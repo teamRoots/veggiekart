@@ -43,11 +43,11 @@ var mongoURI = process.env.DATABASE_URL || 'mongodb://localhost:27017/veggiekart
 var mongoDB = mongoose.connect(mongoURI).connection;
 
 mongoDB.on('error', function(err){
-    console.log('MongoDB error: ', err);
+  console.log('MongoDB error: ', err);
 });
 
 mongoDB.on('open', function(){
-    console.log('MongoDB connected!');
+  console.log('MongoDB connected!');
 });
 
 //=================================================
@@ -55,14 +55,14 @@ mongoDB.on('open', function(){
 // Eric: commented out until process.env.SECRET is set
 
 app.use(session({
-    secret: 'secret',
-    key: 'user',
-    resave: true,
-    saveUninitialized: false,
-    cookie: {
-        maxAge: 600000,
-        secure: false
-    }
+  secret: 'secret',
+  key: 'user',
+  resave: true,
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 600000,
+    secure: false
+  }
 }));
 
 //=================================================

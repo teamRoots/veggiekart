@@ -10,13 +10,13 @@ vCalc = function(events){
       var saladQuantity = events[i].salads[j].quantity;
       var salad = salads[j].salad;
 
-      for (var k = 0; k < salad.ingredients.length; k++) {
+      for (var k = 0; k < salad.ingredients.length; k++){
         ingredient = salad.ingredients[k];
 
-        // //multiply the number of ingredients by the number of salads
+        //multiply the number of ingredients by the number of salads
         // ingredient.amount *= saladQuantity;
 
-        //temp multiply function to account for the 48 salads in recipie issue
+        //temp multiply function to account for the 48 salads in recipe issue
         ingredient.amount = ingredient.amount * saladQuantity / 48;
 
         //if the number of ounces is large, convert to pounds
@@ -40,14 +40,14 @@ vCalc = function(events){
 
       //if so, then check if ingredient is already in the summary array
       for (var i = 0; i < summary.length; i++){
-        if (summary[i].ingredient_name == ingredient.ingredient_name) {
+        if (summary[i].ingredient_name == ingredient.ingredient_name){
 
           //if ingredient is already in the summary, add the new amount (doing unit conversion if necessary)
           if (summary[i].unit == ingredient.unit){
             summary[i].amount += ingredient.amount;
-          } else if (summary[i].unit == 'oz.' && ingredient.unit == 'lbs.') {
+          } else if (summary[i].unit == 'oz.' && ingredient.unit == 'lbs.'){
             summary[i].unit += (ingredient.unit / 16);
-          } else if (summary[i].unit == 'lbs.' && ingredient.unit == 'oz.') {
+          } else if (summary[i].unit == 'lbs.' && ingredient.unit == 'oz.'){
             summary[i].unit += (ingredient.unit * 16);
           }
           return;
@@ -57,5 +57,5 @@ vCalc = function(events){
     } else {
       summary.push(ingredient);
     }
-  };
+  }
 };

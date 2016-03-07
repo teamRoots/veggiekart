@@ -2,7 +2,7 @@
 app.factory('saladService', ['$http', function($http){
   var data = {};
 
-//these are unused??? addSalad and deleteSalad
+  //these are unused??? addSalad and deleteSalad
   //adds salad recipe to the database
   // var addSalad = function(){
   //
@@ -21,17 +21,15 @@ app.factory('saladService', ['$http', function($http){
 
       if (response.data.ingredient.length !== 0){
         data.ingredientsDatabase = response.data.ingredient[0].ingredients;
-      } else{
+      } else {
         console.log('no ingredients');
       }
-
-    }
-)};
+    });
+  };
 
   return {
     addSalad: addSalad,
     getSalads: getSalads,
     data: data
   };
-
 }]);
