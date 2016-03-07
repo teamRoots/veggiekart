@@ -1,0 +1,73 @@
+.event-split {
+  width: 42.5%;
+  margin: 0 5%;
+}
+.farm-response {
+  li {
+    display: block;
+    float: left;
+    width: 24%;
+    margin: 0 4%;
+  }
+}
+.salad-dropdowns {
+  padding-left: 40%;
+  width: 90%;
+}
+th {
+  width: 15%;
+}
+input, select {
+  width: 40%;
+}
+table {
+  table-layout: fixed;
+  white-space: nowrap;
+  border-bottom: 1px solid $brown;
+  td {
+    width: 40px;
+  }
+}
+.table-units {
+  font-size: 12px;
+}
+
+/* Dialog displays via modal */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 10;
+}
+.modal {
+    width: 480px;
+    height: 200px;
+    position: fixed;
+    border-radius: 0 4px 4px 4px;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -200px;
+    text-align: center;
+    z-index: 11; /* 1px higher than the overlay layer */
+    padding: 22px 0px 0px 0px;
+    .button {
+      width: 44%;
+  }
+}
+button.btn-negative {
+  background-color: $buttonNegative;
+  padding: 5px;
+  &:hover {
+    background: $buttonNegativeDark;
+  }
+  &:active {
+    background: $buttonNegativeDarker;
+  }
+}
+.modal-btn {
+  width: 38%;
+}

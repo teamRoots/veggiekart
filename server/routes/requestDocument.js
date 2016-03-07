@@ -192,7 +192,6 @@ router.put('/updateRequest/:id', function(request, response){
 
   for (var x = 0; x < request.body.dataRequest.recipients.length; x++){
     if (request.body.dataRequest.recipients[x].email == request.body.user.username){
-      console.log('first hit');
       request.body.dataRequest.recipients[x].submittedResponse = true;
     }
   }
@@ -204,7 +203,6 @@ router.put('/updateRequest/:id', function(request, response){
       for (var y = 0; y < request.body.dataRequest.recipients.length; y++){
         if (request.body.dataRequest.recipients[y].submittedResponse === true){
           statusHolder++;
-          console.log('second hit');
         }
       }
 

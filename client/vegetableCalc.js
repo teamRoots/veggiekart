@@ -26,6 +26,8 @@ vCalc = function(events){
         }
 
         //add ingredients to the summary array
+        // ingredient.amount = ingredient.amount.toFixed(2);
+
         addToSummary(ingredient);
       }
     }
@@ -46,15 +48,17 @@ vCalc = function(events){
           if (summary[i].unit == ingredient.unit){
             summary[i].amount += ingredient.amount;
           } else if (summary[i].unit == 'oz.' && ingredient.unit == 'lbs.'){
-            summary[i].unit += (ingredient.unit / 16);
+            summary[i].amount  += (ingredient.amount  / 16);
           } else if (summary[i].unit == 'lbs.' && ingredient.unit == 'oz.'){
-            summary[i].unit += (ingredient.unit * 16);
+            summary[i].amount  += (ingredient.amount  * 16);
           }
           return;
         }
       }
+      // ingredient.amount = ingredient.amount.toFixed(2);
       summary.push(ingredient);
     } else {
+      // ingredient.amount = ingredient.amount.toFixed(2);
       summary.push(ingredient);
     }
   }

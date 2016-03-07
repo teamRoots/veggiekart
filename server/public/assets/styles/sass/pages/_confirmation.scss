@@ -1,0 +1,31 @@
+.confirm-quantity {
+  width: 80px;
+  height: 40px;
+  padding: 10px;
+}
+.container {
+  .confirmation-btn {
+    margin-top: 22px;
+  }
+}
+.col-center {
+  text-align: center;
+  div {
+    display: inline-block;
+    padding: 2px;
+    width: 44%;
+  }
+}
+.table {
+  overflow-x: scroll;
+}
+.left-divide {
+  border-left: 1px solid $brown;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.right-divide {
+  border-right: 1px solid $brown;
+  padding-left: 10px;
+  padding-right: 10px;
+}

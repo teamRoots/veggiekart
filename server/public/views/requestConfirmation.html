@@ -51,7 +51,7 @@
           <td class="right-divide col-center">{{veggie.amount}} {{veggie.unit}}</td>
           <td colspan="2" class="right-divide col-center" ng-repeat="user in confirm.data.request.recipients">
             <div>
-              <input class="confirm-quantity" ng-change="confirm.test()" ng-model="user.confirmations[veggie.ingredient_name].quantity" type="tel" placeholder="Qty." min="0"/>
+              <input class="confirm-quantity" ng-change="confirm.test()" ng-model="user.confirmations[veggie.ingredient_name].quantity" type="number" placeholder="Qty." min="0"/>
             </div>
             <div>
               {{user.commitments[veggie.ingredient_name].quantity}} {{veggie.unit}}
@@ -70,9 +70,12 @@
     <div class="message-box">
       <h3 class="push-right">Add Messages</h3>
       <div class="clearfix"></div>
-      <label>Personalized Message Recipient</label>
-      <select name="recipient" placeholder="Event" ng-model="confirm.messageRecipient" ng-options="recipient as recipient.name for recipient in confirm.data.request.recipients">
-      </select>
+      <div class="to-selector">
+        <label>To: </label>
+        <select name="recipient" placeholder="Event" ng-model="confirm.messageRecipient" ng-options="recipient as recipient.name for recipient in confirm.data.request.recipients">
+        </select>
+      </div>
+      <div class="clearfix"></div>
       <textarea rows="6" cols="30" class="message" ng-model="confirm.message" placeholder="Message to {{confirm.messageRecipient.name}}..."></textarea>
       <button class="send-request" ng-click="confirm.addMessage()">Add Message</button>
       <div class="clearfix"></div>
