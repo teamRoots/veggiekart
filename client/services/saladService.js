@@ -18,6 +18,7 @@ app.factory('saladService', ['$http', function($http){
 
     $http.post('/salad/fillSalad').then(function(response){
       data.salads = response.data.salads;
+      console.log('service hit', data.salads);
 
       if (response.data.ingredient.length !== 0){
         data.ingredientsDatabase = response.data.ingredient[0].ingredients;

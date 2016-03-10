@@ -410,6 +410,24 @@ router.post('/deleteRequest', function(request, response){
   });
 });
 
+router.post('/updateConfirmation', function(request, response){
+  var id = request.body.request._id;
+  Request.findById(id, function(err, oldRequests){
+    if (err){
+      console.log(err);
+    }else{
+      oldRequests.recipients = request.body.request.recipients;
+      oldRequests.save(function(err){
+        if (err){
+          console.log(err);
+        }else{
+          response.sendStatus(200);
+        }
+      });
+    }
+  });
+});
+
 //===================================
 //exporting the router
 module.exports = router;

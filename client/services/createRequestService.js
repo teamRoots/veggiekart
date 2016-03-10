@@ -47,10 +47,14 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
 
     //set salad quantity to 48 if no other value was entered
     for (var i = 0; i < newEvent.salads.length; i++){
+      console.log('dkdkdkdkdkdkdk', newEvent.salads[i]);
       if (!newEvent.salads[i].quantity) {
-        newEvent.salads[i].quantity = 48;
+        newEvent.salads[i].quantity = newEvent.salads[i].salad.totalSalads;
       }
     }
+
+    //calculates the summary object
+    data.summary = vCalc(newEvent.salads);
 
     //adds event to the events array
     data.events.push({
@@ -59,12 +63,10 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
       salads: newEvent.salads.splice(0),
       id: eventCounter
     });
-    console.log('look at the same stuff', data.events, 'yolo', newEvent.salads.splice(0))
-    //calculates the summary object
-    data.summary = vCalc(data.events);
 
     //increments event count for next id, resets saladCounter
     eventCounter++;
+    // newEvent = [];//=================================POSSIBLE CHANGE
     // saladCounter = 1;
   };
 
@@ -128,6 +130,7 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
       data.events = [];
       request = {};
       data.summary = [];
+      summary = [];
       data.message = '';
       saladCounter = 1;
 
@@ -198,10 +201,19 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
     request = {};
     data.summary = [];
     data.message = '';
+    summary = [];
+  };
+
+  var updateConfirmation = function(data){
+    console.log('updateConfirmation was hit', data);
+    $http.post('/createRequest/updateConfirmation', data).then(function(response){
+      $location.path('admin/dashboard');
+    });
   };
 
   return {
     addEvent: addEvent,
+    updateConfirmation: updateConfirmation,
     addSalad: addSalad,
     getRecipients: getRecipients,
     saveRequest: saveRequest,
