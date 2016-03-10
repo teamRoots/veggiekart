@@ -59,13 +59,13 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
       salads: newEvent.salads.splice(0),
       id: eventCounter
     });
-
+    console.log('look at the same stuff', data.events, 'yolo', newEvent.salads.splice(0))
     //calculates the summary object
     data.summary = vCalc(data.events);
 
     //increments event count for next id, resets saladCounter
     eventCounter++;
-    saladCounter = 1;
+    // saladCounter = 1;
   };
 
   //adds salad to the current event
@@ -122,7 +122,6 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
         message: data.message,
         summary: data.summary
     };
-    console.log('sending request to server ', request);
     $http.post('/createRequest', request).then(function(response){
       data.confirmIcon = false;
       data.confirmRequest = false;
@@ -130,6 +129,8 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
       request = {};
       data.summary = [];
       data.message = '';
+      saladCounter = 1;
+
       loadRequests();
     });
   };
@@ -170,7 +171,7 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
     };
 
     $http.post('/createRequest/editRequest', request).then(function(response){
-      console.log('response', response);
+
       data.events = [];
       request = {};
       // data.salads = [];
@@ -186,7 +187,6 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
     };
 
     $http.post('/createRequest/findOldRequest', holder).then(function(response){
-      console.log(response);
       oldData.event = response.data.event;
       oldData.recipients = response.data.recipients;
       oldData.summary = response.data.summary;
