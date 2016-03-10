@@ -200,8 +200,16 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
     data.message = '';
   };
 
+  var updateConfirmation = function(data){
+    console.log('updateConfirmation was hit', data);
+    $http.post('/createRequest/updateConfirmation', data).then(function(response){
+      console.log(response);
+    });
+  };
+
   return {
     addEvent: addEvent,
+    updateConfirmation: updateConfirmation,
     addSalad: addSalad,
     getRecipients: getRecipients,
     saveRequest: saveRequest,

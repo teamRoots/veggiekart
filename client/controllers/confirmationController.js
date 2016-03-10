@@ -14,6 +14,9 @@ app.controller('confirmationController', ['responseService', 'createRequestServi
 
   this.confirmCheck = responseService.confirmCheck;
 
+  this.updateConfirmation = createRequestService.updateConfirmation;
+
+
   responseService.loadRequest();
 
 }]);
