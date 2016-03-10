@@ -1,15 +1,12 @@
 //calculates vegetables
 var summary = [];
 
-vCalc = function(events){
+vCalc = function(salads){
   // var summary = [];=================================POSSIBLE CHANGE
 
   //traverse down to the ingredient array, and if ingredient is new add to the summary array
-  for (var i = 0; i < events.length; i++){
-    var salads = events[i].salads;
-
     for (var j = 0; j < salads.length; j++){
-      var saladQuantity = events[i].salads[j].quantity;
+      var saladQuantity = salads[j].quantity;
       var salad = salads[j].salad;
 
       for (var k = 0; k < salad.ingredients.length; k++){
@@ -33,7 +30,6 @@ vCalc = function(events){
         addToSummary(ingredient);
       }
     }
-  }
 
   return summary;
 

@@ -52,6 +52,9 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
       }
     }
 
+    //calculates the summary object
+    data.summary = vCalc(newEvent.salads);
+
     //adds event to the events array
     data.events.push({
       event: newEvent.event,
@@ -60,12 +63,10 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
       id: eventCounter
     });
     console.log('look at the same stuff', data.events, 'yolo', newEvent.salads.splice(0))
-    //calculates the summary object
-    data.summary = vCalc(data.events);
 
     //increments event count for next id, resets saladCounter
     eventCounter++;
-    data.events = [];//=================================POSSIBLE CHANGE
+    // newEvent = [];//=================================POSSIBLE CHANGE
     // saladCounter = 1;
   };
 
@@ -129,6 +130,7 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
       data.events = [];
       request = {};
       data.summary = [];
+      summary = [];
       data.message = '';
       saladCounter = 1;
 
