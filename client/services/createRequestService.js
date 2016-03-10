@@ -65,7 +65,7 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
 
     //increments event count for next id, resets saladCounter
     eventCounter++;
-    saladCounter = 1;
+    // saladCounter = 1;
   };
 
   //adds salad to the current event
@@ -129,6 +129,8 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
       request = {};
       data.summary = [];
       data.message = '';
+      saladCounter = 1;
+
       loadRequests();
     });
   };
