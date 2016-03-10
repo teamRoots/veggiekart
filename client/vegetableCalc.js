@@ -14,9 +14,9 @@ vCalc = function(salads){
 
         //multiply the number of ingredients by the number of salads
         // ingredient.amount *= saladQuantity;
-
+        console.log('jfjfjfjfjfjfjfjfjyolo', salad);
         //temp multiply function to account for the 48 salads in recipe issue
-        ingredient.amount = ingredient.amount * saladQuantity / 48;
+        ingredient.amount = ingredient.amount * saladQuantity / salad.totalSalads;
 
         //if the number of ounces is large, convert to pounds
         if (ingredient.unit == 'oz.' && ingredient.amount > 100) {

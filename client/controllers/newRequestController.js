@@ -7,7 +7,6 @@ app.controller('newRequestController', ['createRequestService', 'eventsService',
   this.newEvent = createRequestService.newEvent;
   this.oldData = createRequestService.oldData;
   this.cancelEvent = createRequestService.cancelEvent;
-  // this.addEvent = createRequestService.addEvent;
   this.addSalad = createRequestService.addSalad;
   this.recipients = createRequestService.getRecipients;
   this.saveRequest = createRequestService.saveRequest;
