@@ -1,6 +1,8 @@
 //calculates vegetables
+var summary = [];
+
 vCalc = function(events){
-  var summary = [];
+  // var summary = [];=================================POSSIBLE CHANGE
 
   //traverse down to the ingredient array, and if ingredient is new add to the summary array
   for (var i = 0; i < events.length; i++){
