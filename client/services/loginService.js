@@ -30,6 +30,7 @@ app.factory('loginService', ['$http', '$location', 'createRequestService', funct
 
       if(response.data === false){
         $location.path('/');
+        console.log('false');
         alert('Login failed. Please try again.');
       }
 
@@ -38,6 +39,8 @@ app.factory('loginService', ['$http', '$location', 'createRequestService', funct
         userLoggedIn.loggedIn = true;
         currentUser.admin = response.data.user.isAdmin;
         currentUser.data = response.data.user.firstName;
+        console.log('admin');
+
         $location.path('/admin/dashboard');
 
       //redirects to user page if user is not admin
@@ -46,11 +49,14 @@ app.factory('loginService', ['$http', '$location', 'createRequestService', funct
         currentUser.admin = response.data.user.isAdmin;
         currentUser.data = response.data.user.firstName;
         $location.path('/farm/response');
+        console.log('user');
+
       } else {
         $location.path('/');
         alert('Login failed. Please try again.');
       }
-    }).then(createRequestService.loadRequests());
+    })
+    // .then(createRequestService.loadRequests());
   };
 
   var logout = function(){
