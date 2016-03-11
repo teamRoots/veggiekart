@@ -14,7 +14,6 @@ vCalc = function(salads){
 
         //multiply the number of ingredients by the number of salads
         // ingredient.amount *= saladQuantity;
-        console.log('jfjfjfjfjfjfjfjfjyolo', salad);
         //temp multiply function to account for the 48 salads in recipe issue
         ingredient.amount = ingredient.amount * saladQuantity / salad.totalSalads;
 
