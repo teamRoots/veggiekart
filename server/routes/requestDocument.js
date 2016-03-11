@@ -189,10 +189,12 @@ router.put('/updateRequest/:id', function(request, response){
   var id = request.params.id;
   var statusHolder = 0;
   var updatedObject = request.body.dataRequest;
+  var currentOrg = '';
 
   for (var x = 0; x < request.body.dataRequest.recipients.length; x++){
     if (request.body.dataRequest.recipients[x].email == request.body.user.username){
       request.body.dataRequest.recipients[x].submittedResponse = true;
+      currentOrg = request.body.dataRequest.recipients[x].orgName;
     }
   }
 
@@ -217,6 +219,66 @@ router.put('/updateRequest/:id', function(request, response){
       });
     }
   });
+
+  //build and send User response summary email to Sue
+  var emailSubject = 'User Response Notification - ' + currentOrg;
+  var emailRecipients = 'sue@rootsforthehometeam.org';
+  var emailUserMessage = '';
+
+  //build emailIntro
+  var emailIntro = 'Hello,' + '<br>' + '<br>' + currentOrg + ' has provided a response for the following scheduled event(s).' + '<br>' + '<br>';
+
+  emailIntro += '<b>' + 'Event(s):' + '</b>' + '<br>';
+
+  for (var h = 0; h < updatedObject.event.length; h++){
+    emailIntro += 'Location: ' + updatedObject.event[h].event.location + '<br>' + 'Date: ' + updatedObject.event[h].event.displayDate + '<br>' + 'Host: ' + updatedObject.event[h].event.host + '<br>' + '<br>';
+  }
+
+  //build emailSummary
+  var emailSummary = '<b>' + 'Summary of required items: ' + '</b>' + '<br>';
+
+  for (var i = 0; i < updatedObject.summary.length; i++){
+    emailSummary += updatedObject.summary[i].amount + ' ' + updatedObject.summary[i].unit + ' ' + updatedObject.summary[i].ingredient_name + '<br>';
+  }
+
+  console.log('updatedObject: ', updatedObject);
+  //cycle through all recipients and return the summary of items provided by the User that responded
+  // emailSummary += '<br>' + '<b>' + 'Summary of items to be provided: ' + '</b>' + '<br>';
+  emailSummary += '<br>' + '<br>' + '<b>' + 'Summary of items to be provided: ' + '</b>' + '<br>';
+  var unitMeasure = '';
+  for (var j = 0; j < updatedObject.recipients.length; j++){
+    if (updatedObject.recipients[j].commitments){
+      emailSummary += updatedObject.recipients[j].orgName + ': ' + '<br>';
+      for (var veggie in updatedObject.recipients[j].commitments){
+        for (var k = 0; k < updatedObject.summary.length; k++){
+          if (updatedObject.summary[k].ingredient_name == veggie){
+            unitMeasure = updatedObject.summary[k].unit;
+          }
+        }
+        //check for null values if quantity was previously added and removed from DB
+        if(updatedObject.recipients[j].commitments[veggie].quantity){
+          emailSummary += updatedObject.recipients[j].commitments[veggie].quantity + ' ' + unitMeasure + ' ' + veggie + '<br>';
+        }
+
+        //re-set UOM
+        unitMeasure = '';
+      }
+
+      //include message from Users response if they provided one
+      //check if message was submitted on webpage and store
+      if (updatedObject.recipients[j].toAdminMessage){
+        emailUserMessage = '<br>' + '<br>' + '<b>' + 'Message from ' + currentOrg + ':' + '</b>' + '<br>' + updatedObject.recipients[j].toAdminMessage + '<br>' + '<br>';
+      }
+      emailUserMessage += '<b>' + 'Note: ' + '</b>' + updatedObject.status + '.';
+    }
+  }
+
+  //build html message
+  var emailHTML = '<span>' + emailIntro + '<br>' + emailSummary + emailUserMessage + '</span>';
+
+  //send request confirmation email of all grower confirmations to Sue
+  sendEmail.sendMessage(emailSubject, emailRecipients, emailHTML);
+
 });
 
 router.put('/confirmRequest/:id', function(request, response){
