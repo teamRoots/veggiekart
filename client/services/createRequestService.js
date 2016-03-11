@@ -47,7 +47,6 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
 
     //set salad quantity to 48 if no other value was entered
     for (var i = 0; i < newEvent.salads.length; i++){
-      console.log('dkdkdkdkdkdkdk', newEvent.salads[i]);
       if (!newEvent.salads[i].quantity) {
         newEvent.salads[i].quantity = newEvent.salads[i].salad.totalSalads;
       }
@@ -205,7 +204,6 @@ app.factory('createRequestService', ['$http', '$location', function($http, $loca
   };
 
   var updateConfirmation = function(data){
-    console.log('updateConfirmation was hit', data);
     $http.post('/createRequest/updateConfirmation', data).then(function(response){
       $location.path('admin/dashboard');
     });
