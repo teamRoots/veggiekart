@@ -79,8 +79,12 @@ router.post('/', function(request, response){
     }
     var emailSubject = 'New Request - Roots for the Home Team';
 
-    //hard coded URL, need to update with dynamic link for future URL
-    var gardenURL = '<b>' + 'Click here to confirm your contributions:' + '</b>' + '<br>' + 'http://localhost:3000/respond/' + saved._id;
+    //hard coded URL for TESTING, need to update with dynamic link for future URL
+    // var gardenURL = '<b>' + 'Click here to confirm your contributions:' + '</b>' + '<br>' + 'http://localhost:3000/respond/' + saved._id;
+
+    //dynamic link set to environment variable EM_RESPOND
+    var gardenURL = '<b>' + 'Click here to confirm your contributions:' + '</b>' + '<br>' + process.env.EM_RESPOND + saved._id;
+
 
     //build html message
     var emailHTML = '<span>' + emailIntro + '<br>' + emailSummary + '<br>' + '<br>' + gardenURL + '<br>' + '<br>' + emailMessage + '</span>';
@@ -161,7 +165,12 @@ router.post('/editRequest', function(request, response) {
 
           var emailSubject = 'Updated Request - Roots for the Home Team';
 
-          var gardenURL = '<b>' + 'Click here to confirm your contributions:' + '</b>' + '<br>' + 'http://localhost:3000/respond/' + saved._id;
+          //hard coded URL for TESTING, need to update with dynamic link for future URL
+          // var gardenURL = '<b>' + 'Click here to confirm your contributions:' + '</b>' + '<br>' + 'http://localhost:3000/respond/' + saved._id;
+
+          //dynamic link set to environment variable EM_RESPOND
+          var gardenURL = '<b>' + 'Click here to confirm your contributions:' + '</b>' + '<br>' + process.env.EM_RESPOND + saved._id;
+
 
           //build html message
           var emailHTML = '<span>' + emailIntro + '<br>' + emailSummary + '<br>' + '<br>' + gardenURL + '<br>' + '<br>' + emailMessage + '</span>';
@@ -241,7 +250,6 @@ router.put('/updateRequest/:id', function(request, response){
     emailSummary += updatedObject.summary[i].amount + ' ' + updatedObject.summary[i].unit + ' ' + updatedObject.summary[i].ingredient_name + '<br>';
   }
 
-  console.log('updatedObject: ', updatedObject);
   //cycle through all recipients and return the summary of items provided by the User that responded
   // emailSummary += '<br>' + '<b>' + 'Summary of items to be provided: ' + '</b>' + '<br>';
   emailSummary += '<br>' + '<br>' + '<b>' + 'Summary of items to be provided: ' + '</b>' + '<br>';
@@ -278,7 +286,6 @@ router.put('/updateRequest/:id', function(request, response){
 
   //send request confirmation email of all grower confirmations to Sue
   sendEmail.sendMessage(emailSubject, emailRecipients, emailHTML);
-
 });
 
 router.put('/confirmRequest/:id', function(request, response){
@@ -406,24 +413,6 @@ router.post('/deleteRequest', function(request, response){
       console.log(err);
     }else {
       response.send('request deleted');
-    }
-  });
-});
-
-router.post('/updateConfirmation', function(request, response){
-  var id = request.body.request._id;
-  Request.findById(id, function(err, oldRequests){
-    if (err){
-      console.log(err);
-    }else{
-      oldRequests.recipients = request.body.request.recipients;
-      oldRequests.save(function(err){
-        if (err){
-          console.log(err);
-        }else{
-          response.sendStatus(200);
-        }
-      });
     }
   });
 });
