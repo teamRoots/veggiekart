@@ -89,7 +89,7 @@ router.post('/fillSalad', function(request, response){
           salads: salads,
           ingredient: ingredients
         };
-        response.send('++++salads woo hoo', data);
+        response.send(data);
       }
     });
   });
